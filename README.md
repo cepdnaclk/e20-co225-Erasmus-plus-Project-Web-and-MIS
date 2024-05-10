@@ -1,7 +1,7 @@
 ___
-# DELETE THIS INSTRUCTIONS AND ADD A SHORT INTRODUCTION ABOUT YOUR PROJECT
+# Erasmus+ Project Web and MIS
 ___
 
-## Please refer the instructions in below URL:
+## Overview
 
-https://projects.ce.pdn.ac.lk/docs/how-to-add-a-project
+The Erasmus+ Project Web and Management Information System (MIS) is a comprehensive software solution designed to support the management and coordination of Erasmus+ projects. It serves as a centralized platform for stakeholders involved in Erasmus+ projects to collaborate, track progress, manage documents, and facilitate communication.

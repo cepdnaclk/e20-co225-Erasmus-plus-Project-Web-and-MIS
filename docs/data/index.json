@@ -14,6 +14,11 @@
             "name": "Team Member Name 3",
             "email": "email@eng.pdn.ac.lk",
             "eNumber": "E/yy/xxx"
+        },
+        {
+            "name": "Team Member Name 4",
+            "email": "email@eng.pdn.ac.lk",
+            "eNumber": "E/yy/xxx"
         }
     ],
     "supervisors": [

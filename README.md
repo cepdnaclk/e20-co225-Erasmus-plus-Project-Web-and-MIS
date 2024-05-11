@@ -1,6 +1,5 @@
 ___
-# Erasmus+ Project Web and MIS 
-# Changed by kasundie
+# Erasmus+ Project Web and MIS
 ___
 
 ## Overview

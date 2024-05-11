@@ -6,14 +6,19 @@
             "eNumber": "E/20/316"
         },
         {
-            "name": "Team Member Name 2",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Dulanga Jayawardena",
+            "email": "e20178@eng.pdn.ac.lk",
+            "eNumber": "E/20/178"
         },
         {
-            "name": "Team Member Name 3",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Kasundie Hewawasam",
+            "email": "e20148@eng.pdn.ac.lk",
+            "eNumber": "E/20/148"
+        },
+        {
+            "name": "Rashmi Gunathilake",
+            "email": "e20122@eng.pdn.ac.lk",
+            "eNumber": "E/20/122"
         }
     ],
     "supervisors": [

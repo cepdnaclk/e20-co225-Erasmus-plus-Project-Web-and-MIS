@@ -22,7 +22,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 ## Team
 -  E/20/316, Wethmi Ranasinghe, [e20316@eng.pdn.ac.lk](mailto:e20316@eng.pdn.ac.lk)
 -  E/20/122, Rashmi Gunathilake, [e20122@eng.pdn.ac.lk](mailto:e20122@eng.pdn.ac.lk)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/20/178, Dulanga Jayawardena, [e20178@eng.pdn.ac.lk](mailto:e20178@eng.pdn.ac.lk)
 -  eNumber, Name, [email](mailto:name@email.com)
 
 ## Table of Contents

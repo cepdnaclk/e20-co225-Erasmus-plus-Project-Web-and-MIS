@@ -3,7 +3,7 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: e20-co200-Erasmus-plus-Project-Web-and-MIS
+repository-name: e20-co225-Erasmus-plus-Project-Web-and-MIS
 title: 
 ---
 

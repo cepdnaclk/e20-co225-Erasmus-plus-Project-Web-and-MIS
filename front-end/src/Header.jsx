@@ -30,7 +30,7 @@ function Header(){
                         </div>
                     </li>
                     <li><a href = "downloads">DOWNLOADS</a></li>
-                    <li><a href = "#">CONTACT</a></li>
+                    <li><a href = "">CONTACT</a></li>
                 </ul>
             </nav>
         </header>

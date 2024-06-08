@@ -10,10 +10,10 @@ function Header(){
             <img src={cylcleLogo} alt="Cycle Logo" className="Cycle-Logo"></img>
             </div>
             <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cybersecurity</span></h2>
-            <nav className = "navbar">
+            <nav className = "headerNavBar">
                 <ul>
                     <li><a href = "index.html">HOME</a></li>
-                    <li className = "dropdown">
+                    <li className = "headerDropDown">
                     <a href = "">PROJECT OVERVIEW &nbsp; &nbsp; &#x25BC;</a>
                         <div className = "dropdown-content">
                             <a href = "projectOverview.html">Project Overview</a>
@@ -22,7 +22,7 @@ function Header(){
                         </div>
                         </li>
                     <li><a href = "team.html">TEAM</a></li>
-                    <li className = "dropdown">
+                    <li className = "headerDropDown">
                     <a href = "#">NEWS & EVENTS &nbsp; &nbsp; &#x25BC;</a>
                         <div className = "dropdown-content">
                             <a href = "#">News & Events</a>

@@ -1,0 +1,77 @@
+/* footer.css */
+
+.footer { /* all the items in tne footer */
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-card { /* pera logo and Content below the pera logo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    order: 2;
+}
+
+.pera-logo { /* pera logo */
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.footer-card p { /* Content below the pera logo */
+    margin: 5px 0;
+    font-size: 14px;
+    color: #353637;
+    font-family: Sans-Serif;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;  /* Ensure it takes the full width for better alignment */
+    order: 1;
+}
+
+.footer-nav nav {
+    margin: 0 15px;
+    text-align: center;  /* Center the text and links */
+    color: #353637;
+    font-family: Sans-Serif;
+}
+
+.footer-nav p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    
+}
+
+.footer-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.footer-nav ul li a {
+    text-decoration: none;
+    color: #4e94de;
+
+}
+
+.footer-nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-websiteName {
+    font-size: 12px;
+    color: #535353;
+    font-family: Sans-Serif;
+    order: 3;
+}

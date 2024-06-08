@@ -21,7 +21,7 @@ main{
   margin: 20px;
 }
 a {
-  font-weight: 550;
+  font-weight: 600;
   font-size: 1em;
   color: #646cff;
   text-decoration: inherit;
@@ -53,17 +53,25 @@ h2 {
   padding: 0px 0px;
   margin-bottom: 0px;
   box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+}
+
+.Erasmus-plus-Logo:hover {
+  transform: scale(1.02);
+  opacity: 0.8;
 }
 
 .Erasmus-plus-Logo{
   margin-top: 20px;
-  max-width: 50%;
+  max-width: 45%;
+  margin-left: 40px;
   height: auto;
 }
 
 .Cycle-Logo{
   max-width: 20%;
   height: auto;
+  margin-right: 20px;
 }
 
 nav {

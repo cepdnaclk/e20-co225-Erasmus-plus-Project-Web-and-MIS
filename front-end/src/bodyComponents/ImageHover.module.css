@@ -1,9 +1,11 @@
-.partnerImg:hover{
+/* Hovering images in the body*/
+
+.HoveringImg:hover{
     transform: scale(1.2);
     opacity: 0.8;
 }
 
-.partnerImg{
+.HoveringImg{
     height:130px
 }
 

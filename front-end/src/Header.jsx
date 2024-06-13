@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';  // //Add page routing using router dom
+import {Link, Outlet} from 'react-router-dom';  // //Add page routing using router dom
 
 import cylcleLogo from './assets/CYCLE-logo.png';
 import erasmusLogo from './assets/erasmus-plus-logo.jpg';

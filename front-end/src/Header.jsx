@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';  // //Add page routing using router dom
+
 import cylcleLogo from './assets/CYCLE-logo.png';
 import erasmusLogo from './assets/erasmus-plus-logo.jpg';
 
@@ -12,25 +14,25 @@ function Header(){
             <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cybersecurity</span></h2>
             <nav className = "headerNavBar">
                 <ul>
-                    <li><a href = "index.html">HOME</a></li>
+                    <li><Link to = '/'>HOME</Link></li>
                     <li className = "headerDropDown">
-                    <a href = "">PROJECT OVERVIEW &nbsp; &nbsp; &#x25BC;</a>
+                    <Link to = '/project overview'>PROJECT OVERVIEW &nbsp; &nbsp; &#x25BC;</Link>
                         <div className = "dropdown-content">
-                            <a href = "projectOverview.html">Project Overview</a>
-                            <a href = "#">Cycle Workplan</a>
-                            <a href = "#">Deliverables</a>
+                            <Link to = '/project overview/overview'>Overview</Link>
+                            <Link to = '/project overview/workplan'>Cycle Workplan</Link>
+                            <Link to = '/project overview/deliverables'>Deliverables</Link>
                         </div>
                         </li>
-                    <li><a href = "team.html">TEAM</a></li>
+                    <li><Link to = '/team'>TEAM</Link></li>
                     <li className = "headerDropDown">
-                    <a href = "#">NEWS & EVENTS &nbsp; &nbsp; &#x25BC;</a>
+                    <Link to = '/news'>NEWS & EVENTS &nbsp; &nbsp; &#x25BC;</Link>
                         <div className = "dropdown-content">
-                            <a href = "#">News & Events</a>
-                            <a href = "#">Gallery</a>
+                            <Link to = '/news'>News & Events</Link>
+                            <Link to = '/gallery'>Gallery</Link>
                         </div>
                     </li>
-                    <li><a href = "downloads">DOWNLOADS</a></li>
-                    <li><a href = "#">CONTACT</a></li>
+                    <li><Link to = '/downloads'>DOWNLOADS</Link></li>
+                    <li><Link to = '/contact'>CONTACT</Link></li>
                 </ul>
             </nav>
         </header>

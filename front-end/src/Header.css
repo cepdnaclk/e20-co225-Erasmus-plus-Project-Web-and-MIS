@@ -107,7 +107,7 @@
     display: none;
     position: absolute;
     border-color: hsla(214, 54%, 60%);
-    background-color: hsla(214, 85%, 71%);
+    background-color: rgb(171, 190, 231);
     box-shadow: rgba(0,0,0,0.2);
     z-index: 1;
   }
@@ -121,7 +121,7 @@
   }
   
   .dropdown-content a:hover{
-    background-color: hsla(220, 53%, 85%, 0.951);
+    background-color: hsla(214, 85%, 71%, 0.951);
   }
   
   .headerDropDown:hover .dropdown-content{
@@ -137,11 +137,11 @@
   }
 
   .Erasmus-plus-Logo {
-      width: 100px; /* smaller width for medium screens */
+      width: 120px; /* smaller width for medium screens */
   }
 
   .Cycle-Logo {
-      width: 200px; /* smaller width for medium screens */
+      width: 220px; /* smaller width for medium screens */
   }
   h1 {
     font-size: 4em;
@@ -149,8 +149,8 @@
   }
   
   h2 {
-    font-size: 0.9em;
-    font-weight: 400;
+    font-size: 1em;
+    font-weight: 500;
   }
 
   nav ul {

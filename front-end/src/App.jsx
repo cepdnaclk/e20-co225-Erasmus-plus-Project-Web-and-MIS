@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';  //Add page routi
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import './components/Header.css'
-import './components/Footer.css'
+// import './components/Footer.css'
 
 import Home from './Pages/Home';
 import Team from './Pages/Team';

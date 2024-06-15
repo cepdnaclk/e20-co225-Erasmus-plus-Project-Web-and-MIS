@@ -1,18 +1,18 @@
 import peraLogo from '../assets/pera.png';
-
+import style from './Footer.module.css'
 function Footer() {
 
     return (
 
-        <footer className="footer"> 
-            <div className="footer-card">
-                <img className="pera-logo" src={peraLogo} alt="pera logo" /> 
+        <footer className={style["footer"]}> 
+            <div className={style["footer-card"]}>
+                <img className={style["pera-logo"]} src={peraLogo} alt="pera logo" /> 
                 <p><p>University of Peradeniya</p>
                 <p>ERASMUS+ CYCLE Project</p>
                 <p>Project Number: GAP-101128627</p></p>
             </div>
 
-            <div className="footer-nav">
+            <div className={style["footer-nav"]}>
                 <nav>
                     <p>Main Navigation</p>
                     
@@ -42,7 +42,7 @@ function Footer() {
                     </ul>
                 </nav>
             </div>
-            <p className = "footer-websiteName">&copy; {new Date().getFullYear()} ERASMUS+ CYCLE PROJECT</p>
+            <p className = {style["footer-websiteName"]}>&copy; {new Date().getFullYear()} ERASMUS+ CYCLE PROJECT</p>
         </footer>
     );
 }

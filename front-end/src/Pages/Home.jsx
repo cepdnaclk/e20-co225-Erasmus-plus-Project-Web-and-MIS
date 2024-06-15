@@ -1,5 +1,7 @@
+import { MapContainer, TileLayer,Marker,Popup } from 'react-leaflet'
 import Slideshow from "../bodyComponents/SlideShow";
-import style from '../bodyComponents/ImageHover.module.css';
+import style from './Home.module.css'
+import 'leaflet/dist/leaflet.css'
 
 // this has to be imported from backend
 const fadeImages = [
@@ -19,70 +21,80 @@ const fadeImages = [
 
 //partner logos
 
-const partnerLogos = [
+const partnerInfo = [
 
 {
   imagePath: 'src/assets/partnerLogos/University of Peradeniya Logo.png',
   url:"",
   caption: 'University of Peradeniya',
-  country:  'Sri Lanka(UoP)'
+  country:  'Sri Lanka(UoP)',
+  position:[7.2549,80.5974]
 
 },
 {
   imagePath: 'src/assets/partnerLogos/University of Colombo.PNG',
   url:"",
   caption: 'University of Colombo', 
-  country:'Sri Lanka(UoM)'
+  country:'Sri Lanka(UoC)',
+  position:[6.900777,79.860133]
 },
 {
   imagePath: 'src/assets/partnerLogos/KMITL-Main-Logo.png',
   url:"",
   caption: 'King Mongkut\'s Institute of Technology Ladkrabang',
-  country: 'Thailand'
+  country: 'Thailand',
+  position:[13.7299, 100.7782]
 },
 {
   imagePath: 'src/assets/partnerLogos/LOGO Hanoi University of Industry.jpg',
   url:"",
   caption: 'TRUONG DAI HOC CONG NGHIEP HA NOI',
-  country: 'Vietnam'
+  country: 'Vietnam',
+  position:[21.0537, 105.7351]
 },
 {
   imagePath: 'src/assets/partnerLogos/Logo-Nguyen-Tat-Thanh University.jpg',
   url:"",
   caption: 'NGUYEN TAT THANH University',
-  country: 'Vietnam'
+  country: 'Vietnam',
+  position:[10.7610, 106.7102]
 },
 {
   imagePath: 'src/assets/partnerLogos/NTNU hovedlogo - farger - bredde.png',
   url:"",
   caption: 'NORGES TEKNISK-NATURVITENSKAPELIGE University N',
-  country:'Norway'
+  country:'Norway',
+  position:[63.4183,10.4014]
 },
 {
   imagePath: 'src/assets/partnerLogos/university_of_piraeus.jpg',
   url:"",
   caption: 'University of Piraeus Research Center',
-  country:'Greece'
+  country:'Greece',
+  position:[37.9416, 23.6530]
 },
 {
   imagePath: 'src/assets/partnerLogos/University of Colombo.PNG',
   url:"",
   caption: 'university',
-  country:'country'
+  country:'country',
+  position:[37.9416, 23.6530]
 
 },
 {
   imagePath: 'src/assets/partnerLogos/University of Colombo.PNG',
   url:"",
   caption: 'university',
-  country:'country'
+  country:'country',
+  position:[37.9416, 23.6530]
 
 },
 {
   imagePath: 'src/assets/partnerLogos/University of Colombo.PNG',
   url:"",
   caption: 'university',
-  country:'country'
+  country:'country',
+  position:[37.9416, 23.6530]
 
 },
 ]
@@ -121,11 +133,41 @@ function Home(){
               <p>Event Calender</p>
       </div>       
 
+      {/* participant map */}
+     {/* <div> */}
+      <MapContainer zoom={1} scrollWheelZoom={false} style={{ height: '100vh', width: '100wh' }}>
+    <TileLayer
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+   
+   {partnerInfo.map((partners, index) => (
+      
+        <Marker position={partners.position}>
+          <Popup>
+               {partners.caption}
+          </Popup>
+        </Marker>
+      ))} 
+    
+  
+  </MapContainer>
+  {/* </div>     */}
       {/* partner logos*/}
 
-   <div style={{display:'flex',flexDirection:'row',flexWrap:'wrap'}}>
+    {/* to be displayed when screen is minimized */}
+    
+    <div className={style["partnersList"]}>
+     <center><p>Our Partners</p></center>
+     {partnerInfo.map((partners, index) => (
+      <center><h5>{partners.caption+" "+partners.country}</h5></center>
+     ))}
+    </div>
+
+    {/* partner logos which will be hidden when window is minimized */}
+   <div className={style["partnerLogoImages"]}>
       
-      {partnerLogos.map((partnerLogo, index) => (
+      {partnerInfo.map((partnerLogo, index) => (
 
         <div key={index} style={{ width: '20%',height:'230px'}}>
          

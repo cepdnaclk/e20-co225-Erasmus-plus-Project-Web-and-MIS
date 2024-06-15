@@ -21,8 +21,8 @@ function Footer() {
                     
                     <ul>
                         <li><Link to = '/'>Home</Link></li>
-                        <li><Link to = '/project overview'>Log in</Link></li>
-                        <li><Link to = '/project overview'>Project Overview</Link></li>
+                        <li><Link to = '/project overview/overview'>Log in</Link></li>
+                        <li><Link to = '/project overview/overview'>Overview</Link></li>
                         <li><Link to = '/contact'>Contact</Link></li>
                     </ul>
                 </nav>

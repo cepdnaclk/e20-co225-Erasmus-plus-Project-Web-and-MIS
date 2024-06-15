@@ -1,62 +1,57 @@
 /* footer.css */
 
-.footer { /* all the items in tne footer */
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.footer { /* all the items in tne footer - footer background color and padding */
+    background-image: url(../assets/footerBackground.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px;
 }
 
-.footer-card { /* pera logo and Content below the pera logo */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 10px;
-    order: 2;
-}
-
-.pera-logo { /* pera logo */
+.pera-logo { /* pera logo - size and spaces */
+    margin-top: 20px;
     max-width: 100px;
-    margin-bottom: 10px;
 }
 
-.footer-card p { /* Content below the pera logo */
+.logo-content { /* Content below the pera logo */
     margin: 5px 0;
-    font-size: 14px;
-    color: #353637;
-    font-family: Sans-Serif;
+    font-weight: bold;
+    color: #4e4e51;
+    text-align: left;
+    font-size: 16px; /* Changed font size */
 }
 
-.footer-nav {
+.footer-nav { /* all the content of the footer excpet copyright statement */
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
     justify-content: space-around;
-    flex-wrap: wrap;
     width: 100%;  /* Ensure it takes the full width for better alignment */
-    order: 1;
 }
 
-.footer-nav nav {
+.footer-nav nav { /* topics and their links are divided in to 3 nav parts */
     margin: 0 15px;
-    text-align: center;  /* Center the text and links */
-    color: #353637;
+    text-align: left;  /* Center the text and links */
+    color: #4e4e51;
     font-family: Sans-Serif;
 }
 
-.footer-nav p {
-    font-size: 14px;
+.footer-nav h6 { /* topics of the links */
+    margin-top: 30px;
+    font-size: 16px;
     margin-bottom: 5px;
     
 }
 
-.footer-nav ul {
+.footer-nav ul { /* links under the topics */
     list-style-type: none;
     padding: 0;
 }
 
-.footer-nav ul li {
+.footer-nav ul li { /* lists of links under the topics */
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .footer-nav ul li a {
@@ -69,9 +64,50 @@
     text-decoration: underline;
 }
 
-.footer-websiteName {
-    font-size: 12px;
-    color: #535353;
+.footer-websiteName { /* Copyright statement of the webpage */
+    text-align: center;
+    font-size: 14px;
+    color: #4e4e51;
     font-family: Sans-Serif;
     order: 3;
+}
+
+/* Media query for small screens */
+@media (max-width: 800px) {
+
+    .footer { /* small screens adjustments with padding*/ 
+        align-items: flex-start;
+        padding: 30px;
+    }
+
+    .footer-nav {
+        flex-direction: column;  /* Stack navigation sections vertically */
+    }
+
+    .footer-nav nav {
+        margin: 10px 0;  /* Add some margin for spacing between sections */
+    }
+
+    /* font size adjustments for smaller screens */
+    .footer-nav h6 {
+        margin-top: 10px;
+        font-size: 16px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .footer-nav ul li {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .footer-nav ul li a {
+        text-decoration: none;
+        color: #4e94de;
+        font-weight: bold;
+    }
+
+    .footer-websiteName {
+        font-size: 14px;
+    }
 }

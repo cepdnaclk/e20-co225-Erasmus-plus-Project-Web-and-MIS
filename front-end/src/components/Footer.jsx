@@ -1,15 +1,15 @@
 import peraLogo from '../assets/pera.png'; /* import pera logo from assets folder */
 import {Link, Outlet} from 'react-router-dom'; /* To link the Main navigation links to the respective pages */
-
+import style from './Footer.module.css'
 function Footer() {
 
     return (
-        <footer className="footer"> 
-            <div className="footer-nav">
-                <div classname = "footer-logo">
-                <img className="pera-logo" src={peraLogo} alt="pera logo" /> {/* UoP logo */}
+        <footer className={style["footer"]}> 
+            <div className={style["footer-nav"]}>
+                <div classname = {style["footer-logo"]}>
+                <img className={style["pera-logo"]} src={peraLogo} alt="pera logo" /> {/* UoP logo */}
                 {/* Content which comes under (Uni Name, Project, Project Number) UoP logo */}
-                <p className= "logo-content"><p>University of Peradeniya</p> 
+                <p className= {style["logo-content"]}><p>University of Peradeniya</p> 
                 <p>ERASMUS+ CYCLE Project</p>
                 <p>Project Number: GAP-101128627</p></p>
                 </div>
@@ -54,7 +54,7 @@ function Footer() {
                 
             </div>
             {/* Copyright for the website */}
-            <p className = "footer-websiteName">Erasmus+ CYCLE Project &copy; {new Date().getFullYear()} - All Rights Reserved</p>
+            <p className = {style["footer-websiteName"]}import >Erasmus+ CYCLE Project &copy; {new Date().getFullYear()} - All Rights Reserved</p>
         </footer>
     );
 }

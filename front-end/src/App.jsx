@@ -1,9 +1,9 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';  //Add page routing using router dom
 
-import Header from "./Header";
-import Footer from "./Footer";
-import './Header.css'
-import './Footer.css'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import './components/Header.css'
+import './components/Footer.css'
 
 import Home from './Pages/Home';
 import Team from './Pages/Team';
@@ -16,8 +16,7 @@ import Workplan from './Pages/Workplan';
 import Deliverables from './Pages/Deliverables';
 import SharedLayoutProjectOverview from './Pages/SharedLayoutProjectOverview';
 import SharedLayoutNewsAndEvents from './Pages/SharedLayoutNewsAndEvents';
-
-import Error from './Error';
+import Error from './components/Error';
 
 
 function App() {

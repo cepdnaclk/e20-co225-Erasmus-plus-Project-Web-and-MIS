@@ -1,4 +1,4 @@
-import peraLogo from './assets/pera.png';
+import peraLogo from '../assets/pera.png';
 
 function Footer() {
 

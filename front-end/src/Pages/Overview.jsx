@@ -1,7 +1,7 @@
 function Overview() {
     return(
       <>
-      <h2>Overview</h2>
+      <h1>Overview</h1>
         </>
     );
   }

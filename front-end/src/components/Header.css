@@ -1,0 +1,290 @@
+:root {
+    font-weight: 400;
+  
+    color-scheme: light dark;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #ffffff;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body{
+    margin: 0px;
+  }
+  
+  main{
+    margin: 20px;
+  }
+  a {
+    font-weight: 600;
+    font-size: 0.9em;
+    color: #646cff;
+    text-decoration: inherit;
+  }
+  a:hover {
+    color: #535bf2;
+  }
+  
+  h1 {
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 5em;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  
+  h2 {
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 0px;
+  }
+  
+  .logo-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0px 0px;
+    margin-bottom: 0px;
+    box-sizing: border-box;
+    transition: transform 2s ease, opacity 0.5s ease;
+  }
+  
+  .Erasmus-plus-Logo:hover {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+  
+  .Erasmus-plus-Logo{
+    margin-top: 20px;
+    width: 150px;
+    margin-left: 100px;
+    margin-right: 70px;
+    height: auto;
+  }
+  
+  .Cycle-Logo{
+    width: 280px;
+    height: auto;
+    margin-right: 30px;
+    margin-top: 20px
+  }
+
+.headerNavBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f172a;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem;
+  height: 2rem;
+}
+
+.headerNavBar ul{
+  display: flex;
+  position: relative;
+}
+
+.headerNavBar ul li{
+  list-style: none;
+  position: relative;
+}
+
+.headerNavBar ul li a{
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  white-space: nowrap; /* Ensures the text doesn't wrap */
+}
+
+.headerNavBar ul li a:hover {
+  background-color: #172554;
+} 
+
+.headerNavBar .menu{
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2rem;
+  height: 1.5rem;
+}
+
+.headerNavBar .menu span{
+  height: 0.2rem;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 0.2rem;
+}
+
+.headerNavBar .headerDropDown .dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #0f172a;
+  min-width: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.headerNavBar .headerDropDown:hover .dropdown-content {
+  display: block;
+}
+
+.headerNavBar .headerDropDown .dropdown-content a {
+  color: white;
+  padding: 0.5rem;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.headerNavBar .headerDropDown .dropdown-content a:hover {
+  background-color: #172554;
+}
+
+  /* Media queries for responsiveness */
+  @media screen and (max-width: 1485px) {
+    .logo-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+  
+    .Erasmus-plus-Logo {
+        width: 130px; /* smaller width for medium screens */
+    }
+  
+    .Cycle-Logo {
+        width: 230px; /* smaller width for medium screens */
+    }
+    h1 {
+      font-size: 4em;
+      font-weight: 700;
+    }
+    
+    h2 {
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    a {
+      font-weight: 500;
+      font-size: 0.8em;
+      color: #646cff;
+      text-decoration: inherit;
+    }
+
+  }
+
+  /* Media queries for responsiveness */
+@media screen and (max-width: 1165px) {
+  h1 {
+    font-size: 3em;
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  .Erasmus-plus-Logo {
+    width: 110px; /* smaller width for medium screens */
+  }
+
+  .Cycle-Logo {
+    width: 200px; /* smaller width for medium screens */
+  }
+}
+
+
+@media (max-width: 968px){
+  h1 {
+    font-size: 3em;
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  .logo-block {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .Erasmus-plus-Logo {
+      display: none;
+  }
+
+  .Cycle-Logo {
+      display: none;
+  }
+
+  .headerNavBar .menu{
+    display: flex;
+    align-self: start;
+    left: 3rem;
+  }
+
+  .headerNavBar{
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+  }
+
+  .headerNavBar ul{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0.25rem;
+    position: absolute; /* Position the dropdown absolutely */
+    top: 2rem; /* Adjust the top position to be below the hamburger icon */
+    left: 0; /* Align with the left edge */
+    background-color: #0f172a; /* Background color to match the navbar */
+    z-index: 999;
+  }
+
+  .headerNavBar ul.open{
+    display: flex;
+    width: 100%;
+    background-color: #0f172a;
+  }
+
+  .headerNavBar ul li {
+    width: 100%;
+    text-align: left;
+    padding: 0rem 2rem;
+  }
+  .headerNavBar ul li a{
+    width: 100%;
+    text-align: left;
+  }
+
+  .headerNavBar .headerDropDown .dropdown-content {
+    width: 100%;
+    position: relative; /* Ensure dropdown positioning is relative to parent item */
+  }
+
+  .headerNavBar .menu {
+    right: 0.5rem; /* Adjusted to avoid overlapping with menu items */
+  }
+
+  .headerNavBar .headerDropDown .dropdown-content a {
+    width: 100%;
+    padding: 0.5rem 2rem;
+    text-align: left;
+  }
+}

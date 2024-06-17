@@ -1,20 +1,40 @@
-import React, {useState} from 'react';
-import {Link, Outlet} from 'react-router-dom';  // //Add page routing using router dom
+import React, {useState, useEffect} from 'react';
+import {Link, Outlet, useLocation} from 'react-router-dom';  // //Add page routing using router dom
 
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
+import style from '../pageStyling/Login.module.css';
 
 function Header(){
     // Constants for hamburger menu
     const [menuOpen, setMenuOpen] = useState(false);
 
+    // Constants for login button
+    const [isVisible, setIsVisible] = useState(true);
+
+    // Get the current location
+    const location = useLocation();
+
     // set hamburger menu to close when a link is clicked
     const handleLinkClick = () => {
         setMenuOpen(false);
+        setIsVisible(false);
     }
+
+    // Update the visibility of the login button based on the current location
+    useEffect(() => {
+        if (location.pathname === '/login') {
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+    })
 
     return(
         <header>
+            <div>
+            {isVisible && <button className={style["Login-button"]}><Link to = '/login' onClick={handleLinkClick}>LOGIN</Link></button>}
+            </div>
             <div className='logo-block'>
             {/* Erasmus logo */}
             <a href = "https://erasmus-plus.ec.europa.eu/"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>

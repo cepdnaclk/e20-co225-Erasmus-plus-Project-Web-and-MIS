@@ -4,7 +4,7 @@
     color-scheme: light dark;
     color: rgba(0, 0, 0, 0.87);
     background-color: #ffffff;
-  
+    text-decoration: none;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -20,11 +20,11 @@
   a {
     font-weight: 600;
     font-size: 0.9em;
-    color: #646cff;
-    text-decoration: inherit;
+    color: white;
+    text-decoration: none;
   }
   a:hover {
-    color: #535bf2;
+    color: white;
   }
   
   h1 {
@@ -46,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 40px;
     padding: 0px 0px;
     margin-bottom: 0px;
     box-sizing: border-box;
@@ -181,9 +181,8 @@
     }
 
     a {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.8em;
-      color: #646cff;
       text-decoration: inherit;
     }
 

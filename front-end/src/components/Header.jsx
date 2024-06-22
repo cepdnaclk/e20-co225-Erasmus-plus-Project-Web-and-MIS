@@ -2,16 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {Link, Outlet, useLocation} from 'react-router-dom';  // //Add page routing using router dom
 
 import Switch from "react-switch";
-
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
-
 import profilePic from '../assets/ProPic_UJ.jpg'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faFile,faCalendarDays } from '@fortawesome/free-solid-svg-icons';
-
-import style from '../pageStyling/Login.module.css';
 
 
 function Header(){
@@ -45,6 +40,15 @@ function Header(){
     const [showNotifications, setShowNotifications] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
 
+    // Update the visibility of the login button based on the current location
+    useEffect(() => {
+        if (location.pathname === '/login') {
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+    })
+
     return(
         <header>
             {/* Top Navigation Bar for Administration  */}
@@ -58,7 +62,6 @@ function Header(){
                 </div>
                 <div>
                     <ul className="adminNavBarRight">                  
-                                                
                         <span id="switchLabel">{isEditMode ? "Edit Mode" : "View Mode"}</span>
                         <li><Switch 
                                     onChange={handleToggle} 
@@ -128,24 +131,10 @@ function Header(){
                 <div className="siderBarTitle">
                     <h3>Messages</h3>
                 </div>
-                <hr></hr>                       
-                        
+                <hr></hr>                        
             </div>
 
-    // Update the visibility of the login button based on the current location
-    useEffect(() => {
-        if (location.pathname === '/login') {
-            setIsVisible(false);
-        } else {
-            setIsVisible(true);
-        }
-    })
-
-    return(
-        <header>
-            <div>
-            {isVisible && <button className={style["Login-button"]}><Link to = '/login' onClick={handleLinkClick}>LOGIN</Link></button>}
-            </div>
+            <div>{isVisible && <button className="Login-button"><Link to = '/login' onClick={handleLinkClick}>LOGIN</Link></button>}</div>
 
             <div className='logo-block'>
             {/* Erasmus logo */}
@@ -157,6 +146,7 @@ function Header(){
             {/* Cycle logo */}
             <img src={cylcleLogo} alt="Cycle Logo" className="Cycle-Logo"></img>
             </div>
+            
 
             {/* Sub heading */}
             <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cybersecurity</span></h2>
@@ -199,4 +189,4 @@ function Header(){
     );
 }
 
-export default Header
+export default Header;

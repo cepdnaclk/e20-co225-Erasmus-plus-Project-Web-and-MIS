@@ -46,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 0px 0px;
     margin-bottom: 0px;
     box-sizing: border-box;
@@ -79,8 +79,8 @@
   align-items: center;
   background-color: #0f172a;
   position: sticky;
-  top: 0;
-  z-index: 1000;
+  top: 96px;
+  z-index: 2;
   padding: 1rem;
   height: 2rem;
 }
@@ -151,6 +151,222 @@
 .headerNavBar .headerDropDown .dropdown-content a:hover {
   background-color: #172554;
 }
+
+/* CSS Styling - Top Navigation Bar for Administration  */
+
+.adminNavBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 20px 20px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+.adminNavBar div{
+  margin :0;
+  padding:0;
+}
+/* Left side of theTop Navigation Bar for Administration*/
+
+.adminNavBarLeft{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: left;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+  position: relative;
+  padding: 0;
+  margin:0;
+}
+
+.adminNavBarLeft li{
+  list-style: none;
+  position: relative;
+}
+
+.adminNavBarLeft li a { 
+  
+  color:rgb(50, 78, 148);
+  background-color: white;
+  border: 2px solid rgb(50, 78, 148);
+  border-radius: .25rem;
+  padding: 15px 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-family:'Times New Roman', Times, serif;
+  cursor: pointer;
+  float: left;
+}
+
+.adminNavBarLeft li :not(:last-child) {
+  border-right: none; /* Prevent double borders - NOT WORKING PROPERLY*/
+}
+
+.adminNavBarLeft li a:active {
+   background-color:rgb(50, 78, 148, 0.25); 
+}
+/* Right side of theTop Navigation Bar for Administration*/
+
+.adminNavBarRight{
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+  position: relative;
+  padding:0;
+  margin:0;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminNavBarRight li { 
+  list-style: none;
+  position: relative;  
+  color: rgb(50, 78, 148);  
+  border: none;
+  padding: 0px 10px;
+  display: inline-block;
+  font-size: 22px;  
+  cursor: pointer;
+  float: left;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminNavBarRight li :hover{
+  transform: scale(1.03);
+  opacity: 0.8;
+}
+
+.adminNavBarRight img{
+  width: 32px;
+  border-radius: 50%;
+  margin:0;
+  padding:0;
+  align-self: center;
+}
+
+#switchLabel{
+  font-size: 14px; 
+  color:rgb(50, 78, 148);
+}
+
+/* Dropdown menu - User Account  */
+.userAccount-Open{
+  position : absolute;
+  top: 75px;
+  right: 2.5%;
+  width: 250px;
+  max-height: 500px;
+  z-index: 30;  /*change this */
+  border: 1px solid #ccc;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding:20px;
+}
+.userAccount-Close{
+  display: none;
+}
+
+.userAccountInfo{
+  display: flex;
+  align-items: center;
+  margin:0;
+}
+
+.userAccountInfo img{
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.userAccountInfo h3{
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+}
+
+.userAccount hr{
+  border:0;
+  height:1.5px;
+  width: 100%;
+  background:#172554;
+  margin: 15px 0 10px;
+}
+
+.userAccountContent{
+  display:flex;
+  align-items: center;
+  text-decoration: none;
+  color: #0f172a;
+  margin:0;
+  cursor: pointer;
+}
+
+.userAccountContent p{
+  width: 120%;
+  padding:15px;
+  margin: 2px;
+  font-size: 14px;
+}
+
+.userAccountContent .icon{
+  color: #172554;
+  width: 25px;
+  background-color: #535bf237;
+  border-radius: 50%;
+  padding:10px;
+  margin: 5px;
+  transition: transform 0.5s;
+}
+
+.userAccountContent :hover {
+  transform: scale(1.02);
+  opacity: 0.8;
+}
+
+#logoutText{
+  text-align: center;
+  background-color: rgba(152, 167, 229, 0.563);
+}
+
+
+/* Slider Bar for chatBox and Notificaions  */
+.sideBar-Open{
+  position : absolute;
+  top: 75px;
+  right: 2.5%;
+  width: 250px;
+  height:100vh;
+  max-height: 500px;
+  z-index: 30;  /*change this */
+  border: 1px solid #ccc;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding:20px;
+}
+.sideBar-Close{
+  display: none;
+}
+
+.siderBarTitle{
+    display: flex;
+    align-items: center;
+    margin:0;
+}
+.siderBarTitle h3{
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+}
+
 
   /* Media queries for responsiveness */
   @media screen and (max-width: 1485px) {

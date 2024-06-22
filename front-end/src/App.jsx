@@ -17,7 +17,10 @@ import Deliverables from './Pages/Deliverables';
 import SharedLayoutProjectOverview from './Pages/SharedLayoutProjectOverview';
 import SharedLayoutNewsAndEvents from './Pages/SharedLayoutNewsAndEvents';
 import Error from './components/Error';
-
+import Dashboard from './Pages/Dashboard';
+import ProjectManagement from './Pages/ProjectManagement';
+import Repository from './Pages/Repository';
+import SharedLayoutAdmin from './Pages/SharedLayoutAdmin';
 
 function App() {
   return(
@@ -41,6 +44,12 @@ function App() {
           <Route path = 'downloads' element = {<Downloads />} />
           <Route path = 'contact' element = {<Contact />} />
           <Route path = '*' element = {<Error />} />
+          <Route path = 'admin' element = {<SharedLayoutAdmin />}>
+            <Route index element = {<SharedLayoutAdmin />}/>
+            <Route path = 'dashboard' element = {<Dashboard />}/>
+            <Route path = 'project management' element = {<ProjectManagement />}/>
+            <Route path = 'repository' element = {<Repository />}/>
+          </Route>
       </Routes>
       <footer> <Footer/> </footer>  {/* Adding footer to all pages */}
     </BrowserRouter>

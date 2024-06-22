@@ -41,14 +41,34 @@
     font-size: 1.5em;
     margin-top: 0px;
   }
-  
+
+  /* Login button */
+.Login-button{
+  position: absolute;
+  display: flex;
+  align-self: flex-start;
+  right: 30px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #203a90;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.Login-button:hover {
+  background-color: #0056b3;
+}
   .logo-block{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0px;
     padding: 0px 0px;
     margin-bottom: 0px;
+    margin-top: 20px;
     box-sizing: border-box;
     transition: transform 2s ease, opacity 0.5s ease;
   }
@@ -78,9 +98,6 @@
   justify-content: center;
   align-items: center;
   background-color: #172953;
-  position: sticky;
-  top: 96px;
-  z-index: 2;
   padding: 1rem;
   height: 2rem;
 }
@@ -158,16 +175,18 @@
 /* CSS Styling - Top Navigation Bar for Administration  */
 
 .adminNavBar{
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-top: 0px;
   margin-bottom: 0px;
-  padding: 20px 20px;
+  padding: 8px 15px;
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: rgb(205, 234, 246);
+  z-index: 1000;
 }
 .adminNavBar div{
   margin :0;
@@ -198,7 +217,7 @@
   background-color: white;
   border: 2px solid rgb(50, 78, 148);
   border-radius: .25rem;
-  padding: 15px 15px;
+  padding: 8px 10px;
   text-align: center;
   display: inline-block;
   font-size: 16px;
@@ -260,6 +279,8 @@
   font-size: 14px; 
   color:rgb(50, 78, 148);
 }
+
+
 
 /* Dropdown menu - User Account  */
 .userAccount-Open{

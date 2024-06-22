@@ -185,7 +185,7 @@
   padding: 8px 15px;
   position: sticky;
   top: 0;
-  background-color: rgb(205, 234, 246);
+  background-color: #172953;
   z-index: 1000;
 }
 .adminNavBar div{
@@ -233,6 +233,10 @@
 .adminNavBarLeft li a:active {
    background-color:rgb(50, 78, 148, 0.25); 
 }
+
+.adminNavBarLeft li a:hover{
+  background-color: #eef1fb
+}
 /* Right side of theTop Navigation Bar for Administration*/
 
 .adminNavBarRight{
@@ -243,6 +247,7 @@
   position: relative;
   padding:0;
   margin:0;
+  color: #ffffff;
   align-items: center;
   justify-content: center;
 }
@@ -250,7 +255,8 @@
 .adminNavBarRight li { 
   list-style: none;
   position: relative;  
-  color: rgb(50, 78, 148);  
+  color: rgb(255, 255, 255);
+  text-decoration: none;
   border: none;
   padding: 0px 10px;
   display: inline-block;
@@ -277,7 +283,7 @@
 
 #switchLabel{
   font-size: 14px; 
-  color:rgb(50, 78, 148);
+  color:rgb(255, 255, 255);
 }
 
 

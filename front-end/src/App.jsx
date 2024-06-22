@@ -4,7 +4,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import './components/Header.css'
 // import './components/Footer.css'
+import './components/Overview.css'
+import './components/Contact.css'
 
+import Login from './Pages/Login';
 import Home from './Pages/Home';
 import Team from './Pages/Team';
 import News from './Pages/News';
@@ -28,6 +31,7 @@ function App() {
     <BrowserRouter>
     <nav> <Header/> </nav>
       <Routes>
+          <Route path = 'login' element = {<Login />} />
           <Route path = '/' element = {<Home />} />
           <Route path = 'project overview' element = {<SharedLayoutProjectOverview />}>
             <Route index element = {<SharedLayoutProjectOverview />}/>

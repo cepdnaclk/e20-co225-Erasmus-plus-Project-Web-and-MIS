@@ -1,4 +1,5 @@
 import peraLogo from '../assets/pera.png'; /* import pera logo from assets folder */
+import fbLogo from '../assets/fb.png';
 import {Link, Outlet} from 'react-router-dom'; /* To link the Main navigation links to the respective pages */
 import style from './Footer.module.css'
 function Footer() {
@@ -21,8 +22,8 @@ function Footer() {
                     
                     <ul>
                         <li><Link to = '/'>Home</Link></li>
-                        <li><Link to = '/project overview'>Log in</Link></li>
-                        <li><Link to = '/project overview'>Project Overview</Link></li>
+                        <li><Link to = '/Login'>Log in</Link></li>
+                        <li><Link to = '/project Overview/Overview'>Project Overview</Link></li>
                         <li><Link to = '/contact'>Contact</Link></li>
                     </ul>
                 </nav>
@@ -49,6 +50,16 @@ function Footer() {
                         <li> Coordinator: <a href="https://sci.pdn.ac.lk/scs/staff/Erunika-Dayaratna">Dr. Erunika Dayaratna</a></li>
                         <li>Tel: <a href="tel:+94766986500">+94 76 698 6500</a></li>
                         <li>Email: <a href="mailto:dayaratna@sci.pdn.ac.lk">dayaratna@sci.pdn.ac.lk</a></li>
+                    </ul>
+                </nav>
+
+                <nav>
+                    <h6>Social Media Links</h6>
+                    <ul>
+                        <li>University of Peradeniya</li>
+                        <li><a href="https://www.facebook.com/UniversityOfPeradeniya"><img className={style["fbLogo"]} src={fbLogo} alt="fbLogo"/></a></li>
+                        <li>Postgraduate Institute of Science</li>
+                        <li><a href="https://www.facebook.com/pages/Postgraduate-Institute-of-Science/1846660975382081"><img className={style["fbLogo"]} src={fbLogo} alt="fbLogo"/></a></li>
                     </ul>
                 </nav>
                 

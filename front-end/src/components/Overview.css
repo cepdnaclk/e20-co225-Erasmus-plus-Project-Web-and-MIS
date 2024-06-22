@@ -1,0 +1,56 @@
+/* Full overview page alignments */
+.projectOverview {
+    margin-top: 2%;
+    margin-left: 5%;
+    text-align: left;
+    margin-bottom: 3%;
+    font-size: 20px;
+}
+
+/* CYCLE Overview part alignments */
+.overview-para {
+    border: 1px solid hsl(222, 83%, 98%);
+    /*border-radius: 20px;*/
+    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
+    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    padding: 20px;
+    display: inline-block;
+    /* background-color: hsl(128, 27%, 89%); */
+    background-color: hsl(0, 0%, 100%);
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    text-align: left;
+}
+
+/* CYCLE Goals part alignments */
+.Goals {
+    border: 1px solid hsl(222, 83%, 98%);
+    /*border-radius: 20px;*/
+    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
+    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    padding: 20px;
+    display: inline-block;
+    /* background-color: hsl(212, 54%, 90%); */
+    background-color: hsl(0, 0%, 100%);
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    text-align: left;
+}
+
+/* CYCLE Goals part list alignments */
+.Goals li {
+    margin-bottom: 15px;
+}
+
+/* CYCLE overview and goals titles */
+.overview-para h3, .Goals h3 {
+    color:hsl(211, 57%, 59%);
+}

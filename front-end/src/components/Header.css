@@ -4,7 +4,7 @@
     color-scheme: light dark;
     color: rgba(0, 0, 0, 0.87);
     background-color: #ffffff;
-  
+    text-decoration: none;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -20,11 +20,11 @@
   a {
     font-weight: 600;
     font-size: 0.9em;
-    color: #646cff;
-    text-decoration: inherit;
+    color: white;
+    text-decoration: none;
   }
   a:hover {
-    color: #535bf2;
+    color: white;
   }
   
   h1 {
@@ -77,7 +77,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0f172a;
+  background-color: #172953;
   position: sticky;
   top: 96px;
   z-index: 2;
@@ -105,7 +105,8 @@
 }
 
 .headerNavBar ul li a:hover {
-  background-color: #172554;
+  background-color: #203a90;
+  border-radius: 3em;
 } 
 
 .headerNavBar .menu{
@@ -130,7 +131,7 @@
   display: none;
   position: absolute;
   left: 0;
-  background-color: #0f172a;
+  background-color: #172953;
   min-width: 100%;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -138,6 +139,7 @@
 
 .headerNavBar .headerDropDown:hover .dropdown-content {
   display: block;
+  border-radius: 0.5em;
 }
 
 .headerNavBar .headerDropDown .dropdown-content a {
@@ -146,10 +148,11 @@
   text-decoration: none;
   display: block;
   text-align: left;
+  border-radius: 3em;
 }
 
 .headerNavBar .headerDropDown .dropdown-content a:hover {
-  background-color: #172554;
+  background-color: #203a90;
 }
 
 /* CSS Styling - Top Navigation Bar for Administration  */
@@ -394,9 +397,8 @@
     }
 
     a {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.8em;
-      color: #646cff;
       text-decoration: inherit;
     }
 
@@ -469,14 +471,14 @@
     position: absolute; /* Position the dropdown absolutely */
     top: 2rem; /* Adjust the top position to be below the hamburger icon */
     left: 0; /* Align with the left edge */
-    background-color: #0f172a; /* Background color to match the navbar */
+    background-color: #172953; /* Background color to match the navbar */
     z-index: 999;
   }
 
   .headerNavBar ul.open{
     display: flex;
     width: 100%;
-    background-color: #0f172a;
+    background-color: #172953;
   }
 
   .headerNavBar ul li {

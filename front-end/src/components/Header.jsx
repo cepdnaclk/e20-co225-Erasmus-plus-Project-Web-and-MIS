@@ -1,24 +1,35 @@
-import React, {useState} from 'react';
-import {Link, Outlet} from 'react-router-dom';  // //Add page routing using router dom
+import React, {useState, useEffect} from 'react';
+import {Link, Outlet, useLocation} from 'react-router-dom';  // //Add page routing using router dom
 
 import Switch from "react-switch";
 
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
+
 import profilePic from '../assets/ProPic_UJ.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faFile,faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
+import style from '../pageStyling/Login.module.css';
+
+
 function Header(){
     // Constants for hamburger menu
     const [menuOpen, setMenuOpen] = useState(false);
 
+    // Constants for login button
+    const [isVisible, setIsVisible] = useState(true);
+
+    // Get the current location
+    const location = useLocation();
+
     // set hamburger menu to close when a link is clicked
     const handleLinkClick = () => {
         setMenuOpen(false);
+        setIsVisible(false);
     }
-
+    
     //Const for edit mode
     const [isEditMode, setIsEditMode] = useState(false);
     //Change the vie mode and the edit mode when the switch handle is toggled
@@ -121,6 +132,20 @@ function Header(){
                         
             </div>
 
+    // Update the visibility of the login button based on the current location
+    useEffect(() => {
+        if (location.pathname === '/login') {
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+    })
+
+    return(
+        <header>
+            <div>
+            {isVisible && <button className={style["Login-button"]}><Link to = '/login' onClick={handleLinkClick}>LOGIN</Link></button>}
+            </div>
 
             <div className='logo-block'>
             {/* Erasmus logo */}

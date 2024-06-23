@@ -1,7 +1,6 @@
-import { MapContainer, TileLayer,Marker,Popup } from 'react-leaflet'
 import Slideshow from "../bodyComponents/SlideShow";
 import style from './Home.module.css'
-import 'leaflet/dist/leaflet.css'
+import ParticipantMap from '../bodyComponents/participantMap.jsx';
 
 // this has to be imported from backend
 const fadeImages = [
@@ -96,7 +95,7 @@ const partnerInfo = [
   country:'country',
   position:[37.9416, 23.6530]
 
-},
+}
 ]
 
 function Home(){
@@ -134,25 +133,9 @@ function Home(){
       </div>       
 
       {/* participant map */}
-     {/* <div> */}
-      <MapContainer zoom={1} scrollWheelZoom={false} style={{ height: '100vh', width: '100wh' }}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-   
-   {partnerInfo.map((partners, index) => (
-      
-        <Marker position={partners.position}>
-          <Popup>
-               {partners.caption}
-          </Popup>
-        </Marker>
-      ))} 
+      <ParticipantMap partnerInfo={partnerInfo}/>
+
     
-  
-  </MapContainer>
-  {/* </div>     */}
       {/* partner logos*/}
 
     {/* to be displayed when screen is minimized */}

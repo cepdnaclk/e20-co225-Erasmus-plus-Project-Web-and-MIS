@@ -99,7 +99,6 @@ const partnerInfo = [
 ]
 
 function Home(){
-
   return(
       <>
       {/* image slider  */}

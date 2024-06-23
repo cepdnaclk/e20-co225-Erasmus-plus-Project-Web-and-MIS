@@ -1,0 +1,246 @@
+/* Full Contact page alignment */
+.contactpage {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* Contact title alignment */
+.contactTitle {
+    margin-top: 2%;
+    margin-left: 5%;
+    text-align: left;
+    margin-bottom: 3%;
+    font-size: 20px;
+}
+ 
+/* Contact details of the manager and coordinator alignment */
+.contactDetails {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: flex-start;
+}
+
+/* Contact details of the manager alignment */
+.contactManager {
+    border: 1px solid hsl(222, 83%, 98%);
+    /*border-radius: 20px;*/
+    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
+    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    padding: 20px;
+    display: inline-block;
+    background-color: hsl(0, 0%, 100%);;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    min-width: 300px; /* Minimum width to ensure consistency */
+    max-width: 300px; /* Maximum width to ensure consistency */
+}
+
+/* Photo of the manager alignment */
+.contactManager .Dr-Upul-Jayasinghe-img {
+    max-width: 60%;
+    height: auto;
+    /* border-radius: 50%; */
+}
+
+/* Contact details of the coordinator alignment */
+.contactCoordinator {
+    border: 1px solid hsl(222, 83%, 98%);
+    /*border-radius: 20px;*/
+    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
+    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    padding: 20px;
+    display: inline-block;
+    background-color: hsl(0, 0%, 100%);;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    min-width: 300px; /* Minimum width to ensure consistency */
+    max-width: 300px; /* Maximum width to ensure consistency */
+}
+
+/* Link colors */
+.contactCoordinator a, .contactManager a {
+    color: hsl(211, 57%, 59%); /* Default link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.contactCoordinator a:hover, .contactManager a:hover {
+    color: hsl(211, 44%, 66%); /* Link color on hover */
+}
+
+/* Photo of the coordinator alignment */
+.contactCoordinator .Dr-Erunika-Dayaratna-img {
+    max-width: 60%;
+    height: auto;
+    /* border-radius: 50%; */
+}
+
+/* Contact details ul alignment */
+.contactManager ul, .contactCoordinator ul {
+    list-style-type: none;
+    font-size: 20px;
+    padding: 0; /* Remove default padding */
+}
+
+.contactManager nav {
+    text-align: left;
+    margin-left: 60px;
+}
+
+.contactCoordinator nav {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.profile {
+    width: 22px;
+    height: auto;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.tel {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+    /* margin-top: 30px; */
+}
+
+.email {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+    /* margin-top: 10px; */
+}
+
+
+/* ** Contact Us Form** */
+
+.contactUsForm {
+    border: 1.5px solid hsl(222, 83%, 98%);
+    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
+    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    flex-direction: center;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    text-align: left;
+    font-size: 20px;
+}
+
+/* The contact us form title */
+.ContactUsTitle {
+    text-align: left;
+    color:hsl(211, 57%, 59%);
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+/* The Image in contact us form */
+.contactUsForm img{
+    width: auto;
+    height: 400px;
+    margin-top: 260px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+/* The contact us form */
+.contactUsForm form {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+/* Data input boxes and their topics */
+.inputbox {
+    margin-top: 20px;
+    width: 450px;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+/* Inside the data input boxes */
+.inputbox .field {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #c9e1ef;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
+    margin-top: 8px;
+}
+
+/* Message input section */
+.inputbox .field.mess {
+    height: 100px;
+    resize: none;
+    font-size: 16px;
+    font-family: Sans-serif;
+
+}
+
+/* Send Message button */
+form button {
+    width: 200px;
+    height: 50px;
+    background: hsl(211, 44%, 66%);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font: #ffffff;
+    color: #000000;
+    margin-top: 10px;
+}
+
+/* Send Message button when the mouse point to that*/
+form button:hover{
+    background: hsl(211, 40%, 69%);
+    color: #2a2929;
+}
+
+/* For smaller screens */
+@media (max-width: 1000px) {
+    .contactTitle {
+        margin-left: 5%;
+    }
+
+    .contactUsForm {
+        margin-bottom: 50px;
+    }
+    .contactDetails {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+    }
+    .contactUsForm img{
+        display:none;
+    }
+
+    .inputbox {
+        margin-top: 20px;
+        width: 350px;
+        
+    }
+}

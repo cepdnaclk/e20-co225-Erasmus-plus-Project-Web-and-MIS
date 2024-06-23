@@ -61,7 +61,8 @@
 }
 
 .footer-nav ul li a:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    color: hsl(211, 44%, 66%); /* Link color on hover */
 }
 
 .footer-websiteName { /* Copyright statement of the webpage */
@@ -71,6 +72,12 @@
     font-family: Sans-Serif;
     order: 3;
 }
+
+.fbLogo { /* fb logo used in the footer of the webpage */
+    height: auto;
+    width: 25px;
+}
+
 
 /* Media query for small screens */
 @media (max-width: 800px) {

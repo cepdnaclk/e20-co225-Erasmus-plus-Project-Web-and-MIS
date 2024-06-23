@@ -4,7 +4,7 @@
     color-scheme: light dark;
     color: rgba(0, 0, 0, 0.87);
     background-color: #ffffff;
-  
+    text-decoration: none;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -20,11 +20,11 @@
   a {
     font-weight: 600;
     font-size: 0.9em;
-    color: #646cff;
-    text-decoration: inherit;
+    color: white;
+    text-decoration: none;
   }
   a:hover {
-    color: #535bf2;
+    color: white;
   }
   
   h1 {
@@ -41,14 +41,34 @@
     font-size: 1.5em;
     margin-top: 0px;
   }
-  
+
+  /* Login button */
+.Login-button{
+  position: absolute;
+  display: flex;
+  align-self: flex-start;
+  right: 30px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #203a90;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.Login-button:hover {
+  background-color: #0056b3;
+}
   .logo-block{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
     padding: 0px 0px;
     margin-bottom: 0px;
+    margin-top: 20px;
     box-sizing: border-box;
     transition: transform 2s ease, opacity 0.5s ease;
   }
@@ -77,10 +97,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0f172a;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background-color: #172953;
   padding: 1rem;
   height: 2rem;
 }
@@ -105,7 +122,8 @@
 }
 
 .headerNavBar ul li a:hover {
-  background-color: #172554;
+  background-color: #203a90;
+  border-radius: 3em;
 } 
 
 .headerNavBar .menu{
@@ -130,7 +148,7 @@
   display: none;
   position: absolute;
   left: 0;
-  background-color: #0f172a;
+  background-color: #172953;
   min-width: 100%;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -138,6 +156,7 @@
 
 .headerNavBar .headerDropDown:hover .dropdown-content {
   display: block;
+  border-radius: 0.5em;
 }
 
 .headerNavBar .headerDropDown .dropdown-content a {
@@ -146,11 +165,238 @@
   text-decoration: none;
   display: block;
   text-align: left;
+  border-radius: 3em;
 }
 
 .headerNavBar .headerDropDown .dropdown-content a:hover {
-  background-color: #172554;
+  background-color: #203a90;
 }
+
+/* CSS Styling - Top Navigation Bar for Administration  */
+
+.adminNavBar{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 8px 15px;
+  position: sticky;
+  top: 0;
+  background-color: #172953;
+  z-index: 1000;
+}
+.adminNavBar div{
+  margin :0;
+  padding:0;
+}
+/* Left side of theTop Navigation Bar for Administration*/
+
+.adminNavBarLeft{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: left;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+  position: relative;
+  padding: 0;
+  margin:0;
+}
+
+.adminNavBarLeft li{
+  list-style: none;
+  position: relative;
+}
+
+.adminNavBarLeft li a { 
+  
+  color:rgb(50, 78, 148);
+  background-color: white;
+  border: 2px solid rgb(50, 78, 148);
+  border-radius: .25rem;
+  padding: 8px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-family:'Times New Roman', Times, serif;
+  cursor: pointer;
+  float: left;
+}
+
+.adminNavBarLeft li :not(:last-child) {
+  border-right: none; /* Prevent double borders - NOT WORKING PROPERLY*/
+}
+
+.adminNavBarLeft li a:active {
+   background-color:rgb(50, 78, 148, 0.25); 
+}
+
+.adminNavBarLeft li a:hover{
+  background-color: #eef1fb
+}
+/* Right side of theTop Navigation Bar for Administration*/
+
+.adminNavBarRight{
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+  position: relative;
+  padding:0;
+  margin:0;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminNavBarRight li { 
+  list-style: none;
+  position: relative;  
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border: none;
+  padding: 0px 10px;
+  display: inline-block;
+  font-size: 22px;  
+  cursor: pointer;
+  float: left;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminNavBarRight li :hover{
+  transform: scale(1.03);
+  opacity: 0.8;
+}
+
+.adminNavBarRight img{
+  width: 32px;
+  border-radius: 50%;
+  margin:0;
+  padding:0;
+  align-self: center;
+}
+
+#switchLabel{
+  font-size: 14px; 
+  color:rgb(255, 255, 255);
+}
+
+
+
+/* Dropdown menu - User Account  */
+.userAccount-Open{
+  position : absolute;
+  top: 75px;
+  right: 2.5%;
+  width: 250px;
+  max-height: 500px;
+  z-index: 30;  /*change this */
+  border: 1px solid #ccc;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding:20px;
+}
+.userAccount-Close{
+  display: none;
+}
+
+.userAccountInfo{
+  display: flex;
+  align-items: center;
+  margin:0;
+}
+
+.userAccountInfo img{
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.userAccountInfo h3{
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+}
+
+.userAccount hr{
+  border:0;
+  height:1.5px;
+  width: 100%;
+  background:#172554;
+  margin: 15px 0 10px;
+}
+
+.userAccountContent{
+  display:flex;
+  align-items: center;
+  text-decoration: none;
+  color: #0f172a;
+  margin:0;
+  cursor: pointer;
+}
+
+.userAccountContent p{
+  width: 120%;
+  padding:15px;
+  margin: 2px;
+  font-size: 14px;
+}
+
+.userAccountContent .icon{
+  color: #172554;
+  width: 25px;
+  background-color: #535bf237;
+  border-radius: 50%;
+  padding:10px;
+  margin: 5px;
+  transition: transform 0.5s;
+}
+
+.userAccountContent :hover {
+  transform: scale(1.02);
+  opacity: 0.8;
+}
+
+#logoutText{
+  text-align: center;
+  background-color: rgba(152, 167, 229, 0.563);
+}
+
+
+/* Slider Bar for chatBox and Notificaions  */
+.sideBar-Open{
+  position : absolute;
+  top: 75px;
+  right: 2.5%;
+  width: 250px;
+  height:100vh;
+  max-height: 500px;
+  z-index: 30;  /*change this */
+  border: 1px solid #ccc;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding:20px;
+}
+.sideBar-Close{
+  display: none;
+}
+
+.siderBarTitle{
+    display: flex;
+    align-items: center;
+    margin:0;
+}
+.siderBarTitle h3{
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+}
+
 
   /* Media queries for responsiveness */
   @media screen and (max-width: 1485px) {
@@ -178,9 +424,8 @@
     }
 
     a {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.8em;
-      color: #646cff;
       text-decoration: inherit;
     }
 
@@ -253,14 +498,14 @@
     position: absolute; /* Position the dropdown absolutely */
     top: 2rem; /* Adjust the top position to be below the hamburger icon */
     left: 0; /* Align with the left edge */
-    background-color: #0f172a; /* Background color to match the navbar */
+    background-color: #172953; /* Background color to match the navbar */
     z-index: 999;
   }
 
   .headerNavBar ul.open{
     display: flex;
     width: 100%;
-    background-color: #0f172a;
+    background-color: #172953;
   }
 
   .headerNavBar ul li {

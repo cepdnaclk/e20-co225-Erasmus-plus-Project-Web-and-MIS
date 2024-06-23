@@ -3,8 +3,11 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';  //Add page routi
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import './components/Header.css'
-// import './components/Footer.css'
+import './components/Overview.css'
+import './components/Contact.css'
 
+
+import Login from './Pages/Login';
 import Home from './Pages/Home';
 import Team from './Pages/Team';
 import News from './Pages/News';
@@ -17,7 +20,10 @@ import Deliverables from './Pages/Deliverables';
 import SharedLayoutProjectOverview from './Pages/SharedLayoutProjectOverview';
 import SharedLayoutNewsAndEvents from './Pages/SharedLayoutNewsAndEvents';
 import Error from './components/Error';
-
+import Dashboard from './Pages/Dashboard';
+import ProjectManagement from './Pages/ProjectManagement';
+import Repository from './Pages/Repository';
+import SharedLayoutAdmin from './Pages/SharedLayoutAdmin';
 
 function App() {
   return(
@@ -25,6 +31,7 @@ function App() {
     <BrowserRouter>
     <nav> <Header/> </nav>
       <Routes>
+          <Route path = 'login' element = {<Login />} />
           <Route path = '/' element = {<Home />} />
           <Route path = 'project overview' element = {<SharedLayoutProjectOverview />}>
             <Route index element = {<SharedLayoutProjectOverview />}/>
@@ -41,6 +48,12 @@ function App() {
           <Route path = 'downloads' element = {<Downloads />} />
           <Route path = 'contact' element = {<Contact />} />
           <Route path = '*' element = {<Error />} />
+          <Route path = 'admin' element = {<SharedLayoutAdmin />}>
+            <Route index element = {<SharedLayoutAdmin />}/>
+            <Route path = 'dashboard' element = {<Dashboard />}/>
+            <Route path = 'project management' element = {<ProjectManagement />}/>
+            <Route path = 'repository' element = {<Repository />}/>
+          </Route>
       </Routes>
       <footer> <Footer/> </footer>  {/* Adding footer to all pages */}
     </BrowserRouter>

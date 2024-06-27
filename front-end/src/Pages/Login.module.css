@@ -1,0 +1,86 @@
+.LoginCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 50px;
+    width: 300px;
+    height: 280px;
+    margin: auto;
+    border: 1px solid hsl(0, 0%, 80%);
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: #00448d;
+}
+
+.LoginCard input {
+    width: 290px;
+    height: 45px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #e3f0f6;
+    color: black;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.LoginCard button {
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #00448d;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 120px;
+    height: 42px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.LoginCard button:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+.CycleLogo {
+    width: 250px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+.input-group-append {
+    position: absolute;
+    right: 10px;
+    height: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px;
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.input-group-text .svg-inline--fa {
+    margin: 0;
+}

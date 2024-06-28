@@ -4,7 +4,7 @@ import {Link, Outlet, useLocation} from 'react-router-dom';  // //Add page routi
 import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
-import profilePic from '../assets/ProPic_UJ.jpg'
+import profilePic from '../assets/ProPic_UJ.jpg' //TODO:Take from back end
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faFile,faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,29 +18,29 @@ function Header(){
 
     // Get the current location
     const location = useLocation();
-
+   
+    //Const for edit mode
+    const [isEditMode, setIsEditMode] = useState(false);
+    
+    //Change the vie mode and the edit mode when the switch handle is toggled
+    //Implement the edit mode of the website
+    const handleToggle = (checked) => {
+        setIsEditMode(checked);
+        };
     // set hamburger menu to close when a link is clicked
     const handleLinkClick = () => {
         setMenuOpen(false);
         setIsVisible(false);
     }
-    
-    //Const for edit mode
-    const [isEditMode, setIsEditMode] = useState(false);
-    //Change the vie mode and the edit mode when the switch handle is toggled
-    //Implement the edit mode of the website
-    const handleToggle = (checked) => {
-        setIsEditMode(checked);
-    };
 
     //For logout 
     const [logout, setLogout] = useState(false);
-
     const [showChat, setShowChat] = useState(false);
     const [showNotifications, setShowNotifications] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
 
     // Update the visibility of the login button based on the current location
+    //TODO: if no logged user only
     useEffect(() => {
         if (location.pathname === '/login') {
             setIsVisible(false);
@@ -48,6 +48,28 @@ function Header(){
             setIsVisible(true);
         }
     })
+
+    // functions for the visibility of chat,notifications and account info
+    function showChatInterface(){
+        setShowChat(previousShowChat=>!previousShowChat);
+        setShowAccount(false);
+        setShowNotifications(false);
+    }
+
+    function showAccountInterface(){
+        setShowChat(false);
+        setShowAccount(previousShowAccount=>!previousShowAccount)        
+        setShowNotifications(false);
+    }
+
+    function showNotificationInterface(){
+        setShowChat(false);
+        setShowAccount(false);
+        setShowNotifications(previousShowNotifications=>!previousShowNotifications)       
+    }
+
+    //TODO: for a page click set all above 3 properties to false????
+
 
     return(
         <header>
@@ -76,9 +98,9 @@ function Header(){
                             />                       
                         
                         </li>                                            
-                        <li onClick={() => setShowChat(!showChat)}><FontAwesomeIcon icon={faMessage}/></li>
-                        <li onClick={() => setShowNotifications(!showNotifications)}><FontAwesomeIcon icon={faBell}/></li>
-                        <li onClick={() => setShowAccount(!showAccount)}><img src={profilePic}></img></li>
+                        <li onClick={showChatInterface}><FontAwesomeIcon icon={faMessage}/></li>
+                        <li onClick={showNotificationInterface}><FontAwesomeIcon icon={faBell}/></li>
+                        <li onClick={showAccountInterface}><img src={profilePic}></img></li>
                     </ul>                              
                 </div>                 
                             

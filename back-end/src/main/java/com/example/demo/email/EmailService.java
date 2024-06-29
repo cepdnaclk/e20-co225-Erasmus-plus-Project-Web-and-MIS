@@ -10,7 +10,9 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * Service class responsible for sending emails.
+ */
 @Service
 @AllArgsConstructor
 public class EmailService implements EmailSender{
@@ -20,6 +22,10 @@ public class EmailService implements EmailSender{
 
     private final JavaMailSender mailSender;
 
+    /**
+     * Asynchronously sends an email to the specified recipient.
+     * @throws IllegalStateException if there is an issue sending the email.
+     */
     @Override
     @Async
     public void send(String to, String email) {

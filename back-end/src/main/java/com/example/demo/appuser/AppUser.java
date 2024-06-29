@@ -8,16 +8,24 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-// import java.util.List;
 
+
+/**
+ * Represents an application user.
+ * This class is a JPA entity and implements Spring Security's UserDetails interface
+ * to integrate with Spring Security for authentication and authorization.
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-
 public class AppUser implements UserDetails {
 
+    /**
+     * The sequence generator for the primary key of the AppUser entity.
+     * This generator is used to generate unique IDs for each AppUser.
+     */
     @SequenceGenerator(
             name = "member_sequence",
             sequenceName = "member_sequence",
@@ -52,6 +60,13 @@ public class AppUser implements UserDetails {
         this.appUserRole = appUserRole;
     }
 
+
+    /**
+     * Returns the authorities granted to the user.
+     * This method is used by Spring Security to determine the roles of the user.
+     *
+     * @return a collection of authorities granted to the user
+     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());

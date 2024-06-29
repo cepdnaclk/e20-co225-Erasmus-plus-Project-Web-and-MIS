@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+/**
+ * Represents a response object containing authentication token and message.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

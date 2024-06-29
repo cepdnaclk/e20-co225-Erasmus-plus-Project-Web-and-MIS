@@ -13,18 +13,22 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.Optional;
 
-// Interface specifically for spring security
+/**
+ * Service class responsible for managing application users.
+ * Implements UserDetailsService to provide user authentication functionality.
+ */
 @Service
 @AllArgsConstructor
 public class AppUserService implements UserDetailsService {
 
     private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
-
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
 
-
+    /**
+     * Loads user details by username (email).
+     */
     @Override
     public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
@@ -34,14 +38,19 @@ public class AppUserService implements UserDetailsService {
                                 String.format(USER_NOT_FOUND_MSG, email)));
     }
 
+    /**
+     * Retrieves an AppUser by email.
+     */
     public Optional<AppUser> getUserByEmail(String email) {
         return appUserRepository.findByEmail(email);
     }
 
+    /**
+     * Signs up a new user.
+     */
     public String signUpUser(AppUser appUser) {
-        boolean userExists = appUserRepository.findByEmail(appUser.getEmail())
-                .isPresent();
-
+        boolean userExists = appUserRepository.findByEmail(
+                appUser.getEmail()).isPresent();
         if (userExists) {
             throw new IllegalStateException("Email already exists");
         }
@@ -64,6 +73,9 @@ public class AppUserService implements UserDetailsService {
         return token;
     }
 
+    /**
+     * Enables an app user account.
+     */
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }

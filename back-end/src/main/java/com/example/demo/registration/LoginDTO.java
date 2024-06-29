@@ -2,6 +2,9 @@ package com.example.demo.registration;
 
 import lombok.*;
 
+/**
+ * Data Transfer Object (DTO) for handling login credentials.
+ */
 @Data
 // Login Data Transfer Object
 public class LoginDTO {
@@ -11,6 +14,9 @@ public class LoginDTO {
     public LoginDTO() {
     }
 
+    /**
+     * Constructor for LoginDTO with parameters.
+     */
     public LoginDTO(String email, String password) {
         this.email = email;
         this.password = password;
@@ -31,7 +37,5 @@ public class LoginDTO {
     public String getPassword() {
         return password;
     }
-
-
 }
 

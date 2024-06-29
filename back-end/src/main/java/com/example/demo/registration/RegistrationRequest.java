@@ -5,11 +5,15 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Represents a registration request DTO (Data Transfer Object) containing user details.
+ */
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class RegistrationRequest {
+
     private final String firstName;
     private final String lastName;
     private final String email;

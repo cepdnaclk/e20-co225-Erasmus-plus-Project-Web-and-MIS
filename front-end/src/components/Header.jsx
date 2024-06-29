@@ -163,7 +163,7 @@ function Header(){
             </div>
 
             </div>
-            <div>{isVisible && <button className="Login-button"><Link to = '/login' onClick={handleLinkClick}>LOGIN</Link></button>}</div>
+            <div>{isVisible && <button className="Login-button" onClick={handleLinkClick}><Link to = '/login'>LOGIN</Link></button>}</div>
             <div className='logo-block'>
             {/* Erasmus logo */}
             <a href = "https://erasmus-plus.ec.europa.eu/"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>

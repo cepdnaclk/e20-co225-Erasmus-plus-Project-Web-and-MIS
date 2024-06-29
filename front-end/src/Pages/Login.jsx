@@ -27,13 +27,13 @@ function Login() {
             }).then((res) => {
                 console.log(res.data);
 
-                if (res.data.message === "Email not exits") {
-                    alert("Email not exits");
+                if (res.data.message === "Email does not exits") {
+                    alert("Not a registered user. Email not found");
                 } else if (res.data.message === "Login Success") {
                     loggedInUser=true;
                     navigate('/');
                 } else {
-                    alert("Login Failed! Invalid credentials!");
+                    alert("Login Failed! Password does not match!");
                 }
             }, fail => {
                 console.error(fail); // Error!

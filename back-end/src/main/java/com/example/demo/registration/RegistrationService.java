@@ -75,7 +75,7 @@ public class RegistrationService {
 
         if (optionalAppUser.isEmpty()) {
             System.out.println("User not found with email: " + loginDTO.getEmail()); // Debug log
-            return new LoginResponse(null, "User not found");
+            return new LoginResponse(null, "Email does not exits");
         }
 
         AppUser appUser = optionalAppUser.get();
@@ -87,7 +87,7 @@ public class RegistrationService {
             return new LoginResponse("dummy-token", "Login Success");
         } else {
             System.out.println("Password mismatch"); // Debug log
-            return new LoginResponse(null, "Incorrect Email and Password not match");
+            return new LoginResponse(null, "Password does not match");
         }
     }
 }

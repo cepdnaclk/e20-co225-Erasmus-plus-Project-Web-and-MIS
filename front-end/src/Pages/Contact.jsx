@@ -6,6 +6,7 @@ import email from '../assets/email.png';
 import profile from '../assets/profile.png';
 
 function Contact() {
+  
   return(
     <>
     <div className = "contactTitle"> {/* Page title */}

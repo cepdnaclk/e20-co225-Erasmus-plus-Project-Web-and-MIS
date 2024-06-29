@@ -8,6 +8,7 @@ import com.example.demo.registration.token.ConfirmationToken;
 import com.example.demo.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,7 @@ public class RegistrationService {
     private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
+    private final PasswordEncoder passwordEncoder;
 
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
@@ -40,7 +42,7 @@ public class RegistrationService {
         String link = "localhost:8080/api/v1/registration/confirm?token=" + token;
 //        emailSender.send(request.getEmail(),
 //                buildEmail(request.getFirstName(), link));
-       return token;
+        return token;
     }
 
 
@@ -67,19 +69,25 @@ public class RegistrationService {
     }
 
     public LoginResponse loginUser(LoginDTO loginDTO) {
+        System.out.println("Login attempt with email: " + loginDTO.getEmail()); // Debug log
+
         Optional<AppUser> optionalAppUser = appUserService.getUserByEmail(loginDTO.getEmail());
 
         if (optionalAppUser.isEmpty()) {
+            System.out.println("User not found with email: " + loginDTO.getEmail()); // Debug log
             return new LoginResponse(null, "User not found");
         }
 
         AppUser appUser = optionalAppUser.get();
 
-        if (appUser.getPassword().equals(loginDTO.getPassword())) {
-            return new LoginResponse(null, "Incorrect Email and Password not match");
-        } else {
+        System.out.println("User found, comparing passwords"); // Debug log
+
+        if (passwordEncoder.matches(loginDTO.getPassword(), appUser.getPassword())) {
+            System.out.println("Password match, login success"); // Debug log
             return new LoginResponse("dummy-token", "Login Success");
+        } else {
+            System.out.println("Password mismatch"); // Debug log
+            return new LoginResponse(null, "Incorrect Email and Password not match");
         }
     }
 }
-

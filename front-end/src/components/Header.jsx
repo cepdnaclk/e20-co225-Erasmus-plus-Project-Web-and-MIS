@@ -7,12 +7,11 @@ import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
 import profilePic from '../assets/ProPic_UJ.jpg' //TODO:Take from back end
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faFile,faCalendarDays } from '@fortawesome/free-solid-svg-icons';
-
+import {loggedInUser} from '../Pages/Login'
 
 function Header(){
     // Constants for hamburger menu
     const [menuOpen, setMenuOpen] = useState(false);
-
     // Constants for login button
     const [isVisible, setIsVisible] = useState(true);
 
@@ -38,22 +37,28 @@ function Header(){
     const [showChat, setShowChat] = useState(false);
     const [showNotifications, setShowNotifications] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
-
+    const [loggedInUserState,setLoggedInUser] = useState(false) // if a user has logged in
     // Update the visibility of the login button based on the current location
     //TODO: if no logged user only
     useEffect(() => {
-        if (location.pathname === '/login') {
-            setIsVisible(false);
-        } else {
+        if (location.pathname === '/login' || loggedInUser) {
+            setIsVisible(false);   
+            if (loggedInUser) {
+                setLoggedInUser(true)
+            }            
+        } 
+        else {
             setIsVisible(true);
         }
     })
+
 
     // functions for the visibility of chat,notifications and account info
     function showChatInterface(){
         setShowChat(previousShowChat=>!previousShowChat);
         setShowAccount(false);
         setShowNotifications(false);
+
     }
 
     function showAccountInterface(){
@@ -74,7 +79,8 @@ function Header(){
     return(
         <header>
             {/* Top Navigation Bar for Administration  */}
-            <nav class= "adminNavBar">                
+            <div>
+            <nav class={loggedInUserState ? "adminNavBar":"non-logged-user-panel"} >                
                 <div>
                     <ul className="adminNavBarLeft">
                         <li><Link to = '/admin/dashboard'>DASHBOARD</Link></li>
@@ -156,8 +162,8 @@ function Header(){
                 <hr></hr>                        
             </div>
 
+            </div>
             <div>{isVisible && <button className="Login-button"><Link to = '/login' onClick={handleLinkClick}>LOGIN</Link></button>}</div>
-
             <div className='logo-block'>
             {/* Erasmus logo */}
             <a href = "https://erasmus-plus.ec.europa.eu/"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>

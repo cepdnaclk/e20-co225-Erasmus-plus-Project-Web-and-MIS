@@ -6,6 +6,8 @@ import cylcleLogo from '../assets/CYCLE-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
 
+export let loggedInUser=false;
+
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -28,6 +30,7 @@ function Login() {
                 if (res.data.message === "Email does not exits") {
                     alert("Not a registered user. Email not found");
                 } else if (res.data.message === "Login Success") {
+                    loggedInUser=true;
                     navigate('/');
                 } else {
                     alert("Login Failed! Password does not match!");

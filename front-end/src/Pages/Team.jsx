@@ -1,7 +1,9 @@
 function Team() {
   return(
     <>
-    <h1>Team</h1>
+    <div className = "Team">
+    <h3>Team</h3>
+  </div>
     </>
   );
 }

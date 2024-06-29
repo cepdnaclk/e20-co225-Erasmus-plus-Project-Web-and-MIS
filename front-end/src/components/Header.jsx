@@ -132,7 +132,7 @@ function Header(){
                 </a>
                 <hr></hr>
                 <a herf="#" className="userAccountContent" id="logoutText" onClick={() => setLogout(!logout)}>                              
-                    <p>Logout</p>                        
+                    <p>Log Out</p>                        
                 </a>                           
                         
             </div>

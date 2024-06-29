@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import './components/Header.css'
 import './components/Overview.css'
 import './components/Contact.css'
+import './components/Team.css'
 
 
 import Login from './Pages/Login';

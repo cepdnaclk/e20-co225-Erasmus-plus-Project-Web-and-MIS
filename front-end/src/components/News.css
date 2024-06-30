@@ -1,0 +1,39 @@
+.News{
+    margin-top: 2%;
+    margin-left: 5%;
+    text-align: left;
+    margin-bottom: 3%;
+    font-size: 20px;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.news-tile {
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-tile img {
+    width: 100%;
+    height: auto;
+}
+
+.news-tile p {
+    margin: 5px 0;
+}
+
+.news-tile a {
+    display: block;
+    color: blue;
+    text-decoration: none;
+    margin-top: 10px;
+    cursor: pointer;
+}

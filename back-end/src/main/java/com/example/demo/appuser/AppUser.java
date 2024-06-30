@@ -63,9 +63,7 @@ public class AppUser implements UserDetails {
 
     /**
      * Returns the authorities granted to the user.
-     * This method is used by Spring Security to determine the roles of the user.
-     *
-     * @return a collection of authorities granted to the user
+     * This method is used by Spring Security to determine the roles of the user
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

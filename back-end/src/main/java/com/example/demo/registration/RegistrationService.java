@@ -30,10 +30,6 @@ public class RegistrationService {
 
     /**
      * Registers a new user with the provided registration details.
-     *
-     * @param request Registration request containing user details.
-     * @return Confirmation token for email verification.
-     * @throws IllegalStateException If the provided email is not valid.
      */
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
@@ -61,10 +57,6 @@ public class RegistrationService {
 
     /**
      * Confirms the registration token and enables the user account.
-     *
-     * @param token Registration token to be confirmed.
-     * @return Success message upon successful confirmation.
-     * @throws IllegalStateException If the token is not found, already confirmed, or expired.
      */
     @Transactional
     public String confirmToken(String token) {
@@ -90,9 +82,6 @@ public class RegistrationService {
 
     /**
      * Authenticates a user based on the provided login credentials.
-     *
-     * @param loginDTO Login credentials containing email and password.
-     * @return LoginResponse indicating login success or failure.
      */
     public LoginResponse loginUser(LoginDTO loginDTO) {
         System.out.println("Login attempt with email: " + loginDTO.getEmail()); // Debug log

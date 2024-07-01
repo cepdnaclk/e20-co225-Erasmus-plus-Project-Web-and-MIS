@@ -1,0 +1,72 @@
+.downloadPage {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2%;
+  }
+  
+  .downloadTitle {
+    margin-top: 2%;
+    margin-left: 5%;
+    text-align: left;
+    margin-bottom: 3%;
+    font-size: 20px;
+  }
+
+  .downloadButton {
+    border: 1px solid hsl(222, 83%, 98%);
+    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    padding: 20px;
+    display: inline-block;
+    background-color: hsl(0, 0%, 100%);;
+    margin-left: 5%;
+    margin-right: 5%; 
+    margin-bottom: 5%;
+    text-align: center;
+  }
+
+  .downloadButton img {
+    height: 200px;
+    width: auto;
+  }
+
+  .downloadButton button {
+    width: 150px;
+    height: 55px;
+    background: hsl(211, 44%, 66%);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font: #ffffff;
+    color: #000000;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .downloadButton button:hover {
+    background: hsl(211, 40%, 69%);
+    color: #2a2929;
+  }
+
+  .openlink {
+    width: 50px;
+    color: #000000;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  @media (max-width: 1500px) {
+    .downloadPage {
+      flex-direction: column;
+      margin-left: 0px;
+    }
+  
+  }
+  
+
+

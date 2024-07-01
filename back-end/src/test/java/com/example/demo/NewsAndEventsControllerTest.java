@@ -36,6 +36,14 @@ class NewsAndEventsControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(newsAndEventsController).build();
     }
 
+    /* Unit tests */
+
+    /*
+        Test to ensures that when a GET request is made to /api/v1/news, the endpoint
+        responds with an HTTP 200 status and returns an empty JSON array when
+        there are no news or events available from the service layer
+    */
+
     @Test
     void testGetAllNewsAndEvents() throws Exception {
         when(newsAndEventsService.getAllNewsAndEvents()).thenReturn(Collections.emptyList());
@@ -46,6 +54,11 @@ class NewsAndEventsControllerTest {
 
         verify(newsAndEventsService, times(1)).getAllNewsAndEvents();
     }
+
+    /*
+        Test to verify that when a GET request is made to /api/v1/news/{newsId},
+        the endpoint correctly retrieves and returns the news item with the specified newsId
+    */
 
     @Test
     void testGetNewsById() throws Exception {
@@ -59,6 +72,13 @@ class NewsAndEventsControllerTest {
 
         verify(newsAndEventsService, times(1)).getNewsAndEventById(newsId);
     }
+
+    /*
+        Test to ensure that when a POST request is made to /api/v1/news with a
+        JSON payload representing a new news item, the endpoint correctly processes
+        the request, adds the item using the service layer, and returns a response
+        indicating success with the added news item's details
+    */
 
     @Test
     void testAddNewsAndEvents() throws Exception {
@@ -75,6 +95,12 @@ class NewsAndEventsControllerTest {
 
         verify(newsAndEventsService, times(1)).addNewsAndEvent(any(NewsAndEventsRequest.class));
     }
+
+    /*
+        Test to ensure that when a DELETE request is made to /api/v1/news/{newsId},
+        the endpoint correctly handles the request to delete the news or events item with
+        the specified newsId.
+    */
 
     @Test
     void testDeleteNewsById() throws Exception {

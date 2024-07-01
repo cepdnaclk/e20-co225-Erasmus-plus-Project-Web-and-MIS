@@ -29,12 +29,26 @@ class NewsAndEventsServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
+    /* Unit tests */
+
+    /*
+        Test to ensure that the getAllNewsAndEvents method in
+        the NewsAndEventsService correctly interacts with the
+        NewsAndEventsRepository to fetch all news and events
+    */
+
     @Test
     void testGetAllNewsAndEvents() {
         when(newsAndEventsRepository.findAll()).thenReturn(Collections.emptyList());
         assertTrue(newsAndEventsService.getAllNewsAndEvents().isEmpty());
         verify(newsAndEventsRepository, times(1)).findAll();
     }
+
+    /*
+        Test to check whether the getNewsAndEventById method in the NewsAndEventsService correctly
+        retrieves a news and event entry by its ID and interacts with the
+        NewsAndEventsRepository as expected
+    */
 
     @Test
     void testGetNewsAndEventById() {
@@ -48,6 +62,11 @@ class NewsAndEventsServiceTest {
         verify(newsAndEventsRepository, times(1)).findById(newsId);
     }
 
+    /*
+        Test to check whether the addNewsAndEvent method in the NewsAndEventsService class correctly
+        adds a new news and event entry based on the provided request object
+    */
+
     @Test
     void testAddNewsAndEvent() {
         NewsAndEventsRequest request = new NewsAndEventsRequest("Title", "Description", "Url", "Author", "Date", "Image");
@@ -60,6 +79,11 @@ class NewsAndEventsServiceTest {
         assertEquals("Title", addedNews.getNewsTitle());
         verify(newsAndEventsRepository, times(1)).save(any(NewsAndEvents.class));
     }
+
+    /*
+        Test for deleteNewsAndEvent whether it correctly delete entry
+        by its ID and properly interacts with NewsAndEventsRepository
+    */
 
     @Test
     void testDeleteNewsAndEvent() {

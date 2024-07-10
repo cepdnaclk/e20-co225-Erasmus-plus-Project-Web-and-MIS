@@ -12,7 +12,7 @@ const Slideshow = ({imageList}) => {
         {imageList.map((fadeImage, index) => (
           <div key={index}>
             <img style={{ width: '100%' }} src={fadeImage.url} />
-            {/* <h2>{fadeImage.caption}</h2> */}
+            <h2>{fadeImage.caption}</h2>
           </div>
         ))}
       </Slide>

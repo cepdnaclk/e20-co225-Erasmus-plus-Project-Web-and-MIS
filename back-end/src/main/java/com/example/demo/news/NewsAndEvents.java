@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table
 public class NewsAndEvents {
 
     // A sequence generator for auto-generated IDs

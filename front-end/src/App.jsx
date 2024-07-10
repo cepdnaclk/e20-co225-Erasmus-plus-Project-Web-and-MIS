@@ -8,6 +8,7 @@ import './components/Contact.css'
 import './components/Team.css'
 import './components/News.css'
 import './components/Download.css'
+import './components/Gallery.css'
 
 
 import Login from './Pages/Login';

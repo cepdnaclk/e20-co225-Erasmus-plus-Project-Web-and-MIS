@@ -14,8 +14,8 @@ public class NewsAndEventsService {
     private final NewsAndEventsRepository newsAndEventsRepository;
     
     public List<NewsAndEvents> getAllNewsAndEvents() {
-        return newsAndEventsRepository.findAll();
-    }
+        return newsAndEventsRepository.findAllOrderByNewsIDDesc();
+    }                                                     
     
     public Optional<NewsAndEvents> getNewsAndEventById(Long newsID) {
         return newsAndEventsRepository.findById(newsID);

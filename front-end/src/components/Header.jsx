@@ -75,7 +75,6 @@ function Header(){
 
     //TODO: for a page click set all above 3 properties to false????
 
-
     return(
         <header>
             {/* Top Navigation Bar for Administration  */}

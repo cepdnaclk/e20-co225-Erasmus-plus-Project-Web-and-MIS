@@ -29,8 +29,8 @@ const News = () => {
             <img src ={item.newsCoverImage} alt={item.newsTitle}/>
             <h2>{item.newsTitle}</h2>
             <p>{item.newsDescription}</p>
-            <p>Date: {item.newsDate}</p>
-            <p>Author: {item.newsAuthor}</p>
+            <b><p>Date: {item.newsDate}</p></b>
+            <b><p>Author: {item.newsAuthor}</p></b>
             <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a>
           </div>
         ))}

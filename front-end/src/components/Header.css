@@ -434,6 +434,10 @@
       font-size: 0.8em;
       text-decoration: inherit;
     }
+    .adminNavBarLeft li a { 
+      padding: 8px 10px;
+      font-size: 13px;
+    }
 
   }
 
@@ -537,5 +541,8 @@
     width: 100%;
     padding: 0.5rem 2rem;
     text-align: left;
+  }
+  .adminNavBarLeft{
+    display: none;
   }
 }

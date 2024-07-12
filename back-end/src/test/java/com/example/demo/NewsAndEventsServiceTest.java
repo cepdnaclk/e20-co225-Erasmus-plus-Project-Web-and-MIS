@@ -24,6 +24,7 @@ class NewsAndEventsServiceTest {
     @InjectMocks
     private NewsAndEventsService newsAndEventsService;
 
+//   annotations for test fixtures
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -39,9 +40,9 @@ class NewsAndEventsServiceTest {
 
     @Test
     void testGetAllNewsAndEvents() {
-        when(newsAndEventsRepository.findAll()).thenReturn(Collections.emptyList());
+        when(newsAndEventsRepository.findAllOrderByNewsIDDesc()).thenReturn(Collections.emptyList());
         assertTrue(newsAndEventsService.getAllNewsAndEvents().isEmpty());
-        verify(newsAndEventsRepository, times(1)).findAll();
+        verify(newsAndEventsRepository, times(1)).findAllOrderByNewsIDDesc();
     }
 
     /*

@@ -60,7 +60,7 @@ const partnerInfo = [
   position:[10.7610, 106.7102]
 },
 {
-  imagePath: 'src/assets/partnerLogos/logo_ntnu_u-slagord.png',
+  imagePath: 'src/assets/partnerLogos/NTNU.jpg',
   url:"https://www.ntnu.edu/",
   caption: 'NORGES TEKNISK-NATURVITENSKAPELIGE University N',
   country:'Norway',
@@ -74,7 +74,7 @@ const partnerInfo = [
   position:[37.9416, 23.6530]
 },
 {
-  imagePath: 'src/assets/partnerLogos/sqlearn-logo.PNG',
+  imagePath: 'src/assets/partnerLogos/SQlearn.jpg',
   url:"https://www.sqlearn.com",
   caption: 'SQLEARN AE',
   country:'Greece',

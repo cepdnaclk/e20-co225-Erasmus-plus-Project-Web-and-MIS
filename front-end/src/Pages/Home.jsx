@@ -1,6 +1,8 @@
 import Slideshow from "../bodyComponents/SlideShow";
 import style from './Home.module.css'
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 // this has to be imported from backend 
 // 1200px height images are idel
@@ -122,7 +124,7 @@ function Home(){
      
       {/* target groups */}
       <div className={style["paragraph"]}>
-      <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:500,fontSize: '24px'}}>Target Groups</span><br></br></div>
+      <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:'bold',fontSize: '24px'}}>Target Groups</span><br></br></div>
               <ol>
               <li>MSC students</li>
               <li>Cybersecurity professionals in Asia</li>    
@@ -131,27 +133,80 @@ function Home(){
               </ol>
       </div>   
 
-
-      <div style={{margin:"5%"}}>
-      <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:500 ,fontSize: '24px'}}>Project Summary</span><br></br></div>
-              {/* photo added here */}
+      {/* Project Summary */}
+      <div className={style["paragraph"]}>
+          <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:'bold' ,fontSize: '24px'}}>Project Summary</span><br></br></div>
+          <div className={style["projectSummaryFlex"]}>
+              <div className={style["projectSummaryFlexItem"]}>
+                    <FontAwesomeIcon icon={faBell} />
+                    <div>
+                      <p>Project Status</p>
+                      <p className={style["bold"]}>Ongoing</p>
+                    </div>
+              </div>
+              <div className={style["projectSummaryFlexItem"]}>
+                    <FontAwesomeIcon icon={faCalendar} />
+                    <div>
+                      <span>Start date&nbsp;&nbsp;&nbsp;</span>
+                      <span className={style["bold"]}>01-12-2023</span>
+                      <br></br>
+                      <span>End date &nbsp;&nbsp;&nbsp;</span>
+                      <span className={style["bold"]}>30-11-2026</span>
+                    </div>
+              </div>
+              <div className={style["projectSummaryFlexItem"]}>
+                    <FontAwesomeIcon icon={faChartPie} />
+                    <div>
+                      <p>EU Grant</p>
+                      <p className={style["bold"]}>793.032,00 €</p>
+                    </div>
+              </div>
+              <div className={style["projectSummaryFlexItem"]}>
+                    <FontAwesomeIcon icon={faFolder} />
+                    <div>
+                      <p>Programme</p>
+                      <p className={style["bold"]}>Erasmus+</p>
+                    </div>
+              </div>
+              <div className={style["projectSummaryFlexItem"]}>
+                    <FontAwesomeIcon icon={faFolderOpen} />
+                    <div>
+                      <p>Key Action</p>
+                      <p className={style["bold"]}>Partnerships for Cooperation and Exchanges of Practices</p>
+                    </div>
+              </div>
+              <div className={style["projectSummaryFlexItem"]}>
+                    <FontAwesomeIcon icon={faBullseye} />
+                    <div>
+                      <p>Action Type</p>
+                      <p className={style["bold"]}>Capacity Building in Higher Education</p>
+                    </div>
+              </div>
+              <div className={style["projectSummaryFlexItem"]}>
+                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                    <div>
+                      <p>Countries Covered</p>
+                      <p className={style["bold"]}>5</p>
+                    </div>
+              </div>
+        </div>
       </div> 
 
       {/* google calender       */}
 
       <div style={{margin:"5%"}}>
-      <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:500,fontSize: '24px'}}>Event Calender</span><br></br></div>
+      <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:'bold',fontSize: '24px'}}>Event Calender</span><br></br></div>
       </div>       
 
       {/* participant map */}
       <div className={style["paragraph"]}>
-      <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:500,fontSize: '24px'}}>Participants map</span><br></br></div>
+      <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:'bold',fontSize: '24px'}}>Participants map</span><br></br></div>
       <ParticipantMap partnerInfo={partnerInfo}/>
       </div>
 
       <div className={style["paragraph"]}>
       {/* partner logos*/}
-      <div style={{margin:"0% 2% 4% 2%"}}><span style={{fontWeight:500,fontSize: '24px'}}>Our Partners</span><br></br></div>
+      <div style={{margin:"0% 2% 4% 2%"}}><span style={{fontWeight:'bold',fontSize: '24px'}}>Our Partners</span><br></br></div>
      
       
 

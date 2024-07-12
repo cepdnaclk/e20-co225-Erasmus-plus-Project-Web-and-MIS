@@ -192,6 +192,10 @@ function Header(){
                 </div>
                 <ul className= {menuOpen ? "open" : ""}>
                     <li><Link to = '/' onClick={handleLinkClick}>HOME</Link></li>
+                    {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}                  
                     <li className = "headerDropDown">
                     <Link to = '#'>PROJECT OVERVIEW &nbsp; &nbsp; &#x25BC;</Link>
                         <div className = "dropdown-content">

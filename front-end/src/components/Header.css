@@ -48,17 +48,23 @@
     display: none;
   }
 
-  /* Login button */
+/* Login button */
+.top-login-bar{
+  display: flex;
+  margin: 10px 10px 10px 0px;
+  height: 40px;
+  padding: 0;
+  top: 0;
+}
 .Login-button{
   position: absolute;
-  display: flex;
-  align-self: flex-start;
   right: 30px;
   margin-top: 2px;
   padding: 10px 20px;
   font-size: 16px;
   background-color: #203a90;
   text-decoration: none;
+  font-family:'Times New Roman', Times, serif;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -68,36 +74,36 @@
 .Login-button:hover {
   background-color: #0056b3;
 }
-  .logo-block{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 0px;
-    margin-bottom: 0px;
-    margin-top: 20px;
-    box-sizing: border-box;
-    transition: transform 2s ease, opacity 0.5s ease;
-  }
-  
-  .Erasmus-plus-Logo:hover {
-    transform: scale(1.02);
-    opacity: 0.8;
-  }
-  
-  .Erasmus-plus-Logo{
-    margin-top: 20px;
-    width: 150px;
-    margin-left: 100px;
-    margin-right: 70px;
-    height: auto;
-  }
-  
-  .Cycle-Logo{
-    width: 280px;
-    height: auto;
-    margin-right: 30px;
-    margin-top: 20px
-  }
+.logo-block{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+}
+
+.Erasmus-plus-Logo:hover {
+  transform: scale(1.02);
+  opacity: 0.8;
+}
+
+.Erasmus-plus-Logo{
+  margin-top: 20px;
+  width: 150px;
+  margin-left: 100px;
+  margin-right: 70px;
+  height: auto;
+}
+
+.Cycle-Logo{
+  width: 280px;
+  height: auto;
+  margin-right: 30px;
+  margin-top: 20px
+}
 
 .headerNavBar {
   display: flex;
@@ -291,8 +297,6 @@
   font-size: 14px; 
   color:rgb(255, 255, 255);
 }
-
-
 
 /* Dropdown menu - User Account  */
 .userAccount-Open{

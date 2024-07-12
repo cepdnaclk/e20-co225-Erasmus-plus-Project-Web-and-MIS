@@ -18,7 +18,6 @@
     margin: 20px;
   }
 
-  
   a {
     font-weight: 600;
     font-size: 0.9em;
@@ -74,6 +73,154 @@
 .Login-button:hover {
   background-color: #0056b3;
 }
+
+/* CSS Styling - Top Navigation Bar for Administration  */
+
+.adminNavBar{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 8px 15px;
+  position: sticky;
+  top: 0;
+  background-color: #172953;
+  z-index: 1000;
+}
+.adminNavBar div{
+  margin :0;
+  padding:0;
+}
+/* Left side of theTop Navigation Bar for Administration*/
+
+.adminNavBarLeft{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: left;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+  position: relative;
+  padding: 0;
+  margin:0;
+}
+
+.adminNavBarLeft li{
+  list-style: none;
+  position: relative;
+}
+
+.adminNavBarLeft li a { 
+  
+  color:rgb(50, 78, 148);
+  background-color: white;
+  border: 2px solid rgb(50, 78, 148);
+  border-radius: .25rem;
+  padding: 8px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-family:'Times New Roman', Times, serif;
+  cursor: pointer;
+  float: left;
+}
+
+.adminNavBarLeft li :not(:last-child) {
+  border-right: none; /* Prevent double borders - NOT WORKING PROPERLY*/
+}
+
+.adminNavBarLeft li a:active {
+   background-color:rgb(50, 78, 148, 0.25); 
+}
+
+.adminNavBarLeft li a:hover{
+  background-color: #eef1fb
+}
+
+/* Right side of theTop Navigation Bar for Administration*/
+
+.adminNavBarRight{
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+  position: relative;
+  padding:0;
+  margin:0;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminNavBarRight li { 
+  list-style: none;
+  position: relative;  
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border: none;
+  padding: 0px 10px;
+  display: inline-block;
+  font-size: 22px;  
+  cursor: pointer;
+  float: left;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminNavBarRight li :hover{
+  transform: scale(1.03);
+  opacity: 0.8;
+}
+
+.adminNavBarRight img{
+  width: 32px;
+  border-radius: 50%;
+  margin:0;
+  padding:0;
+  align-self: center;
+}
+
+#switchLabel{
+  font-size: 14px; 
+  color:rgb(255, 255, 255);
+}
+
+/* Slider Bar for chatBox and Notificaions  */
+
+.sideBar-Open{
+  position : absolute;
+  top: 75px;
+  right: 2.5%;
+  width: 250px;
+  height:100vh;
+  max-height: 500px;
+  z-index: 30;  /*change this */
+  border: 1px solid #ccc;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding:20px;
+}
+.sideBar-Close{
+  display: none;
+}
+
+.siderBarTitle{
+    display: flex;
+    align-items: center;
+    margin:0;
+}
+.siderBarTitle h3{
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Logo block */
+
 .logo-block{
   display: flex;
   justify-content: space-between;
@@ -104,6 +251,8 @@
   margin-right: 30px;
   margin-top: 20px
 }
+
+ /* Header Navigation Bar */
 
 .headerNavBar {
   display: flex;
@@ -182,120 +331,6 @@
 
 .headerNavBar .headerDropDown .dropdown-content a:hover {
   background-color: #203a90;
-}
-
-/* CSS Styling - Top Navigation Bar for Administration  */
-
-.adminNavBar{
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 8px 15px;
-  position: sticky;
-  top: 0;
-  background-color: #172953;
-  z-index: 1000;
-}
-.adminNavBar div{
-  margin :0;
-  padding:0;
-}
-/* Left side of theTop Navigation Bar for Administration*/
-
-.adminNavBarLeft{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: left;
-  box-sizing: border-box;
-  transition: transform 2s ease, opacity 0.5s ease;
-  position: relative;
-  padding: 0;
-  margin:0;
-}
-
-.adminNavBarLeft li{
-  list-style: none;
-  position: relative;
-}
-
-.adminNavBarLeft li a { 
-  
-  color:rgb(50, 78, 148);
-  background-color: white;
-  border: 2px solid rgb(50, 78, 148);
-  border-radius: .25rem;
-  padding: 8px 10px;
-  text-align: center;
-  display: inline-block;
-  font-size: 16px;
-  font-family:'Times New Roman', Times, serif;
-  cursor: pointer;
-  float: left;
-}
-
-.adminNavBarLeft li :not(:last-child) {
-  border-right: none; /* Prevent double borders - NOT WORKING PROPERLY*/
-}
-
-.adminNavBarLeft li a:active {
-   background-color:rgb(50, 78, 148, 0.25); 
-}
-
-.adminNavBarLeft li a:hover{
-  background-color: #eef1fb
-}
-/* Right side of theTop Navigation Bar for Administration*/
-
-.adminNavBarRight{
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
-  transition: transform 2s ease, opacity 0.5s ease;
-  position: relative;
-  padding:0;
-  margin:0;
-  color: #ffffff;
-  align-items: center;
-  justify-content: center;
-}
-
-.adminNavBarRight li { 
-  list-style: none;
-  position: relative;  
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  border: none;
-  padding: 0px 10px;
-  display: inline-block;
-  font-size: 22px;  
-  cursor: pointer;
-  float: left;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
-}
-
-.adminNavBarRight li :hover{
-  transform: scale(1.03);
-  opacity: 0.8;
-}
-
-.adminNavBarRight img{
-  width: 32px;
-  border-radius: 50%;
-  margin:0;
-  padding:0;
-  align-self: center;
-}
-
-#switchLabel{
-  font-size: 14px; 
-  color:rgb(255, 255, 255);
 }
 
 /* Dropdown menu - User Account  */
@@ -377,37 +412,6 @@
   background-color: rgba(152, 167, 229, 0.563);
 }
 
-
-/* Slider Bar for chatBox and Notificaions  */
-.sideBar-Open{
-  position : absolute;
-  top: 75px;
-  right: 2.5%;
-  width: 250px;
-  height:100vh;
-  max-height: 500px;
-  z-index: 30;  /*change this */
-  border: 1px solid #ccc;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  padding:20px;
-}
-.sideBar-Close{
-  display: none;
-}
-
-.siderBarTitle{
-    display: flex;
-    align-items: center;
-    margin:0;
-}
-.siderBarTitle h3{
-  font-weight: 700;
-  font-size: 15px;
-  text-align: center;
-}
-
-
   /* Media queries for responsiveness */
   @media screen and (max-width: 1485px) {
     .logo-block {
@@ -438,15 +442,17 @@
       font-size: 0.8em;
       text-decoration: inherit;
     }
-    .adminNavBarLeft li a { 
-      padding: 8px 10px;
-      font-size: 13px;
-    }
 
   }
 
   /* Media queries for responsiveness */
 @media screen and (max-width: 1165px) {
+
+  .adminNavBarLeft li a { 
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
   h1 {
     font-size: 3em;
     font-weight: 700;
@@ -464,10 +470,16 @@
   .Cycle-Logo {
     width: 200px; /* smaller width for medium screens */
   }
+  
 }
 
 
-@media (max-width: 968px){
+@media screen and (max-width: 968px) {
+
+  .adminNavBarLeft{
+    display: none;
+  }
+
   h1 {
     font-size: 3em;
     font-weight: 700;
@@ -546,7 +558,11 @@
     padding: 0.5rem 2rem;
     text-align: left;
   }
-  .adminNavBarLeft{
+  
+}
+
+@media screen and (min-width: 968px) {
+  .adminNavBarLeftListItem{
     display: none;
   }
 }

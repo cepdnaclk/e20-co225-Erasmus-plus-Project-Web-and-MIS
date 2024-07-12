@@ -80,90 +80,90 @@ function Header(){
         <header>
             {/* Top Navigation Bar for Administration  */}
             <div>
-            <nav class={loggedInUserState ? "adminNavBar":"non-logged-user-panel"} >                
-                <div>
-                    <ul className="adminNavBarLeft">
-                        <li><Link to = '/admin/dashboard'>DASHBOARD</Link></li>
-                        <li><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>
-                        <li><Link to = '/admin/repository'>REPOSITORY</Link></li>
-                    </ul>
-                </div>
-                <div>
-                    <ul className="adminNavBarRight">                  
-                        <span id="switchLabel">{isEditMode ? "Edit Mode" : "View Mode"}</span>
-                        <li><Switch 
-                                    onChange={handleToggle} 
-                                    checked={isEditMode} 
-                                    offColor="#888"
-                                    onColor="#324e94"
-                                    uncheckedIcon={false}
-                                    checkedIcon={false}
-                                    activeBoxShadow ={null}
-                                    height={18}
-                                    width={30}                                    
-                            />                       
-                        
-                        </li>                                            
-                        <li onClick={showChatInterface}><FontAwesomeIcon icon={faMessage}/></li>
-                        <li onClick={showNotificationInterface}><FontAwesomeIcon icon={faBell}/></li>
-                        <li onClick={showAccountInterface}><img src={profilePic}></img></li>
-                    </ul>                              
-                </div>                 
+                <nav class={loggedInUserState ? "adminNavBar":"non-logged-user-panel"} >                
+                    <div>
+                        <ul className="adminNavBarLeft">
+                            <li><Link to = '/admin/dashboard'>DASHBOARD</Link></li>
+                            <li><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>
+                            <li><Link to = '/admin/repository'>REPOSITORY</Link></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul className="adminNavBarRight">                  
+                            <span id="switchLabel">{isEditMode ? "Edit Mode" : "View Mode"}</span>
+                            <li><Switch 
+                                        onChange={handleToggle} 
+                                        checked={isEditMode} 
+                                        offColor="#888"
+                                        onColor="#324e94"
+                                        uncheckedIcon={false}
+                                        checkedIcon={false}
+                                        activeBoxShadow ={null}
+                                        height={18}
+                                        width={30}                                    
+                                />                       
                             
-            </nav>
+                            </li>                                            
+                            <li onClick={showChatInterface}><FontAwesomeIcon icon={faMessage}/></li>
+                            <li onClick={showNotificationInterface}><FontAwesomeIcon icon={faBell}/></li>
+                            <li onClick={showAccountInterface}><img src={profilePic}></img></li>
+                        </ul>                              
+                    </div>                 
+                                
+                </nav>
 
-            {/* User Account Dropdown Menu */}
-            <div class= {showAccount ? "userAccount-Open" : "userAccount-Close"}>
-                        
-                <div className="userAccountInfo">
-                    <img src={profilePic}></img>
-                    <h3>Dr. Upul Jayasinghe</h3>
+                {/* User Account Dropdown Menu */}
+                <div class= {showAccount ? "userAccount-Open" : "userAccount-Close"}>
+                            
+                    <div className="userAccountInfo">
+                        <img src={profilePic}></img>
+                        <h3>Dr. Upul Jayasinghe</h3>
+                    </div>
+                    
+                    <hr></hr>
+                    <a herf="#" className="userAccountContent">                                
+                        <FontAwesomeIcon icon={faUser} className="icon" />
+                        <p>Profile</p>    
+                        <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
+                    </a>
+                    <a herf="#" className="userAccountContent"> 
+                        <FontAwesomeIcon icon={faFile} className="icon"/>                            
+                        <p>My Files</p>    
+                        <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
+                    </a>
+                    <a herf="#" className="userAccountContent"> 
+                        <FontAwesomeIcon icon={faCalendarDays} className="icon"/>                            
+                        <p>Calender</p>    
+                        <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
+                    </a>
+                    <hr></hr>
+                    <a herf="#" className="userAccountContent" id="logoutText" onClick={() => setLogout(!logout)}>                              
+                        <p>Log Out</p>                        
+                    </a>                           
+                            
                 </div>
-                
-                <hr></hr>
-                <a herf="#" className="userAccountContent">                                
-                    <FontAwesomeIcon icon={faUser} className="icon" />
-                    <p>Profile</p>    
-                    <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
-                </a>
-                <a herf="#" className="userAccountContent"> 
-                    <FontAwesomeIcon icon={faFile} className="icon"/>                            
-                    <p>My Files</p>    
-                    <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
-                </a>
-                <a herf="#" className="userAccountContent"> 
-                    <FontAwesomeIcon icon={faCalendarDays} className="icon"/>                            
-                    <p>Calender</p>    
-                    <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
-                </a>
-                <hr></hr>
-                <a herf="#" className="userAccountContent" id="logoutText" onClick={() => setLogout(!logout)}>                              
-                    <p>Log Out</p>                        
-                </a>                           
-                        
-            </div>
 
-            {/* Side Bar - Notifications */}
-            <div class= {showNotifications ? "sideBar-Open" : "sideBar-Close"}>
-                        
-                <div className="siderBarTitle">
-                    <h3>Notifications</h3>
+                {/* Side Bar - Notifications */}
+                <div class= {showNotifications ? "sideBar-Open" : "sideBar-Close"}>
+                            
+                    <div className="siderBarTitle">
+                        <h3>Notifications</h3>
+                    </div>
+                    <hr></hr>                       
+                            
                 </div>
-                <hr></hr>                       
-                        
-            </div>
 
-            {/* Side Bar - chatBox */}
-            <div class= {showChat ? "sideBar-Open" : "sideBar-Close"}>
-                        
-                <div className="siderBarTitle">
-                    <h3>Messages</h3>
+                {/* Side Bar - chatBox */}
+                <div class= {showChat ? "sideBar-Open" : "sideBar-Close"}>
+                            
+                    <div className="siderBarTitle">
+                        <h3>Messages</h3>
+                    </div>
+                    <hr></hr>                        
                 </div>
-                <hr></hr>                        
             </div>
-
-            </div>
-            <div>{isVisible && <button className="Login-button" onClick={handleLinkClick}><Link to = '/login'>LOGIN</Link></button>}</div>
+            {isVisible && <div className='top-login-bar'><Link to = '/login'><button className="Login-button" onClick={handleLinkClick}>LOGIN</button></Link></div>}
+    
             <div className='logo-block'>
             {/* Erasmus logo */}
             <a href = "https://erasmus-plus.ec.europa.eu/"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>

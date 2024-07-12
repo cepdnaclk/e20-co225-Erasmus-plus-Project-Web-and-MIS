@@ -29,21 +29,55 @@
 .partnerLogoImages{
     display:flex;
     flex-direction:row;
-    flex-wrap:wrap
+    flex-wrap:wrap;
+    justify-content: center;
+   align-items: center;
 }
 
 .partnersList{
     display: none
 }
 
+.projectSummaryFlex{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+.projectSummaryFlexItem {
+width:29%;
+display: flex;
+align-items: center;
+background: rgb(255, 255, 255);
+padding: 10px 20px;
+color:#004494 ;
+}
+
+.projectSummaryFlexItem p {
+margin: 0;
+}
+
+.projectSummaryFlexItem .bold {
+font-weight: 700;
+}
+
+.projectSummaryFlexItem svg {
+margin-right: 13px;
+font-size: 2.0em;
+color:#004594ca ;
+}
 
 
 @media screen and (max-width: 1000px) {
 
-.partnersList{
-    display: block
-}
-.partnerLogoImages{
-    display:none;
-}
+    .partnersList{
+        display: block
+    }
+    .partnerLogoImages{
+        display:none;
+    }
+    .projectSummaryFlexItem{
+        width:50%;
+    }
 }

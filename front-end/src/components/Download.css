@@ -1,9 +1,146 @@
-.downloadPage {
+
+.downloadTitle {
+  margin-top: 2%;
+  margin-left: 5%;
+  text-align: left;
+  margin-bottom: 3%;
+  font-size: 20px;
+}
+
+.uploadSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid hsl(222, 83%, 98%);
+  background-color: #ffffff;
+  margin: 20px auto;
+  width: auto;
+  box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+              -2px -2px 5px rgba(255, 255, 255, 0.7), 
+              2px -2px 5px rgba(255, 255, 255, 0.7), 
+              -2px 2px 5px rgba(63, 108, 148, 0.1);
+  margin-left: 5%;
+  margin-right: 5%; 
+  margin-bottom: 5%;
+}
+
+.uploadSection input[type="file"] {
+  margin-right: 10px;
+}
+
+.uploadSection button {
+  width: 110px;
+  height: 40px;
+  background: hsl(211, 44%, 66%);
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font: #ffffff;
+  color: #000000;
+  margin-left: 20px;
+}
+
+.uploadSection button:hover {
+  background: hsl(211, 40%, 69%);
+  color: #2a2929;
+}
+
+.downloadSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  width: auto;
+}
+
+
+.fileItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: rgb(255, 255, 255);
+  box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+              -2px -2px 5px rgba(255, 255, 255, 0.7), 
+              2px -2px 5px rgba(255, 255, 255, 0.7), 
+              -2px 2px 5px rgba(63, 108, 148, 0.1);
+  width: 250px;
+}
+
+.fileItem p {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.downloadSection button {
+  width: 110px;
+  height: 40px;
+  background: hsl(211, 44%, 66%);
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000000;
+  margin-top: 10px;
+}
+
+.downloadSection button:hover {
+  background: hsl(211, 40%, 69%);
+  color: #2a2929;
+}
+
+.downloadSection img {
+  width: auto;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.downloadLinks {
+  border: 1px solid hsl(222, 83%, 98%);
+  box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+              -2px -2px 5px rgba(255, 255, 255, 0.7), 
+              2px -2px 5px rgba(255, 255, 255, 0.7), 
+              -2px 2px 5px rgba(63, 108, 148, 0.1);
+  padding: 10px;
+  display: center;
+  background-color: hsl(0, 0%, 100%);;
+  margin-left: 5%;
+  margin-right: 5%; 
+  margin-bottom: 5%;
+  text-align: center;
+  width: auto;
+  
+}
+
+.downloadLinks img {
+  height: 200px;
+  width: auto;
+}
+
+.downloadLinks p {
+  font-size: 16px;
+  color: rgb(56, 117, 186);
+}
+ 
+.downloadLinks h4 {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.downloadLinks p:hover {
+  font-size: 16px;
+  color: hsl(211, 40%, 69%);
+}
+
+@media (max-width: 600px) {
+
+  .downloadSection {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 2%;
   }
   
   .downloadTitle {
@@ -68,5 +205,5 @@
   
   }
   
-
+}
 

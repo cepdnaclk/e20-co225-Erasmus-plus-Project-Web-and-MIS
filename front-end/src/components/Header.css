@@ -17,8 +17,6 @@
   main{
     margin: 20px;
   }
-
-  
   a {
     font-weight: 600;
     font-size: 0.9em;
@@ -48,17 +46,23 @@
     display: none;
   }
 
-  /* Login button */
+/* Login button */
+.top-login-bar{
+  display: flex;
+  margin: 10px 10px 10px 0px;
+  height: 40px;
+  padding: 0;
+  top: 0;
+}
 .Login-button{
   position: absolute;
-  display: flex;
-  align-self: flex-start;
   right: 30px;
   margin-top: 2px;
   padding: 10px 20px;
   font-size: 16px;
   background-color: #203a90;
   text-decoration: none;
+  font-family:'Times New Roman', Times, serif;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -68,36 +72,38 @@
 .Login-button:hover {
   background-color: #0056b3;
 }
-  .logo-block{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 0px;
-    margin-bottom: 0px;
-    margin-top: 20px;
-    box-sizing: border-box;
-    transition: transform 2s ease, opacity 0.5s ease;
-  }
-  
-  .Erasmus-plus-Logo:hover {
-    transform: scale(1.02);
-    opacity: 0.8;
-  }
-  
-  .Erasmus-plus-Logo{
-    margin-top: 20px;
-    width: 150px;
-    margin-left: 100px;
-    margin-right: 70px;
-    height: auto;
-  }
-  
-  .Cycle-Logo{
-    width: 280px;
-    height: auto;
-    margin-right: 30px;
-    margin-top: 20px
-  }
+/* Logo block */
+.logo-block{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
+}
+
+.Erasmus-plus-Logo:hover {
+  transform: scale(1.02);
+  opacity: 0.8;
+}
+
+.Erasmus-plus-Logo{
+  margin-top: 20px;
+  width: 150px;
+  margin-left: 100px;
+  margin-right: 70px;
+  height: auto;
+}
+
+.Cycle-Logo{
+  width: 280px;
+  height: auto;
+  margin-right: 30px;
+  margin-top: 20px
+}
+ /* Header Navigation Bar */
 
 .headerNavBar {
   display: flex;
@@ -177,7 +183,6 @@
 .headerNavBar .headerDropDown .dropdown-content a:hover {
   background-color: #203a90;
 }
-
 /* CSS Styling - Top Navigation Bar for Administration  */
 
 .adminNavBar{
@@ -243,6 +248,7 @@
 .adminNavBarLeft li a:hover{
   background-color: #eef1fb
 }
+
 /* Right side of theTop Navigation Bar for Administration*/
 
 .adminNavBarRight{
@@ -291,8 +297,6 @@
   font-size: 14px; 
   color:rgb(255, 255, 255);
 }
-
-
 
 /* Dropdown menu - User Account  */
 .userAccount-Open{
@@ -372,9 +376,8 @@
   text-align: center;
   background-color: rgba(152, 167, 229, 0.563);
 }
-
-
 /* Slider Bar for chatBox and Notificaions  */
+
 .sideBar-Open{
   position : absolute;
   top: 75px;
@@ -434,15 +437,17 @@
       font-size: 0.8em;
       text-decoration: inherit;
     }
-    .adminNavBarLeft li a { 
-      padding: 8px 10px;
-      font-size: 13px;
-    }
 
   }
 
   /* Media queries for responsiveness */
 @media screen and (max-width: 1165px) {
+
+  .adminNavBarLeft li a { 
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
   h1 {
     font-size: 3em;
     font-weight: 700;
@@ -463,7 +468,12 @@
 }
 
 
-@media (max-width: 968px){
+@media (max-width: 968px) {
+
+  .adminNavBarLeft{
+    display: none;
+  }
+
   h1 {
     font-size: 3em;
     font-weight: 700;
@@ -542,7 +552,10 @@
     padding: 0.5rem 2rem;
     text-align: left;
   }
-  .adminNavBarLeft{
+}
+
+@media screen and (min-width: 968px) {
+  .adminNavBarLeftListItem{
     display: none;
   }
 }

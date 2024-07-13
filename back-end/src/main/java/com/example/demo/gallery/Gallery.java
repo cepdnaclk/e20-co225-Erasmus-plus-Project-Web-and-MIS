@@ -22,6 +22,7 @@ public class Gallery {
             allocationSize = 1
     )
 
+//    Setting the primary key
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,

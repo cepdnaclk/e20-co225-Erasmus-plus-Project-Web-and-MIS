@@ -1,6 +1,18 @@
 import DrUpulJayasinghe from '../assets/upul-jayasinghe.jpg';
 import DrErunikaDayaratna from '../assets/erunika-dayaratna.jpg';
-import TeamProfilePic from '../assets/TeamProfilePic.png';
+import ProfHMTGAPitawala from '../assets/TeamMembers/Pitawala.jpg';
+import ProfRoshanRagel from '../assets/TeamMembers/roshanragel.jpg';
+import ProfManjulaSandirigama from '../assets/TeamMembers/manjulasandirigama.png';
+import DrAsithaBandaranayake from '../assets/TeamMembers/asithabandaranayake.jpg';
+import DrNamalKarunarathne from '../assets/TeamMembers/sunethnamal.jpeg';
+import DrIsuruNawinne from '../assets/TeamMembers/isurunawinne.png';
+import ProfSalukaKodituwakku from '../assets/TeamMembers/salukakodithuwakku.jpg';
+import ProfAmalkaPinidiyaarachchi from '../assets/TeamMembers/amalka.jpg';
+import ProfRoshanDYapa from '../assets/TeamMembers/roshanyapa.jpg';
+import DrSachithPAbeysundara from '../assets/TeamMembers/sachith.jpg';
+import DrHakimUsoof from '../assets/TeamMembers/hakimusoof.jpg';
+import DrRuwanNawarathna from '../assets/TeamMembers/ruwannawarathna.jpg';
+
 
 function Team() {
   return(
@@ -51,9 +63,9 @@ function Team() {
 
     <div className = "TeamCards">
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={ProfHMTGAPitawala} alt="Prof. H.M.T.G.A Pitawala"/>
       <ul>
-        <li className = "TeamMemberName">Prof. HMTGA Pitawala, Director of PGIS</li>
+        <li className = "TeamMemberName">Prof. H.M.T.G.A Pitawala, Director of PGIS</li>
         <li>Administrator</li>
         <li><a href="tel:+94703215056">+94 70 321 5056</a></li>
         <li><a href="mailto:apitawala@sci.pdn.ac.lk">apitawala@sci.pdn.ac.lk</a></li>
@@ -67,7 +79,7 @@ function Team() {
 
     <div className = "TeamCards">
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={ProfRoshanRagel} alt="Prof. Roshan Ragel"/>
       <ul>
         <li className = "TeamMemberName">Prof. Roshan Ragel</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -77,7 +89,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={ProfManjulaSandirigama} alt="Prof. Manjula Sandirigama"/>
       <ul>
         <li className = "TeamMemberName">Prof. Manjula Sandirigama</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -97,7 +109,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={DrAsithaBandaranayake} alt="Dr. Asitha Bandaranayake"/>
       <ul>
         <li className = "TeamMemberName">Dr. Asitha Bandaranayake</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -107,7 +119,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={DrNamalKarunarathne} alt="Dr. Namal Karunarathne"/>
       <ul>
         <li className = "TeamMemberName">Dr. Namal Karunarathne</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -117,7 +129,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={DrIsuruNawinne} alt="Dr. Isuru Nawinne"/>
       <ul>
         <li className = "TeamMemberName">Dr. Isuru Nawinne</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -133,7 +145,7 @@ function Team() {
 
     <div className = "TeamCards">
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={ProfSalukaKodituwakku} alt="Prof. Saluka Kodituwakku"/>
       <ul>
         <li className = "TeamMemberName">Prof. Saluka Kodituwakku</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -143,7 +155,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={ProfAmalkaPinidiyaarachchi} alt="Prof. Amalka Pinidiyaarachchi"/>
       <ul>
         <li className = "TeamMemberName">Prof. Amalka Pinidiyaarachchi</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -153,7 +165,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={ProfRoshanDYapa} alt="Prof. Roshan D. Yapa"/>
       <ul>
         <li className = "TeamMemberName">Prof. Roshan D. Yapa</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -163,7 +175,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={DrSachithPAbeysundara} alt="Dr. Sachith P. Abeysundara"/>
       <ul>
         <li className = "TeamMemberName">Dr. Sachith P. Abeysundara</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -183,7 +195,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={DrHakimUsoof} alt="TDr. Hakim Usoof"/>
       <ul>
         <li className = "TeamMemberName">Dr. Hakim Usoof</li>
         <li>Teacher/Trainer /Researcher</li>
@@ -193,7 +205,7 @@ function Team() {
     </div>
 
     <div className = "TeamCard">
-    <img className="TeamProfilePic" src={TeamProfilePic} alt="TeamProfilePic"/>
+    <img className="TeamProfilePic" src={DrRuwanNawarathna} alt="Dr. Ruwan Nawarathna"/>
       <ul>
         <li className = "TeamMemberName">Dr. Ruwan Nawarathna</li>
         <li>Teacher/Trainer /Researcher</li>

@@ -1,21 +1,44 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 
+
+const fetchNews = async () => {
+  try {
+    const response = await axios.get('http://localhost:8080/api/v1/news');
+    return response.data.sort((a, b) => new Date(b.newsDate) - new Date(a.newsDate)).slice(0, 3); // Sort by date and get the top 3
+  } catch (error) {
+    console.error('Error fetching news:', error);
+    return [];
+  }
+};
+
 const News = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await axios.get('http://localhost:8080/api/v1/news');
-        setNews(response.data);
-      } catch (error) {
-        console.error('Error fetching news:', error);
-      }
+    const getNews = async () => {
+      const latestNews = await fetchNews();
+      setNews(latestNews);
     };
 
-    fetchNews();
+    getNews();
   }, []);
+
+// const News = () => {
+//   const [news, setNews] = useState([]);
+
+//   useEffect(() => {
+//     const fetchNews = async () => {
+//       try {
+//         const response = await axios.get('http://localhost:8080/api/v1/news');
+//         setNews(response.data);
+//       } catch (error) {
+//         console.error('Error fetching news:', error);
+//       }
+//     };
+
+//     fetchNews();
+//   }, []);
 
 
     return(
@@ -39,4 +62,5 @@ const News = () => {
     );
   }
   
+  export { fetchNews };
   export default News;

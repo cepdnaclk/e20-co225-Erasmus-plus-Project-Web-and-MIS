@@ -176,7 +176,7 @@ function Header(){
             
 
             {/* Sub heading */}
-            <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cybersecurity</span></h2>
+            <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cyber security</span></h2>
 
             {/* Navigation bar */}
             <nav className = "headerNavBar">

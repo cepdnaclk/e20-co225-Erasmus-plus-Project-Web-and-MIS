@@ -1,7 +1,85 @@
-.Team{
+.TeamTitle {
     margin-top: 2%;
     margin-left: 5%;
     text-align: left;
     margin-bottom: 3%;
     font-size: 20px;
+}
+
+.UoPTeamTitle {
+    margin-left: 5%;
+    text-align: left;
+    margin-bottom: 1%;
+    font-size: 20px;
+}
+
+.TeamSubTitle {
+    margin-left: 5%;
+    text-align: left;
+    margin-bottom: 1%;
+    font-size: 18px;
+    color: hsl(211, 57%, 59%);
+}
+
+.TeamCards {
+    border: 1px solid hsl(222, 83%, 98%);
+    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    padding: 20px;
+    display: center;
+    background-color: hsl(0, 0%, 100%);;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.TeamCard {
+    /* border: 1px solid hsl(222, 83%, 98%); */
+    /*border-radius: 20px;*/
+    /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1); */
+    padding: 20px;
+    display: inline-block;
+    background-color: hsl(0, 0%, 100%);;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    text-align: center;
+    width: 350px;
+    height: 100%;
+}
+
+.TeamCard a{
+    color: hsl(211, 57%, 59%); /* Default link color */
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.TeamCard a:hover{
+    color: hsl(211, 60%, 67%); /* Default link color */
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.TeamCard ul{
+    list-style-type: none;
+    font-size: 16px;
+    padding: 0;
+}
+
+.TeamProfilePic{
+    width: 150px;
+    height: auto;
+}
+
+.TeamMemberName{
+    font-weight: bold;
+    color:hsl(212, 8%, 37%);
+    font-size: 18px;
 }

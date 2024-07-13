@@ -10,7 +10,7 @@
     margin-left: 5%;
     text-align: left;
     margin-bottom: 1%;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .TeamSubTitle {
@@ -34,6 +34,7 @@
     margin-right: 5%;
     margin-bottom: 5%;
     text-align: center;
+    border-radius: 1em;
 }
 
 .TeamCard {
@@ -45,7 +46,8 @@
                 -2px 2px 5px rgba(63, 108, 148, 0.1); */
     padding: 20px;
     display: inline-block;
-    background-color: hsl(0, 0%, 100%);;
+    background-color: hsl(218, 33%, 95%);;
+    border-radius: 1em;
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 2%;

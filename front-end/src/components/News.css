@@ -7,6 +7,20 @@
     font-size: 20px;
 }
 
+.AddNewsButton{
+  margin-top: 2px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #203a90;
+  text-decoration: none;
+  font-family:'Times New Roman', Times, serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #ffffff;
+}
+
 .news-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

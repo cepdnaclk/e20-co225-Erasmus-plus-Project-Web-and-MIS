@@ -13,6 +13,7 @@ const fetchNews = async () => {
 };
 
 const News = () => {
+
   const [news, setNews] = useState([]);
 
   useEffect(() => {

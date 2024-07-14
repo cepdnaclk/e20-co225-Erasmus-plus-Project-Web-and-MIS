@@ -90,7 +90,7 @@ public class RegistrationService {
 
         if (optionalAppUser.isEmpty()) {
             System.out.println("User not found with email: " + loginDTO.getEmail()); // Debug log
-            return new LoginResponse(null, "Email does not exits", null, null);
+            return new LoginResponse(null, "Email does not exits","none", new Long(0), null, null);
         }
 
         AppUser appUser = optionalAppUser.get();
@@ -101,10 +101,10 @@ public class RegistrationService {
             String firstName = appUser.getFirstName();
             String lastName = appUser.getLastName();
             System.out.println("Password match, login success"); // Debug log
-            return new LoginResponse("dummy-token", "Login Success", firstName, lastName);
+            return new LoginResponse("dummy-token", "Login Success",appUser.getAuthorities().toString(),appUser.getId(), firstName, lastName);
         } else {
             System.out.println("Password mismatch"); // Debug log
-            return new LoginResponse(null, "Password does not match", null, null);
+            return new LoginResponse(null, "Password does not match","none",new Long(0), null, null);
         }
     }
 }

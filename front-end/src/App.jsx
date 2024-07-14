@@ -29,9 +29,12 @@ import ProjectManagement from './Pages/ProjectManagement';
 import Repository from './Pages/Repository';
 import SharedLayoutAdmin from './Pages/SharedLayoutAdmin';
 
+import { NewsProvider } from './Pages/NewsContext';  // Import NewsProvider
+
 function App() {
   return(
     <>
+    <NewsProvider>
     <BrowserRouter>
     <nav> <Header/> </nav>
       <Routes>
@@ -61,6 +64,7 @@ function App() {
       </Routes>
       <footer> <Footer/> </footer>  {/* Adding footer to all pages */}
     </BrowserRouter>
+    </NewsProvider>
     </>
   )
   }

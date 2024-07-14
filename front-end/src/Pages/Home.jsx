@@ -1,6 +1,6 @@
 import Slideshow from "../bodyComponents/SlideShow";
 import React, { useState, useEffect } from "react";
-import NewsSlideshow from "../bodyComponents/newsSlideShow.jsx";
+import NewsSlideshow from "../bodyComponents/newsSlideShow";
 import style from './Home.module.css'
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

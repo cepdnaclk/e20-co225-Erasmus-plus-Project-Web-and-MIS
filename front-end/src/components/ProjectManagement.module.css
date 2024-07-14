@@ -1,0 +1,35 @@
+.showDiv{
+
+    display: block;
+
+}
+
+.hideDiv{
+    display: none;
+}
+
+a{
+   color: #000; 
+}
+
+a:hover{
+    color: #2113e2;
+}
+
+.taskCards{
+    border: 1px solid hsl(222, 83%, 98%);
+    /*border-radius: 20px;*/
+    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
+    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+                -2px -2px 5px rgba(255, 255, 255, 0.7), 
+                2px -2px 5px rgba(255, 255, 255, 0.7), 
+                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    padding: 20px;
+    display: block;
+    /* background-color: hsl(128, 27%, 89%); */
+    background-color: hsl(0, 0%, 100%);
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    text-align: center;
+}

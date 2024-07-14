@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import style from './Login.module.css';
 import cylcleLogo from '../assets/CYCLE-logo.png';
@@ -7,13 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
 
 export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
+export let appUserRole="";
+export let userID = 0;
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
-
+    // const location = useLocation();
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -35,6 +37,13 @@ function Login() {
                         firstName: res.data.firstName,
                         lastName: res.data.lastName
                     };
+                    userID = res.data.userID ;
+                    if (res.data.userRole == "[USER]") {
+                        appUserRole="USER";
+                    }else if(res.data.userRole == "[ADMIN]"){
+                        console.log(res.data.userRole)
+                        appUserRole="ADMIN";
+                    }
                     navigate('/');
                 } else {
                     alert("Login Failed! Password does not match!");

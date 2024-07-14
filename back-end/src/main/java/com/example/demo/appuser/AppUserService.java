@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 
@@ -79,4 +80,14 @@ public class AppUserService implements UserDetailsService {
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }
+
+    public List<AppUser> getAllUsers(){
+        return appUserRepository.findAll();
+    }
+
+    public AppUser getUser(long userID){
+        return appUserRepository.findById(userID).get();
+    }
 }
+
+

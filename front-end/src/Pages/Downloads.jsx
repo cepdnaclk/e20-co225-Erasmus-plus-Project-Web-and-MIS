@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import fileDownload from '../assets/download.png';
 import fileDownload1 from '../assets/download2.png';
+import { loggedInUser } from '../Pages/Login';
 
 const FileUploadDownload = () => {
 
@@ -109,10 +110,12 @@ const FileUploadDownload = () => {
         </nav>
       </div>
 
+      {loggedInUser.isLoggedIn && (
       <div className="uploadSection">
         <input type="file" onChange={handleFileChange} />
         <button onClick={handleUpload}>Upload File</button>
       </div>
+      )}
 
       {errorMessage && <p className="error">{errorMessage}</p>}
 
@@ -122,8 +125,10 @@ const FileUploadDownload = () => {
             <span><p>{file.fileName}</p></span>
             <img src={fileDownload} alt="fileDownload"/>
             <button onClick={() => handleDownload(file.fileId, file.fileName)}>Download</button>
+            {loggedInUser.isLoggedIn && (
             <button onClick={() => handleDelete(file.fileId)}>Delete</button>
-          </div>
+            )}
+            </div>
         ))}
       </div>
       

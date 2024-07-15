@@ -3,16 +3,12 @@ package com.example.demo.Deliverables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
 @RestController
 @RequestMapping("/deliverable")
 @CrossOrigin("http://localhost:5173")
 public class DeliverableController {
-
     @Autowired
     private DeliverableService deliverableService;
-    @Autowired
-    private DeliverableRepository deliverableRepository;
 
     @PostMapping("/add")
     public String add(@RequestBody Deliverable deliverable) {

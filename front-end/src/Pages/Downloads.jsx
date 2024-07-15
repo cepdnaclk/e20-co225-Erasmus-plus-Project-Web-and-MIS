@@ -5,7 +5,6 @@ import fileDownload1 from '../assets/download2.png';
 import { loggedInUser } from '../Pages/Login';
 
 const FileUploadDownload = () => {
-
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
@@ -29,7 +28,7 @@ const FileUploadDownload = () => {
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      alert('Please select a file first!'); // If file is not selected before uploading
+      alert('Please select a file first!');
       return;
     }
 
@@ -45,16 +44,11 @@ const FileUploadDownload = () => {
 
       if (response.status === 200) {
         alert('File uploaded successfully');
-        fetchUploadedFiles(); // Refresh the list of uploaded files
-      } 
-
-      else {
+        fetchUploadedFiles();
+      } else {
         alert('Failed to upload file');
       }
-
-    } 
-    
-    catch (error) {
+    } catch (error) {
       console.error('There was an error uploading the file!', error);
       setErrorMessage('File upload failed. Please try again.');
     }
@@ -79,11 +73,14 @@ const FileUploadDownload = () => {
   };
 
   const handleDelete = async (fileId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this file?');
+    if (!confirmDelete) return;
+
     try {
       const response = await axios.delete(`http://localhost:8080/api/v1/files/${fileId}`);
       if (response.status === 200) {
         alert('File deleted successfully');
-        fetchUploadedFiles(); // Refresh the list of uploaded files
+        fetchUploadedFiles();
       } else {
         alert('Failed to delete file');
       }
@@ -93,10 +90,8 @@ const FileUploadDownload = () => {
     }
   };
 
-
   return (
     <div>
-
       <div className="downloadTitle">
         <h3>Downloads</h3>
       </div>
@@ -104,17 +99,21 @@ const FileUploadDownload = () => {
       <div className="downloadLinks">
         <nav>
           <h4>Downloads For Students and PGIS Staff</h4>
-          <img src={fileDownload1} alt="fileDownload1"/>
-          <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/students.php"><p>Students</p></a>
-          <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/staff.php"><p>PGIS Staff</p></a>
+          <img src={fileDownload1} alt="fileDownload1" />
+          <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/students.php">
+            <p>Students</p>
+          </a>
+          <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/staff.php">
+            <p>PGIS Staff</p>
+          </a>
         </nav>
       </div>
 
       {loggedInUser.isLoggedIn && (
-      <div className="uploadSection">
-        <input type="file" onChange={handleFileChange} />
-        <button onClick={handleUpload}>Upload File</button>
-      </div>
+        <div className="uploadSection">
+          <input type="file" onChange={handleFileChange} />
+          <button onClick={handleUpload}>Upload File</button>
+        </div>
       )}
 
       {errorMessage && <p className="error">{errorMessage}</p>}
@@ -123,15 +122,14 @@ const FileUploadDownload = () => {
         {uploadedFiles.map((file) => (
           <div key={file.fileId} className="fileItem">
             <span><p>{file.fileName}</p></span>
-            <img src={fileDownload} alt="fileDownload"/>
+            <img src={fileDownload} alt="fileDownload" />
             <button onClick={() => handleDownload(file.fileId, file.fileName)}>Download</button>
             {loggedInUser.isLoggedIn && (
-            <button onClick={() => handleDelete(file.fileId)}>Delete</button>
+              <button onClick={() => handleDelete(file.fileId)}>Delete</button>
             )}
-            </div>
+          </div>
         ))}
       </div>
-      
     </div>
   );
 };

@@ -44,7 +44,7 @@
                 -2px -2px 5px rgba(255, 255, 255, 0.7), 
                 2px -2px 5px rgba(255, 255, 255, 0.7), 
                 -2px 2px 5px rgba(63, 108, 148, 0.1); */
-    padding: 20px;
+    /* padding: 20px; */
     display: inline-block;
     background-color: hsl(218, 33%, 95%);;
     border-radius: 1em;

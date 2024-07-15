@@ -40,9 +40,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
 
-                        .requestMatchers("/api/v*/registration/**", "/api/v*/news/**", "/api/v*/gallery/**",
-                                "/api/v*/files/**", "/api/v*/registration/login/**", )
-
                         .requestMatchers("/api/v*/registration/**", "/api/v1/news/**", "/api/v1/gallery/**", "/api/v*/files/**",
                          "/api/v*/registration/login/**", "/api/v1/tasks/**", "/api/v1/users/**", "/deliverable/**")
 

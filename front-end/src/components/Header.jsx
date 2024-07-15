@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link, useLocation} from 'react-router-dom';  // //Add page routing using router dom
+import {Link, Outlet, useLocation,useNavigate} from 'react-router-dom';  // //Add page routing using router dom
 
 import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
@@ -16,7 +16,8 @@ function Header(){
 
     // Get the current location
     const location = useLocation();
-   
+    //to navigate between pages
+    const navigate = useNavigate();
     //Const for edit mode
     const [isEditMode, setIsEditMode] = useState(false);
     
@@ -52,6 +53,11 @@ function Header(){
         }
     })
 
+    function logOut(){
+   //TODO: okay to do this?
+        window. location. reload();
+    }
+
 
     // functions for the visibility of chat,notifications and account info
     function showChatInterface(){
@@ -73,7 +79,8 @@ function Header(){
         setShowNotifications(previousShowNotifications=>!previousShowNotifications)       
     }
 
-    //TODO: for a page click set all above 3 properties to false????
+
+
 
     return(
         <header>

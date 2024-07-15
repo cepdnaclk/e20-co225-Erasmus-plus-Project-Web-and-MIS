@@ -1,5 +1,8 @@
 package com.example.demo.appuser;
 
+import com.example.demo.task.Task;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -21,6 +26,8 @@ import java.util.Collections;
 @NoArgsConstructor
 @Entity
 public class AppUser implements UserDetails {
+
+
 
     /**
      * The sequence generator for the primary key of the AppUser entity.
@@ -36,17 +43,27 @@ public class AppUser implements UserDetails {
             strategy = GenerationType.SEQUENCE,
             generator = "member_sequence"
     )
+
     private Long id;
     @Getter
     private String firstName;
     @Getter
     private String lastName;
     private String email;
+    @JsonIgnore
     private String password;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
+    @JsonIgnore
     private Boolean locked = false;
+    @JsonIgnore
     private Boolean enabled = false;
+
+//    @JsonIgnore
+    @ManyToMany(mappedBy = "assignedUsers",fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Set<Task> assignedTasks = new HashSet<>();
+
 
     public AppUser( String firstName,
                     String lastName,
@@ -101,4 +118,15 @@ public class AppUser implements UserDetails {
         return enabled;
     }
 
+    public Set<Task> getAssignedTasks() {
+        return assignedTasks;
+    }
+
+    public void assignTask(Task task) {
+        assignedTasks.add(task);
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

@@ -8,6 +8,7 @@ const FileUploadDownload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showUploadForm, setShowUploadForm] = useState(false);
 
   useEffect(() => {
     fetchUploadedFiles();
@@ -44,6 +45,8 @@ const FileUploadDownload = () => {
 
       if (response.status === 200) {
         alert('File uploaded successfully');
+        setSelectedFile(null);
+        setShowUploadForm(false);
         fetchUploadedFiles();
       } else {
         alert('Failed to upload file');
@@ -110,9 +113,16 @@ const FileUploadDownload = () => {
       </div>
 
       {loggedInUser.isLoggedIn && (
-        <div className="uploadSection">
-          <input type="file" onChange={handleFileChange} />
-          <button onClick={handleUpload}>Upload File</button>
+        <div>
+          <button className = "addcancelbutton" onClick={() => setShowUploadForm(!showUploadForm)}>
+            {showUploadForm ? 'Cancel' : 'Add File'}
+          </button>
+          {showUploadForm && (
+            <div className="uploadSection">
+              <input type="file" onChange={handleFileChange} />
+              <button onClick={handleUpload}>Upload File</button>
+            </div>
+          )}
         </div>
       )}
 

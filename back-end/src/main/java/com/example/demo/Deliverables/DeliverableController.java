@@ -11,8 +11,6 @@ public class DeliverableController {
 
     @Autowired
     private DeliverableService deliverableService;
-    @Autowired
-    private DeliverableRepository deliverableRepository;
 
     @PostMapping("/add")
     public String add(@RequestBody Deliverable deliverable) {

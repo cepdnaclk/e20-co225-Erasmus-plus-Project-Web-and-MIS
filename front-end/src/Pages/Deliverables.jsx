@@ -1,7 +1,7 @@
-//TODO: login unama and edit mode ekedi edit karanna hadanna
-//TODO: last modified date eka set karanna
-//TODO: form eka submit kalama page ekat udta scroll wenna hadanna or table eke udata
-//TODO: table eke sort wenna hadanna(last modified or primary key widiyt)
+//TODO: Login and Edit Mode 
+//TODO: Set the last modified date and User
+//TODO: Automatically scroll to the specific points (interfcae, table etc)
+//TODO: Sort th table -PK
 //TODO: add error message when an invalid date is entered into the form 
 //TODO: Edit media queries for form and table 
 

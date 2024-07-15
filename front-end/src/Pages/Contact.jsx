@@ -1,9 +1,8 @@
 import DrUpulJayasinghe from '../assets/upul-jayasinghe.jpg';
 import DrErunikaDayaratna from '../assets/erunika-dayaratna.jpg';
 import contactImg from '../assets/contactImg.jpg';
-import tel from '../assets/tel.png';
-import email from '../assets/email.png';
-import profile from '../assets/profile.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faPhone, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
 function Contact() {
   
@@ -22,9 +21,9 @@ function Contact() {
       <h3>Manager</h3>
     <nav>
       <ul>
-        <li><img className="profile" src={profile} alt="profile"/> <a href="https://people.ce.pdn.ac.lk/staff/academic/upul/">Dr. Upul Jayasinghe</a></li>
-        <li><img className="tel" src={tel} alt="tel"/> <a href="tel:+94760416590">+94 76 0416 590</a></li>
-        <li><img className="email" src={email} alt="email"/> <a href="mailto:eftu@eng.pdn.ac.lk">eftu@eng.pdn.ac.lk</a></li>
+        <li><FontAwesomeIcon className = "contactIcons" icon={faUser} /> <a href="https://people.ce.pdn.ac.lk/staff/academic/upul/">Dr. Upul Jayasinghe</a></li>
+        <li><FontAwesomeIcon className = "contactIcons" icon={faPhone} /> <a href="tel:+94760416590">+94 76 0416 590</a></li>
+        <li><FontAwesomeIcon className = "contactIcons" icon={faEnvelope} /> <a href="mailto:eftu@eng.pdn.ac.lk">eftu@eng.pdn.ac.lk</a></li>
       </ul>
     </nav>
     </div>
@@ -35,9 +34,9 @@ function Contact() {
       <h3>Coordinator</h3>
     <nav>
       <ul>
-        <li><img className="profile" src={profile} alt="profile"/> <a href="https://sci.pdn.ac.lk/scs/staff/Erunika-Dayaratna">Dr. Erunika Dayaratna</a></li>
-        <li><img className="tel" src={tel} alt="tel"/> <a href="tel:+94766986500">+94 76 698 6500</a></li>
-        <li><img className="email" src={email} alt="email"/> <a href="mailto:dayaratna@sci.pdn.ac.lk">dayaratna@sci.pdn.ac.lk</a></li>
+        <li><FontAwesomeIcon className = "contactIcons" icon={faUser} /> <a href="https://sci.pdn.ac.lk/scs/staff/Erunika-Dayaratna">Dr. Erunika Dayaratna</a></li>
+        <li><FontAwesomeIcon className = "contactIcons" icon={faPhone} /> <a href="tel:+94766986500">+94 76 698 6500</a></li>
+        <li><FontAwesomeIcon className = "contactIcons" icon={faEnvelope} /> <a href="mailto:dayaratna@sci.pdn.ac.lk">dayaratna@sci.pdn.ac.lk</a></li>
       </ul>
     </nav>
     </div>

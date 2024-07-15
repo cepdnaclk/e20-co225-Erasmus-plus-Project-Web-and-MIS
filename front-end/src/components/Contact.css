@@ -26,16 +26,10 @@
 
 /* Contact details of the manager alignment */
 .contactManager {
-    border: 1px solid hsl(222, 83%, 98%);
-    /*border-radius: 20px;*/
-    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
-    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7), 
-                2px -2px 5px rgba(255, 255, 255, 0.7), 
-                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    border-radius: 1em;
     padding: 20px;
     display: inline-block;
-    background-color: hsl(0, 0%, 100%);;
+    background-color: hsl(218, 33%, 95%);
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 5%;
@@ -53,16 +47,10 @@
 
 /* Contact details of the coordinator alignment */
 .contactCoordinator {
-    border: 1px solid hsl(222, 83%, 98%);
-    /*border-radius: 20px;*/
-    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
-    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7), 
-                2px -2px 5px rgba(255, 255, 255, 0.7), 
-                -2px 2px 5px rgba(63, 108, 148, 0.1);
+    border-radius: 1em;
     padding: 20px;
     display: inline-block;
-    background-color: hsl(0, 0%, 100%);;
+    background-color: hsl(218, 33%, 95%);
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 5%;
@@ -73,12 +61,12 @@
 
 /* Link colors */
 .contactCoordinator a, .contactManager a {
-    color: hsl(211, 57%, 59%); /* Default link color */
+    color: #004494 ; /* Default link color */
     text-decoration: none; /* Remove underline */
 }
 
 .contactCoordinator a:hover, .contactManager a:hover {
-    color: hsl(211, 44%, 66%); /* Link color on hover */
+    color: hsl(211, 57%, 59%); /* Link color on hover */
 }
 
 /* Photo of the coordinator alignment */
@@ -105,25 +93,9 @@
     margin-left: 50px;
 }
 
-.profile {
-    width: 22px;
-    height: auto;
-    margin-right: 5px;
-    margin-top: 10px;
-}
-
-.tel {
-    width: 20px;
-    height: auto;
-    margin-right: 5px;
-    /* margin-top: 30px; */
-}
-
-.email {
-    width: 20px;
-    height: auto;
-    margin-right: 5px;
-    /* margin-top: 10px; */
+.contactIcons {
+    width:10%;
+    color:#004494 ;
 }
 
 

@@ -28,7 +28,6 @@ import java.util.Set;
 public class AppUser implements UserDetails {
 
 
-
     /**
      * The sequence generator for the primary key of the AppUser entity.
      * This generator is used to generate unique IDs for each AppUser.

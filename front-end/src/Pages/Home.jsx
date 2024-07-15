@@ -1,8 +1,11 @@
 import Slideshow from "../bodyComponents/SlideShow";
+import React, { useState, useEffect } from "react";
+import NewsSlideshow from "../bodyComponents/newsSlideShow.jsx";
 import style from './Home.module.css'
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { fetchNews } from './News.jsx';
 
 // this has to be imported from backend 
 // 1200px height images are idel
@@ -62,7 +65,7 @@ const partnerInfo = [
   position:[10.7610, 106.7102]
 },
 {
-  imagePath: 'src/assets/partnerLogos/logo_ntnu_u-slagord.png',
+  imagePath: 'src/assets/partnerLogos/NTNU.jpg',
   url:"https://www.ntnu.edu/",
   caption: 'NORGES TEKNISK-NATURVITENSKAPELIGE University N',
   country:'Norway',
@@ -76,7 +79,7 @@ const partnerInfo = [
   position:[37.9416, 23.6530]
 },
 {
-  imagePath: 'src/assets/partnerLogos/sqlearn-logo.PNG',
+  imagePath: 'src/assets/partnerLogos/SQlearn.jpg',
   url:"https://www.sqlearn.com",
   caption: 'SQLEARN AE',
   country:'Greece',
@@ -90,17 +93,22 @@ const partnerInfo = [
   country:'Greece',
   position:[37.9416, 23.6530]
 },
-// {
-//   imagePath: 'src/assets/partnerLogos/University of Colombo.PNG',
-//   url:"",
-//   caption: 'university',
-//   country:'country',
-//   position:[37.9416, 23.6530]
 
-// }
 ]
 
 function Home(){
+
+  const [newsList, setNewsList] = useState([]);
+
+  useEffect(() => {
+    const getNews = async () => {
+      const latestNews = await fetchNews();
+      setNewsList(latestNews);
+    };
+
+    getNews();
+  }, []);
+
   return(
       <>
       {/* image slider  */}
@@ -198,10 +206,21 @@ function Home(){
       <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:'bold',fontSize: '24px'}}>Event Calender</span><br></br></div>
       </div>       
 
-      {/* participant map */}
-      <div className={style["paragraph"]}>
-      <div style={{margin:"2% 2% 2% 2%"}}><span style={{fontWeight:'bold',fontSize: '24px'}}>Participants map</span><br></br></div>
-      <ParticipantMap partnerInfo={partnerInfo}/>
+      {/* Participant Map and News Container */}
+      <div className={style["container"]}>
+        <div className={style["leftColumn"]}>
+          <div className={style["paragraph"]}>
+            <div style={{ margin: "2% 2% 2% 2%" }}>
+              <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Participants map</span><br></br>
+            </div >
+            <div style={{ margin: "2% 2% 2% 0%" }}><ParticipantMap partnerInfo={partnerInfo} /></div>
+          </div>
+        </div>
+        <div className={style["rightColumn"]}>
+          <div>
+            <NewsSlideshow newsList={newsList}></NewsSlideshow>
+          </div>
+        </div>
       </div>
 
       <div className={style["paragraph"]}>

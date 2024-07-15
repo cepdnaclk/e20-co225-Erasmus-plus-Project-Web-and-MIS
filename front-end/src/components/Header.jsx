@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {Link, Outlet, useLocation} from 'react-router-dom';  // //Add page routing using router dom
+import {Link, useLocation} from 'react-router-dom';  // //Add page routing using router dom
 
 import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
-import profilePic from '../assets/ProPic_UJ.jpg' //TODO:Take from back end
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMessage, faBell, faAngleRight, faUser, faFile,faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import {loggedInUser} from '../Pages/Login'
 
 function Header(){
@@ -37,13 +36,14 @@ function Header(){
     const [showChat, setShowChat] = useState(false);
     const [showNotifications, setShowNotifications] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
-    const [loggedInUserState,setLoggedInUser] = useState(false) // if a user has logged in
+    const [loggedInUserState,setLoggedInUser] = useState(loggedInUser.isLoggedIn); // if a user has logged in
     // Update the visibility of the login button based on the current location
     //TODO: if no logged user only
+    
     useEffect(() => {
-        if (location.pathname === '/login' || loggedInUser) {
+        if (location.pathname === '/login' || loggedInUser.isLoggedIn) {
             setIsVisible(false);   
-            if (loggedInUser) {
+            if (loggedInUser.isLoggedIn) {
                 setLoggedInUser(true)
             }            
         } 
@@ -105,7 +105,7 @@ function Header(){
                             </li>                                            
                             <li onClick={showChatInterface}><FontAwesomeIcon icon={faMessage}/></li>
                             <li onClick={showNotificationInterface}><FontAwesomeIcon icon={faBell}/></li>
-                            <li onClick={showAccountInterface}><img src={profilePic}></img></li>
+                            <li onClick={showAccountInterface}><FontAwesomeIcon icon={faUserCircle}/></li>
                         </ul>                              
                     </div>                 
                                 
@@ -115,8 +115,8 @@ function Header(){
                 <div class= {showAccount ? "userAccount-Open" : "userAccount-Close"}>
                             
                     <div className="userAccountInfo">
-                        <img src={profilePic}></img>
-                        <h3>Dr. Upul Jayasinghe</h3>
+                        <FontAwesomeIcon icon={faUserCircle} size="3x" style={{ marginRight: '10px'}}/>
+                        <h3> {loggedInUser.firstName} {loggedInUser.lastName}</h3>
                     </div>
                     
                     <hr></hr>
@@ -176,7 +176,7 @@ function Header(){
             
 
             {/* Sub heading */}
-            <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cybersecurity</span></h2>
+            <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cyber security</span></h2>
 
             {/* Navigation bar */}
             <nav className = "headerNavBar">

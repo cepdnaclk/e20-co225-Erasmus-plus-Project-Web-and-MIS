@@ -39,10 +39,11 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/v*/registration/**", "/api/v1/news/**", "/api/v1/gallery/**", "/api/v1/files/**" ,"/deliverable/**" )
+                        .requestMatchers("/api/v*/registration/**", "/api/v*/news/**", "/api/v*/gallery/**",
+                                "/api/v*/files/**", "/api/v*/registration/login/**", "/deliverable/**")
                         .permitAll()
-                       .anyRequest().authenticated()
-                        //.anyRequest().permitAll()
+                        .anyRequest().authenticated()
+                // .anyRequest().permitAll()
                 )
                 .formLogin(withDefaults());
         return http.build();
@@ -56,12 +57,14 @@ public class WebSecurityConfig implements WebMvcConfigurer {
      * @throws Exception If authentication manager retrieval fails.
      */
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     /**
-     * Provides DaoAuthenticationProvider bean configured with password encoder and user details service.
+     * Provides DaoAuthenticationProvider bean configured with password encoder and
+     * user details service.
      *
      * @return DaoAuthenticationProvider bean instance.
      */

@@ -1,0 +1,28 @@
+import React from 'react';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+
+const NewsSlideshow = ({ newsList }) => {
+  return (
+    <div className="News">
+      <div className="slide-container" style={{ width: '100%', margin:"0.3% 3% 3% 0%" }}>
+        <Slide>
+          {newsList.map((item, index) => (
+            <div key={index} className="news-slide">
+              <img style={{ width: '100%' }} src={item.newsCoverImage} alt={item.newsTitle} />
+              <div className="news-content">
+                <h2>{item.newsTitle}</h2>
+                {/* <p>{item.newsDescription}</p> */}
+                <b><p>Date: {item.newsDate}</p></b>
+                <b><p>Author: {item.newsAuthor}</p></b>
+                <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a>
+              </div>
+            </div>
+          ))}
+        </Slide>
+      </div>
+    </div>
+  );
+};
+
+export default NewsSlideshow;

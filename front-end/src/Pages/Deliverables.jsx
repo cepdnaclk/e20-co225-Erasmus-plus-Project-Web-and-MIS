@@ -3,14 +3,15 @@
 //TODO: Automatically scroll to the specific points (interfcae, table etc)
 //TODO: Sort th table -PK
 //TODO: add error message when an invalid date is entered into the form 
-//TODO: Edit media queries for form and table 
+//TODO: Edit media queries for form and table
+//TODO: Didn't work for AutoFill  
 
 import { useEffect, useState } from 'react';
 import style from './Deliverables.module.css'
 import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import { loggedInUser } from '../Pages/Login';
 
 function Deliverables() {
 
@@ -80,7 +81,7 @@ const onInputChange=(e)=>{
     e.preventDefault(); // Prevent default form submission
     try {
       await axios.post("http://localhost:8080/deliverable/add", deliverable);
-      //  reload the data after successful submission
+      // Reload the data after successful submission
       loadData();
       // Clear the form fields after successful submission if needed
       setAddRow(false);
@@ -164,7 +165,7 @@ const onViewClick = (deliverable) => {
                 <th scope="col">Type</th>
                 <th scope="col">Dissemination Level</th>
                 <th scope="col">Due Date</th>
-                <th>Action</th>
+                {loggedInUser.isLoggedIn && <th>Action</th>}
               </tr>
             </thead>
             <tbody>
@@ -179,13 +180,13 @@ const onViewClick = (deliverable) => {
                           <td>{deliverable.type}</td>
                           <td>{deliverable.disseminationLevel}</td>
                           <td>{deliverable.dueDate}</td>
-                          <td>
+                          {loggedInUser.isLoggedIn && <td>
                             <div className={style['actionButtons']}>
                               <button className={style['actionButton']} onClick={() => onEditClick(deliverable)}><FontAwesomeIcon icon={faPen}/></button>
                               <button className={style['actionButton']} onClick={() => onViewClick(deliverable)}><FontAwesomeIcon icon={faEye}/></button>
                               <button className={style['actionButton']} onClick={() => onDeleteClick(deliverable.deliverableRelatedNo)}><FontAwesomeIcon icon={faTrash} /></button>
-                            </div>                        
-                          </td>
+                            </div>         
+                          </td>}
                         </tr>
                       ))
                     }
@@ -197,7 +198,7 @@ const onViewClick = (deliverable) => {
             </tfoot>
           </table>
       </div>
-      {!addRow && <div>
+      {!addRow && loggedInUser.isLoggedIn && <div>
         <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
       </div>}
       {/* Interface- Add New/Edit */}

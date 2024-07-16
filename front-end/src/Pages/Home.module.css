@@ -90,6 +90,65 @@ color:#004594ca ;
 }
 
 
+.proj_desc {
+  padding: 60px;
+  display: inline-block;
+  background-color: #172953;
+  margin-bottom: 2%;
+  text-align: center;
+  color: white;
+}
+
+.proj_desc:hover {
+  transform: scale(1.05);
+}
+
+
+
+.TargetGroupCards {
+  align-items: left;
+  justify-content: left;
+  display: left;
+  width: auto;
+}
+
+.TargetGroupCard {
+  border-radius: 1em;
+  display: inline-block;
+  margin-bottom: 5%;
+  margin-top: 10px;
+  text-align: center;
+  width: 400px; 
+  height: 100px;
+  color:#ffffff;
+  font-size: 18px;
+  flex-direction: row;
+}
+
+.TargetGroupCard:hover {
+  transform: scale(1.05);
+
+}
+
+.tgicon {
+  width: 30px;
+  height: 30px;
+  display: center;
+  align-items: center;
+  color:#ffffff ;
+
+}
+
+.targetgroupsecsion {
+  display: inline-block;
+  background-color: #172953;
+  margin-bottom: 5%;
+  margin-top: 2%;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
 @media screen and (max-width: 1000px) {
 
     .partnersList{
@@ -100,6 +159,14 @@ color:#004594ca ;
     }
     .projectSummaryFlexItem{
         width:50%;
+    }
+
+    .proj_desc:hover {
+      transform: none;
+    }
+
+    .TargetGroupCard {
+      width: 300px; 
     }
 }
 

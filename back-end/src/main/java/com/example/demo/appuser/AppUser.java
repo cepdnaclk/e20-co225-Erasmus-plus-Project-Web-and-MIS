@@ -62,7 +62,7 @@ public class AppUser implements UserDetails {
 //    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id")
 //    @JsonBackReference
     @JsonIgnore
-    @JsonIgnoreProperties("task")
+    @JsonIgnoreProperties("Task")
     private Set<Task> assignedTasks = new HashSet<>();
 
 

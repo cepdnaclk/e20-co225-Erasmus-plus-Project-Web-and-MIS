@@ -44,14 +44,12 @@ public class TaskController {
         taskService.updateTask(updateTask);
     }
 
-    @DeleteMapping("/{id}")
-//    @RequestMapping(method= RequestMethod.DELETE,value="/task/{id}")
+    @DeleteMapping("/{taskID}")
     public void deleteTask(@PathVariable Integer taskID){
         taskService.deleteTask(taskID);
     }
 
     @PutMapping("/{taskID}/users/{userID}")
-//    @RequestMapping (method= RequestMethod.PUT,value="/task/{taskID}/users/{userID}")
     public void addUserToTask(@PathVariable Integer taskID,@PathVariable Long userID){
 
         taskService.addUserToTask(taskID,userID);

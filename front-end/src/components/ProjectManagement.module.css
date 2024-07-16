@@ -33,3 +33,67 @@ a:hover{
     margin-bottom: 2%;
     text-align: center;
 }
+
+/* Data input boxes and their topics */
+.inputbox {
+    display: flex;
+    align-items: center;
+    margin: 15px 20px;
+  }
+  .inputbox label{
+    padding: 15px;
+    font-size: 16px;
+    width: 15% ;
+  }
+  
+  /* Inside the data input boxes */
+  .inputbox .field {
+    width: 40%;
+    position: absolute;
+    left: 20%;
+    background: transparent;
+    border: 2px solid #c9e1ef;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
+    
+  }
+
+  .inputbox .integerField {
+    width: 5%;
+    position: absolute;
+    right: 40%;
+    background: transparent;
+    border: 2px solid #c9e1ef;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
+    
+  }
+
+  /* New Entry Interface */
+/* Form title */
+.formTitle {
+    text-align: center;
+    color:hsl(226, 64%, 35%);
+    font-size: 20px;
+    margin-top: 0px;
+  }
+  /* Form */
+  .dataForm form {
+    margin-right: 20px;
+    margin-left: 20px;
+    justify-items: center;
+  }
+
+  .checkBoxContainer { 
+    border:2px solid #ccc;
+    width:300px;
+    height: 100px; 
+    overflow-y: scroll;
+    scrollbar-color: white black;
+    background: transparent;
+    border: 2px solid #c9e1ef;
+}

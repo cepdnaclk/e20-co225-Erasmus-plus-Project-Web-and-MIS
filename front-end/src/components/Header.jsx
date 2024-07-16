@@ -143,7 +143,7 @@ function Header(){
                         <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
                     </a>
                     <hr></hr>
-                    <a herf="#" className="userAccountContent" id="logoutText" onClick={() => setLogout(!logout)}>                              
+                    <a herf="#" className="userAccountContent" id="logoutText" onClick={logOut}>                              
                         <p>Log Out</p>                        
                     </a>                           
                             

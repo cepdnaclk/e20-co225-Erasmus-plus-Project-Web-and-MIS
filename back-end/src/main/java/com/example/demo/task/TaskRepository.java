@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
@@ -14,7 +15,10 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
     //deleteTask (int Task_ID)
     //updateTask(Task updatedTask) -> assignTaskMembers
 
-  @Query("SELECT t FROM Task t where ?1 member of t.assignedUsers")
-  List<Task> findTasksByUser(AppUser user);
+    @Query("SELECT t FROM Task t where ?1 member of t.assignedUsers")
+    List<Task> findTasksByUser(AppUser user);
 
+//    @Query("UPDATE Task t SET t.assignedUsers = :newAssignedUsers WHERE t.id = :taskId" )
+//    void  updateAssignedMembers(Set<AppUser> newAssignedUsers,int taskId );
 }
+

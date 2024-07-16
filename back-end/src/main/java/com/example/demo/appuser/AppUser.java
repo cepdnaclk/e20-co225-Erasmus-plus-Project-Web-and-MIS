@@ -1,8 +1,7 @@
 package com.example.demo.appuser;
 
 import com.example.demo.task.Task;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +25,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 public class AppUser implements UserDetails {
+
 
 
     /**
@@ -58,9 +58,11 @@ public class AppUser implements UserDetails {
     @JsonIgnore
     private Boolean enabled = false;
 
-//    @JsonIgnore
     @ManyToMany(mappedBy = "assignedUsers",fetch = FetchType.LAZY)
-    @JsonBackReference
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id")
+//    @JsonBackReference
+    @JsonIgnore
+    @JsonIgnoreProperties("task")
     private Set<Task> assignedTasks = new HashSet<>();
 
 

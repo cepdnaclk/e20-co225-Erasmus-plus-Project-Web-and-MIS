@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/tasks")
@@ -34,9 +35,13 @@ public class TaskController {
     }
 
     @PostMapping
-//    @RequestMapping (method= RequestMethod.POST,value="/task")
     public void addTask(@RequestBody Task newTask){
         taskService.addTask(newTask);
+    }
+
+    @PutMapping("/update")
+    public void updateTask(@RequestBody Task updateTask){
+        taskService.updateTask(updateTask);
     }
 
     @DeleteMapping("/{id}")
@@ -51,4 +56,6 @@ public class TaskController {
 
         taskService.addUserToTask(taskID,userID);
     }
+
+
 }

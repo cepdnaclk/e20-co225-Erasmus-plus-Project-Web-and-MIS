@@ -12,15 +12,15 @@ import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, f
 const fadeImages = [
   {
     url: 'https://lh3.googleusercontent.com/pw/AP1GczM5KKxhVpddOvmafamm46DH9DtSlJKvRTUcoibtfAmrs0ySHY0-KIND3m8kO8xNC5v0aRCSn0z4T3C9ub8iBIyI6vgq9XCWexwDvEt24miVwBLABA=w2400',
-    caption: 'Third Slide'
+    caption: ''
   },
   {
     url: 'https://lh3.googleusercontent.com/pw/AP1GczOf4JkUYn4FXbDiHPPs5iy-EU_cS3YeO7X650OK1bGajP9ApyK5V4PKmQpnoIroDJb4QSRSZR_bG8KNpfY4PRJrAqA3wKZhUZRaGy4DaO5Nhvte8w=w2400',
-    caption: 'Third Slide'
+    caption: ''
   },
   {
     url: 'https://lh3.googleusercontent.com/pw/AP1GczNKdk1z2rkWNBQ2zNRCdqWn_9KensUFqQ_AcjYPxVQV79vqJMnFImwFCYWh3ETzNxdTe9YDkbatKXq_eRgy2jas2ZrMmJbLjYjzKk5RIbWW8s2Org=w2400',
-    caption: 'Third Slide'
+    caption: ''
   },
 ];
 

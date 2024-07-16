@@ -197,8 +197,15 @@
     text-decoration: underline;
 }
 
-/* @media screen and (max-width: 1220px) {
-    .News{
-        display: none;
-    }
-} */
+
+.actionButton{
+  margin-right: 5px;
+  padding:0;
+  background-color:#ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #000;
+  align-items: right;
+}
+

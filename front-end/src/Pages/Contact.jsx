@@ -23,7 +23,7 @@ function Contact() {
       <ul>
         <li><FontAwesomeIcon className = "contactIcons" icon={faUser} /> <a href="https://people.ce.pdn.ac.lk/staff/academic/upul/">Dr. Upul Jayasinghe</a></li>
         <li><FontAwesomeIcon className = "contactIcons" icon={faPhone} /> <a href="tel:+94760416590">+94 76 0416 590</a></li>
-        <li><FontAwesomeIcon className = "contactIcons" icon={faEnvelope} /> <a href="mailto:eftu@eng.pdn.ac.lk">eftu@eng.pdn.ac.lk</a></li>
+        <li><FontAwesomeIcon className = "contactIcons" icon={faEnvelope} /> <a href="mailto:upuljm@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></li>
       </ul>
     </nav>
     </div>

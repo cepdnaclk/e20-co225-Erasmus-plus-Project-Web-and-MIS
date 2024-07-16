@@ -139,7 +139,6 @@
 .headerNavBar .menu{
   display: none;
   position: absolute;
-  top: 1rem;
   right: 3rem;
   flex-direction: column;
   justify-content: space-between;

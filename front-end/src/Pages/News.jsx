@@ -71,19 +71,19 @@ const News = () => {
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="newsTitle">Title:</label>
-                <input type="text" id="newsTitle" name="newsTitle" required />
+                <input type="text" placeholder="Enter News Title" id="newsTitle" name="newsTitle" required />
               </div>
               <div className="form-group">
                 <label htmlFor="newsDescription">Description:</label>
-                <textarea id="newsDescription" name="newsDescription" required></textarea>
+                <textarea id="newsDescription" placeholder="Enter News Description" name="newsDescription" required></textarea>
               </div>
               <div className="form-group">
                 <label htmlFor="newsUrl">URL:</label>
-                <input type="url" id="newsUrl" name="newsUrl" required />
+                <input type="url" id="newsUrl" placeholder="Enter News URL" name="newsUrl" required />
               </div>
               <div className="form-group">
                 <label htmlFor="newsAuthor">Author:</label>
-                <input type="text" id="newsAuthor" name="newsAuthor" required />
+                <input type="text" id="newsAuthor" placeholder="Enter Author's name" name="newsAuthor" required />
               </div>
               <div className="form-group">
                 <label htmlFor="newsDate">Date:</label>
@@ -91,7 +91,7 @@ const News = () => {
               </div>
               <div className="form-group">
                 <label htmlFor="newsCoverImage">Cover Image URL:</label>
-                <input type="url" id="newsCoverImage" name="newsCoverImage" required />
+                <input type="url" id="newsCoverImage" placeholder="Enter Image URL" name="newsCoverImage" required />
               </div>
               <div className="form-buttons">
                 <button type="submit">Add News</button>

@@ -53,9 +53,9 @@ public class TaskController {
     }
 
     @PutMapping("/{taskID}/users/{userID}")
-    public void addUserToTask(@PathVariable Integer taskID,@PathVariable Long userID){
-
+    public TaskResponse addUserToTask(@PathVariable Integer taskID,@PathVariable Long userID){
         taskService.addUserToTask(taskID,userID);
+        return new TaskResponse("Assigned user with id "+userID+" to task with id "+taskID);
     }
 
 

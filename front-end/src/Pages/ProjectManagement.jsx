@@ -73,7 +73,7 @@ const onAddSubmit = async (e) => {
   e.preventDefault(); // Prevent default form submission
   try {
     await axios.post("http://localhost:8080/api/v1/tasks", task);
-    alert("task"," added");
+    alert("task added");
     //  reload the data after successful submission
     RefreshTasks();
     // Clear the form fields after successful submission if needed

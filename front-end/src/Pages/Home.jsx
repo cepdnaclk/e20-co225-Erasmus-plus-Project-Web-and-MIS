@@ -6,21 +6,21 @@ import style from './Home.module.css';
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
-
+import { faGraduationCap, faShield, faUsers, faBuilding} from '@fortawesome/free-solid-svg-icons';
 // this has to be imported from backend 
 // 1200px height images are ideal
 const fadeImages = [
   {
     url: 'https://lh3.googleusercontent.com/pw/AP1GczM5KKxhVpddOvmafamm46DH9DtSlJKvRTUcoibtfAmrs0ySHY0-KIND3m8kO8xNC5v0aRCSn0z4T3C9ub8iBIyI6vgq9XCWexwDvEt24miVwBLABA=w2400',
-    caption: 'Third Slide'
+    caption: ''
   },
   {
     url: 'https://lh3.googleusercontent.com/pw/AP1GczOf4JkUYn4FXbDiHPPs5iy-EU_cS3YeO7X650OK1bGajP9ApyK5V4PKmQpnoIroDJb4QSRSZR_bG8KNpfY4PRJrAqA3wKZhUZRaGy4DaO5Nhvte8w=w2400',
-    caption: 'Third Slide'
+    caption: ''
   },
   {
     url: 'https://lh3.googleusercontent.com/pw/AP1GczNKdk1z2rkWNBQ2zNRCdqWn_9KensUFqQ_AcjYPxVQV79vqJMnFImwFCYWh3ETzNxdTe9YDkbatKXq_eRgy2jas2ZrMmJbLjYjzKk5RIbWW8s2Org=w2400',
-    caption: 'Third Slide'
+    caption: ''
   },
 ];
 
@@ -104,11 +104,11 @@ function Home() {
       <Slideshow imageList={fadeImages}></Slideshow>
 
       {/* project description */}
-      <div className={style["paragraph"]}>
-        <div style={{ margin: "2% 2% 2% 2%" }}>
-          <span style={{ fontWeight: 'bold', fontSize: '26px' }}>Project description</span><br></br>
+      <div className={style["proj_desc"]}>
+        <div>
+          <span style={{ fontWeight: 'bold', fontSize: '26px', color: 'white' }}>Project description</span><br></br>
         </div>
-        <p>There is an increasing demand for cybersecurity professionals worldwide,
+        <p style={{ fontSize: '18px', textAlign: 'center' }}>There is an increasing demand for cybersecurity professionals worldwide,
           however, in Asia Pacific the largest regional workforce gap of 1.42 million professionals exists. 
           The <b>CYberseCurityLEarning: Master’s degree in Cybersecurity / CYCLE </b>
           consortium will produce <u>innovative MSc curricula in the cybersecurity</u>, 
@@ -117,20 +117,32 @@ function Home() {
           cooperation platform that will serve as a regional knowledge/networking/innovation hub for the cybersecurity 
           industry in Asia. The training materials will be supplemented <u>by Serious Games</u> that will reflect real market 
           cases from Asian partner countries. The serious games will be delivered in e-learning platform, so as to engage users 
-          in solving problems using Design thinking.</p>
+          in solving problems using Design thinking</p>
       </div>
 
       {/* target groups */}
-      <div className={style["paragraph"]}>
+      <div className={style["targetgroupsecsion"]}>
         <div style={{ margin: "2% 2% 2% 2%" }}>
           <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Target Groups</span><br></br>
         </div>
-        <ol>
-          <li>MSC students</li>
-          <li>Cybersecurity professionals in Asia</li>
-          <li>Academic & Administrative staff</li>
-          <li>Companies, representatives/ stakeholders in cybersecurity & AI</li>
-        </ol>
+        <div className = {style["TargetGroupCards"]}>
+        <div className = {style["TargetGroupCard"]}>
+          <FontAwesomeIcon className={style["tgicon"]} icon={faGraduationCap} />
+          <p>MSC students</p>
+        </div>
+        <div className = {style["TargetGroupCard"]}>
+          <FontAwesomeIcon className={style["tgicon"]} icon={faShield} />
+          <p>Cybersecurity professionals in Asia</p>
+        </div>
+        <div className = {style["TargetGroupCard"]}>
+          <FontAwesomeIcon className={style["tgicon"]} icon={faUsers} />
+          <p>Academic & Administrative staff</p>
+        </div>
+        <div className = {style["TargetGroupCard"]}>
+          <FontAwesomeIcon className={style["tgicon"]} icon={faBuilding} />
+          <p>Companies, representatives/ stakeholders in cybersecurity & AI</p>
+        </div>
+        </div>
       </div>
 
       {/* Project Summary */}

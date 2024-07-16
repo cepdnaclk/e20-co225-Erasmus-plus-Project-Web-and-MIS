@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { loggedInUser } from '../Pages/Login';
 import '../components/News.css'; // Import your CSS file
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const fetchNews = async () => {
   try {
@@ -53,6 +55,17 @@ const News = () => {
       });
   };
 
+  const onDeleteClick = async (newsID) => {
+    console.log("Delete button clicked");
+    console.log(newsID);
+    try {
+      await axios.delete(`http://localhost:8080/api/v1/news/${newsID}`);
+      fetchNews();
+    } catch (error) {
+      console.error("Error deleting deliverable:", error);
+    }
+  }
+
   return (
     <>
       <div className="News">
@@ -71,19 +84,19 @@ const News = () => {
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="newsTitle">Title:</label>
-                <input type="text" id="newsTitle" name="newsTitle" required />
+                <input type="text" placeholder="Enter News Title" id="newsTitle" name="newsTitle" required />
               </div>
               <div className="form-group">
                 <label htmlFor="newsDescription">Description:</label>
-                <textarea id="newsDescription" name="newsDescription" required></textarea>
+                <textarea id="newsDescription" placeholder="Enter News Description" name="newsDescription" required></textarea>
               </div>
               <div className="form-group">
                 <label htmlFor="newsUrl">URL:</label>
-                <input type="url" id="newsUrl" name="newsUrl" required />
+                <input type="url" id="newsUrl" placeholder="Enter News URL" name="newsUrl" required />
               </div>
               <div className="form-group">
                 <label htmlFor="newsAuthor">Author:</label>
-                <input type="text" id="newsAuthor" name="newsAuthor" required />
+                <input type="text" id="newsAuthor" placeholder="Enter Author's name" name="newsAuthor" required />
               </div>
               <div className="form-group">
                 <label htmlFor="newsDate">Date:</label>
@@ -91,7 +104,7 @@ const News = () => {
               </div>
               <div className="form-group">
                 <label htmlFor="newsCoverImage">Cover Image URL:</label>
-                <input type="url" id="newsCoverImage" name="newsCoverImage" required />
+                <input type="url" id="newsCoverImage" placeholder="Enter Image URL" name="newsCoverImage" required />
               </div>
               <div className="form-buttons">
                 <button type="submit">Add News</button>
@@ -109,6 +122,13 @@ const News = () => {
             <b><p>Date: {item.newsDate}</p></b>
             <b><p>Author: {item.newsAuthor}</p></b>
             <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a>
+            {loggedInUser.isLoggedIn && <td>
+              <div>
+                <button className="actionButton" onClick={() => onEditClick(newsData)}><FontAwesomeIcon icon={faPen}/></button>
+                <button className="actionButton" onClick={() => onViewClick(newsData)}><FontAwesomeIcon icon={faEye}/></button>
+                <button className="actionButton" onClick={() => onDeleteClick(item.newsID)}><FontAwesomeIcon icon={faTrash} /></button>
+              </div>         
+              </td>}
           </div>
         ))}
       </div>

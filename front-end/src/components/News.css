@@ -45,6 +45,7 @@
   font-size: 2rem;
   margin-bottom: 20px;
   color: #203a90;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .form-group {
@@ -53,18 +54,22 @@
 
 .form-group label {
   display: block;
-  font-weight: bold;
   margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .form-group input {
   background: transparent;
   color: black;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .form-group textarea {
   background: transparent;
   color: black;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .form-group input[type="text"],
@@ -190,5 +195,18 @@
 
   .news-content a:hover {
     text-decoration: underline;
+}
+
+
+
+.actionButton{
+  margin-right: 5px;
+  padding:0;
+  background-color:#ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #000;
+  align-items: right;
 }
 

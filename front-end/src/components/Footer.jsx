@@ -45,7 +45,7 @@ function Footer() {
                     <ul>
                         <li>Manager: <a href="https://people.ce.pdn.ac.lk/staff/academic/upul/">Dr. Upul Jayasinghe</a></li>
                         <li>Tel: <a href="tel:+94760416590">+94 76 0416 590</a></li>
-                        <li>Email: <a href="mailto:eftu@eng.pdn.ac.lk">eftu@eng.pdn.ac.lk</a></li>
+                        <li>Email: <a href="mailto:upuljm@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></li>
 
                         <li> Coordinator: <a href="https://sci.pdn.ac.lk/scs/staff/Erunika-Dayaratna">Dr. Erunika Dayaratna</a></li>
                         <li>Tel: <a href="tel:+94766986500">+94 76 698 6500</a></li>

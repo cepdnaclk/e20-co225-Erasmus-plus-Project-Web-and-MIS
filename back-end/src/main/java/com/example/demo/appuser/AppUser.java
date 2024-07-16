@@ -39,6 +39,7 @@ public class AppUser implements UserDetails {
     )
     @Id
     @GeneratedValue(
+
             strategy = GenerationType.SEQUENCE,
             generator = "member_sequence"
     )

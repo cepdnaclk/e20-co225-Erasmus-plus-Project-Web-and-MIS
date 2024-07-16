@@ -52,5 +52,5 @@
 
 /* CYCLE overview and goals titles */
 .overview-para h3, .Goals h3 {
-    color:hsl(211, 57%, 59%);
+    color: #000;
 }

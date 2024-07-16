@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class TaskService {
@@ -43,21 +44,12 @@ public class TaskService {
         taskRepository.save(task);
     }
 
-//    public void updateTask(Task task,int id){
+//    public void addTaskWithUsers(Task task, Set<AppUser> taskMembers){
 //
-//        Optional<Task> existingTask = taskRepository.findById(id);
-//        if (existingTask.isPresent()) {
-//            Task updatedTask = existingTask.get();
-//
-//            updatedTask.setTask_Name(task.getTask_Name());
-//            updatedTask.setStart_Date(task.getStart_Date());
-//            updatedTask.setEnd_Date(task.getEnd_Date());
-//            updatedTask.setProgress(task.getProgress());
-//            updatedTask.setAssignedUsers(task.getAssignedUsers());
-////            return taskRepository.save(updatedTask);
-//        taskRepository.save(updatedTask); //no need of ID, because instance is already there
-//        }
+//        task.setAssignedMembers(taskMembers);
+//        taskRepository.save(task);
 //    }
+
 
     public void deleteTask(int task_ID){
         taskRepository.deleteById(task_ID);

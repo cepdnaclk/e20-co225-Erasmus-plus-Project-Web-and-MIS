@@ -40,7 +40,6 @@ const ProjectManagement = () => {
     start_Date:"",
     end_Date:"",
     progress:""
-    // assignedUsers:""
 })
 
 const {task_Name,start_Date,end_Date,progress}=task;
@@ -48,6 +47,7 @@ const {task_Name,start_Date,end_Date,progress}=task;
  //functions to set up above values
  function changeProgressValue(event) {
     setProgressValue(Number(event.target.value))
+    setTask({...task,["progress"]:event.target.value})
  }
   
 const onInputChange=(e)=>{
@@ -65,7 +65,6 @@ const onAddNewClicked=()=>{
     start_Date:"",
     end_Date:"",
     progress:"",
-    assignedUsers:""
   });
 }
 
@@ -74,6 +73,7 @@ const onAddSubmit = async (e) => {
   e.preventDefault(); // Prevent default form submission
   try {
     await axios.post("http://localhost:8080/api/v1/tasks", task);
+    alert("task"," added");
     //  reload the data after successful submission
     RefreshTasks();
     // Clear the form fields after successful submission if needed
@@ -88,17 +88,20 @@ const onAddSubmit = async (e) => {
 //on Edit 
 const onEditClick = (task) => {
   setTask(task);
+  setProgressValue(task.progress);
   setShowInterface(true);
   setAddRow(false);
   setEditRow(true);
-  // setViewRow(false); 
 }
 
 //When 'Update' button is clicked in the interface : Only Edit
 const onUpdateSubmit = async (e) => {
   e.preventDefault(); // Prevent default form submission
   try {
-    await axios.put(`http://localhost:8080/api/v1/task/update/${task.task_ID}`, task);
+    const { ["assignedUsers"]:tmp, ...newFormatTask } = task;
+    setTask(newFormatTask);
+    console.log(rest," submiting")
+    await axios.put(`http://localhost:8080/api/v1/tasks/update`, newFormatTask);
     // Optionally, reload the data after successful submission
     RefreshTasks();
     setEditRow(false);
@@ -113,7 +116,7 @@ const onDeleteClick = async (task_ID) => {
   // console.log("Delete button clicked");
   // console.log(deliverableRelatedNo);
   try {
-    
+
     await axios.delete(`http://localhost:8080/api/v1/tasks/${task_ID}`);
     RefreshTasks();
   } catch (error) {
@@ -202,15 +205,15 @@ const onDeleteClick = async (task_ID) => {
           </div>
           <div className = {style["inputbox"]}>  
             <label>Task Name: </label>
-            <input type="text" className = {style["field"]}></input>
+            <input type="text" name="task_Name" value={task_Name}className = {style["field"]} onChange={(e)=>onInputChange(e)}></input>
           </div>
           <div className = {style["inputbox"]}>  
             <label>Start Date: </label>
-            <input type="date" className = {style["field"]} ></input>
+            <input type="date" name="start_Date"value={start_Date}className = {style["field"]} onChange={(e)=>onInputChange(e)} ></input>
           </div>
           <div className = {style["inputbox"]}>  
             <label>End Date: </label>
-            <input type="date" className = {style["field"]}></input>
+            <input type="date" name="end_Date"  value={end_Date}className = {style["field"]} onChange={(e)=>onInputChange(e)}></input>
           </div>
           <div className = {style["inputbox"]}>  
           <label>Progress</label>
@@ -225,7 +228,7 @@ const onDeleteClick = async (task_ID) => {
                 width="30%"
                 />
             </div>
-            <input type="number" value={progressValue} onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
+            <input type="number" name="progress"value={progressValue} onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
             </input>  
           {/* </Stack> */}
         </div>
@@ -242,6 +245,7 @@ const onDeleteClick = async (task_ID) => {
             }
           </div>
         </div>
+        {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
         </form>
       </div>
       </DialogContent>

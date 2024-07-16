@@ -97,3 +97,7 @@ a:hover{
     background: transparent;
     border: 2px solid #c9e1ef;
 }
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

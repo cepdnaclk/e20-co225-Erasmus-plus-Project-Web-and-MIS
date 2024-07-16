@@ -3,6 +3,7 @@ package com.example.demo.task;
 import com.example.demo.appuser.AppUser;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,8 +36,10 @@ public class TaskController {
     }
 
     @PostMapping
-    public void addTask(@RequestBody Task newTask){
+    public TaskResponse addTask(@RequestBody Task newTask){
         taskService.addTask(newTask);
+        String s = "SUCCESS: new Task added";
+        return new TaskResponse(s);
     }
 
     @PutMapping("/update")
@@ -54,6 +57,7 @@ public class TaskController {
 
         taskService.addUserToTask(taskID,userID);
     }
+
 
 
 }

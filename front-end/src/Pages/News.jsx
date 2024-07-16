@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { loggedInUser } from '../Pages/Login';
 import '../components/News.css'; // Import your CSS file
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const fetchNews = async () => {
   try {
@@ -52,6 +54,17 @@ const News = () => {
         console.error('Error adding news:', error);
       });
   };
+
+  const onDeleteClick = async (newsID) => {
+    console.log("Delete button clicked");
+    console.log(newsID);
+    try {
+      await axios.delete(`http://localhost:8080/api/v1/news/${newsID}`);
+      fetchNews();
+    } catch (error) {
+      console.error("Error deleting deliverable:", error);
+    }
+  }
 
   return (
     <>
@@ -109,6 +122,13 @@ const News = () => {
             <b><p>Date: {item.newsDate}</p></b>
             <b><p>Author: {item.newsAuthor}</p></b>
             <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a>
+            {loggedInUser.isLoggedIn && <td>
+              <div>
+                <button className="actionButton" onClick={() => onEditClick(newsData)}><FontAwesomeIcon icon={faPen}/></button>
+                <button className="actionButton" onClick={() => onViewClick(newsData)}><FontAwesomeIcon icon={faEye}/></button>
+                <button className="actionButton" onClick={() => onDeleteClick(item.newsID)}><FontAwesomeIcon icon={faTrash} /></button>
+              </div>         
+              </td>}
           </div>
         ))}
       </div>

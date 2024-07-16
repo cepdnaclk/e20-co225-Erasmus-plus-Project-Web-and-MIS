@@ -42,7 +42,7 @@ function Team() {
         <li className = "TeamMemberName">Dr. Upul Jayasinghe</li>
         <li>Manager</li>
         <li><a href="tel:+94760416590">+94 76 041 6590</a></li>
-        <li><a href="mailto:eftu@eng.pdn.ac.lk">eftu@eng.pdn.ac.lk</a></li>
+        <li><a href="mailto:eftu@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></li>
       </ul>
     </div>
 

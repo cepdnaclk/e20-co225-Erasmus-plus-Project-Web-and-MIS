@@ -1,11 +1,13 @@
 package com.example.demo.task;
 
 import com.example.demo.appuser.AppUser;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,7 +19,6 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Task_ID;
 
-//    private  //# keep track of assigner and the assignees
     private String Task_Name;
     private LocalDate Start_Date;
     private LocalDate End_Date;
@@ -32,7 +33,7 @@ public class Task {
             inverseJoinColumns = @JoinColumn(name = "User_ID")
 
     )
-    @JsonManagedReference
+    @JsonIgnoreProperties("app_user")
     private Set<AppUser> assignedUsers = new HashSet<>();
 
     public Task(){
@@ -112,4 +113,10 @@ public class Task {
     public void assignMember(AppUser user) {
         assignedUsers.add(user);
     }
+
+    public void setAssignedUsers(Set<AppUser> taskMembers){
+        for (AppUser taskMember : taskMembers) {
+            assignMember(taskMember);}
+        }
+
 }

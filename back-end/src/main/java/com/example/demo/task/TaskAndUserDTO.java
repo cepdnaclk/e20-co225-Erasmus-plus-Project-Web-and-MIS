@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Setter
 @Getter
 @Data
@@ -13,7 +15,7 @@ public class TaskAndUserDTO {
 
 
         private Task task;
-        private AppUser appUser;
+        private Set<AppUser> appUsers;
 
         public TaskAndUserDTO() {
         }
@@ -21,13 +23,18 @@ public class TaskAndUserDTO {
         /**
          * Constructor for TaskAndUserDTO with parameters.
          */
-        public TaskAndUserDTO(Task task, AppUser appUser) {
+        public TaskAndUserDTO(Task task, Set <AppUser> appUsers) {
             this.task = task;
-            this.appUser = appUser;
+            this.appUsers = appUsers;
         }
 
-//    public static Task getTask() {
-//    }
+    public Task getTask() {
+        return this.task;
+        }
+
+    public Set<AppUser> getUsers(){
+            return  this.appUsers;
+    }
 //}
 
 

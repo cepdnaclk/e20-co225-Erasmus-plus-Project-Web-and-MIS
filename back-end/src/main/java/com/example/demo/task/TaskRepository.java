@@ -2,6 +2,7 @@ package com.example.demo.task;
 
 import com.example.demo.appuser.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -18,7 +19,9 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
     @Query("SELECT t FROM Task t where ?1 member of t.assignedUsers")
     List<Task> findTasksByUser(AppUser user);
 
-//    @Query("UPDATE Task t SET t.assignedUsers = :newAssignedUsers WHERE t.id = :taskId" )
-//    void  updateAssignedMembers(Set<AppUser> newAssignedUsers,int taskId );
+//    @Modifying
+//    @Query("UPDATE Task t SET t.assignedUsers = t.assignedUsers - ?1 WHERE t IN (SELECT t FROM Task t WHERE ?1 member of t.assignedUsers)")
+//    void deleteUserFromTasks(AppUser user);
+
 }
 

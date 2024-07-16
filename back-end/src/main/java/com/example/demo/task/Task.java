@@ -26,7 +26,7 @@ public class Task {
     private String Subtasks;
     private float Progress;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "assigned_tasks",
             joinColumns = @JoinColumn (name = "Task_ID"),

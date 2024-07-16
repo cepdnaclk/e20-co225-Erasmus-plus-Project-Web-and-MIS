@@ -6,9 +6,10 @@ import {appUserRole,userID} from "../Pages/Login";
 import style from "../components/ProjectManagement.module.css";
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import CloseIcon from '@mui/icons-material/Close';
-import { Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField,Slider, Input } from "@mui/material";
-import { alignProperty } from "@mui/material/styles/cssUtils";
-import { Form } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Dialog, DialogActions, DialogContent, Stack,Slider } from "@mui/material";
+
 
 const ProjectManagement = () => {
   const [users,setUsers] = useState([]);
@@ -56,8 +57,8 @@ const onInputChange=(e)=>{
 //When 'Add New' button is clicked : Only For Add New
 const onAddNewClicked=()=>{
   setShowInterface(true);
-  // setAddRow(true);
-  // setEditRow(false);
+  setAddRow(true);
+  setEditRow(false);
   // setViewRow(false); 
   setTask({
     task_Name:"",
@@ -72,11 +73,11 @@ const onAddNewClicked=()=>{
 const onAddSubmit = async (e) => {
   e.preventDefault(); // Prevent default form submission
   try {
-    await axios.post("http://localhost:8080/tasks", task);
+    await axios.post("http://localhost:8080/api/v1/tasks", task);
     //  reload the data after successful submission
     RefreshTasks();
     // Clear the form fields after successful submission if needed
-    // setAddRow(false);
+    setAddRow(false);
     setShowInterface(false);
   } catch (error) {
     console.error("Error adding deliverable:", error);
@@ -88,8 +89,8 @@ const onAddSubmit = async (e) => {
 const onEditClick = (task) => {
   setTask(task);
   setShowInterface(true);
-  // setAddRow(false);
-  // setEditRow(true);
+  setAddRow(false);
+  setEditRow(true);
   // setViewRow(false); 
 }
 
@@ -97,10 +98,10 @@ const onEditClick = (task) => {
 const onUpdateSubmit = async (e) => {
   e.preventDefault(); // Prevent default form submission
   try {
-    await axios.put(`http://localhost:8080/task/update/${task.task_ID}`, task);
+    await axios.put(`http://localhost:8080/api/v1/task/update/${task.task_ID}`, task);
     // Optionally, reload the data after successful submission
     RefreshTasks();
-    // setEditRow(false);
+    setEditRow(false);
     setShowInterface(false);
   } catch (error) {
     console.error("Error editing tasks:", error);
@@ -112,7 +113,8 @@ const onDeleteClick = async (task_ID) => {
   // console.log("Delete button clicked");
   // console.log(deliverableRelatedNo);
   try {
-    await axios.delete(`http://localhost:8080/tasks/delete/${task_ID}`);
+    
+    await axios.delete(`http://localhost:8080/api/v1/tasks/${task_ID}`);
     RefreshTasks();
   } catch (error) {
     console.error("Error deleting tasks:", error);
@@ -190,42 +192,58 @@ const onDeleteClick = async (task_ID) => {
 
     {/* // a popup to add a new task */}
     <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
-      <DialogTitle>New Task</DialogTitle>
       <DialogContent >
-        <Stack spacing={1} margin={2} alignItems="center">
+        {/* <Stack spacing={1} margin={2} alignItems="center"> */}
           {/* <Form></Form> */}
-        <label>Task Name: </label>
-        <input type="text" style={{width:"30%", backgroundColor:"white"}}></input>
-        
-        <label>Start Date: </label>
-        <input type="date" style={{width:"30%"}}></input>
-        
-        <label>End Date: </label>
-        <input type="date" style={{width:"30%"}}></input>
-        
-        <label>Progress</label>
-        <Stack  direction="row" width="30%" spacing={2} >      
-        <Slider 
-           onChange={changeProgressValue}
-            aria-label="Progress"
-            value={typeof progressValue === 'number' ? progressValue : 0}
-            min={0}
-            max={100}
-            />
-        <input type="number" value={progressValue} onChange={changeProgressValue} defaultValue={0} style={{width:"30%", backgroundColor:"white" ,color:"black"}}>
-        </input>  
-      </Stack>
-
-      <label>Team Members:</label>
-      {
-        users.map((user) => (
-          <div>
-          <label>{user.firstName+" "+user.lastName}</label>
-          <input type="checkbox" value="false" ></input>
+        <div className = "dataForm"> 
+        <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
+          <div className = {style["formTitle"]}>
+              <h3>{editRow ? "Edit Entry" : "Add a New Entry"}</h3> 
           </div>
-        ))
-      }
-        </Stack>
+          <div className = {style["inputbox"]}>  
+            <label>Task Name: </label>
+            <input type="text" className = {style["field"]}></input>
+          </div>
+          <div className = {style["inputbox"]}>  
+            <label>Start Date: </label>
+            <input type="date" className = {style["field"]} ></input>
+          </div>
+          <div className = {style["inputbox"]}>  
+            <label>End Date: </label>
+            <input type="date" className = {style["field"]}></input>
+          </div>
+          <div className = {style["inputbox"]}>  
+          <label>Progress</label>
+            {/* <Stack  direction="row" width="30%" spacing={2} >       */}
+            <div style={{width:"30%"}}>
+            <Slider 
+              onChange={changeProgressValue}
+                aria-label="Progress"
+                value={typeof progressValue === 'number' ? progressValue : 0}
+                min={0}
+                max={100}
+                width="30%"
+                />
+            </div>
+            <input type="number" value={progressValue} onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
+            </input>  
+          {/* </Stack> */}
+        </div>
+        <div className = {style["inputbox"]}>  
+            <label>Team Members:</label>
+            <div class={style["checkBoxContainer"]}>
+            {
+              users.map((user) => (
+                <div>
+                <input type="checkbox" value={user.id} ></input>
+                <label>{user.firstName+" "+user.lastName}</label>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        </form>
+      </div>
       </DialogContent>
       <DialogActions>
          <Button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>}>Close</Button>
@@ -251,11 +269,11 @@ const onDeleteClick = async (task_ID) => {
               {/* link storing financial report location */}
               <div><a href="https://www.facebook.com/UniversityOfPeradeniya" target="_blank" rel="noopener noreferrer">Financial Report</a> </div>
               
-          {/* <div>
-              <button className={style['actionButton']} onClick={() => onEditClick(deliverable)}><FontAwesomeIcon icon={faPen}/></button>
-              <button className={style['actionButton']} onClick={() => onViewClick(deliverable)}><FontAwesomeIcon icon={faEye}/></button>
-              <button className={style['actionButton']} onClick={() => onDeleteClick(deliverable.deliverableRelatedNo)}><FontAwesomeIcon icon={faTrash} /></button>
-          </div> */}
+          {isAdmin &&
+            <div>
+              <button className={style['actionButton']} onClick={() => onEditClick(item)}><FontAwesomeIcon icon={faPen}/></button>
+              <button className={style['actionButton']} onClick={() => onDeleteClick(item.task_ID)}><FontAwesomeIcon icon={faTrash} /></button>
+          </div>}
               </div>
               
           ))
@@ -266,30 +284,6 @@ const onDeleteClick = async (task_ID) => {
         }
       
      </div>
-      {/* //personal tasks */}
-      {/* <div class={isAdmin ? style["hideDiv"]:style["showDiv"]}>
-      <Button onClick={getPersonalTaskInfo} variant="outlined" startIcon={<RefreshIcon />}>
-          Refresh
-     </Button>
-      {
-          tasks.map((item) => (
-            <div key={item.task_ID} className="tasks-card">
-              <h2>{item.task_Name}</h2>
-              <p>{item.newsDescription}</p>
-              <b><p>Start Date: {item.start_Date}</p></b>
-              <b><p>End Date: {item.end_Date}</p></b>
-              <b><p>Progress: {item.progress}</p></b>
-              <a href="" target="_blank" rel="noopener noreferrer">Financial Report</a>
-            </div>
-          ))
-        }
-        {
-          !taskListNotEmpty && 
-            <h1> No tasks assigned yet</h1>
-        }
-
-     
-   </div> */}
       </>
     );
   // }

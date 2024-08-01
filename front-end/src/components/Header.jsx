@@ -87,6 +87,8 @@ function Header(){
 
             {/* Navigation bar */}
             <nav className = "headerNavBar">
+                <Link to = '/'></Link>
+
                 {/* Hamburger menu */}
                 <div className='menu' onClick={() => 
                     setMenuOpen(!menuOpen)
@@ -96,7 +98,6 @@ function Header(){
                     <span></span>
                 </div>
                 <ul className= {menuOpen ? "open" : ""}>
-                    
                 <ul className="adminNavBarLeft">
                     {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
                     {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
@@ -128,16 +129,10 @@ function Header(){
 
             {/* Top Navigation Bar for Administration  */}
             <div>
-                <nav class={loggedInUserState ? "adminNavBar":"non-logged-user-panel"} >                
-                    {/* <div>
-                        
-                            <li><Link to = '/admin/dashboard'>DASHBOARD</Link></li>
-                            <li><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>
-                            <li><Link to = '/admin/repository'>REPOSITORY</Link></li>
-                        </ul>
-                    </div> */}
+                <nav class="adminNavBar" >                
+                    
                     <div>
-                        <ul className="adminNavBarRight">                  
+                        <ul className={loggedInUserState ? "adminNavBarRight":"non-logged-user-panel"}>                  
                             <span id="switchLabel">{isEditMode ? "Edit Mode" : "View Mode"}</span>
                             <li><Switch 
                                         onChange={handleToggle} 

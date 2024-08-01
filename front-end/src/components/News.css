@@ -71,6 +71,9 @@
   color: black;
   font-family:'Times New Roman', Times, serif;
 }
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
 
 .form-group input[type="text"],
 .form-group input[type="url"],

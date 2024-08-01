@@ -15,6 +15,7 @@
     margin-right: 5%;
     margin-bottom: 2%;
     text-align: left;
+    font-family: 'Caudex';
 }
 
 .container {
@@ -97,11 +98,12 @@ color:#004594ca ;
   margin-bottom: 2%;
   text-align: center;
   color: white;
+  font-family: 'Caudex';
 }
 
-.proj_desc:hover {
+/* .proj_desc:hover {
   transform: scale(1.05);
-}
+} */
 
 
 

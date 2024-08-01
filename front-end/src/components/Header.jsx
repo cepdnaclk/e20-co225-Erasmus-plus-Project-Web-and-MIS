@@ -84,16 +84,58 @@ function Header(){
 
     return(
         <header>
+
+            {/* Navigation bar */}
+            <nav className = "headerNavBar">
+                {/* Hamburger menu */}
+                <div className='menu' onClick={() => 
+                    setMenuOpen(!menuOpen)
+                }>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul className= {menuOpen ? "open" : ""}>
+                    
+                <ul className="adminNavBarLeft">
+                    {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}
+                </ul>
+                    <li><Link to = '/' onClick={handleLinkClick}>Home</Link></li>
+                                  
+                    <li className = "headerDropDown">
+                    <Link to = '#'>Project Overview &nbsp; &nbsp; &#x25BC;</Link>
+                        <div className = "dropdown-content">
+                            <Link to = '/project overview/overview' onClick={handleLinkClick}>Overview</Link>
+                            <Link to = '/project overview/workplan' onClick={handleLinkClick}>Cycle Workplan</Link>
+                            <Link to = '/project overview/deliverables' onClick={handleLinkClick}>Deliverables</Link>
+                        </div>
+                        </li>
+                    <li><Link to = '/team' onClick={handleLinkClick}>Team</Link></li>
+                    <li className = "headerDropDown">
+                    <Link to = '#'>News & Events &nbsp; &nbsp; &#x25BC;</Link>
+                        <div className = "dropdown-content">
+                            <Link to = '/news & events/news' onClick={handleLinkClick}>News & Events</Link>
+                            <Link to = '/news & events/gallery' onClick={handleLinkClick}>Gallery</Link>
+                        </div>
+                    </li>
+                    <li><Link to = '/downloads' onClick={handleLinkClick}>Downloads</Link></li>
+                    <li><Link to = '/contact' onClick={handleLinkClick}>contact</Link></li>
+                </ul>
+            </nav>
+
             {/* Top Navigation Bar for Administration  */}
             <div>
                 <nav class={loggedInUserState ? "adminNavBar":"non-logged-user-panel"} >                
-                    <div>
-                        <ul className="adminNavBarLeft">
+                    {/* <div>
+                        
                             <li><Link to = '/admin/dashboard'>DASHBOARD</Link></li>
                             <li><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>
                             <li><Link to = '/admin/repository'>REPOSITORY</Link></li>
                         </ul>
-                    </div>
+                    </div> */}
                     <div>
                         <ul className="adminNavBarRight">                  
                             <span id="switchLabel">{isEditMode ? "Edit Mode" : "View Mode"}</span>
@@ -168,6 +210,8 @@ function Header(){
                     <hr></hr>                        
                 </div>
             </div>
+
+            
             {isVisible && <div className='top-login-bar'><Link to = '/login'><button className="Login-button" onClick={handleLinkClick}>LOGIN</button></Link></div>}
     
             <div className='logo-block'>
@@ -185,44 +229,7 @@ function Header(){
             {/* Sub heading */}
             <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cyber security</span></h2>
 
-            {/* Navigation bar */}
-            <nav className = "headerNavBar">
-                <Link to = '/'></Link>
-
-                {/* Hamburger menu */}
-                <div className='menu' onClick={() => 
-                    setMenuOpen(!menuOpen)
-                }>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <ul className= {menuOpen ? "open" : ""}>
-                    <li><Link to = '/' onClick={handleLinkClick}>HOME</Link></li>
-                    {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}                  
-                    <li className = "headerDropDown">
-                    <Link to = '#'>PROJECT OVERVIEW &nbsp; &nbsp; &#x25BC;</Link>
-                        <div className = "dropdown-content">
-                            <Link to = '/project overview/overview' onClick={handleLinkClick}>Overview</Link>
-                            <Link to = '/project overview/workplan' onClick={handleLinkClick}>Cycle Workplan</Link>
-                            <Link to = '/project overview/deliverables' onClick={handleLinkClick}>Deliverables</Link>
-                        </div>
-                        </li>
-                    <li><Link to = '/team' onClick={handleLinkClick}>TEAM</Link></li>
-                    <li className = "headerDropDown">
-                    <Link to = '#'>NEWS & EVENTS &nbsp; &nbsp; &#x25BC;</Link>
-                        <div className = "dropdown-content">
-                            <Link to = '/news & events/news' onClick={handleLinkClick}>News & Events</Link>
-                            <Link to = '/news & events/gallery' onClick={handleLinkClick}>Gallery</Link>
-                        </div>
-                    </li>
-                    <li><Link to = '/downloads' onClick={handleLinkClick}>DOWNLOADS</Link></li>
-                    <li><Link to = '/contact' onClick={handleLinkClick}>CONTACT</Link></li>
-                </ul>
-            </nav>
+            
         </header>
     );
 }

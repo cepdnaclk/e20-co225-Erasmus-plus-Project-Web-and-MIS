@@ -56,7 +56,7 @@
 .Login-button{
   position: absolute;
   right: 30px;
-  padding: 10px 20px;
+  padding: 8px 20px;
   font-size: 16px;
   background-color: #203a90;
   text-decoration: none;
@@ -66,6 +66,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   color: #ffffff;
+  top: 2px;
 }
 
 .Login-button:hover {

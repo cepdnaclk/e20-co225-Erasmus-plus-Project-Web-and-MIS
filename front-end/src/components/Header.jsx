@@ -130,7 +130,7 @@ function Header(){
             {/* Top Navigation Bar for Administration  */}
             <div>
                 <nav class="adminNavBar" >                
-                    
+                {isVisible && <div className='top-login-bar'><Link to = '/login'><button className="Login-button" onClick={handleLinkClick}>LOGIN</button></Link></div>}
                     <div>
                         <ul className={loggedInUserState ? "adminNavBarRight":"non-logged-user-panel"}>                  
                             <span id="switchLabel">{isEditMode ? "Edit Mode" : "View Mode"}</span>
@@ -207,7 +207,7 @@ function Header(){
             </div>
 
             
-            {isVisible && <div className='top-login-bar'><Link to = '/login'><button className="Login-button" onClick={handleLinkClick}>LOGIN</button></Link></div>}
+            
     
             <div className='logo-block'>
             {/* Erasmus logo */}

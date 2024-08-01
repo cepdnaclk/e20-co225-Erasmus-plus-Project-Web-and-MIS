@@ -56,7 +56,7 @@
 .Login-button{
   position: absolute;
   right: 30px;
-  padding: 10px 20px;
+  padding: 8px 20px;
   font-size: 16px;
   background-color: #203a90;
   text-decoration: none;
@@ -66,6 +66,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   color: #ffffff;
+  top: 2px;
 }
 
 .Login-button:hover {
@@ -110,12 +111,12 @@
   align-items: center;
   background-color: rgb(255, 255, 255, 0.9);
   /* padding: 1rem; */
-  padding: 1.5rem 5px;
+  padding: 20px 5px;
   height: 2rem;
   position: fixed;
-  top: 27px; /* Adjust based on the height of the adminNavBar */
+  top: 34px; /* Adjust based on the height of the adminNavBar */
   width: 100%;
-  z-index: 1000;
+  z-index: 900;
   font-family:'Caudex';
   font-size: 18px;
 }
@@ -142,7 +143,7 @@
 }
 
 .headerNavBar ul li a:hover {
-  background-color: #203a90;
+  background-color: rgba(219, 238, 251, 0.9);
   border-radius: 5px;
 } 
 
@@ -159,7 +160,7 @@
 .headerNavBar .menu span{
   height: 0.2rem;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #203a90;
   border-radius: 0.2rem;
 }
 
@@ -168,20 +169,18 @@
   position: absolute;
   padding: 12px 0;
   left: 0;
-  background-color: #172953;
+  background-color: rgb(255, 255, 255, 0.9);
   min-width: 100%;
   height: auto;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 .headerNavBar .headerDropDown:hover .dropdown-content {
   display: block;
-  border-radius: 5px;
 }
 
 .headerNavBar .headerDropDown .dropdown-content a {
-  color: white;
+  color: #203a90;
   padding: 0.5rem;
   text-decoration: none;
   display: block;
@@ -190,7 +189,7 @@
 }
 
 .headerNavBar .headerDropDown .dropdown-content a:hover {
-  background-color: #203a90;
+  background-color: rgba(219, 238, 251, 0.9);
 }
 /* CSS Styling - Top Navigation Bar for Administration  */
 
@@ -205,6 +204,7 @@
   position: fixed;
   top: 0rem;
   width: 100%;
+  height: 25px;
   background-color: #334195;
   z-index: 1000; /* Ensure it's above the headerNavBar */
 }
@@ -258,6 +258,7 @@
   transition: transform 2s ease, opacity 0.5s ease;
   position: relative;
   padding:0;
+  right: 2.5%;
   margin:0;
   color: #ffffff;
   align-items: center;
@@ -301,11 +302,11 @@
 /* Dropdown menu - User Account  */
 .userAccount-Open{
   position : absolute;
-  top: 75px;
-  right: 2.5%;
+  top: 40px;
+  right: 1.5%;
   width: 250px;
   max-height: 500px;
-  z-index: 30;  /*change this */
+  z-index: 1000;  /*change this */
   border: 1px solid #ccc;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
@@ -385,11 +386,12 @@
   width: 250px;
   height:100vh;
   max-height: 500px;
-  z-index: 30;  /*change this */
+  z-index: 1000; 
   border: 1px solid #ccc;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   padding:20px;
+
 }
 .sideBar-Close{
   display: none;
@@ -514,14 +516,14 @@
     position: absolute; /* Position the dropdown absolutely */
     top: 2rem; /* Adjust the top position to be below the hamburger icon */
     left: 0; /* Align with the left edge */
-    background-color: #172953; /* Background color to match the navbar */
+    background-color: rgb(255, 255, 255, 0.9); /* Background color to match the navbar */
     z-index: 999;
   }
 
   .headerNavBar ul.open{
     display: flex;
     width: 100%;
-    background-color: #172953;
+    background-color: rgb(255, 255, 255, 0.9);
   }
 
   .headerNavBar ul li {

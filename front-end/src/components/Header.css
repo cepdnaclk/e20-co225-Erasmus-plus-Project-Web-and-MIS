@@ -12,6 +12,7 @@
   }
   body{
     margin: 0px;
+    padding-top: calc(70px + 2rem);
   }
   
   main{
@@ -20,22 +21,23 @@
   a {
     font-weight: 600;
     font-size: 0.9em;
-    color: white;
+    color: #203a90;
     text-decoration: none;
   }
   
   h1 {
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Playfair Display';
     text-align: center;
-    font-size: 5em;
+    font-size: 5.5em;
     margin-bottom: 0px;
     margin-top: 0px;
+    font-weight: 1000px;
   }
   
   h2 {
-    font-family:'Times New Roman', Times, serif;
+    font-family:'Caudex';
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.7em;
     margin-top: 0px;
   }
 
@@ -54,7 +56,6 @@
 .Login-button{
   position: absolute;
   right: 30px;
-  margin-top: 2px;
   padding: 10px 20px;
   font-size: 16px;
   background-color: #203a90;
@@ -103,14 +104,23 @@
 }
  /* Header Navigation Bar */
 
-.headerNavBar {
+ .headerNavBar {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
-  background-color: #172953;
-  padding: 1rem;
+  background-color: rgb(255, 255, 255, 0.9);
+  /* padding: 1rem; */
+  padding: 1.5rem 5px;
   height: 2rem;
+  position: fixed;
+  top: 27px; /* Adjust based on the height of the adminNavBar */
+  width: 100%;
+  z-index: 1000;
+  font-family:'Caudex';
+  font-size: 18px;
 }
+
+
 
 .headerNavBar ul{
   display: flex;
@@ -125,7 +135,7 @@
 .headerNavBar ul li a{
   display: block;
   text-decoration: none;
-  color: white;
+  color: #203a90;
   padding: 0.5rem;
   margin: 0 0.5rem;
   white-space: nowrap; /* Ensures the text doesn't wrap */
@@ -133,7 +143,7 @@
 
 .headerNavBar ul li a:hover {
   background-color: #203a90;
-  border-radius: 3em;
+  border-radius: 5px;
 } 
 
 .headerNavBar .menu{
@@ -156,16 +166,18 @@
 .headerNavBar .headerDropDown .dropdown-content {
   display: none;
   position: absolute;
+  padding: 12px 0;
   left: 0;
   background-color: #172953;
   min-width: 100%;
+  height: auto;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 .headerNavBar .headerDropDown:hover .dropdown-content {
   display: block;
-  border-radius: 0.5em;
+  border-radius: 5px;
 }
 
 .headerNavBar .headerDropDown .dropdown-content a {
@@ -174,7 +186,7 @@
   text-decoration: none;
   display: block;
   text-align: left;
-  border-radius: 3em;
+  border-radius: 5px;
 }
 
 .headerNavBar .headerDropDown .dropdown-content a:hover {
@@ -182,20 +194,21 @@
 }
 /* CSS Styling - Top Navigation Bar for Administration  */
 
-.adminNavBar{
-  position: absolute;
+.adminNavBar {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: right;
   align-items: center;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 8px 15px;
-  position: sticky;
-  top: 0;
-  background-color: #172953;
-  z-index: 1000;
+  position: relative;
+  flex-direction: row;
+  font-family:'Caudex';
+  padding: 8px 4px;
+  position: fixed;
+  top: 0rem;
+  width: 100%;
+  background-color: #334195;
+  z-index: 1000; /* Ensure it's above the headerNavBar */
 }
+
 .adminNavBar div{
   margin :0;
   padding:0;
@@ -219,19 +232,9 @@
   position: relative;
 }
 
-.adminNavBarLeft li a { 
-  
-  color:rgb(50, 78, 148);
-  background-color: white;
-  border: 2px solid rgb(50, 78, 148);
-  border-radius: .25rem;
-  padding: 8px 10px;
+.adminNavBarLeft li a {  
   text-align: center;
   display: inline-block;
-  font-size: 16px;
-  font-family:'Times New Roman', Times, serif;
-  cursor: pointer;
-  float: left;
 }
 
 .adminNavBarLeft li :not(:last-child) {
@@ -242,9 +245,9 @@
    background-color:rgb(50, 78, 148, 0.25); 
 }
 
-.adminNavBarLeft li a:hover{
+/* .adminNavBarLeft li a:hover{
   background-color: #eef1fb
-}
+} */
 
 /* Right side of theTop Navigation Bar for Administration*/
 
@@ -467,10 +470,6 @@
 
 @media (max-width: 968px) {
 
-  .adminNavBarLeft{
-    display: none;
-  }
-
   h1 {
     font-size: 3em;
     font-weight: 700;
@@ -548,11 +547,5 @@
     width: 100%;
     padding: 0.5rem 2rem;
     text-align: left;
-  }
-}
-
-@media screen and (min-width: 968px) {
-  .adminNavBarLeftListItem{
-    display: none;
   }
 }

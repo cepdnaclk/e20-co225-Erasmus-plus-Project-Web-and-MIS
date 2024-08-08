@@ -34,14 +34,19 @@ public class FileController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileEntity.getFileName() + "\"")
                 .body(new ByteArrayResource(fileEntity.getData()));
     }
+    
 
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file,
+                                             @RequestParam("displayName") String displayName,
+                                             @RequestParam("visibleToAll") boolean visibleToAll) {
         try {
             fileService.saveFile(new FileEntity(
                     file.getOriginalFilename(),
                     file.getContentType(),
-                    file.getBytes()
+                    file.getBytes(),
+                    displayName,
+                    visibleToAll
             ));
             return ResponseEntity.ok("File uploaded successfully");
         } catch (IOException e) {

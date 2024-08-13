@@ -5,7 +5,7 @@ import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
 import {loggedInUser} from '../Pages/Login'
 
 function Header(){
@@ -93,9 +93,7 @@ function Header(){
                 <div className='menu' onClick={() => 
                     setMenuOpen(!menuOpen)
                 }>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <FontAwesomeIcon icon={faBars} />   
                 </div>
                 <ul className= {menuOpen ? "open" : ""}>
                 <ul className="adminNavBarLeft">

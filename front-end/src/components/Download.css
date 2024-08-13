@@ -7,96 +7,147 @@
   font-size: 20px;
 }
 
-.uploadSection {
+.upload-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border: 1px solid hsl(222, 83%, 98%);
-  background-color: #ffffff;
   margin: 20px auto;
-  width: auto;
+  width: 90%;
+}
+
+.addcancelbutton {
+  background-color: hsl(211, 44%, 66%);
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.addcancelbutton:hover {
+  background-color: hsl(211, 40%, 69%);
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1.5px solid hsl(222, 83%, 98%);
   box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
               -2px -2px 5px rgba(255, 255, 255, 0.7), 
               2px -2px 5px rgba(255, 255, 255, 0.7), 
               -2px 2px 5px rgba(63, 108, 148, 0.1);
+  width: 90%;
+  max-width: 400px;
   margin-left: 5%;
-  margin-right: 5%; 
-  margin-bottom: 5%;
+  margin-right: 5%;
 }
 
-.uploadSection input[type="file"] {
-  margin-right: 10px;
+.upload-form h4 {
+  font-size: 24px;
+  color: #203a90;
 }
 
-.uploadSection button {
-  width: 110px;
-  height: 40px;
-  background: hsl(211, 44%, 66%);
+.upload-form input[type="file"],
+.upload-form input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid hsl(210, 20%, 85%);
+  box-shadow: inset 0px 1px 2px rgba(161, 195, 235, 0.1);
+}
+
+.upload-form input[type="text"] {
+  font-size: 16px;
+  color: black;
+}
+
+.upload-form label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: hsl(0, 0%, 30%);
+  margin-bottom: 15px;
+}
+
+.upload-form button {
+  width: 100%;
+  max-width: 150px;
+  height: 45px;
+  background: #203a90;
   border-radius: 6px;
   border: none;
+  color: #ffffff;
   cursor: pointer;
   font-size: 16px;
-  font: #ffffff;
-  color: #000000;
-  margin-left: 20px;
+  /* font-weight: bold; */
+  /* transition: background 0.3s ease, transform 0.2s ease; */
 }
 
-.uploadSection button:hover {
-  background: hsl(211, 40%, 69%);
-  color: #2a2929;
+.upload-form button:hover {
+  background: hsl(211, 46%, 50%);
+  transform: scale(1.02);
+}
+
+.upload-form button:active {
+  transform: scale(0.98);
 }
 
 .downloadSection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  display: left;
+  background-color: hsl(0, 0%, 100%);;
   margin-left: 5%;
-  margin-bottom: 5%;
-  width: auto;
+  margin-right: 5%; 
+  margin-bottom: 2%;
 }
 
 
 .fileItem {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
   padding: 10px;
   background: rgb(255, 255, 255);
   box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
               -2px -2px 5px rgba(255, 255, 255, 0.7), 
               2px -2px 5px rgba(255, 255, 255, 0.7), 
               -2px 2px 5px rgba(63, 108, 148, 0.1);
-  width: 250px;
+  width: auto;
 }
 
 .fileItem p {
-  margin: 10px 0;
-  text-align: center;
+  /* margin: 10px 0; */
+  text-align: left;
 }
 
 .downloadSection button {
-  width: 110px;
-  height: 40px;
-  background: hsl(211, 44%, 66%);
-  border-radius: 6px;
+  background: hsl(0, 0%, 100%);
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  color: #000000;
-  margin-top: 10px;
+  color: #4773a6;
+  margin-left: 1%;
+  align-items: right;
 }
 
 .downloadSection button:hover {
-  background: hsl(211, 40%, 69%);
-  color: #2a2929;
+  background: hsl(0, 0%, 100%);
+  color: #9bbcd0;
 }
 
 .downloadSection img {
   width: auto;
-  height: 200px;
-  margin-bottom: 10px;
+  height: 40px;
+  margin-right: 1%;
+  margin-top: 10px;
 }
 
 .downloadLinks {
@@ -145,14 +196,24 @@
   cursor: pointer;
   font-size: 16px;
   color: #ffffff;
-  margin-bottom: 30px;
-  margin-left: 5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: center;
 }
 
-@media (max-width: 600px) {
+
+
+
+
+
+@media (max-width: 760px) {
 
   .downloadSection {
     flex-direction: column;
     align-items: center;
+  }
+
+  .downloadSection img {
+    display: none;
   }
 }

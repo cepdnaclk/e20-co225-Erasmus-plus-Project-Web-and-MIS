@@ -3,9 +3,14 @@ import axios from 'axios';
 import fileDownload from '../assets/download.png';
 import fileDownload1 from '../assets/download2.png';
 import { loggedInUser } from '../Pages/Login';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload ,faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 const FileUploadDownload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [displayName, setDisplayName] = useState('');
+  const [visibleToAll, setVisibleToAll] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -27,14 +32,24 @@ const FileUploadDownload = () => {
     setSelectedFile(event.target.files[0]);
   };
 
+  const handleDisplayNameChange = (event) => {
+    setDisplayName(event.target.value);
+  };
+
+  const handleVisibilityChange = (event) => {
+    setVisibleToAll(event.target.checked);
+  };
+
   const handleUpload = async () => {
-    if (!selectedFile) {
-      alert('Please select a file first!');
+    if (!selectedFile || !displayName) {
+      alert('Please select a file and enter a display name!');
       return;
     }
 
     const formData = new FormData();
     formData.append('file', selectedFile);
+    formData.append('displayName', displayName);
+    formData.append('visibleToAll', visibleToAll);
 
     try {
       const response = await axios.post('http://localhost:8080/api/v1/files/upload', formData, {
@@ -46,6 +61,8 @@ const FileUploadDownload = () => {
       if (response.status === 200) {
         alert('File uploaded successfully');
         setSelectedFile(null);
+        setDisplayName('');
+        setVisibleToAll(false);
         setShowUploadForm(false);
         fetchUploadedFiles();
       } else {
@@ -53,7 +70,8 @@ const FileUploadDownload = () => {
       }
     } catch (error) {
       console.error('There was an error uploading the file!', error);
-      setErrorMessage('File upload failed. Please try again.');
+      // setErrorMessage('File upload failed. Please try again.');
+      alert('File upload failed. Please try again.');
     }
   };
 
@@ -104,22 +122,35 @@ const FileUploadDownload = () => {
           <h4>Downloads For Students and PGIS Staff</h4>
           <img src={fileDownload1} alt="fileDownload1" />
           <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/students.php">
-            <p>Students</p>
+            <p>PGIS Downloads page for Students</p>
           </a>
           <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/staff.php">
-            <p>PGIS Staff</p>
+            <p>PGIS Downloads page for Staff</p>
           </a>
         </nav>
       </div>
 
       {loggedInUser.isLoggedIn && (
-        <div>
-          <button className = "addcancelbutton" onClick={() => setShowUploadForm(!showUploadForm)}>
+        <div className="upload-section">
+          <button className="addcancelbutton" onClick={() => setShowUploadForm(!showUploadForm)}>
             {showUploadForm ? 'Cancel' : 'Add File'}
           </button>
           {showUploadForm && (
-            <div className="uploadSection">
+            <div className="upload-form">
+              <h4>Add a New File</h4>
               <input type="file" onChange={handleFileChange} />
+              <input
+                type="text"
+                placeholder="Enter a Display Name"
+                value={displayName}
+                onChange={handleDisplayNameChange}
+              />
+              <label>
+                <input
+                  type="checkbox"
+                  checked={visibleToAll}
+                  onChange={handleVisibilityChange}
+                /> Set Visible to All </label>
               <button onClick={handleUpload}>Upload File</button>
             </div>
           )}
@@ -130,14 +161,17 @@ const FileUploadDownload = () => {
 
       <div className="downloadSection">
         {uploadedFiles.map((file) => (
-          <div key={file.fileId} className="fileItem">
-            <span><p>{file.fileName}</p></span>
-            <img src={fileDownload} alt="fileDownload" />
-            <button onClick={() => handleDownload(file.fileId, file.fileName)}>Download</button>
-            {loggedInUser.isLoggedIn && (
-              <button onClick={() => handleDelete(file.fileId)}>Delete</button>
-            )}
-          </div>
+          (file.visibleToAll || loggedInUser.isLoggedIn) && (
+            <div key={file.fileId} className="fileItem">
+              <img src={fileDownload} alt="fileDownload" />
+              <span><p>{file.displayName}</p></span>
+              
+              <button onClick={() => handleDownload(file.fileId, file.fileName)}><FontAwesomeIcon icon={faDownload} /></button>
+              {loggedInUser.isLoggedIn && (
+                <button onClick={() => handleDelete(file.fileId)}><FontAwesomeIcon icon={faTrash}/></button>
+              )}
+            </div>
+          )
         ))}
       </div>
     </div>

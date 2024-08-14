@@ -185,7 +185,7 @@ function Header(){
                 </div>
 
                 {/* Side Bar - Notifications */}
-                <div class= {showNotifications ? "sideBar-Open" : "sideBar-Close"}>
+                <div class= {showNotifications ? "sideBarNotifications-Open" : "sideBar-Close"}>
                             
                     <div className="siderBarTitle">
                         <h3>Notifications</h3>
@@ -195,7 +195,7 @@ function Header(){
                 </div>
 
                 {/* Side Bar - chatBox */}
-                <div class= {showChat ? "sideBar-Open" : "sideBar-Close"}>
+                <div class= {showChat ? "sideBarMessages-Open" : "sideBar-Close"}>
                             
                     <div className="siderBarTitle">
                         <h3>Messages</h3>

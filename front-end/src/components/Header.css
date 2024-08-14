@@ -1,6 +1,5 @@
 :root {
     font-weight: 400;
-    background-image: url(../assets/2.jpg);
     color-scheme: light dark;
     color: rgba(0, 0, 0, 0.87);
     background-color: #ffffff;
@@ -301,13 +300,14 @@
 
 /* Dropdown menu - User Account  */
 .userAccount-Open{
-  position : absolute;
-  top: 40px;
-  right: 1.5%;
+  position : fixed;
+  top: 6%;
+  right: 0.5%;
   width: 250px;
   max-height: 500px;
   z-index: 1000;  /*change this */
   border: 1px solid #ccc;
+  border-radius: 4px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   padding:20px;
@@ -379,15 +379,32 @@
 }
 /* Slider Bar for chatBox and Notificaions  */
 
-.sideBar-Open{
-  position : absolute;
-  top: 75px;
-  right: 2.5%;
+.sideBarNotifications-Open{
+  position : fixed;
+  top: 6%;
+  right: 3%;
   width: 250px;
   height:100vh;
   max-height: 500px;
   z-index: 1000; 
   border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding:20px;
+
+}
+
+.sideBarMessages-Open{
+  position : fixed;
+  top: 6%;
+  right: 5.5%;
+  width: 250px;
+  height:100vh;
+  max-height: 500px;
+  z-index: 1000; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   padding:20px;

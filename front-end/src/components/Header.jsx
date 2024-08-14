@@ -96,12 +96,14 @@ function Header(){
                 <FontAwesomeIcon icon={faBars} />   
                 </div>
                 <ul className= {menuOpen ? "open" : ""}>
-                <ul className="adminNavBarLeft">
+                <ul className="headerNavBarLeft">
                     {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
                     {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
                     {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
                     {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}
                 </ul>
+                <ul className="headerNavBarRight">
+
                     <li><Link to = '/' onClick={handleLinkClick}>Home</Link></li>
                                   
                     <li className = "headerDropDown">
@@ -122,6 +124,7 @@ function Header(){
                     </li>
                     <li><Link to = '/downloads' onClick={handleLinkClick}>Downloads</Link></li>
                     <li><Link to = '/contact' onClick={handleLinkClick}>contact</Link></li>
+                </ul>
                 </ul>
             </nav>
 
@@ -185,7 +188,7 @@ function Header(){
                 </div>
 
                 {/* Side Bar - Notifications */}
-                <div class= {showNotifications ? "sideBar-Open" : "sideBar-Close"}>
+                <div class= {showNotifications ? "sideBarNotifications-Open" : "sideBar-Close"}>
                             
                     <div className="siderBarTitle">
                         <h3>Notifications</h3>
@@ -195,7 +198,7 @@ function Header(){
                 </div>
 
                 {/* Side Bar - chatBox */}
-                <div class= {showChat ? "sideBar-Open" : "sideBar-Close"}>
+                <div class= {showChat ? "sideBarMessages-Open" : "sideBar-Close"}>
                             
                     <div className="siderBarTitle">
                         <h3>Messages</h3>

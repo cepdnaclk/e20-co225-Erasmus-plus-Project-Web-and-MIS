@@ -1,6 +1,5 @@
 :root {
     font-weight: 400;
-    background-image: url(../assets/2.jpg);
     color-scheme: light dark;
     color: rgba(0, 0, 0, 0.87);
     background-color: #ffffff;
@@ -215,37 +214,29 @@
 }
 /* Left side of theTop Navigation Bar for Administration*/
 
-.adminNavBarLeft{
+.headerNavBarLeft{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: left;
+  align-items: flex-start	;
   box-sizing: border-box;
   transition: transform 2s ease, opacity 0.5s ease;
   position: relative;
-  padding: 0;
-  margin:0;
+  /* padding-right: 1%; */
 }
-
-.adminNavBarLeft li{
-  list-style: none;
+.headerNavBarRight{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-sizing: border-box;
+  transition: transform 2s ease, opacity 0.5s ease;
   position: relative;
 }
 
-.adminNavBarLeft li a {  
-  text-align: center;
-  display: inline-block;
-}
 
-.adminNavBarLeft li :not(:last-child) {
-  border-right: none; /* Prevent double borders - NOT WORKING PROPERLY*/
-}
 
-.adminNavBarLeft li a:active {
-   background-color:rgb(50, 78, 148, 0.25); 
-}
-
-/* .adminNavBarLeft li a:hover{
+/* .headerNavBarLeft li a:hover{
   background-color: #eef1fb
 } */
 
@@ -301,13 +292,14 @@
 
 /* Dropdown menu - User Account  */
 .userAccount-Open{
-  position : absolute;
-  top: 40px;
-  right: 1.5%;
+  position : fixed;
+  top: 6%;
+  right: 0.5%;
   width: 250px;
   max-height: 500px;
   z-index: 1000;  /*change this */
   border: 1px solid #ccc;
+  border-radius: 4px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   padding:20px;
@@ -379,15 +371,32 @@
 }
 /* Slider Bar for chatBox and Notificaions  */
 
-.sideBar-Open{
-  position : absolute;
-  top: 75px;
-  right: 2.5%;
+.sideBarNotifications-Open{
+  position : fixed;
+  top: 6%;
+  right: 3%;
   width: 250px;
   height:100vh;
   max-height: 500px;
   z-index: 1000; 
   border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding:20px;
+
+}
+
+.sideBarMessages-Open{
+  position : fixed;
+  top: 6%;
+  right: 5.5%;
+  width: 250px;
+  height:100vh;
+  max-height: 500px;
+  z-index: 1000; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   padding:20px;
@@ -445,7 +454,7 @@
   /* Media queries for responsiveness */
 @media screen and (max-width: 1165px) {
 
-  .adminNavBarLeft li a { 
+  .headerNavBarLeft li a { 
     padding: 8px 10px;
     font-size: 13px;
   }

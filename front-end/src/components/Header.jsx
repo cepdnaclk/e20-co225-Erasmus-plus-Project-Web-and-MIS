@@ -51,7 +51,9 @@ function Header(){
         else {
             setIsVisible(true);
         }
-    })
+    
+}, [location.pathname, loggedInUserState, loggedInUser]);
+
 
     function logOut(){
    //TODO: okay to do this?
@@ -79,11 +81,29 @@ function Header(){
         setShowNotifications(previousShowNotifications=>!previousShowNotifications)       
     }
 
-
-
+  // Function to close the sidebar when clicking outside of it
+function closeOnClickOutside(selector, toggleClass) {
+    document.addEventListener('click', function(event) {
+      const element = document.querySelector(selector);
+      const isClickInside = element.contains(event.target);
+      const isClickOnToggleButton = event.target.closest('.adminNavBarRight li'); // Update with the toggle button selector
+  
+      if (!isClickInside && !isClickOnToggleButton) {
+        element.classList.add(toggleClass); // Add the class to hide the element
+      }
+    });
+  }
+  
+  // Call the function for the notification and message boxes
+  useEffect(() => {
+    closeOnClickOutside('.sideBarNotifications-Open', 'sideBar-Close');
+    closeOnClickOutside('.sideBarMessages-Open', 'sideBar-Close');
+    closeOnClickOutside('.userAccount-Open', 'userAccount-Close');
+}, []);
 
     return(
         <header>
+            
 
             {/* Navigation bar */}
             <nav className = "headerNavBar">
@@ -123,7 +143,7 @@ function Header(){
                         </div>
                     </li>
                     <li><Link to = '/downloads' onClick={handleLinkClick}>Downloads</Link></li>
-                    <li><Link to = '/contact' onClick={handleLinkClick}>contact</Link></li>
+                    <li><Link to = '/contact' onClick={handleLinkClick}>Contact</Link></li>
                 </ul>
                 </ul>
             </nav>
@@ -214,17 +234,18 @@ function Header(){
             {/* Erasmus logo */}
             <a href = "https://erasmus-plus.ec.europa.eu/"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>
 
-            {/* Main heading */}
-            <h1><span style={{ color:'rgb(50, 78, 148)'}}>ERASMUS+</span> <span style={{ color:'rgba(44, 110, 11, 0.634)'}}>CYCLE</span></h1>
 
             {/* Cycle logo */}
             <img src={cylcleLogo} alt="Cycle Logo" className="Cycle-Logo"></img>
             </div>
             
-
+            <div className='Heading'>
+            {/* Main heading */}
+            <h1><span style={{ color:'rgb(50, 78, 148)'}}>ERASMUS+</span> <span style={{ color:'rgba(44, 110, 11, 0.634)'}}>CYCLE</span></h1>
+        
             {/* Sub heading */}
             <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cyber security</span></h2>
-
+            </div>
             
         </header>
     );

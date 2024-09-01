@@ -7,7 +7,7 @@ import 'react-slideshow-image/dist/styles.css'
 const Slideshow = ({imageList}) => {
   return (
 
-<div className="slide-container" style={{width:'100%', margin:"0.3% 3% 3% 0%"} }>
+<div className="slide-container" style={{width:'40%', margin:"0% 0% 0% 30%"} }>
       <Slide>
         {imageList.map((fadeImage, index) => (
           <div key={index}>

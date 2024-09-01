@@ -185,6 +185,9 @@ const onDeleteClick = async (task_ID) => {
     
      {/* all tasks */}
      <div>
+     <div className={style["ProjectManagementTitle"]}>
+          <h3>Project Management</h3>
+    </div>
      <Button onClick={RefreshTasks} variant="outlined" startIcon={<RefreshIcon />}>
           Refresh
      </Button>

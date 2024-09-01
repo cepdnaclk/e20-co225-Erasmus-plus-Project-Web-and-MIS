@@ -36,7 +36,7 @@
   h2 {
     font-family:'Caudex';
     text-align: center;
-    font-size: 1.7em;
+    font-size: 1.4em;
     margin-top: 0px;
   }
 
@@ -76,11 +76,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 0px;
-  margin-bottom: 0px;
-  margin-top: 20px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   transition: transform 2s ease, opacity 0.5s ease;
+}
+
+.Heading {
+  margin-top: -80px; /* Adjust the value as needed */
+  margin-bottom: 10px;
 }
 
 .Erasmus-plus-Logo:hover {
@@ -108,7 +110,7 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.9);
+  background-color: rgba(228, 246, 250, 0.9);
   /* padding: 1rem; */
   padding: 20px 5px;
   height: 2rem;
@@ -168,7 +170,7 @@
   position: absolute;
   padding: 12px 0;
   left: 0;
-  background-color: rgb(255, 255, 255, 0.9);
+  background-color: rgba(228, 246, 250, 0.9);
   min-width: 100%;
   height: auto;
   z-index: 1;
@@ -297,7 +299,7 @@
   right: 0.5%;
   width: 250px;
   max-height: 500px;
-  z-index: 1000;  /*change this */
+  z-index: 5000;  /*change this */
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: rgb(255, 255, 255);
@@ -378,7 +380,7 @@
   width: 250px;
   height:100vh;
   max-height: 500px;
-  z-index: 1000; 
+  z-index: 2000; 
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: rgb(255, 255, 255);
@@ -394,7 +396,7 @@
   width: 250px;
   height:100vh;
   max-height: 500px;
-  z-index: 1000; 
+  z-index: 2000; 
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: rgb(255, 255, 255);

@@ -68,7 +68,7 @@ const News = () => {
 
   return (
     <>
-      <div className="News">
+      <div className="NewsTitle">
         <h3>News</h3>
         {loggedInUser.isLoggedIn && (
           <div>

@@ -27,7 +27,7 @@
   h1 {
     font-family: 'Playfair Display';
     text-align: center;
-    font-size: 5.5em;
+    font-size: 5em;
     margin-bottom: 0px;
     margin-top: 0px;
     font-weight: 1000px;
@@ -92,14 +92,14 @@
 
 .Erasmus-plus-Logo{
   margin-top: 20px;
-  width: 150px;
+  width: 130px;
   margin-left: 100px;
   margin-right: 70px;
   height: auto;
 }
 
 .Cycle-Logo{
-  width: 280px;
+  width: 260px;
   height: auto;
   margin-right: 30px;
   margin-top: 20px

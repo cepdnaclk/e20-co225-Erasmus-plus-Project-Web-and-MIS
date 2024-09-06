@@ -1,8 +1,9 @@
 package com.example.demo.news;
 
-import com.example.demo.registration.RegistrationRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,25 +18,32 @@ public class NewsAndEventsController {
 
     private final NewsAndEventsService newsAndEventsService;
 
-    /**
-     * Endpoint to fetch all news and events.
-     */
     @GetMapping
-    public List<NewsAndEvents> getAllNewsAndEvents() {
+    public List<NewsAndEventsResponse> getAllNewsAndEvents() {
         return newsAndEventsService.getAllNewsAndEvents();
     }
 
     @GetMapping("/{newsId}")
-    public Optional<NewsAndEvents> getNewsById(@PathVariable Long newsId) {
-        return newsAndEventsService.getNewsAndEventById(newsId);
+    public NewsAndEventsResponse getNewsById(@PathVariable Long newsId) {
+        return newsAndEventsService.getNewsAndEventById(newsId)
+                .map(NewsAndEventsResponse::new)
+                .orElseThrow(() -> new RuntimeException("News not found"));
     }
 
     /**
-     * Endpoint to add a new news or event.
+     * Endpoint to add a new news or event with image upload.
      */
-    @PostMapping
-    public NewsAndEvents addNewsAndEvents(@RequestBody NewsAndEventsRequest newsAndEventsRequest) {
-        return newsAndEventsService.addNewsAndEvent(newsAndEventsRequest);
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public NewsAndEvents addNewsAndEvents(
+            @RequestParam("newsTitle") String newsTitle,
+            @RequestParam("newsDescription") String newsDescription,
+            @RequestParam("newsUrl") String newsUrl,
+            @RequestParam("newsAuthor") String newsAuthor,
+            @RequestParam("newsDate") String newsDate,
+            @RequestParam("newsCoverImage") MultipartFile newsCoverImage) {
+
+        // Call the service to add the news with the uploaded image
+        return newsAndEventsService.addNewsAndEvent(newsTitle, newsDescription, newsUrl, newsAuthor, newsDate, newsCoverImage);
     }
 
     /**
@@ -45,5 +53,4 @@ public class NewsAndEventsController {
     public void deleteNewsById(@PathVariable Long newsId) {
         newsAndEventsService.deleteNewsAndEvent(newsId);
     }
-
 }

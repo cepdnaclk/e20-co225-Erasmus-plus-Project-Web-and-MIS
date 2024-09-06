@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 /**
  * Represents a request object for creating or updating a NewsAndEvents entity.
  */
@@ -20,5 +22,5 @@ public class NewsAndEventsRequest {
     private final String newsUrl;
     private final String newsAuthor;
     private final String newsDate;
-    private final String newsCoverImage;
+    private final byte[] newsCoverImage;
 }

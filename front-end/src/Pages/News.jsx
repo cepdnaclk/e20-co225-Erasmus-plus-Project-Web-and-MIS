@@ -127,7 +127,7 @@ const News = () => {
                   <input type="date" id="newsDate" name="newsDate" required />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="newsCoverImage">Cover Image:</label>
+                  <label htmlFor="newsCoverImage">Cover Image (Choose images with size less than 64 kB):</label>
                   <input type="file" id="newsCoverImage" name="newsCoverImage" onChange={handleFileChange} required />
                 </div>
                 <div className="form-buttons">
@@ -146,7 +146,6 @@ const News = () => {
             <img 
                         src={`data:image/jpeg;base64,${item.newsCoverImage}`} 
                         alt={item.newsTitle} 
-                        style={{ width: '300px', height: 'auto' }}
                     />
             <h2>{item.newsTitle}</h2> {/* News title */}
             <p>{item.newsDescription}</p> {/* News description */}

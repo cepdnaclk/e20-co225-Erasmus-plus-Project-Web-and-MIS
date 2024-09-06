@@ -1,13 +1,15 @@
 package com.example.demo.gallery;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
+
 
 /**
- * Controller class for managing news and events API endpoints.
+ * Controller class for managing gallery API endpoints.
  */
 @RestController
 @RequestMapping("/api/v1/gallery")
@@ -20,30 +22,39 @@ public class GalleryController {
      * Endpoint to fetch all gallery items.
      */
     @GetMapping
-    public List<Gallery> getAllGallery() {
+    public List<GalleryResponse> getAllGallery() {
         return galleryService.getAllGallery();
     }
 
-    @GetMapping("/{albumId}")
-    public Optional<Gallery> getGalleryById(@PathVariable Long albumId) {
-        return galleryService.getGalleryById(albumId);
-    }
-
     /**
-     * Endpoint to add a new album.
+     * Endpoint to fetch a specific gallery item by its ID.
      */
-    @PostMapping
-    public Gallery addGallery(@RequestBody GalleryRequest galleryRequest) {
-        return galleryService.addGallery(galleryRequest);
+    @GetMapping("/{albumId}")
+    public GalleryResponse getGalleryById(@PathVariable Long albumId) {
+        return galleryService.getGalleryById(albumId)
+                .map(GalleryResponse::new)
+                .orElseThrow(() -> new RuntimeException("Gallery item not found"));
     }
 
     /**
-     * Endpoint to delete album by its ID.
+     * Endpoint to add a new gallery album with an optional image upload.
+     */
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public Gallery addGallery(
+            @RequestParam("albumName") String albumName,
+            @RequestParam("albumCreatedBy") String albumCreatedBy,
+            @RequestParam("albumURL") String albumURL,
+            @RequestParam("albumCoverImage") MultipartFile albumCoverImage) {
+
+        // Call the service to add the gallery with the optional uploaded image
+        return galleryService.addGallery(albumName, albumCreatedBy, albumURL, albumCoverImage);
+    }
+
+    /**
+     * Endpoint to delete a gallery album by its ID.
      */
     @DeleteMapping("/{albumId}")
     public void deleteGallery(@PathVariable Long albumId) {
         galleryService.deleteGallery(albumId);
     }
-
-
 }

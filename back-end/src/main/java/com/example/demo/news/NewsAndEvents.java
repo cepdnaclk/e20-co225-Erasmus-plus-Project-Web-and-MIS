@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDate;
 
 /**
  * Represents a news or event entity stored in the database.
@@ -29,20 +28,16 @@ public class NewsAndEvents {
             generator = "news_and_events_sequence"
     )
     private Long newsID;
-
     private String newsTitle;
 
     @Column(columnDefinition = "TEXT")
     private String newsDescription;
-
     private String newsUrl;
 
     @Lob
-    @Column(name = "newsCoverImage", columnDefinition = "BLOB")
+    @Column(name = "newsCoverImage", columnDefinition = "LONGBLOB")
     private byte[] newsCoverImage;
-
     private String newsDate;
-
     private String newsAuthor;
 
     /**

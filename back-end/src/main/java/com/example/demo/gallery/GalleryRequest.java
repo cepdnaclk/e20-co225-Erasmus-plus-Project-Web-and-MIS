@@ -16,6 +16,6 @@ import lombok.ToString;
 public class GalleryRequest {
     private final String albumName;
     private final String albumCreatedBy;
-    private final String albumCoverURL;
+    private final byte[] albumCoverImage;
     private final String albumURL;
 }

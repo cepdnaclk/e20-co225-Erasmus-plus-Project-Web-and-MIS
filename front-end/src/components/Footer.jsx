@@ -1,5 +1,7 @@
 import peraLogo from '../assets/pera.png'; /* import pera logo from assets folder */
 import fbLogo from '../assets/fb.png';
+import ytLogo from '../assets/YouTube-logo.png';
+import XLogo from '../assets/XLogo.png';
 import {Link, Outlet} from 'react-router-dom'; /* To link the Main navigation links to the respective pages */
 import style from './Footer.module.css'
 function Footer() {
@@ -57,7 +59,9 @@ function Footer() {
                     <h6>Social Media Links</h6>
                     <ul>
                         <li>University of Peradeniya</li>
-                        <li><a href="https://www.facebook.com/UniversityOfPeradeniya"><img className={style["fbLogo"]} src={fbLogo} alt="fbLogo"/></a></li>
+                        <li><a href="https://www.facebook.com/UniversityOfPeradeniya"><img className={style["fbLogo"]} src={fbLogo} alt="fbLogo"/></a>
+                        <a href="https://www.youtube.com/@webteamuop2944"><img className={style["ytLogo"]} src={ytLogo} alt="ytLogo"/></a>
+                        <a href="https://x.com/DVC_Peradeniya"><img className={style["XLogo"]} src={XLogo} alt="XLogo"/></a></li>
                         <li>Postgraduate Institute of Science</li>
                         <li><a href="https://www.facebook.com/pages/Postgraduate-Institute-of-Science/1846660975382081"><img className={style["fbLogo"]} src={fbLogo} alt="fbLogo"/></a></li>
                     </ul>

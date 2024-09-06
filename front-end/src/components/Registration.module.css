@@ -1,11 +1,12 @@
-.LoginCard {
+/* Container for the registration form */
+.registrationContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 50px;
-    width: 300px;
-    height: 350px; /* Increased height to fit the form properly */
+    width: 400px;
+    height: 460px; 
     margin: auto;
     border: 1px solid hsl(0, 0%, 80%);
     margin-top: 20px;
@@ -16,14 +17,28 @@
 
 .CycleLogo {
     width: 200px;
-    margin-bottom: 20px;
 }
 
-.LoginCard input {
+/* Form group styling */
+.formGroup {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Input field styling */
+input {
     width: 100%;
     height: 45px;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     background-color: #e3f0f6;
     color: black;
     border: 1px solid #dddddd;
@@ -32,7 +47,7 @@
 }
 
 /* Autofill background color */
-.LoginCard input:-webkit-autofill {
+input:-webkit-autofill {
     background-color: #e3f0f6 !important; 
     color: black !important; /* Set text color */
     -webkit-box-shadow: 0 0 0px 1000px #e3f0f6 inset; 
@@ -40,18 +55,25 @@
 }
 
 /* Adjust font color for autofill */
-.LoginCard input:-webkit-autofill {
+input:-webkit-autofill {
     -webkit-text-fill-color: black !important; /* Set text color */
 }
 
-.input-group {
+/* Input field focus state */
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+}
+
+.inputGroup{
     position: relative;
     display: flex;
     align-items: center;
 }
 
-
-.input-group-append {
+/* Styling for the input-group-append to position the icon */
+.inputGroupAppend {
     position: absolute;
     right: 10px;
     height: 100%;
@@ -62,17 +84,23 @@
     padding: 10px 10px;
 }
 
-.input-group-text {
+/* Input group text (icon) styling */
+.inputGroupText {
     background: transparent;
     border: none;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #191818;
+    font-size: 18px;
 }
 
-
-.LoginCard button {
+/* Register button styling */
+.registerButton {
     width: 100%;
     height: 42px;
     margin-top: 10px;
+    margin-bottom: 20px;
     background-color: #00448d;
     color: #ffffff;
     border: none;
@@ -82,24 +110,12 @@
     font-weight: 600;
 }
 
-.LoginCard button:hover {
+/* Register button hover state */
+.registerButton:hover {
     background-color: #0056b3;
 }
 
-.register-link {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.register-link .btn {
-    padding: 0;
-    color: #00448d;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.register-link .btn:hover {
-    text-decoration: underline;
+/* Add some spacing between elements */
+.registrationContainer form {
+    width: 100%;
 }

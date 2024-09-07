@@ -80,6 +80,39 @@
   transition: transform 2s ease, opacity 0.5s ease;
 }
 
+.logo-blockFull {
+  justify-content: center;
+  align-items: center;
+  /* background-image: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.99)),  url(../assets/2.jpg);  */
+  background-image: 
+        linear-gradient(
+            to bottom, 
+            rgba(255, 255, 255, 0.97) 0%,   /* Top edge */
+            rgba(255, 255, 255, 0.5) 20%,   /* Gradually increase transparency */
+            rgba(255, 255, 255, 0.4) 50%,   /* Center */
+            rgba(255, 255, 255, 0.5) 80%,   /* Gradually decrease transparency */
+            rgba(255, 255, 255, 0.97) 100%  /* Bottom edge */
+        ), 
+        linear-gradient(
+            to right, 
+            rgba(255, 255, 255, 0.97) 0%,   /* Left edge */
+            rgba(255, 255, 255, 0.5) 20%,   /* Gradually increase transparency */
+            rgba(255, 255, 255, 0.4) 50%,   /* Center */
+            rgba(255, 255, 255, 0.5) 80%,   /* Gradually decrease transparency */
+            rgba(255, 255, 255, 0.97) 100%  /* Right edge */
+        ), 
+        url(../assets/2.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  margin-bottom: 1%;
+}
+
 .Heading {
   margin-top: -80px; /* Adjust the value as needed */
   margin-bottom: 10px;
@@ -93,8 +126,8 @@
 .Erasmus-plus-Logo{
   margin-top: 20px;
   width: 150px;
-  margin-left: 100px;
-  margin-right: 70px;
+  margin-left: 70px;
+  margin-right: 40px;
   height: auto;
 }
 
@@ -496,6 +529,7 @@
   .logo-block {
       flex-direction: column;
       align-items: center;
+      margin-top: 15%;
   }
 
   .Erasmus-plus-Logo {
@@ -516,7 +550,8 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    position: relative;
+    position: fixed;
+
   }
 
   .headerNavBar ul{

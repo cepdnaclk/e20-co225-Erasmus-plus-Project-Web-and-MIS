@@ -10,6 +10,18 @@ function Contact() {
     <>
     <div className = "contactTitle"> {/* Page title */}
     <h3>Contact</h3>
+    <nav>
+    <ol className="breadcrumb">
+      <li className="breadcrumb-item">
+        <a href="http://localhost:5173/"> 
+          <span style={{ fontSize: 16}}>Home</span>
+        </a>
+      </li>
+      <li className="breadcrumb-item active">
+        <span style={{ fontSize: 16}}> Contact</span>
+      </li>
+    </ol>
+  </nav>
     </div>
 
     <div className = "contactpage">

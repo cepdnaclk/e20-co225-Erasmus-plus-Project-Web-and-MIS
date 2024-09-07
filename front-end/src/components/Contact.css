@@ -9,12 +9,16 @@
 
 /* Contact title alignment */
 .contactTitle {
-    margin-top: 2%;
+    margin-top: 1%;
     margin-left: 5%;
     text-align: left;
-    margin-bottom: 3%;
     font-size: 20px;
     font-family: 'Caudex';
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5%;
 }
  
 /* Contact details of the manager and coordinator alignment */
@@ -27,6 +31,7 @@
 
 /* Contact details of the manager alignment */
 .contactManager {
+    border: 2px solid rgba(10, 48, 128);
     border-radius: 1em;
     padding: 20px;
     display: inline-block;
@@ -43,11 +48,12 @@
 .contactManager .Dr-Upul-Jayasinghe-img {
     max-width: 60%;
     height: auto;
-    /* border-radius: 50%; */
+    border-radius: 50%;
 }
 
 /* Contact details of the coordinator alignment */
 .contactCoordinator {
+    border: 2px solid rgba(10, 48, 128);
     border-radius: 1em;
     padding: 20px;
     display: inline-block;
@@ -74,7 +80,7 @@
 .contactCoordinator .Dr-Erunika-Dayaratna-img {
     max-width: 60%;
     height: auto;
-    /* border-radius: 50%; */
+    border-radius: 50%;
 }
 
 /* Contact details ul alignment */
@@ -96,19 +102,19 @@
 
 .contactIcons {
     width:10%;
-    color:#004494 ;
+    color:#5888bf ;
 }
 
 
 /* ** Contact Us Form** */
 
 .contactUsForm {
-    border: 1.5px solid hsl(222, 83%, 98%);
-    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
-    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+    border: 2px solid rgba(10, 48, 128);
+    border-radius: 1em;
+    /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
                 -2px -2px 5px rgba(255, 255, 255, 0.7), 
                 2px -2px 5px rgba(255, 255, 255, 0.7), 
-                -2px 2px 5px rgba(63, 108, 148, 0.1);
+                -2px 2px 5px rgba(63, 108, 148, 0.1); */
     flex-direction: center;
     display: flex;
     align-items: center;
@@ -124,9 +130,8 @@
 /* The contact us form title */
 .ContactUsTitle {
     text-align: left;
-    color:hsl(211, 57%, 59%);
+    color:hsl(211, 81%, 20%);
     font-size: 20px;
-    margin-top: 0px;
 }
 
 /* The Image in contact us form */

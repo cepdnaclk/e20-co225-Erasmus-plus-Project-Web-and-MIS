@@ -12,37 +12,71 @@ import ProfRoshanDYapa from '../assets/TeamMembers/roshanyapa.jpg';
 import DrSachithPAbeysundara from '../assets/TeamMembers/sachith.jpg';
 import DrHakimUsoof from '../assets/TeamMembers/hakimusoof.jpg';
 import DrRuwanNawarathna from '../assets/TeamMembers/ruwannawarathna.jpg';
+import UoPLogo from '../assets/UoPCrest.png';
 
+import UoCLogo from '../assets/UoCCrest.png';
+import DrAjanthaAthukoralaUoC from '../assets/TeamMembers/AjanthaAthukoralaUoC.jpg';
+
+import PRCLogo from '../assets/UoPiraeusResearchCenter.png';
+import IliasMaglogiannisPRC from '../assets/TeamMembers/IliasMaglogiannisPRC.jpg';
+
+import HUoILogo from '../assets/HUoICrest.png';
+import LeVietAnh from '../assets/TeamMembers/LeVietAnh.jpg';
+
+import SUoTLogo from '../assets/SuranareeUniversityofTechnologyCrest.png';
+import DrWepawee from '../assets/TeamMembers/DrWepawee.png';
+
+import NTNULogo from '../assets/NTNUCrest.png';
+import SokratisKatsikas from '../assets/TeamMembers/SokratisKatsikas.jpg';
+
+import KMIoTLLogo from '../assets/KMIoTLCrest.png';
+import ProfPitchaP from '../assets/TeamMembers/ProfPitchaP.jpeg';
 
 function Team() {
   return(
     <>
     {/* Page title */}
+    
     <div className = "TeamTitle">
       <h3>Team</h3>
+      <nav>
+    <ol className="breadcrumb">
+      <li className="breadcrumb-item">
+        <a href="http://localhost:5173/"> 
+          <span style={{ fontSize: 16}}>Home</span>
+        </a>
+      </li>
+      <li className="breadcrumb-item active">
+        <span style={{ fontSize: 16}}> Team</span>
+      </li>
+    </ol>
+  </nav>
     </div>
 
     {/* UoP Team Members */}
     <div className = "UoPTeam">
-    
-    <div className = "UoPTeamTitle">
-      <h4>University of Peradeniya</h4>
+
+    <div className = "UoPLogoBlock">
+    <a href = "https://www.pdn.ac.lk/"><img className="UoPLogo" src={UoPLogo} alt="UoPLogo"/> </a>
     </div>
+    {/* <div className = "UoPTeamTitle">
+      <h4>University of Peradeniya</h4>
+    </div> */}
 
-
+    <div className = "TeamCards">
     <div className = "TeamSubTitle">
       <h4>Manager/Coordinators</h4>
     </div>
 
 
-    <div className = "TeamCards">
+    
     <div className = "TeamCard">
     <img className="TeamProfilePic" src={DrUpulJayasinghe} alt="DrUpulJayasinghe"/>
       <ul>
         <li className = "TeamMemberName">Dr. Upul Jayasinghe</li>
         <li>Manager</li>
         <li><a href="tel:+94760416590">+94 76 041 6590</a></li>
-        <li><a href="mailto:eftu@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></li>
+        <li><a href="mailto:upuljm@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></li>
       </ul>
     </div>
 
@@ -56,12 +90,13 @@ function Team() {
       </ul>
     </div>
     </div>
-    
+
+   <div className = "TeamCards"> 
     <div className = "TeamSubTitle">
       <h4>PGIS - Postgraduate Institute of Science</h4>
     </div>
 
-    <div className = "TeamCards">
+    
     <div className = "TeamCard">
     <img className="TeamProfilePic" src={ProfHMTGAPitawala} alt="Prof. H.M.T.G.A Pitawala"/>
       <ul>
@@ -73,11 +108,12 @@ function Team() {
     </div>
     </div>
 
+    <div className = "TeamCards">
     <div className = "TeamSubTitle">
       <h4>Department of Computer Engineering</h4>
     </div>
 
-    <div className = "TeamCards">
+    
     <div className = "TeamCard">
     <img className="TeamProfilePic" src={ProfRoshanRagel} alt="Prof. Roshan Ragel"/>
       <ul>
@@ -104,7 +140,7 @@ function Team() {
         <li className = "TeamMemberName">Dr. Upul Jayasinghe</li>
         <li>Teacher/Trainer /Researcher</li>
         <li><a href="tel:+94760416590">+94 76 041 6590</a></li>
-        <li><a href="mailto:eftu@eng.pdn.ac.lk">eftu@eng.pdn.ac.lk</a></li>
+        <li><a href="mailto:upuljm@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></li>
       </ul>
     </div>
 
@@ -139,11 +175,12 @@ function Team() {
     </div>
     </div>
 
+    <div className = "TeamCards">
     <div className = "TeamSubTitle">
       <h4>Department of Statistics & Computer Science</h4>
     </div>
 
-    <div className = "TeamCards">
+    
     <div className = "TeamCard">
     <img className="TeamProfilePic" src={ProfSalukaKodituwakku} alt="Prof. Saluka Kodituwakku"/>
       <ul>
@@ -213,9 +250,143 @@ function Team() {
         <li><a href="mailto:ruwan.nawarathna@gmail.com">ruwan.nawarathna@gmail.com </a></li>
       </ul>
     </div>
-
+    </div>
     </div>
 
+    {/* University of Colombo */}
+    <div className = "UoCTeam">
+      <div className = "UoCLogoBlock">
+      <a href = "https://cmb.ac.lk/"><img className="UoCLogo" src={UoCLogo} alt="UoCLogo"/> </a>
+      </div>
+      <div className = "UoCTeamCards"> 
+    <div className = "UoCTeamSubTitle">
+      <h4>University of Colombo</h4>
+    </div>
+
+    <div className = "UoCTeamCard">
+    <img className="TeamProfilePic" src={DrAjanthaAthukoralaUoC} alt="Dr.Ajantha Athukorale"/>
+      <ul>
+        <li className = "TeamMemberName">Dr.Ajantha Athukorale</li>
+        <li>Director</li>
+        <li><a href="tel:+94112541245">+9411 254 1245</a></li>
+        <li><a href="mailto:aja@ucsc.cmb.ac.lk">aja@ucsc.cmb.ac.lk</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+
+
+    {/* Piraeus Research Center*/}
+    <div className = "PRCTeam">
+      <div className = "PRCLogoBlock">
+      <a href = "https://www.unipi.gr/en/home/"><img className="PRCLogo" src={PRCLogo} alt="PRCLogo"/> </a>
+      </div>
+      <div className = "PRCTeamCards"> 
+    <div className = "PRCTeamSubTitle">
+      <h4>University of Piraeus Research Center</h4>
+    </div>
+
+    <div className = "PRCTeamCard">
+    <img className="TeamProfilePic" src={IliasMaglogiannisPRC} alt="Prof. Ilias Maglogiannis"/>
+      <ul>
+        <li className = "TeamMemberName">Prof. Ilias Maglogiannis</li>
+        <li>Professor</li>
+        <li><a href="tel:+302104142517">+30 210 414 2517</a></li>
+        <li><a href="mailto:imaglo@unipi.gr">imaglo@unipi.gr</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+
+    {/* Hanoi University of Industry*/}
+    <div className = "HUoITeam">
+      <div className = "HUoILogoBlock">
+      <a href = "https://www.haui.edu.vn/vn"><img className="HUoILogo" src={HUoILogo} alt="HUoILogo"/> </a>
+      </div>
+      <div className = "HUoITeamCards"> 
+    <div className = "HUoITeamSubTitle">
+      <h4>Hanoi University of Industry</h4>
+    </div>
+
+    <div className = "HUoITeamCard">
+    <img className="TeamProfilePic" src={LeVietAnh} alt="LeVietAnh"/>
+      <ul>
+        <li className = "TeamMemberName">Dr. Le Viet Anh</li>
+        <li>Director</li>
+        <li><a href="tel:+84945060689">+84 945 060 689</a></li>
+        <li><a href="mailto:levietanh@haui.edu.vn">levietanh@haui.edu.vn</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+
+
+    {/* Suranaree University of Technology */}
+    <div className = "SUoTTeam">
+      <div className = "SUoTLogoBlock">
+      <a href = "https://www.sut.ac.th/"><img className="SUoTLogo" src={SUoTLogo} alt="SUoTLogo"/> </a>
+      </div>
+      <div className = "SUoTTeamCards"> 
+    <div className = "SUoTTeamSubTitle">
+      <h4>Suranaree University of Technology</h4>
+    </div>
+
+    <div className = "SUoTTeamCard">
+    <img className="TeamProfilePic" src={DrWepawee} alt="DrWepawee"/>
+      <ul>
+        <li className = "TeamMemberName">Dr. Wipawee Usaha</li>
+        <li>Director</li>
+        <li><a href="tel:+66442241416">+66 442 241 416</a></li>
+        <li><a href="mailto:cia@g.sut.ac.th">cia@g.sut.ac.th</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+
+
+    {/* NTNU */}
+    <div className = "NTNUTeam">
+      <div className = "NTNULogoBlock">
+      <a href = "https://www.ntnu.edu/"><img className="NTNULogo" src={NTNULogo} alt="NTNULogo"/></a>
+      </div>
+      <div className = "NTNUTeamCards"> 
+    <div className = "NTNUTeamSubTitle">
+      <h4>Norwegian University of Science and Technology</h4>
+    </div>
+
+    <div className = "NTNUTeamCard">
+    <img className="TeamProfilePic" src={SokratisKatsikas} alt="SokratisKatsikas"/>
+      <ul>
+        <li className = "TeamMemberName">Prof. Sokratis Katsikas</li>
+        <li>Professor</li>
+        <li><a href="tel:+4791138581">+47 9113 8581</a></li>
+        <li><a href="mailto:sokratis.katsikas@ntnu.no">sokratis.katsikas@ntnu.no</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+
+
+    {/* King Mongkut's Institute of Technology Ladkr */}
+    <div className = "KMIoTLTeam">
+      <div className = "KMIoTLLogoBlock">
+      <a href = "https://www.kmitl.ac.th/"><img className="KMIoTLLogo" src={KMIoTLLogo} alt="KMIoTLLogo"/> </a>
+      </div>
+      <div className = "KMIoTLTeamCards"> 
+    <div className = "KMIoTLTeamSubTitle">
+      <h4>King Mongkut's Institute of Technology Ladkr</h4>
+    </div>
+
+    <div className = "KMIoTLTeamCard">
+    <img className="TeamProfilePic" src={ProfPitchaP} alt="ProfPitchaP"/>
+      <ul>
+        <li className = "TeamMemberName">Dr. Pitcha Prasitmeeboon</li>
+        <li>Vice President</li>
+        <li><a href="tel:+23298000ext.2617">+2329 8000 ext.2617</a></li>
+        <li><a href="mailto:pitcha.pr@kmitl.ac.th">pitcha.pr@kmitl.ac.th</a></li>
+      </ul>
+    </div>
+    </div>
     </div>
 
     </>

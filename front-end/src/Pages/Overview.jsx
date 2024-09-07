@@ -4,10 +4,30 @@ function Overview() {
   {/* overview Topic */}
   <div className = "projectOverview">
     <h3>Overview</h3>
+    <nav>
+    <ol className="breadcrumb">
+      <li className="breadcrumb-item">
+        <a href="http://localhost:5173/"> 
+          <span style={{ fontSize: 16}}>Home</span>
+        </a>
+      </li>
+      <li className="breadcrumb-item active">
+        <span style={{ fontSize: 16}}> Project Overview</span>
+      </li>
+      <li className="breadcrumb-item active">
+        <span style={{ fontSize: 16}}> Overview</span>
+      </li>
+    </ol>
+  </nav>
   </div>
+
   {/* Project overview description */}
   <div className = "overview-para">
-    <h3>CYCLE Overview</h3>
+  <div className="Overview-title-box">
+    <h3><span style={{ color:'rgba(10, 48, 128)'}}>CYCLE Overview</span></h3>
+  </div>
+    
+    <div className="overview-descri">
     <p>There is an increasing demand for cybersecurity professionals worldwide, 
     however, in Asia Pacific the largest regional workforce gap of 1.42  million professionals exists. 
     There are many challenges related to cybersecurity in Asia, 
@@ -31,10 +51,14 @@ function Overview() {
     and innovation, 6 career days ,conference and outputs related to project promotion. CYCLE enables the participating Asian 
     HEIs to become catalysts of economic and social development and produce the next highly-qualified workforce that can drive 
     the economic success.</p>
+    </div>
+    
   </div>
 
   <div className = "Goals">
+    <div className = "GoalsTitle">
     <h3>CYCLE Goals</h3>
+    </div>
     <ol>
       <li>Developing the Master degree in the multi-discipline area of cybersecurity in Vietnam, Sri Lanka and Thailand.</li>
       <li>Training the academic and administrative staff of the Asian HEIs in the new courses and appropriate delivery methods and support services to students.</li>

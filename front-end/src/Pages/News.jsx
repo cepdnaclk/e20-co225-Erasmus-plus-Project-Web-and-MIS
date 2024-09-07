@@ -90,6 +90,21 @@ const News = () => {
     <>
       <div className="NewsTitle">
         <h3>News</h3>
+        <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="http://localhost:5173/"> 
+                <span style={{ fontSize: 16}}>Home</span>
+              </a>
+            </li>
+            <li className="breadcrumb-item active">
+              <span style={{ fontSize: 16}}> News & Events</span>
+            </li>
+            <li className="breadcrumb-item active">
+              <span style={{ fontSize: 16}}> News</span>
+            </li>
+          </ol>
+        </nav>
         {/* Show Add News button only if the user is logged in */}
         {loggedInUser.isLoggedIn && (
           <div>

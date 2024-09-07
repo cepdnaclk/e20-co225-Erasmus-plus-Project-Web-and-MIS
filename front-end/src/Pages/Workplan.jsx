@@ -8,6 +8,21 @@ function Workplan() {
       <>
         <div className={style["workplanTitle"]}>
             <h3>Work Plan</h3>
+            <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="http://localhost:5173/"> 
+                <span style={{ fontSize: 16}}>Home</span>
+              </a>
+            </li>
+            <li className="breadcrumb-item active">
+                <span style={{ fontSize: 16}}> Project Overview</span>
+            </li>
+            <li className="breadcrumb-item active">
+              <span style={{ fontSize: 16}}> Work Plan</span>
+            </li>
+          </ol>
+        </nav>
         </div>
         <div className={style["tableContainerOuter"]}>
             <div className={style["tableContainerInner"]}>

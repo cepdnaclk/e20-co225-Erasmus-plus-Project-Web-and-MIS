@@ -3,6 +3,7 @@ import {Link, Outlet, useLocation,useNavigate} from 'react-router-dom';  // //Ad
 
 import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
+// import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
 import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
@@ -229,7 +230,7 @@ function closeOnClickOutside(selector, toggleClass) {
 
             
             
-    
+            <div className='logo-blockFull'>
             <div className='logo-block'>
             {/* Erasmus logo */}
             <a href = "https://erasmus-plus.ec.europa.eu/"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>
@@ -245,6 +246,7 @@ function closeOnClickOutside(selector, toggleClass) {
         
             {/* Sub heading */}
             <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cyber security</span></h2>
+            </div>
             </div>
             
         </header>

@@ -2,12 +2,16 @@
 
 /* Page topic */
 .deliverableTitle {
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 5%;
   text-align: left;
-  margin-bottom: 1%;
   font-size: 20px;
   font-family: 'Caudex';
+  color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5%;
 }
 
 /* Table containers */

@@ -1,20 +1,18 @@
 
 .paragraph{
-    border: 1px solid hsl(222, 83%, 98%);
-    /*border-radius: 20px;*/
-    /* box-shadow: 10px 10px 10px rgba(63, 108, 148, 0.1); */
-    box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+    border: 2px solid hsl(225, 87%, 21%);
+    border-radius: 20px;
+    /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
                 -2px -2px 5px rgba(255, 255, 255, 0.7), 
                 2px -2px 5px rgba(255, 255, 255, 0.7), 
-                -2px 2px 5px rgba(63, 108, 148, 0.1);
+                -2px 2px 5px rgba(63, 108, 148, 0.1); */
     padding: 20px;
     display: inline-block;
-    /* background-color: hsl(128, 27%, 89%); */
     background-color: hsl(0, 0%, 100%);
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 2%;
-    text-align: left;
+    text-align: center;
     font-family: 'Caudex';
 }
 
@@ -71,9 +69,9 @@
 width:29%;
 display: flex;
 align-items: center;
-background: rgb(255, 255, 255);
+/* background: rgb(255, 255, 255); */
 padding: 10px 20px;
-color:#004494 ;
+color:#000000 ;
 }
 
 .projectSummaryFlexItem p {
@@ -92,18 +90,22 @@ color:#004594ca ;
 
 
 .proj_desc {
-  padding: 60px;
+  padding: 20px;
   display: inline-block;
-  background-color: #172953;
+  border: 2px solid rgba(10, 48, 128);
+  border-radius: 20px;
+  background-color: #eaf1f8;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-bottom: 2%;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
   font-family: 'Caudex';
 }
 
-/* .proj_desc:hover {
-  transform: scale(1.05);
-} */
+.proj_desc p:hover {
+  transform: scale(1.01);
+}
 
 
 
@@ -118,11 +120,10 @@ color:#004594ca ;
   border-radius: 1em;
   display: inline-block;
   margin-bottom: 5%;
-  margin-top: 10px;
   text-align: center;
   width: 400px; 
   height: 100px;
-  color:#ffffff;
+  color:#000000;
   font-size: 18px;
   flex-direction: row;
 }
@@ -137,18 +138,22 @@ color:#004594ca ;
   height: 30px;
   display: center;
   align-items: center;
-  color:#ffffff ;
+  color:#0a6b29 ;
 
 }
 
 .targetgroupsecsion {
+  border: 2px solid hsl(105, 68%, 24%);
+  background-color: hsl(104, 60%, 95%);
+  border-radius: 20px;
   display: inline-block;
-  background-color: #172953;
   margin-bottom: 5%;
-  margin-top: 2%;
+  margin-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
   text-align: center;
-  color: white;
-  width: 100%;
+  color: rgb(0, 0, 0);
+  font-family: 'Caudex';
 }
 
 @media screen and (max-width: 1000px) {

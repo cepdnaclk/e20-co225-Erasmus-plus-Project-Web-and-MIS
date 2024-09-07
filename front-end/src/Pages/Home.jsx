@@ -106,10 +106,10 @@ function Home() {
       {/* project description */}
       <div className={style["proj_desc"]}>
         <div>
-          <span style={{ fontWeight: 'bold', fontSize: '26px', color: 'white' }}>Project description</span><br></br>
+          <span style={{ fontWeight: 'bold', fontSize: '26px', color: 'rgba(10, 48, 128)' }}>Project description</span><br></br>
           <h3><span style={{ color:'rgb(50, 78, 148)'}}>Project Number: GAP-101128627</span></h3>
         </div>
-        <p style={{ fontSize: '18px', textAlign: 'center' }}>There is an increasing demand for cybersecurity professionals worldwide,
+        <p style={{ fontSize: '16px', textAlign: 'center' }}>There is an increasing demand for cybersecurity professionals worldwide,
           however, in Asia Pacific the largest regional workforce gap of 1.42 million professionals exists. 
           The <b>CYberseCurityLEarning: Master’s degree in Cybersecurity / CYCLE </b>
           consortium will produce <u>innovative MSc curricula in the cybersecurity</u>, 

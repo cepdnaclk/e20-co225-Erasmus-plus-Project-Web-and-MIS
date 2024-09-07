@@ -3,7 +3,7 @@ import {Link, Outlet, useLocation,useNavigate} from 'react-router-dom';  // //Ad
 
 import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
-import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
+import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
 import {loggedInUser} from '../Pages/Login'
@@ -116,12 +116,6 @@ function closeOnClickOutside(selector, toggleClass) {
                 <FontAwesomeIcon icon={faBars} />   
                 </div>
                 <ul className= {menuOpen ? "open" : ""}>
-                <ul className="headerNavBarLeft">
-                    {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}
-                </ul>
                 <ul className="headerNavBarRight">
 
                     <li><Link to = '/' onClick={handleLinkClick}>Home</Link></li>
@@ -150,7 +144,13 @@ function closeOnClickOutside(selector, toggleClass) {
 
             {/* Top Navigation Bar for Administration  */}
             <div>
-                <nav class="adminNavBar" >                
+                <nav class="adminNavBar" >   
+                <ul className="headerNavBarLeft">
+                    {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}
+                </ul>             
                 {isVisible && <div className='top-login-bar'><Link to = '/login'><button className="Login-button" onClick={handleLinkClick}>LOGIN</button></Link></div>}
                     <div>
                         <ul className={loggedInUserState ? "adminNavBarRight":"non-logged-user-panel"}>                  

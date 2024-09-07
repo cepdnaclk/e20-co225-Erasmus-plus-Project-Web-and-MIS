@@ -1,5 +1,3 @@
-import cs from '../assets/12.jpg';
-
 function Overview() {
   return(
   <>

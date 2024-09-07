@@ -1,4 +1,3 @@
-#configurtion
 server:
   error:
     include-message: always
@@ -7,7 +6,7 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/cycle
-    password: 
+    password:
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
@@ -24,7 +23,6 @@ spring:
     port: 1025
     username: hello
     password: hello
-
     properties:
       mail:
         smtp:
@@ -36,3 +34,12 @@ spring:
           connection timeout: 5000
           timeout: 3000
           write timeout: 5000
+
+  servlet:
+    multipart:
+      max-file-size: 100MB   # Increase size for large files
+      max-request-size: 100MB # Increase size for large files
+
+  tomcat:
+    max-http-header-size: 16384 # Adjust if needed for large headers
+    max-swallow-size: 104857600 # 100MB, adjust according to file size needs

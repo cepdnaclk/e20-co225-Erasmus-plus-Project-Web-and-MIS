@@ -29,10 +29,14 @@ public class NewsAndEvents {
     )
     private Long newsID;
     private String newsTitle;
+
     @Column(columnDefinition = "TEXT")
     private String newsDescription;
     private String newsUrl;
-    private String newsCoverImage;
+
+    @Lob
+    @Column(name = "newsCoverImage", columnDefinition = "LONGBLOB")
+    private byte[] newsCoverImage;
     private String newsDate;
     private String newsAuthor;
 
@@ -44,7 +48,7 @@ public class NewsAndEvents {
                          String newsUrl,
                          String newsAuthor,
                          String newsDate,
-                         String newsCoverImage){
+                         byte[] newsCoverImage) {
         this.newsTitle = newsTitle;
         this.newsDescription = newsDescription;
         this.newsUrl = newsUrl;

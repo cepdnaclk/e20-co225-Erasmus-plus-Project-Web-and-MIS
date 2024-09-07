@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import style from './Login.module.css';
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
-export let appUserRole="";
+export let appUserRole = "";
 export let userID = 0;
 
 function Login() {
@@ -15,7 +15,7 @@ function Login() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
-    // const location = useLocation();
+
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -29,74 +29,71 @@ function Login() {
             }).then((res) => {
                 console.log(res.data);
 
-                if (res.data.message === "Email does not exits") {
+                if (res.data.message === "Email does not exist") {
                     alert("Not a registered user. Email not found");
                 } else if (res.data.message === "Login Success") {
-                    loggedInUser={
+                    loggedInUser = {
                         isLoggedIn: true,
                         firstName: res.data.firstName,
                         lastName: res.data.lastName
                     };
-                    userID = res.data.userID ;
-                    if (res.data.userRole == "[USER]") {
-                        appUserRole="USER";
-                    }else if(res.data.userRole == "[ADMIN]"){
-                        console.log(res.data.userRole)
-                        appUserRole="ADMIN";
+                    userID = res.data.userID;
+                    if (res.data.userRole === "[USER]") {
+                        appUserRole = "USER";
+                    } else if (res.data.userRole === "[ADMIN]") {
+                        appUserRole = "ADMIN";
                     }
                     navigate('/');
                 } else {
                     alert("Login Failed! Password does not match!");
                 }
-            }, fail => {
-                console.error(fail); // Error!
             });
         } catch (err) {
             alert(err);
         }
     }
 
+    const handleRegister = () => {
+        navigate('/registration'); 
+    };
+
     return (
         <div className={style["LoginCard"]}>
-            <div className="container">
-                <img src={cylcleLogo} alt="Cycle Logo" className={style["CycleLogo"]} />
-                <div className="row">
-                    <div className="col-sm-6">
-                        <form>
-                            <div className="form-group">
-                                <label>Email</label>
-                                <input type="email"
-                                    className="form-control"
-                                    id="email"
-                                    placeholder="Enter Email"
-                                    value={email}
-                                    onChange={(event) => setEmail(event.target.value)}
-                                />
-                            </div>
+            <img src={cylcleLogo} alt="Cycle Logo" className={style["CycleLogo"]} />
+            <form onSubmit={login}>
+                <div className="form-group">
+                    <input
+                        type="email"
+                        placeholder="Enter Email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        required
+                    />
+                </div>
 
-                            <div className="form-group">
-                                <label>Password</label>
-                                <div className={style["input-group"]}>
-                                    <input type={showPassword ? "text" : "password"}
-                                        className="form-control"
-                                        id="password"
-                                        placeholder="Enter Password"
-                                        value={password}
-                                        onChange={(event) => setPassword(event.target.value)}
-                                    />
-                                    <div className={style["input-group-append"]}>
-                                        <span className={style["input-group-text"]} onClick={togglePasswordVisibility}>
-                                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button type="submit" className="btn btn-primary" onClick={login}>Login</button>
-                        </form>
+                <div className={style["input-group"]}>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter Password"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        required
+                    />
+                    <div className={style["input-group-append"]}>
+                        <span className={style["input-group-text"]} onClick={togglePasswordVisibility}>
+                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                        </span>
                     </div>
                 </div>
-            </div>
+
+                <button type="submit">Login</button>
+
+                {/* Register now link */}
+                <p className={style["register-link"]}>
+                    Don't have an account? 
+                    <button type="button" className="btn btn-link" onClick={handleRegister}>Register Now</button>
+                </p>
+            </form>
         </div>
     );
 }

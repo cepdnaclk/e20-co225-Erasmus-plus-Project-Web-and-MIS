@@ -12,6 +12,7 @@ import './components/Gallery.css'
 
 
 import Login from './Pages/Login';
+import Registration from './Pages/Registration';
 import Home from './Pages/Home';
 import Team from './Pages/Team';
 import News from './Pages/News';
@@ -39,6 +40,7 @@ function App() {
     <nav> <Header/> </nav>
       <Routes>
           <Route path = 'login' element = {<Login />} />
+          <Route path='registration' element = {<Registration/>} />
           <Route path = '/' element = {<Home />} />
           <Route path = 'project overview' element = {<SharedLayoutProjectOverview />}>
             <Route index element = {<SharedLayoutProjectOverview />}/>

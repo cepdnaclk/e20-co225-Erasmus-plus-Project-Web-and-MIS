@@ -95,6 +95,8 @@ const Gallery = () => {
             </li>
           </ol>
         </nav>
+        </div>
+        <div className="GalleryAdd">
         {loggedInUser.isLoggedIn && (
           <div>
             <button className="AddGalleryButton" onClick={toggleForm}>

@@ -11,9 +11,14 @@
     margin-right: 5%;
 }
 
-.gallery-container{
-  }
-  
+.GalleryAdd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 90%;
+}
+
   .AddGalleryButton {
     margin-top: 2px;
     padding: 10px 20px;

@@ -3,7 +3,6 @@ import {Link, Outlet, useLocation,useNavigate} from 'react-router-dom';  // //Ad
 
 import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
-// import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
 import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
@@ -52,9 +51,7 @@ function Header(){
         else {
             setIsVisible(true);
         }
-    
-}, [location.pathname, loggedInUserState, loggedInUser]);
-
+    })
 
     function logOut(){
    //TODO: okay to do this?

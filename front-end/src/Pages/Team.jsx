@@ -59,17 +59,11 @@ function Team() {
     <div className = "UoPLogoBlock">
     <a href = "https://www.pdn.ac.lk/"><img className="UoPLogo" src={UoPLogo} alt="UoPLogo"/> </a>
     </div>
-    {/* <div className = "UoPTeamTitle">
-      <h4>University of Peradeniya</h4>
-    </div> */}
 
     <div className = "TeamCards">
     <div className = "TeamSubTitle">
       <h4>Manager/Coordinators</h4>
     </div>
-
-
-    
     <div className = "TeamCard">
     <img className="TeamProfilePic" src={DrUpulJayasinghe} alt="DrUpulJayasinghe"/>
       <ul>
@@ -79,7 +73,6 @@ function Team() {
         <li><a href="mailto:upuljm@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></li>
       </ul>
     </div>
-
     <div className = "TeamCard">
     <img className="TeamProfilePic" src={DrErunikaDayaratna} alt="DrErunikaDayaratna"/>
       <ul>
@@ -275,7 +268,6 @@ function Team() {
     </div>
     </div>
 
-
     {/* Piraeus Research Center*/}
     <div className = "PRCTeam">
       <div className = "PRCLogoBlock">
@@ -320,7 +312,6 @@ function Team() {
     </div>
     </div>
 
-
     {/* Suranaree University of Technology */}
     <div className = "SUoTTeam">
       <div className = "SUoTLogoBlock">
@@ -343,7 +334,6 @@ function Team() {
     </div>
     </div>
 
-
     {/* NTNU */}
     <div className = "NTNUTeam">
       <div className = "NTNULogoBlock">
@@ -365,7 +355,6 @@ function Team() {
     </div>
     </div>
     </div>
-
 
     {/* King Mongkut's Institute of Technology Ladkr */}
     <div className = "KMIoTLTeam">

@@ -65,7 +65,7 @@ function Login() {
                     <input
                         type="email"
                         placeholder="Enter Email"
-                        value={email}
+                        // value={email}
                         onChange={(event) => setEmail(event.target.value)}
                         required
                     />
@@ -75,7 +75,7 @@ function Login() {
                     <input
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter Password"
-                        value={password}
+                        // value={password}
                         onChange={(event) => setPassword(event.target.value)}
                         required
                     />

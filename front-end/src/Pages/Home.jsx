@@ -212,6 +212,7 @@ function Home() {
       <div style={{ margin: "5%" }}>
         <div style={{ margin: "2% 2% 2% 2%" }}>
           <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Event Calendar</span><br></br>
+                    <iframe src="https://calendar.google.com/calendar/embed?src=cycleuop%40gmail.com&ctz=Asia%2FColombo" style={{border: "0", width:"600px", height:"600px", frameborder:"0", scrolling:"no"}}></iframe>
         </div>
       </div>
 

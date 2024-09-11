@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import DrUpulJayasinghe from '../assets/upul-jayasinghe.jpg';
 import DrErunikaDayaratna from '../assets/erunika-dayaratna.jpg';
 import ProfHMTGAPitawala from '../assets/TeamMembers/Pitawala.jpg';
@@ -33,6 +35,15 @@ import KMIoTLLogo from '../assets/KMIoTLCrest.png';
 import ProfPitchaP from '../assets/TeamMembers/ProfPitchaP.jpeg';
 
 function Team() {
+
+  // State to manage the active tab
+  const [activeTab, setActiveTab] = useState('uop');
+
+  // Function to handle tab changes
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return(
     <>
     {/* Page title */}
@@ -53,7 +64,49 @@ function Team() {
   </nav>
     </div>
 
+    {/* Tabs for different teams */}
+    <div className="TeamTabs">
+    <button 
+                className={activeTab === 'uop' ? 'active' : ''}
+                onClick={() => handleTabChange('uop')}>
+                <img className="UoPLogoTab" src={UoPLogo} alt="UoPLogo"/>
+            </button>
+            <button 
+                className={activeTab === 'uoc' ? 'active' : ''}
+                onClick={() => handleTabChange('uoc')}>
+                <img className="UoCLogoTab" src={UoCLogo} alt="UoCLogo"/>
+            </button>
+            <button 
+                className={activeTab === 'prc' ? 'active' : ''}
+                onClick={() => handleTabChange('prc')}>
+                <img className="PRCLogoTab" src={PRCLogo} alt="PRCLogo"/>
+            </button>
+            <button 
+                className={activeTab === 'huoi' ? 'active' : ''}
+                onClick={() => handleTabChange('huoi')}>
+                <img className="HUoILogoTab" src={HUoILogo} alt="HUoILogo"/>
+            </button>
+            <button 
+                className={activeTab === 'suot' ? 'active' : ''}
+                onClick={() => handleTabChange('suot')}>
+                <img className="SUoTLogoTab" src={SUoTLogo} alt="SUoTLogo"/>
+            </button>
+            <button 
+                className={activeTab === 'ntnu' ? 'active' : ''}
+                onClick={() => handleTabChange('ntnu')}>
+                <img className="NTNULogoTab" src={NTNULogo} alt="NTNULogo"/>
+            </button>
+            <button 
+                className={activeTab === 'kmio' ? 'active' : ''}
+                onClick={() => handleTabChange('kmio')}>
+                <img className="KMIoTLLogoTab" src={KMIoTLLogo} alt="KMIoTLLogo"/>
+            </button>
+      </div>
+
     {/* UoP Team Members */}
+
+    {/* Content for each tab */}
+    {activeTab === 'uop' && (
     <div className = "UoPTeam">
 
     <div className = "UoPLogoBlock">
@@ -245,8 +298,10 @@ function Team() {
     </div>
     </div>
     </div>
+    )}
 
     {/* University of Colombo */}
+    {activeTab === 'uoc' && (
     <div className = "UoCTeam">
       <div className = "UoCLogoBlock">
       <a href = "https://cmb.ac.lk/"><img className="UoCLogo" src={UoCLogo} alt="UoCLogo"/> </a>
@@ -267,8 +322,10 @@ function Team() {
     </div>
     </div>
     </div>
+    )}
 
     {/* Piraeus Research Center*/}
+    {activeTab === 'prc' && (
     <div className = "PRCTeam">
       <div className = "PRCLogoBlock">
       <a href = "https://www.unipi.gr/en/home/"><img className="PRCLogo" src={PRCLogo} alt="PRCLogo"/> </a>
@@ -289,8 +346,10 @@ function Team() {
     </div>
     </div>
     </div>
+    )}
 
     {/* Hanoi University of Industry*/}
+    {activeTab === 'huoi' && (
     <div className = "HUoITeam">
       <div className = "HUoILogoBlock">
       <a href = "https://www.haui.edu.vn/vn"><img className="HUoILogo" src={HUoILogo} alt="HUoILogo"/> </a>
@@ -311,8 +370,10 @@ function Team() {
     </div>
     </div>
     </div>
+    )}
 
     {/* Suranaree University of Technology */}
+    {activeTab === 'suot' && (
     <div className = "SUoTTeam">
       <div className = "SUoTLogoBlock">
       <a href = "https://www.sut.ac.th/"><img className="SUoTLogo" src={SUoTLogo} alt="SUoTLogo"/> </a>
@@ -333,8 +394,10 @@ function Team() {
     </div>
     </div>
     </div>
+    )}
 
     {/* NTNU */}
+    {activeTab === 'ntnu' && (
     <div className = "NTNUTeam">
       <div className = "NTNULogoBlock">
       <a href = "https://www.ntnu.edu/"><img className="NTNULogo" src={NTNULogo} alt="NTNULogo"/></a>
@@ -355,8 +418,10 @@ function Team() {
     </div>
     </div>
     </div>
+    )}
 
     {/* King Mongkut's Institute of Technology Ladkr */}
+    {activeTab === 'kmio' && (
     <div className = "KMIoTLTeam">
       <div className = "KMIoTLLogoBlock">
       <a href = "https://www.kmitl.ac.th/"><img className="KMIoTLLogo" src={KMIoTLLogo} alt="KMIoTLLogo"/> </a>
@@ -377,6 +442,7 @@ function Team() {
     </div>
     </div>
     </div>
+    )}
 
     </>
   );

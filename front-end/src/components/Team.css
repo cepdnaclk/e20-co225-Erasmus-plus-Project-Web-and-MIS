@@ -11,6 +11,42 @@
     margin-right: 5%;
 }
 
+.TeamTabs {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Adds space between the tabs */
+}
+
+.TeamTabs button {
+    background-color: #263d8300;
+    padding: 5px; /* Optional: Add padding for a better button size */
+    border: none;
+    cursor: pointer;
+    font-family: 'Caudex';
+}
+
+.TeamTabs button.active {
+    border-bottom: 2px solid #254ad281; /* Underline for the active tab */
+}
+
+.TeamTabs button:hover {
+    opacity: 0.7; /* Optional: Add hover effect */
+}
+
+.UoPLogoTab , .UoCLogoTab , .PRCLogoTab , .HUoILogoTab , .NTNULogoTab {
+    width: 180px;
+}
+
+.SUoTLogoTab , .KMIoTLLogoTab{
+    width: 65px;
+
+}
+
+
 .UoPTeam {
     border: 2px solid hsl(51, 89%, 58%);
     margin-bottom: 5%;
@@ -577,4 +613,25 @@
     list-style-type: none;
     font-size: 16px;
     padding: 0;
+}
+
+
+@media (max-width: 1500px) {
+    .TeamTabs {
+        margin-bottom: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        flex-direction: column; /* Makes the tabs stack vertically */
+        align-items: center;    /* Centers the tabs horizontally */
+        gap: 10px; /* Adds space between the tabs */
+    }
+
+    .TeamTabs button {
+        background-color: #263d8300;
+        border: none;
+        cursor: pointer;
+        padding: 10px; /* Optional: Add padding for a better button size */
+    }
+
 }

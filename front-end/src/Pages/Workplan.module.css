@@ -1,19 +1,19 @@
+/* TODO:Add css for texarea */
+
 /* Page topic */
 .workplanTitle {
-  margin-top: 1%;
+  margin-top: 2%;
   margin-left: 5%;
   text-align: left;
+  margin-bottom: 1%;
   font-size: 20px;
-  font-family: 'Caudex';
-  color: #000000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 5%;
 }
 
 /* Table containers */
-.tableContainerOuter {
+.container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   border: 2px solid hsl(222, 83%, 98%);
   border-radius: 4px;
   box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1),  
@@ -23,21 +23,22 @@
   margin: 20px;
   padding: 10px;    
 }
-.tableContainerInner {
+.tableContainer {
   margin: 0px;
   padding: 0px;
   overflow-x: auto; 
-  max-height: 60vh; 
+  max-height: 80vh; 
   overflow-y: auto; 
 }
 
 /* Table */
 .table {
-  width: 100%;
   height: 100%;
+  width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
 }
+
 /*Table headers */
 .table thead{
   position: sticky; 
@@ -49,20 +50,171 @@
   color: #333;
   text-align: center;
   padding: 10px;
-  border: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
 }
 
-/* Table cells */
+/*Table cells */
 .table tbody td{
   padding: 10px;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
-.table .tdColored{
-  background-color: #72a1e685;
+/* Hover effect for table rows */
+.table tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
-/* Media query */
+/* Styling for the table footer */
+.table tfoot span {
+  font-size: 14px;
+  font-style: italic;
+  color: #555;
+  display: block;
+  padding: 10px;
+  text-align: right;
+}
+
+.table tbody .actionButtons{
+  display:flex;
+  flex-direction: row; 
+}
+
+.actionButton{
+  margin-right: 5px;
+  padding:0;
+  background-color:#d6e4f466;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.table tbody svg {
+  padding:8px;
+  border-radius: 0.2em;
+  color:#004594a6 ;
+}
+.table .actionButton :hover{
+  background-color:#a6c9f1d6;
+}
+
+/* Add New Button */
+.addNewButton{
+  width: 100px;
+  height: 50px;
+  margin: 20px 0px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: hsl(226, 64%, 35%);
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.addNewButton:hover { 
+  background-color: #0056b3;
+}
+
+/* Interfaces */
+.Interface-Open{
+  width: 90%;
+  border: 1px solid #ccc;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+.Interface-Close{
+  display: none;
+}
+
+/* New Entry Interface */
+/* Form title */
+.formTitle {
+  text-align: center;
+  color:hsl(226, 64%, 35%);
+  font-size: 20px;
+  margin-top: 0px;
+}
+/* Form */
+.dataForm form {
+  margin-right: 20px;
+  margin-left: 20px;
+  justify-items: center;
+}
+
+/* Data input boxes and their topics */
+.inputbox {
+  display: flex;
+  align-items: center;
+  margin: 15px 20px;
+}
+.inputbox label{
+  padding: 15px;
+  font-size: 16px;
+}
+
+/* Inside the data input boxes */
+.inputbox .field {
+  width: 60%;
+  position: absolute;
+  right: 12%;
+  background: transparent;
+  border: 2px solid #c9e1ef;
+  outline: none;
+  padding: 15px;
+  font-size: 16px;
+  color: #333;
+  
+}
+.buttonsBlock{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Send Message button */
+.Interface-Open button {
+  width: 100px;
+  height: 50px;
+  background: hsl(211, 44%, 66%);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font: #ffffff;
+  color: #000000;
+  margin-top: 10px;
+  margin:10px;
+}
+
+/* Send Message button when the mouse point to that*/
+.Interface-Open button:hover{
+  background: hsl(211, 40%, 69%);
+  color: #2a2929;
+}
+
+/* View Interface */
+.viewDetails{
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+
+.viewDetails tbody td{
+    width: auto;
+    padding:8px;
+    text-align: left;
+  
+}
+.viewDetails tbody th{
+    width: 200px;
+    padding:8px;
+    text-align: left;
+}
+/* Optional: Media query for smaller screens */
 @media screen and (max-width: 600px) {
   .table thead {
     display: none;
@@ -78,5 +230,12 @@
     display: block;
     text-align: right;
     border-bottom: 1px solid #ddd;
+  }
+/* TODO : UPDATE jsx accordingly */
+  .table tbody td::before, 
+  .table tbody th::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
   }
 }

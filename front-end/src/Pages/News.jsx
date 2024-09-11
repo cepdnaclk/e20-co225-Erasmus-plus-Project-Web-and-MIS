@@ -105,6 +105,8 @@ const News = () => {
             </li>
           </ol>
         </nav>
+      </div>
+      <div className="NewsAdd">
         {/* Show Add News button only if the user is logged in */}
         {loggedInUser.isLoggedIn && (
           <div>

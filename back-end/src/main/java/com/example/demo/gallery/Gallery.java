@@ -29,10 +29,13 @@ public class Gallery {
             generator = "gallery_sequence"
     )
 
-    private Long albumId;
+    private Long albumID;
     private String albumName;
     private String albumCreatedBy;
-    private String albumCoverURL;
+
+    @Lob
+    @Column(name = "albumCoverImage", columnDefinition = "LONGBLOB")
+    private byte[] albumCoverImage;
     private String albumURL;
 
     /**
@@ -40,11 +43,11 @@ public class Gallery {
      */
     public Gallery(String albumName,
                    String albumCreatedBy,
-                   String albumCoverURL,
+                   byte[] albumCoverImage,
                    String albumURL) {
         this.albumName = albumName;
         this.albumCreatedBy = albumCreatedBy;
-        this.albumCoverURL = albumCoverURL;
+        this.albumCoverImage = albumCoverImage;
         this.albumURL = albumURL;
     }
 }

@@ -78,6 +78,23 @@
     width: 25px;
 }
 
+.ytLogo { /* youtube logo used in the footer of the webpage */
+    height: auto;
+    width: 25px;
+}
+
+.XLogo { /* youtube logo used in the footer of the webpage */
+    height: auto;
+    width: 24px;
+}
+
+li a img {
+    margin-right: 10px; /* Adjust this value as needed */
+}
+
+li a:last-child img {
+    margin-right: 0; /* Ensure no margin after the last image */
+}
 
 /* Media query for small screens */
 @media (max-width: 800px) {

@@ -3,7 +3,7 @@ import {Link, Outlet, useLocation,useNavigate} from 'react-router-dom';  // //Ad
 
 import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
-import erasmusLogo from '../assets/erasmus-plus-logo.jpg';
+import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
 import {loggedInUser} from '../Pages/Login'
@@ -79,11 +79,29 @@ function Header(){
         setShowNotifications(previousShowNotifications=>!previousShowNotifications)       
     }
 
-
-
+  // Function to close the sidebar when clicking outside of it
+function closeOnClickOutside(selector, toggleClass) {
+    document.addEventListener('click', function(event) {
+      const element = document.querySelector(selector);
+      const isClickInside = element.contains(event.target);
+      const isClickOnToggleButton = event.target.closest('.adminNavBarRight li'); // Update with the toggle button selector
+  
+      if (!isClickInside && !isClickOnToggleButton) {
+        element.classList.add(toggleClass); // Add the class to hide the element
+      }
+    });
+  }
+  
+  // Call the function for the notification and message boxes
+  useEffect(() => {
+    closeOnClickOutside('.sideBarNotifications-Open', 'sideBar-Close');
+    closeOnClickOutside('.sideBarMessages-Open', 'sideBar-Close');
+    closeOnClickOutside('.userAccount-Open', 'userAccount-Close');
+}, []);
 
     return(
         <header>
+            
 
             {/* Navigation bar */}
             <nav className = "headerNavBar">
@@ -96,12 +114,6 @@ function Header(){
                 <FontAwesomeIcon icon={faBars} />   
                 </div>
                 <ul className= {menuOpen ? "open" : ""}>
-                <ul className="headerNavBarLeft">
-                    {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
-                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}
-                </ul>
                 <ul className="headerNavBarRight">
 
                     <li><Link to = '/' onClick={handleLinkClick}>Home</Link></li>
@@ -123,14 +135,20 @@ function Header(){
                         </div>
                     </li>
                     <li><Link to = '/downloads' onClick={handleLinkClick}>Downloads</Link></li>
-                    <li><Link to = '/contact' onClick={handleLinkClick}>contact</Link></li>
+                    <li><Link to = '/contact' onClick={handleLinkClick}>Contact</Link></li>
                 </ul>
                 </ul>
             </nav>
 
             {/* Top Navigation Bar for Administration  */}
             <div>
-                <nav class="adminNavBar" >                
+                <nav class="adminNavBar" >   
+                <ul className="headerNavBarLeft">
+                    {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
+                    {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}
+                </ul>             
                 {isVisible && <div className='top-login-bar'><Link to = '/login'><button className="Login-button" onClick={handleLinkClick}>LOGIN</button></Link></div>}
                     <div>
                         <ul className={loggedInUserState ? "adminNavBarRight":"non-logged-user-panel"}>                  
@@ -209,22 +227,24 @@ function Header(){
 
             
             
-    
+            <div className='logo-blockFull'>
             <div className='logo-block'>
             {/* Erasmus logo */}
             <a href = "https://erasmus-plus.ec.europa.eu/"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>
 
-            {/* Main heading */}
-            <h1><span style={{ color:'rgb(50, 78, 148)'}}>ERASMUS+</span> <span style={{ color:'rgba(44, 110, 11, 0.634)'}}>CYCLE</span></h1>
 
             {/* Cycle logo */}
             <img src={cylcleLogo} alt="Cycle Logo" className="Cycle-Logo"></img>
             </div>
             
-
+            <div className='Heading'>
+            {/* Main heading */}
+            <h1><span style={{ color:'rgb(50, 78, 148)'}}>ERASMUS+</span> <span style={{ color:'rgba(44, 110, 11, 0.634)'}}>CYCLE</span></h1>
+        
             {/* Sub heading */}
             <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cyber security</span></h2>
-
+            </div>
+            </div>
             
         </header>
     );

@@ -1,10 +1,15 @@
 
 .downloadTitle {
-  margin-top: 2%;
-  margin-left: 5%;
-  text-align: left;
-  margin-bottom: 3%;
-  font-size: 20px;
+  margin-top: 1%;
+    margin-left: 5%;
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Caudex';
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5%;
 }
 
 .upload-section {
@@ -36,11 +41,14 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  border: 1.5px solid hsl(222, 83%, 98%);
-  box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+  /* border: 1.5px solid hsl(222, 83%, 98%); */
+  border: 2px solid rgba(10, 48, 128);
+  border-radius: 20px;
+  background-color: #e1edf9;
+  /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
               -2px -2px 5px rgba(255, 255, 255, 0.7), 
               2px -2px 5px rgba(255, 255, 255, 0.7), 
-              -2px 2px 5px rgba(63, 108, 148, 0.1);
+              -2px 2px 5px rgba(63, 108, 148, 0.1); */
   width: 90%;
   max-width: 400px;
   margin-left: 5%;
@@ -60,13 +68,19 @@
   margin-bottom: 15px;
   border-radius: 6px;
   background-color: #ffffff;
-  border: 1px solid hsl(210, 20%, 85%);
-  box-shadow: inset 0px 1px 2px rgba(161, 195, 235, 0.1);
+  border: 1px solid hsl(209, 63%, 81%);
+  box-shadow: inset 0px 1px 2px rgba(136, 185, 240, 0.1);
 }
 
 .upload-form input[type="text"] {
   font-size: 16px;
   color: black;
+}
+
+.upload-form input[type="checkbox"] {
+  width: 16px; 
+  height: 16px; 
+  margin-right: 8px; 
 }
 
 .upload-form label {
@@ -117,11 +131,13 @@
   align-items: left;
   justify-content: left;
   padding: 10px;
-  background: rgb(255, 255, 255);
-  box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+  background:  hsl(94, 41%, 97%);
+  border: 2px solid hsl(105, 68%, 24%);
+  border-radius: 10px;
+  /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
               -2px -2px 5px rgba(255, 255, 255, 0.7), 
               2px -2px 5px rgba(255, 255, 255, 0.7), 
-              -2px 2px 5px rgba(63, 108, 148, 0.1);
+              -2px 2px 5px rgba(63, 108, 148, 0.1); */
   width: auto;
 }
 
@@ -131,17 +147,17 @@
 }
 
 .downloadSection button {
-  background: hsl(0, 0%, 100%);
+  background: hsla(0, 0%, 100%, 0);
   border: none;
   cursor: pointer;
-  color: #4773a6;
+  color: #25610b;
   margin-left: 1%;
   align-items: right;
 }
 
 .downloadSection button:hover {
-  background: hsl(0, 0%, 100%);
-  color: #9bbcd0;
+  background: hsla(0, 0%, 100%, 0);
+  color: #478b45;
 }
 
 .downloadSection img {
@@ -152,19 +168,21 @@
 }
 
 .downloadLinks {
-  border: 1px solid hsl(222, 83%, 98%);
-  box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
+  border: 2px solid rgba(10, 48, 128);
+  border-radius: 20px;
+  background-color: #e1edf9;
+  /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
               -2px -2px 5px rgba(255, 255, 255, 0.7), 
               2px -2px 5px rgba(255, 255, 255, 0.7), 
-              -2px 2px 5px rgba(63, 108, 148, 0.1);
+              -2px 2px 5px rgba(63, 108, 148, 0.1); */
   padding: 10px;
   display: center;
-  background-color: hsl(0, 0%, 100%);;
   margin-left: 5%;
   margin-right: 5%; 
   margin-bottom: 2%;
   text-align: center;
   width: auto;
+  font-family: 'Caudex';
   
 }
 
@@ -175,17 +193,17 @@
 
 .downloadLinks p {
   font-size: 16px;
-  color: rgb(56, 117, 186);
+  color: rgb(30, 85, 148);
 }
  
 .downloadLinks h4 {
   font-size: 20px;
-  color: rgb(0, 0, 0);
+  color: rgba(10, 48, 128);
 }
 
 .downloadLinks p:hover {
   font-size: 16px;
-  color: hsl(211, 40%, 69%);
+  color: hsl(211, 63%, 69%);
 }
 
 .addcancelbutton {

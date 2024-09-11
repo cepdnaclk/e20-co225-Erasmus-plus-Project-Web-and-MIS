@@ -1,7 +1,11 @@
+import style from "../components/Dashboard.module.css";
+
 function Dashboard() {
     return(
       <>
-      <h1>Dashboard</h1>
+      <div className={style["DashboardTitle"]}>
+          <h3>Dashboard</h3>
+    </div>
         </>
     );
   }

@@ -7,6 +7,7 @@ import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap, faShield, faUsers, faBuilding} from '@fortawesome/free-solid-svg-icons';
+import cylcleLogo from '../assets/CYCLE-logo.png';
 // this has to be imported from backend 
 // 1200px height images are ideal
 const fadeImages = [
@@ -106,16 +107,17 @@ function Home() {
       {/* project description */}
       <div className={style["proj_desc"]}>
         <div>
-          <span style={{ fontWeight: 'bold', fontSize: '26px', color: 'white' }}>Project description</span><br></br>
+          <span style={{ fontWeight: 'bold', fontSize: '26px', color: 'rgba(10, 48, 128)' }}>Project description</span><br></br>
+          <h3><span style={{ color:'rgb(50, 78, 148)'}}>Project Number: GAP-101128627</span></h3>
         </div>
-        <p style={{ fontSize: '18px', textAlign: 'center' }}>There is an increasing demand for cybersecurity professionals worldwide,
+        <p style={{ fontSize: '16px', textAlign: 'center' }}>There is an increasing demand for cybersecurity professionals worldwide,
           however, in Asia Pacific the largest regional workforce gap of 1.42 million professionals exists. 
           The <b>CYberseCurityLEarning: Master’s degree in Cybersecurity / CYCLE </b>
-          consortium will produce <u>innovative MSc curricula in the cybersecurity</u>, 
+          consortium will produce innovative MSc curricula in the cybersecurity, 
           which will incorporate the design thinking principles and courses on Artificial Intelligence, 
           while it will also create a Regional Centre for Higher education & Training, a transnational/international 
           cooperation platform that will serve as a regional knowledge/networking/innovation hub for the cybersecurity 
-          industry in Asia. The training materials will be supplemented <u>by Serious Games</u> that will reflect real market 
+          industry in Asia. The training materials will be supplemented by Serious Games that will reflect real market 
           cases from Asian partner countries. The serious games will be delivered in e-learning platform, so as to engage users 
           in solving problems using Design thinking</p>
       </div>
@@ -210,6 +212,7 @@ function Home() {
       <div style={{ margin: "5%" }}>
         <div style={{ margin: "2% 2% 2% 2%" }}>
           <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Event Calendar</span><br></br>
+                    <iframe src="https://calendar.google.com/calendar/embed?src=cycleuop%40gmail.com&ctz=Asia%2FColombo" style={{border: "0", width:"600px", height:"600px", frameborder:"0", scrolling:"no"}}></iframe>
         </div>
       </div>
 

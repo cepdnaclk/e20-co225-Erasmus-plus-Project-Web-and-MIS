@@ -2,19 +2,20 @@ package com.example.demo;
 
 import com.example.demo.news.NewsAndEvents;
 import com.example.demo.news.NewsAndEventsRepository;
-import com.example.demo.news.NewsAndEventsRequest;
 import com.example.demo.news.NewsAndEventsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.mock.web.MockMultipartFile;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-        import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.*;
 
 class NewsAndEventsServiceTest {
 
@@ -24,7 +25,6 @@ class NewsAndEventsServiceTest {
     @InjectMocks
     private NewsAndEventsService newsAndEventsService;
 
-//   annotations for test fixtures
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -37,7 +37,6 @@ class NewsAndEventsServiceTest {
         the NewsAndEventsService correctly interacts with the
         NewsAndEventsRepository to fetch all news and events
     */
-
     @Test
     void testGetAllNewsAndEvents() {
         when(newsAndEventsRepository.findAllOrderByNewsIDDesc()).thenReturn(Collections.emptyList());
@@ -50,11 +49,10 @@ class NewsAndEventsServiceTest {
         retrieves a news and event entry by its ID and interacts with the
         NewsAndEventsRepository as expected
     */
-
     @Test
     void testGetNewsAndEventById() {
         Long newsId = 1L;
-        NewsAndEvents newsAndEvents = new NewsAndEvents("Title", "Description", "Url", "Author", "Date", "Image");
+        NewsAndEvents newsAndEvents = new NewsAndEvents("Title", "Description", "Url", "Author", "Date", null);
         when(newsAndEventsRepository.findById(newsId)).thenReturn(Optional.of(newsAndEvents));
 
         Optional<NewsAndEvents> foundNews = newsAndEventsService.getNewsAndEventById(newsId);
@@ -65,27 +63,34 @@ class NewsAndEventsServiceTest {
 
     /*
         Test to check whether the addNewsAndEvent method in the NewsAndEventsService class correctly
-        adds a new news and event entry based on the provided request object
+        adds a new news and event entry based on the provided request object and the file upload
     */
-
     @Test
-    void testAddNewsAndEvent() {
-        NewsAndEventsRequest request = new NewsAndEventsRequest("Title", "Description", "Url", "Author", "Date", "Image");
-        NewsAndEvents newsAndEvents = new NewsAndEvents(request.getNewsTitle(), request.getNewsDescription(), request.getNewsUrl(), request.getNewsAuthor(), request.getNewsDate(), request.getNewsCoverImage());
+    void testAddNewsAndEvent() throws IOException {
+        MockMultipartFile mockImage = new MockMultipartFile("newsCoverImage", "image.jpg", "image/jpeg", "image data".getBytes());
+
+        NewsAndEvents newsAndEvents = new NewsAndEvents("Title", "Description", "Url", "Author", "Date", mockImage.getBytes());
 
         when(newsAndEventsRepository.save(any(NewsAndEvents.class))).thenReturn(newsAndEvents);
 
-        NewsAndEvents addedNews = newsAndEventsService.addNewsAndEvent(request);
+        NewsAndEvents addedNews = newsAndEventsService.addNewsAndEvent(
+                "Title",
+                "Description",
+                "Url",
+                "Author",
+                "Date",
+                mockImage
+        );
+
         assertNotNull(addedNews);
         assertEquals("Title", addedNews.getNewsTitle());
         verify(newsAndEventsRepository, times(1)).save(any(NewsAndEvents.class));
     }
 
     /*
-        Test for deleteNewsAndEvent whether it correctly delete entry
+        Test for deleteNewsAndEvent whether it correctly deletes an entry
         by its ID and properly interacts with NewsAndEventsRepository
     */
-
     @Test
     void testDeleteNewsAndEvent() {
         Long newsId = 1L;

@@ -115,6 +115,18 @@ const FileUploadDownload = () => {
     <div>
       <div className="downloadTitle">
         <h3>Downloads</h3>
+        <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="http://localhost:5173/"> 
+                <span style={{ fontSize: 16}}>Home</span>
+              </a>
+            </li>
+            <li className="breadcrumb-item active">
+              <span style={{ fontSize: 16}}> Downloads</span>
+            </li>
+          </ol>
+        </nav>
       </div>
 
       <div className="downloadLinks">

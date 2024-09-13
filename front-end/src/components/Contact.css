@@ -109,36 +109,37 @@
 /* ** Contact Us Form** */
 
 .contactUsForm {
-    border: 2px solid rgba(10, 48, 128);
-    border-radius: 1em;
-    /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7), 
-                2px -2px 5px rgba(255, 255, 255, 0.7), 
-                -2px 2px 5px rgba(63, 108, 148, 0.1); */
     flex-direction: center;
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 1%;
     margin-bottom: 5%;
     text-align: left;
     font-size: 20px;
 }
 
 /* The contact us form title */
-.ContactUsTitle {
-    text-align: left;
-    color:hsl(211, 81%, 20%);
-    font-size: 20px;
+.ContactUsTitle h3{
+    text-align: center;
+    color:hsl(0, 0%, 0%);
+    font-size: 24px;
+    font-family: 'Caudex';
+    font-weight: bolder;
+}
+
+.ContactUsSubTitle {
+    font-size: 16px;
+    color: #36373a;
+    text-align: center;
 }
 
 /* The Image in contact us form */
 .contactUsForm img{
     width: auto;
     height: 400px;
-    margin-top: 260px;
+    margin-top: 200px;
     margin-right: 20px;
     margin-left: 20px;
 }
@@ -152,7 +153,7 @@
 /* Data input boxes and their topics */
 .inputbox {
     margin-top: 20px;
-    width: 450px;
+    width: 400px;
     margin-right: 20px;
     font-size: 18px;
 }
@@ -220,5 +221,8 @@ form button:hover{
         margin-top: 20px;
         width: 350px;
         
+    }
+    .ContactUsSubTitle {
+        margin-left: 1%;
     }
 }

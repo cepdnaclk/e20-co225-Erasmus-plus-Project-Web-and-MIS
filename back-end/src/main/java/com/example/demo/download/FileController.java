@@ -29,28 +29,42 @@ public class FileController {
         FileEntity fileEntity = fileService.getFileById(fileId)
                 .orElseThrow(() -> new RuntimeException("File not found with ID " + fileId));
 
+        if (fileEntity.getYoutubeLink() != null) {
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_TYPE, "text/plain")
+                    .body(new ByteArrayResource(fileEntity.getYoutubeLink().getBytes()));
+        }
+
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(fileEntity.getFileType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileEntity.getFileName() + "\"")
                 .body(new ByteArrayResource(fileEntity.getData()));
     }
-    
 
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file,
+    public ResponseEntity<String> uploadFile(@RequestParam(required = false, name = "file") MultipartFile file,
+                                             @RequestParam(required = false, name = "youtubeLink") String youtubeLink,
                                              @RequestParam("displayName") String displayName,
                                              @RequestParam("visibleToAll") boolean visibleToAll) {
         try {
-            fileService.saveFile(new FileEntity(
-                    file.getOriginalFilename(),
-                    file.getContentType(),
-                    file.getBytes(),
-                    displayName,
-                    visibleToAll
-            ));
-            return ResponseEntity.ok("File uploaded successfully");
+            if (file != null) {
+                fileService.saveFile(new FileEntity(
+                        file.getOriginalFilename(),
+                        file.getContentType(),
+                        file.getBytes(),
+                        displayName,
+                        visibleToAll
+                ));
+            } else if (youtubeLink != null) {
+                fileService.saveFile(new FileEntity(
+                        youtubeLink,
+                        displayName,
+                        visibleToAll
+                ));
+            }
+            return ResponseEntity.ok("Content uploaded successfully");
         } catch (IOException e) {
-            return ResponseEntity.status(500).body("Failed to upload file");
+            return ResponseEntity.status(500).body("Failed to upload content");
         }
     }
 

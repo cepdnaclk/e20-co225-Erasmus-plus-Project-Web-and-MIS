@@ -56,7 +56,8 @@
 }
 
 .upload-form input[type="file"],
-.upload-form input[type="text"] {
+.upload-form input[type="text"],
+.upload-form input[type="url"]  {
   width: 100%;
   max-width: 300px;
   padding: 12px;
@@ -72,11 +73,17 @@
   color: black;
 }
 
+.upload-form input[type="url"] {
+  font-size: 16px;
+  color: black;
+}
+
 .upload-form input[type="checkbox"] {
   width: 16px; 
   height: 16px; 
   margin-right: 8px; 
 }
+
 
 .upload-form label {
   display: flex;
@@ -107,60 +114,82 @@
   transform: scale(0.98);
 }
 
+ 
+/* Download and youtube link watch section*/
+
 .downloadSection {
   display: grid;
   gap: 20px;
-  display: left;
-  background-color: hsl(0, 0%, 100%);;
-  margin-left: 5%;
-  margin-right: 5%; 
-  margin-bottom: 5%;
+  background-color: hsl(0, 0%, 100%);
+  margin: 0 5% 5%;
 }
-
 
 .fileItem {
   display: flex;
-  flex-direction: row;
-  align-items: left;
-  justify-content: left;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px;
-  background:  hsl(94, 41%, 97%);
-  border: 2px solid hsl(105, 68%, 24%);
+  background: hsl(225, 22%, 96%);
+  border: 2px solid hsl(219, 56%, 39%);
   border-radius: 10px;
+  position: relative; /* Enables the absolute positioning of the fileActions */
+  flex-wrap: wrap; /* Allows wrapping of content when necessary */
+}
+
+.fileContent {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+}
+
+.fileActions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative; /* Remove absolute positioning for responsiveness */
+  margin-left: auto; /* Keeps the buttons aligned to the right */
+  padding: 10px;
+}
+
+.fileActions button,
+.fileActions a {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1f4681;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.fileActions button:hover,
+.fileActions a:hover {
+  color: #4e679b;
+}
+
+.fileActions a {
+  text-decoration: none;
+  color: #1f4681;
+  font-size: 16px;
+}
+
+.fileItem img {
   width: auto;
+  height: 40px;
+  margin-right: 10px;
 }
 
 .fileItem p {
-  text-align: left;
+  margin: 0;
 }
 
-.downloadSection button {
-  background: hsla(0, 0%, 100%, 0);
-  border: none;
-  cursor: pointer;
-  color: #25610b;
-  margin-left: 1%;
-  align-items: right;
-}
-
-.downloadSection button:hover {
-  background: hsla(0, 0%, 100%, 0);
-  color: #478b45;
-}
-
-.downloadSection img {
-  width: auto;
-  height: 40px;
-  margin-right: 1%;
-  margin-top: 10px;
-}
-
-.downloadSection h4{
-  text-align: left;
+.downloadSection h4 {
   font-size: 20px;
-  font-family: 'Caudex';
+  font-family: 'Caudex', serif;
   color: #000000;
 }
+
 
 .downloadLinks {
   border: 2px solid rgba(10, 48, 128);
@@ -220,5 +249,19 @@
 
   .downloadSection img {
     display: none;
+  }
+
+  .fileItem {
+    flex-direction: row; /* Stack content vertically on small screens */
+    align-items: flex-start; /* Align content to the left */
+  }
+
+  .fileContent {
+    margin-bottom: 10px; /* Adds spacing between file content and actions */
+  }
+
+  .fileActions {
+    justify-content: flex-start; /* Align buttons to the left */
+    width: 50%; /* Allow the buttons to take full width */
   }
 }

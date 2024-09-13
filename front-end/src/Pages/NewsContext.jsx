@@ -13,7 +13,19 @@ export const NewsProvider = ({ children }) => {
       const start = performance.now();
 
       try {
-        const response = await fetch('http://localhost:8080/api/v1/news');
+        const response = await fetch('http://localhost:8080/api/v1/news', {
+          method: 'GET',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate', // Ensures fresh response
+            'Pragma': 'no-cache',
+            'Expires': '0',
+          },
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch news');
+        }
+
         const data = await response.json();
         setNews(data);
         localStorage.setItem('news', JSON.stringify(data));

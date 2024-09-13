@@ -43,7 +43,6 @@ function Workplan() {
           <h3>Workplan</h3>
       </div>
 
-    <h1> Workplan</h1>
     <div className={style["container"]}>
       <div className={style["tableContainer"]}>
           <table className={style["table"]}>

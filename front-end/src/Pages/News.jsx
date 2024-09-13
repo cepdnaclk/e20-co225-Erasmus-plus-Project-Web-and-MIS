@@ -160,10 +160,7 @@ const News = () => {
       <div className="news-container">
         {news.map((item) => (
           <div key={item.newsID} className="news-tile">
-            <img 
-                        src={`data:image/jpeg;base64,${item.newsCoverImage}`} 
-                        alt={item.newsTitle} 
-                    />
+            <img src={`data:image/jpeg;base64,${item.newsCoverImage}`} alt={item.newsTitle} />
             <h2>{item.newsTitle}</h2> {/* News title */}
             <p>{item.newsDescription}</p> {/* News description */}
             <b><p>Date: {item.newsDate}</p></b> {/* News date */}

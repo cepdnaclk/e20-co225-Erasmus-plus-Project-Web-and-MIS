@@ -47,7 +47,8 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                         .anyRequest().authenticated()
                 // .anyRequest().permitAll()
                 )
-                .formLogin(withDefaults());
+//                .formLogin(withDefaults());
+                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/admin",true));
         return http.build();
     }
 

@@ -54,13 +54,18 @@ function Contact() {
     </div>
     </div>
 
+
     {/* Contact Us form */}
+
+    <div className = "ContactUsTitle">
+      <h3>Contact Us</h3>
+      <p className = "ContactUsSubTitle">For inquiries or support, contact us and we'll respond promptly</p>
+    </div>
+
     <div className = "contactUsForm">
       <img className="contactImg" src={contactImg} alt="contactImg" /> 
       <form>
-        <div className = "ContactUsTitle">
-          <h3>Contact Us</h3>
-        </div>
+        
         <div className = "inputbox">
         <label>Full Name</label>
         <input type = "text" className = "field" placeholder = "Enter your Full Name" name = "user_name" required/>

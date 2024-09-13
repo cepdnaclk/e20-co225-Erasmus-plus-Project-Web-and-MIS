@@ -111,6 +111,10 @@ const FileUploadDownload = () => {
     }
   };
 
+  // Filter files into two groups: visible to all and visible to logged-in users only
+  const visibleToAllFiles = uploadedFiles.filter(file => file.visibleToAll);
+  const visibleToLoggedInFiles = uploadedFiles.filter(file => !file.visibleToAll && loggedInUser.isLoggedIn);
+
   return (
     <div>
       <div className="downloadTitle">
@@ -172,19 +176,39 @@ const FileUploadDownload = () => {
       {errorMessage && <p className="error">{errorMessage}</p>}
 
       <div className="downloadSection">
-        {uploadedFiles.map((file) => (
-          (file.visibleToAll || loggedInUser.isLoggedIn) && (
+        <h4>Download Files here</h4>
+        {visibleToAllFiles.length > 0 ? (
+          visibleToAllFiles.map(file => (
             <div key={file.fileId} className="fileItem">
               <img src={fileDownload} alt="fileDownload" />
               <span><p>{file.displayName}</p></span>
-              
               <button onClick={() => handleDownload(file.fileId, file.fileName)}><FontAwesomeIcon icon={faDownload} /></button>
               {loggedInUser.isLoggedIn && (
-                <button onClick={() => handleDelete(file.fileId)}><FontAwesomeIcon icon={faTrash}/></button>
+                <button onClick={() => handleDelete(file.fileId)}><FontAwesomeIcon icon={faTrash} /></button>
               )}
             </div>
-          )
-        ))}
+          ))
+        ) : (
+          <p>No files visible to all</p>
+        )}
+
+        {loggedInUser.isLoggedIn && (
+          <>
+            <h4>Files for the CYCLE Team</h4>
+            {visibleToLoggedInFiles.length > 0 ? (
+              visibleToLoggedInFiles.map(file => (
+                <div key={file.fileId} className="fileItem">
+                  <img src={fileDownload} alt="fileDownload" />
+                  <span><p>{file.displayName}</p></span>
+                  <button onClick={() => handleDownload(file.fileId, file.fileName)}><FontAwesomeIcon icon={faDownload} /></button>
+                  <button onClick={() => handleDelete(file.fileId)}><FontAwesomeIcon icon={faTrash} /></button>
+                </div>
+              ))
+            ) : (
+              <p>No files visible to logged-in users</p>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

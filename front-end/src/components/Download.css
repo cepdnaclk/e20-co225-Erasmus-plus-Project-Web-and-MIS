@@ -41,14 +41,9 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  /* border: 1.5px solid hsl(222, 83%, 98%); */
   border: 2px solid rgba(10, 48, 128);
   border-radius: 20px;
   background-color: #e1edf9;
-  /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
-              -2px -2px 5px rgba(255, 255, 255, 0.7), 
-              2px -2px 5px rgba(255, 255, 255, 0.7), 
-              -2px 2px 5px rgba(63, 108, 148, 0.1); */
   width: 90%;
   max-width: 400px;
   margin-left: 5%;
@@ -101,8 +96,6 @@
   color: #ffffff;
   cursor: pointer;
   font-size: 16px;
-  /* font-weight: bold; */
-  /* transition: background 0.3s ease, transform 0.2s ease; */
 }
 
 .upload-form button:hover {
@@ -121,7 +114,7 @@
   background-color: hsl(0, 0%, 100%);;
   margin-left: 5%;
   margin-right: 5%; 
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 }
 
 
@@ -134,15 +127,10 @@
   background:  hsl(94, 41%, 97%);
   border: 2px solid hsl(105, 68%, 24%);
   border-radius: 10px;
-  /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
-              -2px -2px 5px rgba(255, 255, 255, 0.7), 
-              2px -2px 5px rgba(255, 255, 255, 0.7), 
-              -2px 2px 5px rgba(63, 108, 148, 0.1); */
   width: auto;
 }
 
 .fileItem p {
-  /* margin: 10px 0; */
   text-align: left;
 }
 
@@ -167,14 +155,17 @@
   margin-top: 10px;
 }
 
+.downloadSection h4{
+  text-align: left;
+  font-size: 20px;
+  font-family: 'Caudex';
+  color: #000000;
+}
+
 .downloadLinks {
   border: 2px solid rgba(10, 48, 128);
   border-radius: 20px;
   background-color: #e1edf9;
-  /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
-              -2px -2px 5px rgba(255, 255, 255, 0.7), 
-              2px -2px 5px rgba(255, 255, 255, 0.7), 
-              -2px 2px 5px rgba(63, 108, 148, 0.1); */
   padding: 10px;
   display: center;
   margin-left: 5%;
@@ -219,11 +210,6 @@
   margin-bottom: 20px;
   display: center;
 }
-
-
-
-
-
 
 @media (max-width: 760px) {
 

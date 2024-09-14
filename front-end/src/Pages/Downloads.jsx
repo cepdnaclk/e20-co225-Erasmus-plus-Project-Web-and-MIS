@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import fileDownload from '../assets/download.png';
-import fileDownload1 from '../assets/download2.png';
 import { loggedInUser } from '../Pages/Login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload ,faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faDownload ,faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 
 
 const FileUploadDownload = () => {
@@ -47,7 +46,7 @@ const FileUploadDownload = () => {
 
   const handleUpload = async () => {
     if (!selectedFile && !youtubeLink) {
-      alert('Please select a file or enter a YouTube link!');
+      alert('Please select a file or enter a URL for the file!');
       return;
     }
 
@@ -149,19 +148,6 @@ const FileUploadDownload = () => {
         </nav>
       </div>
 
-      <div className="downloadLinks">
-        <nav>
-          <h4>Downloads For Students and PGIS Staff</h4>
-          <img src={fileDownload1} alt="fileDownload1" />
-          <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/students.php">
-            <p>PGIS Downloads page for Students</p>
-          </a>
-          <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/staff.php">
-            <p>PGIS Downloads page for Staff</p>
-          </a>
-        </nav>
-      </div>
-
       {loggedInUser.isLoggedIn && (
         <div className="upload-section">
           <button className="addcancelbutton" onClick={() => setShowUploadForm(!showUploadForm)}>
@@ -179,7 +165,7 @@ const FileUploadDownload = () => {
               />
               <input
                 type="url"
-                placeholder="Enter the YouTube link (optional)"
+                placeholder="Enter the URL"
                 value={youtubeLink}
                 onChange={handleYoutubeLinkChange}
               />
@@ -188,7 +174,7 @@ const FileUploadDownload = () => {
                   type="checkbox"
                   checked={visibleToAll}
                   onChange={handleVisibilityChange}
-                /> Set Visible to All
+                /> Set Visible to Public
               </label>
               <button onClick={handleUpload}>Upload Content</button>
             </div>
@@ -199,7 +185,7 @@ const FileUploadDownload = () => {
       {errorMessage && <p className="error">{errorMessage}</p>}
 
       <div className="downloadSection">
-  <h4>Download Files here</h4>
+  {/* <h4>Download Files here</h4> */}
   {visibleToAllFiles.length > 0 ? (
     visibleToAllFiles.map(file => (
       <div key={file.fileId} className="fileItem">
@@ -208,7 +194,7 @@ const FileUploadDownload = () => {
             <p>{file.displayName}</p>
             <div className="fileActions">
               <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">
-                Watch Video
+                <FontAwesomeIcon icon={faEye}/>
               </a>
               {loggedInUser.isLoggedIn && (
                 <button onClick={() => handleDelete(file.fileId)}>
@@ -236,12 +222,12 @@ const FileUploadDownload = () => {
       </div>
     ))
   ) : (
-    <p>No files visible to all</p>
+    <p>No files visible to Public</p>
   )}
 
   {loggedInUser.isLoggedIn && (
     <>
-      <h4>Files for the CYCLE Team</h4>
+      <h4>Files Only for the CYCLE Team</h4>
       {visibleToLoggedInFiles.length > 0 ? (
         visibleToLoggedInFiles.map(file => (
           <div key={file.fileId} className="fileItem">
@@ -250,7 +236,7 @@ const FileUploadDownload = () => {
                 <p>{file.displayName}</p>
                 <div className="fileActions">
                   <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">
-                    Watch Video
+                    <FontAwesomeIcon icon={faEye}/>
                   </a>
                   <button onClick={() => handleDelete(file.fileId)}>
                     <FontAwesomeIcon icon={faTrash} />

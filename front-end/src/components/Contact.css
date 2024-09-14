@@ -29,9 +29,9 @@
     flex-direction: flex-start;
 }
 
-/* Contact details of the manager alignment */
-.contactManager {
-    border: 2px solid rgba(10, 48, 128);
+/* Contact details of the manager and coordinator alignment */
+.contactManagerCoordinator {
+    border: 2px solid rgb(67, 99, 169);
     border-radius: 1em;
     padding: 20px;
     display: inline-block;
@@ -40,69 +40,55 @@
     margin-right: 5%;
     margin-bottom: 5%;
     text-align: center;
-    min-width: 300px; /* Minimum width to ensure consistency */
-    max-width: 300px; /* Maximum width to ensure consistency */
+    width: 100%;
+    min-width:350px; 
+    max-width: 300px; 
+}
+
+.contactMCDetails {
+    text-align: center;
+    align-items: center;
+}
+
+.contactMCDetails a{
+    color: #000000;
+}
+
+.contactMCDetails a:hover{
+    color: #5c5757;
+}
+
+.contactMCDetails h3:hover{
+    color: #5c5757;
 }
 
 /* Photo of the manager alignment */
-.contactManager .Dr-Upul-Jayasinghe-img {
-    max-width: 60%;
+.contactManagerCoordinator .Dr-Upul-Jayasinghe-img {
+    max-width: 150px;
     height: auto;
     border-radius: 50%;
-}
-
-/* Contact details of the coordinator alignment */
-.contactCoordinator {
-    border: 2px solid rgba(10, 48, 128);
-    border-radius: 1em;
-    padding: 20px;
-    display: inline-block;
-    background-color: hsl(218, 33%, 95%);
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-    text-align: center;
-    min-width: 300px; /* Minimum width to ensure consistency */
-    max-width: 300px; /* Maximum width to ensure consistency */
-}
-
-/* Link colors */
-.contactCoordinator a, .contactManager a {
-    color: #004494 ; /* Default link color */
-    text-decoration: none; /* Remove underline */
-}
-
-.contactCoordinator a:hover, .contactManager a:hover {
-    color: hsl(211, 57%, 59%); /* Link color on hover */
 }
 
 /* Photo of the coordinator alignment */
-.contactCoordinator .Dr-Erunika-Dayaratna-img {
-    max-width: 60%;
+.contactManagerCoordinator .Dr-Erunika-Dayaratna-img {
+    max-width: 150px;
     height: auto;
     border-radius: 50%;
 }
 
-/* Contact details ul alignment */
-.contactManager ul, .contactCoordinator ul {
-    list-style-type: none;
-    font-size: 20px;
-    padding: 0; /* Remove default padding */
-}
-
-.contactManager nav {
-    text-align: left;
-    margin-left: 60px;
-}
-
-.contactCoordinator nav {
-    text-align: left;
-    margin-left: 50px;
-}
-
 .contactIcons {
-    width:10%;
+    width:5%;
+    padding: 5%;
+    margin: 1%;
+    background-color: #ffffff;
+    border-radius: 50%;
     color:#5888bf ;
+    transition: transform 0.5s ease;
+}
+
+.contactIcons:hover{
+    color:#7daada ;
+    transform: rotate(45deg);
 }
 
 
@@ -224,5 +210,9 @@ form button:hover{
     }
     .ContactUsSubTitle {
         margin-left: 1%;
+    }
+
+    .contactMCDetails {
+        width: 100%;
     }
 }

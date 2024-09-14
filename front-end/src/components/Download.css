@@ -190,42 +190,6 @@
   color: #000000;
 }
 
-
-.downloadLinks {
-  border: 2px solid rgba(10, 48, 128);
-  border-radius: 20px;
-  background-color: #e1edf9;
-  padding: 10px;
-  display: center;
-  margin-left: 5%;
-  margin-right: 5%; 
-  margin-bottom: 2%;
-  text-align: center;
-  width: auto;
-  font-family: 'Caudex';
-  
-}
-
-.downloadLinks img {
-  height: 200px;
-  width: auto;
-}
-
-.downloadLinks p {
-  font-size: 16px;
-  color: rgb(30, 85, 148);
-}
- 
-.downloadLinks h4 {
-  font-size: 20px;
-  color: rgba(10, 48, 128);
-}
-
-.downloadLinks p:hover {
-  font-size: 16px;
-  color: hsl(211, 63%, 69%);
-}
-
 .addcancelbutton {
   width: 110px;
   height: 40px;
@@ -262,6 +226,6 @@
 
   .fileActions {
     justify-content: flex-start; /* Align buttons to the left */
-    width: 50%; /* Allow the buttons to take full width */
+    width: 15%; /* Allow the buttons to take full width */
   }
 }

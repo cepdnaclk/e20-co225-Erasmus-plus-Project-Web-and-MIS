@@ -12,6 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -40,15 +43,15 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
 
-                        .requestMatchers("/api/v*/registration/**", "/api/v1/news/**", "/api/v1/gallery/**", "/api/v*/files/**",
-                         "/api/v*/registration/login/**", "/api/v1/tasks/**", "/api/v1/users/**", "/deliverable/**", "/workplan/**")
+                                .requestMatchers("/api/v*/registration/**", "/api/v1/news/**", "/api/v1/gallery/**", "/api/v*/files/**",
+                                        "/api/v*/registration/login/**", "/oauth2/**","/api/v1/tasks/**", "/api/v1/users/**", "/deliverable/**", "/workplan/**")
 
-                        .permitAll()
-                        .anyRequest().authenticated()
-                // .anyRequest().permitAll()
+                                .permitAll()
+                                .anyRequest().authenticated()
+                        // .anyRequest().permitAll()
                 )
 //                .formLogin(withDefaults());
-                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/admin",true));
+                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("http://localhost:5173", true));
         return http.build();
     }
 
@@ -65,6 +68,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+
     /**
      * Provides DaoAuthenticationProvider bean configured with password encoder and
      * user details service.
@@ -77,5 +81,23 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         provider.setUserDetailsService(appUserService);
         return provider;
+    }
+
+    /**
+     * Provides CorsFilter bean to allow CORS requests from specified origins.
+     *
+     * @return CorsFilter bean instance.
+     */
+    @Bean
+    public CorsFilter corsFilter() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("http://localhost:5173");
+        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return new CorsFilter(source);
     }
 }

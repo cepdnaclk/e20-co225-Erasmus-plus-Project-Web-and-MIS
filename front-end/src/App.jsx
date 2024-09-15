@@ -31,12 +31,14 @@ import Repository from './Pages/Repository';
 import SharedLayoutAdmin from './Pages/SharedLayoutAdmin';
 
 import { NewsProvider } from './Pages/NewsContext';  // Import NewsProvider
+import ScrollToTop from './bodyComponents/ScrollToTop';
 
 function App() {
   return(
     <>
     <NewsProvider>
     <BrowserRouter>
+    <ScrollToTop />
     <nav> <Header/> </nav>
       <Routes>
           <Route path = 'login' element = {<Login />} />

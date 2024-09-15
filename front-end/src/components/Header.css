@@ -335,9 +335,9 @@
 .adminNavBarRight img {
   width: 32px;
   border-radius: 50%;
-  margin: 0;
   padding: 0;
   align-self: center;
+  top: '2px';
 }
 #switchLabel{
   font-size: 14px; 

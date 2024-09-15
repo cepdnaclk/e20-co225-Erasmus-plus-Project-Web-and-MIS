@@ -13,7 +13,7 @@ import style from './Deliverables.module.css'
 import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { loggedInUser } from '../Pages/Login';
+import { loggedInUser } from '../components/Header';
 
 function Deliverables() {
 

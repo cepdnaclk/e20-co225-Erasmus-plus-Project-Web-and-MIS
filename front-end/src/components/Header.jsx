@@ -1,18 +1,41 @@
 import React, {useState, useEffect} from 'react';
-import {Link, Outlet, useLocation,useNavigate} from 'react-router-dom';  // //Add page routing using router dom
-
+import {Link, Outlet, useLocation,useNavigate} from 'react-router-dom';  
+import axios from 'axios';
 import Switch from "react-switch";
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
-import {loggedInUser} from '../Pages/Login'
+
+export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
 
 function Header(){
     // Constants for hamburger menu
     const [menuOpen, setMenuOpen] = useState(false);
     // Constants for login button
     const [isVisible, setIsVisible] = useState(true);
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/user-info', { withCredentials: true }) 
+            .then(response => { 
+                const userData = response.data;
+                setUser(userData);
+                loggedInUser = {
+                    isLoggedIn: true,
+                    firstName: userData.name,
+                    lastName: '',  // Assuming Google doesn't provide the last name
+                    profilePicture: userData.picture && <img src = {userData.picture} alt = 'User Profile' referrerPolicy="no-referrer"/>
+                };
+                setLoggedInUser(true);  // Updates the logged-in state immediately
+                window.Location.reload
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }, []);
+    
 
     // Get the current location
     const location = useLocation();
@@ -30,6 +53,12 @@ function Header(){
     const handleLinkClick = () => {
         setMenuOpen(false);
         setIsVisible(false);
+    }
+
+    const googleLogin = () => {
+        // Redirect to the backend for Google login
+        setIsVisible(false); 
+        window.location.href = 'http://localhost:8080/oauth2/authorization/google';
     }
 
     //For logout 
@@ -54,10 +83,20 @@ function Header(){
     })
 
     function logOut(){
-   //TODO: okay to do this?
-        window. location. reload();
-    }
+        axios.get('http://localhost:8080/logout', { withCredentials: true })
+        .then(() => {
+            // Clear any frontend user state
+            loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
+            setLoggedInUser(false);
 
+            window.location.reload
+            navigate('/')
+            setShowAccount(false);
+        })
+        .catch(error => {
+            console.error('Error during logout:', error);
+        });
+    }
 
     // functions for the visibility of chat,notifications and account info
     function showChatInterface(){
@@ -101,8 +140,6 @@ function closeOnClickOutside(selector, toggleClass) {
 
     return(
         <header>
-            
-
             {/* Navigation bar */}
             <nav className = "headerNavBar">
                 <Link to = '/'></Link>
@@ -149,8 +186,8 @@ function closeOnClickOutside(selector, toggleClass) {
                     {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}
                     {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/repository'>REPOSITORY</Link></li>}
                 </ul>             
-                {isVisible && <div className='top-login-bar'><Link to = '/login'><button className="Login-button" onClick={handleLinkClick}>LOGIN</button></Link></div>}
-                    <div>
+                {isVisible && <div className='top-login-bar'><button className="Login-button" onClick={googleLogin}>LOGIN</button></div>}
+                    <div >
                         <ul className={loggedInUserState ? "adminNavBarRight":"non-logged-user-panel"}>                  
                             <span id="switchLabel">{isEditMode ? "Edit Mode" : "View Mode"}</span>
                             <li><Switch 
@@ -168,7 +205,23 @@ function closeOnClickOutside(selector, toggleClass) {
                             </li>                                            
                             <li onClick={showChatInterface}><FontAwesomeIcon icon={faMessage}/></li>
                             <li onClick={showNotificationInterface}><FontAwesomeIcon icon={faBell}/></li>
-                            <li onClick={showAccountInterface}><FontAwesomeIcon icon={faUserCircle}/></li>
+                            <li onClick={showAccountInterface}>
+                                {loggedInUser.profilePicture ? (
+                                    <img 
+                                        src={loggedInUser.profilePicture.props.src} 
+                                        alt="User Profile" 
+                                        style={{ 
+                                        width: '30px', 
+                                        height: '30px', 
+                                        borderRadius: '50%', 
+                                        marginRight: '10px'
+                                        }} 
+                                    referrerPolicy="no-referrer" 
+                                    />
+                                ) : (
+                            <FontAwesomeIcon icon={faUserCircle} size="lg" />
+                                )}
+                        </li>
                         </ul>                              
                     </div>                 
                                 
@@ -177,10 +230,28 @@ function closeOnClickOutside(selector, toggleClass) {
                 {/* User Account Dropdown Menu */}
                 <div class= {showAccount ? "userAccount-Open" : "userAccount-Close"}>
                             
-                    <div className="userAccountInfo">
-                        <FontAwesomeIcon icon={faUserCircle} size="3x" style={{ marginRight: '10px'}}/>
-                        <h3> {loggedInUser.firstName} {loggedInUser.lastName}</h3>
-                    </div>
+                <div className="userAccountInfo">
+                    {/* Display profile picture if available */}
+                    {loggedInUser.profilePicture ? (
+                        <img 
+                            src={loggedInUser.profilePicture.props.src} 
+                            alt="User Profile" 
+                            style={{ 
+                                width: '50px', 
+                                height: '50px', 
+                                borderRadius: '50%', 
+                                marginRight: '10px' 
+                            }} 
+                            referrerPolicy="no-referrer" 
+                        />
+                    ) : (
+                        <FontAwesomeIcon icon={faUserCircle} size="3x" style={{ marginRight: '10px' }} />
+                    )}
+    
+                    {/* Display user name */}
+                    <h3>{loggedInUser.firstName} {loggedInUser.lastName}</h3>
+                </div>
+
                     
                     <hr></hr>
                     <a herf="#" className="userAccountContent">                                

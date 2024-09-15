@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { loggedInUser } from '../Pages/Login'; // Import logged-in user details
+import { loggedInUser } from '../components/Header'; // Import logged-in user details
 import '../components/Gallery.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // FontAwesome for icons
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons

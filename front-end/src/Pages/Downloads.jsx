@@ -191,6 +191,7 @@ const FileUploadDownload = () => {
       <div key={file.fileId} className="fileItem">
         {file.youtubeLink ? (
           <div className="fileContent">
+            <img src={fileDownload} alt="fileDownload" />
             <p>{file.displayName}</p>
             <div className="fileActions">
               <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">
@@ -233,6 +234,7 @@ const FileUploadDownload = () => {
           <div key={file.fileId} className="fileItem">
             {file.youtubeLink ? (
               <div className="fileContent">
+                <img src={fileDownload} alt="fileDownload" />
                 <p>{file.displayName}</p>
                 <div className="fileActions">
                   <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">

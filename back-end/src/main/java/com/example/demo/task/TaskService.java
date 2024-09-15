@@ -60,5 +60,9 @@ public class TaskService {
         AppUser user = userRepository.findById(userID).get();
         return taskRepository.findTasksByUser(user);
     }
+
+    public void deleteTaskUsers(int taskID,Long userID){
+        taskRepository.deleteUserFromTasks(taskID,userID);
+    }
 }
 

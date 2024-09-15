@@ -5,6 +5,9 @@ import '../components/News.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // FontAwesome for icons
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
 
+//
+
+var today = new Date().toISOString().split('T')[0]
 // Function to fetch news from the API, sorted by newsID in descending order
 const fetchNews = async () => {
   try {
@@ -139,9 +142,10 @@ const News = () => {
                   <label htmlFor="newsAuthor">Author:</label>
                   <input type="text" id="newsAuthor" placeholder="Enter Author's name" name="newsAuthor" required />
                 </div>
+                {}
                 <div className="form-group">
                   <label htmlFor="newsDate">Date:</label>
-                  <input type="date" id="newsDate" name="newsDate" required />
+                  <input type="date" max={today} id="newsDate" name="newsDate" required />
                 </div>
                 <div className="form-group">
                   <label htmlFor="newsCoverImage">Cover Image (Choose images with size less than 64 kB):</label>

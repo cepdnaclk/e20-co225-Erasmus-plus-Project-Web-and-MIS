@@ -15,7 +15,7 @@ const ProjectManagement = () => {
   const [users,setUsers] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [taskListNotEmpty, setTaskListNotEmpty] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   // Show interface: Either for 'Add New' or 'Edit'
   const [showInterface, setShowInterface] = useState(false);
   const [editRow, setEditRow] = useState(false);  
@@ -23,13 +23,15 @@ const ProjectManagement = () => {
 
     //to load for the first time on page visit
     useEffect(() => {
-      if (appUserRole=="ADMIN") {
-        setIsAdmin(true);
-        getAllTaskInfo();     
-      }else if(appUserRole=="USER"){
-        setIsAdmin(false);
-        getPersonalTaskInfo();
-      }
+      getAllTaskInfo();     
+
+      // if (appUserRole=="ADMIN") {
+      //   // setIsAdmin(true);
+      //   getAllTaskInfo();     
+      // }else if(appUserRole=="USER"){
+      //   // setIsAdmin(false);
+      //   getPersonalTaskInfo();
+      // }
     }, []);
 
   //setting values from form
@@ -166,11 +168,13 @@ const onDeleteClick = async (task_ID) => {
 
 // refresh tasks on request
   function RefreshTasks() {
-    if (appUserRole=="ADMIN") {
-      getAllTaskInfo();
-     }else if (appUserRole=="USER"){
-      getPersonalTaskInfo();
-     }
+    // if (appUserRole=="ADMIN") {
+    //   getAllTaskInfo();
+    //  }else if (appUserRole=="USER"){
+    //   getPersonalTaskInfo();
+    //  }
+     getAllTaskInfo();     
+
   }
 
 

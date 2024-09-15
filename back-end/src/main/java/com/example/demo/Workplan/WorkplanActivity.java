@@ -31,7 +31,10 @@ public class WorkplanActivity {
     private boolean y3_q2=false;
     private boolean y3_q3=false;
     private boolean y3_q4=false;
-
+    private boolean y4_q1=false;
+    private boolean y4_q2=false;
+    private boolean y4_q3=false;
+    private boolean y4_q4=false;
 
     @Override
     public String toString() {
@@ -50,6 +53,10 @@ public class WorkplanActivity {
                 ", y3_q2=" + y3_q2 +
                 ", y3_q3=" + y3_q3 +
                 ", y3_q4=" + y3_q4 +
+                ", y4_q1=" + y4_q1 +
+                ", y4_q2=" + y4_q2 +
+                ", y4_q3=" + y4_q3 +
+                ", y4_q4=" + y4_q4 +
                 '}';
     }
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import fileDownload from '../assets/download.png';
-import fileDownload1 from '../assets/download2.png';
 import { loggedInUser } from '../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload ,faTrash, faEye } from '@fortawesome/free-solid-svg-icons';

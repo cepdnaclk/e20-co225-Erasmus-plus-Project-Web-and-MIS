@@ -107,7 +107,18 @@ color:#004594ca ;
   transform: scale(1.01);
 }
 
+/* Initially hidden */
+.hidden {
+  opacity: 0;
+  transform: translateY(50px); /* Start with an offset */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+}
 
+/* Visible state */
+.visible {
+  opacity: 1;
+  transform: translateY(0); /* Bring it to the original position */
+}
 
 .TargetGroupCards {
   align-items: left;
@@ -154,6 +165,11 @@ color:#004594ca ;
   text-align: center;
   color: rgb(0, 0, 0);
   font-family: 'Caudex';
+}
+@media screen and (max-width: 1300px) {
+  .rightColumn{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1000px) {

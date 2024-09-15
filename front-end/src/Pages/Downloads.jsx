@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import fileDownload from '../assets/download.png';
-import { loggedInUser } from '../Pages/Login';
+import { loggedInUser } from '../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload ,faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 
@@ -191,6 +191,7 @@ const FileUploadDownload = () => {
       <div key={file.fileId} className="fileItem">
         {file.youtubeLink ? (
           <div className="fileContent">
+            <img src={fileDownload} alt="fileDownload" />
             <p>{file.displayName}</p>
             <div className="fileActions">
               <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">
@@ -233,6 +234,7 @@ const FileUploadDownload = () => {
           <div key={file.fileId} className="fileItem">
             {file.youtubeLink ? (
               <div className="fileContent">
+                <img src={fileDownload} alt="fileDownload" />
                 <p>{file.displayName}</p>
                 <div className="fileActions">
                   <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">

@@ -9,13 +9,13 @@ const NewsSlideShow = () => {
   return (
     <div>
       <div className="News">
-       <div className="slide-container" style={{ width: '100%', margin:"0.3% 3% 3% 0%" }}>
+       <div className="slide-container" style={{ width: '100%', margin:"0% 0% 0% 3%" }}>
          <Slide>
       {console.log(news)}
       {news.length > 0 ? (
         news.map((item, index) => (
           <div key={index} className="news-slide">
-               <img style={{ width: '100%' }} src={item.newsCoverImage} alt={item.newsTitle} />
+               <img src={`data:image/jpeg;base64,${item.newsCoverImage}`} alt={item.newsTitle} />
                <div className="news-content">
                  <h2>{item.newsTitle}</h2>
                  {/* <p>{item.newsDescription}</p> */}

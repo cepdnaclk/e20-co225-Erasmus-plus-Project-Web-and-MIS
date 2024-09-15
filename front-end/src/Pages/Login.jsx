@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+//Not used now
+
+
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import style from './Login.module.css';
@@ -6,7 +9,7 @@ import cylcleLogo from '../assets/CYCLE-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
+
 export let appUserRole = "";
 export let userID = 0;
 
@@ -20,6 +23,7 @@ function Login() {
         setShowPassword(!showPassword);
     };
 
+    
     async function login(event) {
         event.preventDefault();
         try {
@@ -56,6 +60,12 @@ function Login() {
     const handleRegister = () => {
         navigate('/registration'); 
     };
+
+    
+    const googleLogin = () => {
+        // Redirect to the backend for Google login
+        window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+    }
 
     return (
         <div className={style["LoginCard"]}>
@@ -94,6 +104,10 @@ function Login() {
                     <button type="button" className="btn btn-link" onClick={handleRegister}>Register Now</button>
                 </p>
             </form>
+
+            <button onClick={googleLogin} className={style["google-login-button"]}>
+                Login with Google
+            </button>
         </div>
     );
 }

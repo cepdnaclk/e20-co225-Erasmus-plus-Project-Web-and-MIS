@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { loggedInUser } from '../Pages/Login'; // Import logged-in user details
+import { loggedInUser } from '../components/Header'; // Import logged-in user details
 import '../components/News.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // FontAwesome for icons
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
@@ -160,10 +160,7 @@ const News = () => {
       <div className="news-container">
         {news.map((item) => (
           <div key={item.newsID} className="news-tile">
-            <img 
-                        src={`data:image/jpeg;base64,${item.newsCoverImage}`} 
-                        alt={item.newsTitle} 
-                    />
+            <img src={`data:image/jpeg;base64,${item.newsCoverImage}`} alt={item.newsTitle} />
             <h2>{item.newsTitle}</h2> {/* News title */}
             <p>{item.newsDescription}</p> {/* News description */}
             <b><p>Date: {item.newsDate}</p></b> {/* News date */}

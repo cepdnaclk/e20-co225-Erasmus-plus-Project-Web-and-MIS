@@ -30,10 +30,19 @@ public class FileEntity {
     @Lob
     @Column(name = "data", columnDefinition = "LONGBLOB")
     private byte[] data;
+
+    private String youtubeLink; // New field for YouTube links
+
     public FileEntity(String fileName, String fileType, byte[] data, String displayName, boolean visibleToAll) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
+        this.displayName = displayName;
+        this.visibleToAll = visibleToAll;
+    }
+
+    public FileEntity(String youtubeLink, String displayName, boolean visibleToAll) {
+        this.youtubeLink = youtubeLink;
         this.displayName = displayName;
         this.visibleToAll = visibleToAll;
     }

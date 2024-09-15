@@ -4,13 +4,14 @@ import fileDownload from '../assets/download.png';
 import fileDownload1 from '../assets/download2.png';
 import { loggedInUser } from '../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload ,faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faDownload ,faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 
 
 const FileUploadDownload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [displayName, setDisplayName] = useState('');
   const [visibleToAll, setVisibleToAll] = useState(false);
+  const [youtubeLink, setYoutubeLink] = useState('');
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -40,16 +41,31 @@ const FileUploadDownload = () => {
     setVisibleToAll(event.target.checked);
   };
 
+  const handleYoutubeLinkChange = (event) => {
+    setYoutubeLink(event.target.value);
+  };
+
   const handleUpload = async () => {
-    if (!selectedFile || !displayName) {
-      alert('Please select a file and enter a display name!');
+    if (!selectedFile && !youtubeLink) {
+      alert('Please select a file or enter a URL for the file!');
+      return;
+    }
+
+    if (selectedFile && !displayName) {
+      alert('Please enter a display name!');
       return;
     }
 
     const formData = new FormData();
-    formData.append('file', selectedFile);
-    formData.append('displayName', displayName);
-    formData.append('visibleToAll', visibleToAll);
+    if (selectedFile) {
+      formData.append('file', selectedFile);
+      formData.append('displayName', displayName);
+      formData.append('visibleToAll', visibleToAll);
+    } else if (youtubeLink) {
+      formData.append('youtubeLink', youtubeLink);
+      formData.append('displayName', displayName);
+      formData.append('visibleToAll', visibleToAll);
+    }
 
     try {
       const response = await axios.post('http://localhost:8080/api/v1/files/upload', formData, {
@@ -59,19 +75,19 @@ const FileUploadDownload = () => {
       });
 
       if (response.status === 200) {
-        alert('File uploaded successfully');
+        alert('Content uploaded successfully');
         setSelectedFile(null);
+        setYoutubeLink('');
         setDisplayName('');
         setVisibleToAll(false);
         setShowUploadForm(false);
         fetchUploadedFiles();
       } else {
-        alert('Failed to upload file');
+        alert('Failed to upload content');
       }
     } catch (error) {
-      console.error('There was an error uploading the file!', error);
-      // setErrorMessage('File upload failed. Please try again.');
-      alert('File upload failed. Please try again.');
+      console.error('There was an error uploading the content!', error);
+      alert('Upload failed. Please try again.');
     }
   };
 
@@ -111,6 +127,10 @@ const FileUploadDownload = () => {
     }
   };
 
+  // Filter files into two groups: visible to all and visible to logged-in users only
+  const visibleToAllFiles = uploadedFiles.filter(file => file.visibleToAll);
+  const visibleToLoggedInFiles = uploadedFiles.filter(file => !file.visibleToAll && loggedInUser.isLoggedIn);
+
   return (
     <div>
       <div className="downloadTitle">
@@ -118,27 +138,14 @@ const FileUploadDownload = () => {
         <nav>
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="http://localhost:5173/"> 
-                <span style={{ fontSize: 16}}>Home</span>
+              <a href="http://localhost:5173/">
+                <span style={{ fontSize: 16 }}>Home</span>
               </a>
             </li>
             <li className="breadcrumb-item active">
-              <span style={{ fontSize: 16}}> Downloads</span>
+              <span style={{ fontSize: 16 }}>Downloads</span>
             </li>
           </ol>
-        </nav>
-      </div>
-
-      <div className="downloadLinks">
-        <nav>
-          <h4>Downloads For Students and PGIS Staff</h4>
-          <img src={fileDownload1} alt="fileDownload1" />
-          <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/students.php">
-            <p>PGIS Downloads page for Students</p>
-          </a>
-          <a className="openlink" href="http://www.pgis.pdn.ac.lk/downloads/staff.php">
-            <p>PGIS Downloads page for Staff</p>
-          </a>
         </nav>
       </div>
 
@@ -157,13 +164,20 @@ const FileUploadDownload = () => {
                 value={displayName}
                 onChange={handleDisplayNameChange}
               />
+              <input
+                type="url"
+                placeholder="Enter the URL"
+                value={youtubeLink}
+                onChange={handleYoutubeLinkChange}
+              />
               <label>
                 <input
                   type="checkbox"
                   checked={visibleToAll}
                   onChange={handleVisibilityChange}
-                /> Set Visible to All </label>
-              <button onClick={handleUpload}>Upload File</button>
+                /> Set Visible to Public
+              </label>
+              <button onClick={handleUpload}>Upload Content</button>
             </div>
           )}
         </div>
@@ -172,20 +186,87 @@ const FileUploadDownload = () => {
       {errorMessage && <p className="error">{errorMessage}</p>}
 
       <div className="downloadSection">
-        {uploadedFiles.map((file) => (
-          (file.visibleToAll || loggedInUser.isLoggedIn) && (
-            <div key={file.fileId} className="fileItem">
-              <img src={fileDownload} alt="fileDownload" />
-              <span><p>{file.displayName}</p></span>
-              
-              <button onClick={() => handleDownload(file.fileId, file.fileName)}><FontAwesomeIcon icon={faDownload} /></button>
+  {/* <h4>Download Files here</h4> */}
+  {visibleToAllFiles.length > 0 ? (
+    visibleToAllFiles.map(file => (
+      <div key={file.fileId} className="fileItem">
+        {file.youtubeLink ? (
+          <div className="fileContent">
+            <p>{file.displayName}</p>
+            <div className="fileActions">
+              <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faEye}/>
+              </a>
               {loggedInUser.isLoggedIn && (
-                <button onClick={() => handleDelete(file.fileId)}><FontAwesomeIcon icon={faTrash}/></button>
+                <button onClick={() => handleDelete(file.fileId)}>
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
               )}
             </div>
-          )
-        ))}
+          </div>
+        ) : (
+          <div className="fileContent">
+            <img src={fileDownload} alt="fileDownload" />
+            <span><p>{file.displayName}</p></span>
+            <div className="fileActions">
+              <button onClick={() => handleDownload(file.fileId, file.fileName)}>
+                <FontAwesomeIcon icon={faDownload} />
+              </button>
+              {loggedInUser.isLoggedIn && (
+                <button onClick={() => handleDelete(file.fileId)}>
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </div>
+    ))
+  ) : (
+    <p>No files visible to Public</p>
+  )}
+
+  {loggedInUser.isLoggedIn && (
+    <>
+      <h4>Files Only for the CYCLE Team</h4>
+      {visibleToLoggedInFiles.length > 0 ? (
+        visibleToLoggedInFiles.map(file => (
+          <div key={file.fileId} className="fileItem">
+            {file.youtubeLink ? (
+              <div className="fileContent">
+                <p>{file.displayName}</p>
+                <div className="fileActions">
+                  <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faEye}/>
+                  </a>
+                  <button onClick={() => handleDelete(file.fileId)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="fileContent">
+                <img src={fileDownload} alt="fileDownload" />
+                <span><p>{file.displayName}</p></span>
+                <div className="fileActions">
+                  <button onClick={() => handleDownload(file.fileId, file.fileName)}>
+                    <FontAwesomeIcon icon={faDownload} />
+                  </button>
+                  <button onClick={() => handleDelete(file.fileId)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        ))
+      ) : (
+        <p>No files visible to logged-in users</p>
+      )}
+    </>
+  )}
+</div>
+
     </div>
   );
 };

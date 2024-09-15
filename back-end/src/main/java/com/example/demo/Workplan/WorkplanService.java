@@ -51,6 +51,10 @@ public class WorkplanService {
             updatedWorkplanActivity.setY3_q2(workplanActivity.isY3_q2());
             updatedWorkplanActivity.setY3_q3(workplanActivity.isY3_q3());
             updatedWorkplanActivity.setY3_q4(workplanActivity.isY3_q4());
+            updatedWorkplanActivity.setY4_q1(workplanActivity.isY4_q1());
+            updatedWorkplanActivity.setY4_q2(workplanActivity.isY4_q2());
+            updatedWorkplanActivity.setY4_q3(workplanActivity.isY4_q3());
+            updatedWorkplanActivity.setY4_q4(workplanActivity.isY4_q4());
             return workplanRepo.save(updatedWorkplanActivity);
         }
         else{

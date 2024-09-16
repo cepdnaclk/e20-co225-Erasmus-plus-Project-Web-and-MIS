@@ -7,4 +7,23 @@
     font-family: 'Caudex';
   }
 
+  .RepositorySubTitle{
+    margin-top: 2%;
+    margin-left: 5%;
+    text-align: left;
+    margin-bottom: 1%;
+    font-size: 15px;
+    font-family: 'Caudex';
+    color: rgb(10, 48, 128);
+  }
+
+  .RepositorySuperSubTitle{
+    margin-top: 2%;
+    margin-left: 8%;
+    text-align: left;
+    margin-bottom: 1%;
+    font-size: 15px;
+    font-family: 'Caudex';
+    color: rgb(10, 48, 128);
+  }
 

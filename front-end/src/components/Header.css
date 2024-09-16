@@ -1,4 +1,4 @@
-:root {
+/* Root styling for general font and text rendering */:root {
     font-weight: 400;
     color-scheme: light dark;
     text-decoration: none;
@@ -7,14 +7,19 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Body styling: Adjusting margin and padding */
   body{
     margin: 0px;
     padding-top: calc(70px + 2rem);
   }
   
+  /* Main content area margin */
   main{
     margin: 20px;
   }
+
+  /* Anchor tags styling */
   a {
     font-weight: 600;
     font-size: 0.9em;
@@ -22,6 +27,7 @@
     text-decoration: none;
   }
   
+  /* Heading 1 styling */
   h1 {
     font-family: 'Playfair Display';
     text-align: center;
@@ -31,6 +37,7 @@
     font-weight: 1000px;
   }
   
+  /* Heading 2 styling */
   h2 {
     font-family:'Caudex';
     text-align: center;
@@ -38,11 +45,12 @@
     margin-top: 0px;
   }
 
+  /* Non-logged user panel styling */
   .non-logged-user-panel{
     display: none;
   }
 
-/* Login button */
+/* Login button styling */
 .top-login-bar{
   display: flex;
   margin: 10px 10px 10px 0px;
@@ -50,6 +58,7 @@
   padding: 0;
   top: 0;
 }
+
 .Login-button{
   position: absolute;
   right: 30px;
@@ -69,7 +78,8 @@
 .Login-button:hover {
   background-color: #0056b3;
 }
-/* Logo block */
+
+/* Logo block styling */
 .logo-block{
   display: flex;
   justify-content: space-between;
@@ -111,16 +121,19 @@
   margin-bottom: 1%;
 }
 
+/* Heading inside the logo block */
 .Heading {
   margin-top: -80px; /* Adjust the value as needed */
   margin-bottom: 10px;
 }
 
+/* Erasmus+ logo hover effect */
 .Erasmus-plus-Logo:hover {
   transform: scale(1.02);
   opacity: 0.8;
 }
 
+/* Erasmus+ logo styling */
 .Erasmus-plus-Logo{
   margin-top: 20px;
   width: 150px;
@@ -129,14 +142,15 @@
   height: auto;
 }
 
+/* Cycle logo styling */
 .Cycle-Logo{
   width: 260px;
   height: auto;
   margin-right: 30px;
   margin-top: 20px
 }
- /* Header Navigation Bar */
 
+/* Header navigation bar styling */
  .headerNavBar {
   display: flex;
   justify-content: right;
@@ -153,21 +167,26 @@
   font-size: 18px;
 }
 
+/* Styling for navigation items on the right side */
 .headerNavBarRight li{
   background-color: rgba(228, 246, 250, 0.9);
 }
 
+
+/* Styling for navigation lists */
 .headerNavBar ul{
   display: flex;
   position: relative;
   margin-left: 0.5rem;
 }
 
+/* List item styling inside navigation */
 .headerNavBar ul li{
   list-style: none;
   position: relative;
 }
 
+/* Anchor tags inside navigation list items */
 .headerNavBar ul li a{
   display: block;
   text-decoration: none;
@@ -177,11 +196,13 @@
   white-space: nowrap; /* Ensures the text doesn't wrap */
 }
 
+/* Hover effect for navigation links */
 .headerNavBar ul li a:hover {
   background-color: rgba(219, 238, 251, 0.9);
   border-radius: 5px;
 } 
 
+/* Hamburger menu styling */
 .headerNavBar .menu{
   display: none;
   position: absolute;
@@ -199,6 +220,7 @@
   border-radius: 0.2rem;
 }
 
+/* Dropdown menu styling */
 .headerNavBar .headerDropDown .dropdown-content {
   display: none;
   position: absolute;
@@ -210,10 +232,12 @@
   z-index: 1;
 }
 
+/* Display dropdown content on hover */
 .headerNavBar .headerDropDown:hover .dropdown-content {
   display: block;
 }
 
+/* Anchor tags inside dropdown menu */
 .headerNavBar .headerDropDown .dropdown-content a {
   color: #203a90;
   padding: 0.5rem;
@@ -223,11 +247,12 @@
   border-radius: 5px;
 }
 
+/* Hover effect for dropdown links */
 .headerNavBar .headerDropDown .dropdown-content a:hover {
   background-color: rgba(219, 238, 251, 0.9);
 }
-/* CSS Styling - Top Navigation Bar for Administration  */
 
+/* Admin navigation bar styling */
 .adminNavBar {
   display: flex;
   justify-content: space-between;
@@ -258,6 +283,7 @@
   border-radius: 5px;
 }
 
+/* Admin menu styling */
 .adminmenu{
   display: none;
 }
@@ -266,9 +292,8 @@
   margin :0;
   padding:0;
 }
-/* Left side of theTop Navigation Bar for Administration*/
 
-/* Left side of the Top Navigation Bar for Administration */
+/* Left side of the admin navigation bar */
 .headerNavBarLeft {
   display: flex;
   flex-direction: row;
@@ -282,6 +307,7 @@
   padding: 0.5rem;
 }
 
+/* Links inside the left side of admin navigation */
 .headerNavBarLeft li a {
   display: block;
   text-decoration: none;
@@ -292,6 +318,8 @@
   white-space: nowrap;
 }
 
+
+/* Hover effect for links on the left side of admin navigation */
 .headerNavBarLeft li a:hover {
   color: rgba(219, 238, 251, 0.9); /* Optional hover effect */
   border-radius: 5px;
@@ -306,14 +334,6 @@
   transition: transform 2s ease, opacity 0.5s ease;
   position: relative;
 }
-
-
-
-/* .headerNavBarLeft li a:hover{
-  background-color: #eef1fb
-} */
-
-/* Right side of theTop Navigation Bar for Administration*/
 
 /* Right side of the Top Navigation Bar for Administration */
 .adminNavBarRight {
@@ -651,6 +671,4 @@
     display: flex;
     position: fixed;
   }
-
-
 }

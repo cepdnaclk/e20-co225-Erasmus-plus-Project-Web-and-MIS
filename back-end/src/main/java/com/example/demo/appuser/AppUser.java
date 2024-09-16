@@ -13,7 +13,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-
 /**
  * Represents an application user.
  * This class is a JPA entity and implements Spring Security's UserDetails interface
@@ -25,8 +24,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 public class AppUser implements UserDetails {
-
-
 
     /**
      * The sequence generator for the primary key of the AppUser entity.

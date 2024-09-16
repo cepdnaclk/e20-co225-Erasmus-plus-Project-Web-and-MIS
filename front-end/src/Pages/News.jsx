@@ -175,7 +175,6 @@ const News = () => {
             {loggedInUser.isLoggedIn && (
               <div>
                 <button className="actionButton" onClick={() => onEditClick(item)}><FontAwesomeIcon icon={faPen}/></button>
-                <button className="actionButton" onClick={() => onViewClick(item)}><FontAwesomeIcon icon={faEye}/></button>
                 <button className="actionButton" onClick={() => onDeleteClick(item.newsID)}><FontAwesomeIcon icon={faTrash} /></button>
               </div>
             )}

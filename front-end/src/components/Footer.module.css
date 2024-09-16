@@ -1,6 +1,7 @@
 /* footer.css */
 
-.footer { /* all the items in tne footer - footer background color and padding */
+/* all the items in tne footer - footer background color and padding */
+.footer { 
     background-image: url(../assets/footerBackground.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -8,12 +9,14 @@
     padding: 10px;
 }
 
-.pera-logo { /* pera logo - size and spaces */
+/* pera logo - size and spaces */
+.pera-logo { 
     margin-top: 20px;
     max-width: 100px;
 }
 
-.logo-content { /* Content below the pera logo */
+/* Content below the pera logo */
+.logo-content { 
     margin: 5px 0;
     font-weight: bold;
     color: #4e4e51;
@@ -21,7 +24,8 @@
     font-size: 16px; /* Changed font size */
 }
 
-.footer-nav { /* all the content of the footer excpet copyright statement */
+/* all the content of the footer excpet copyright statement */
+.footer-nav { 
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -30,26 +34,29 @@
     width: 100%;  /* Ensure it takes the full width for better alignment */
 }
 
-.footer-nav nav { /* topics and their links are divided in to 3 nav parts */
+/* topics and their links are divided in to 3 nav parts */
+.footer-nav nav { 
     margin: 0 15px;
     text-align: left;  /* Center the text and links */
     color: #4e4e51;
     font-family: Sans-Serif;
 }
 
-.footer-nav h6 { /* topics of the links */
+/* topics of the links */
+.footer-nav h6 { 
     margin-top: 30px;
     font-size: 16px;
     margin-bottom: 5px;
-    
 }
 
-.footer-nav ul { /* links under the topics */
+/* links under the topics */
+.footer-nav ul { 
     list-style-type: none;
     padding: 0;
 }
 
-.footer-nav ul li { /* lists of links under the topics */
+/* lists of links under the topics */
+.footer-nav ul li { 
     margin-bottom: 5px;
     font-size: 16px;
 }
@@ -65,7 +72,8 @@
     color: hsl(211, 44%, 66%); /* Link color on hover */
 }
 
-.footer-websiteName { /* Copyright statement of the webpage */
+/* Copyright statement of the webpage */
+.footer-websiteName { 
     text-align: center;
     font-size: 14px;
     color: #4e4e51;
@@ -73,43 +81,51 @@
     order: 3;
 }
 
-.fbLogo { /* fb logo used in the footer of the webpage */
+/* fb logo used in the footer of the webpage */
+.fbLogo { 
     height: auto;
     width: 25px;
 }
 
-.ytLogo { /* youtube logo used in the footer of the webpage */
+/* youtube logo used in the footer of the webpage */
+.ytLogo { 
     height: auto;
     width: 25px;
 }
 
-.XLogo { /* youtube logo used in the footer of the webpage */
+/* youtube logo used in the footer of the webpage */
+.XLogo { 
     height: auto;
     width: 24px;
 }
 
+/* Adjust this value as needed */
 li a img {
-    margin-right: 10px; /* Adjust this value as needed */
+    margin-right: 10px; 
 }
 
+/* Ensure no margin after the last image */
 li a:last-child img {
-    margin-right: 0; /* Ensure no margin after the last image */
+    margin-right: 0; 
 }
 
 /* Media query for small screens */
 @media (max-width: 800px) {
 
-    .footer { /* small screens adjustments with padding*/ 
+    /* small screens adjustments with padding*/
+    .footer {  
         align-items: flex-start;
         padding: 30px;
     }
 
+    /* Stack navigation sections vertically */
     .footer-nav {
-        flex-direction: column;  /* Stack navigation sections vertically */
+        flex-direction: column;  
     }
 
+    /* Add some margin for spacing between sections */
     .footer-nav nav {
-        margin: 10px 0;  /* Add some margin for spacing between sections */
+        margin: 10px 0;  
     }
 
     /* font size adjustments for smaller screens */

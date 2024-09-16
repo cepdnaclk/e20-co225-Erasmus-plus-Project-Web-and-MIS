@@ -1,12 +1,13 @@
 import React from "react";
 import { useNews } from "./NewsContext";
 import Slideshow from "../bodyComponents/SlideShow";
-import NewsSlideshow from "../bodyComponents/newsSlideShow";
+import NewsGrid from "../bodyComponents/NewsGrid.jsx";
 import style from './Home.module.css';
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap, faShield, faUsers, faBuilding} from '@fortawesome/free-solid-svg-icons';
+import {Link, Outlet} from 'react-router-dom';
 import cylcleLogo from '../assets/CYCLE-logo.png';
 // this has to be imported from backend 
 // 1200px height images are ideal
@@ -94,10 +95,13 @@ const partnerInfo = [
 ]
 
 function Home() {
-  const news = useNews();
+  // const news = useNews();
 
-  // Get the top 3 most recent news items sorted by their IDs
-  const sortedNews = news.slice().sort((a, b) => b.newsID - a.newsID).slice(0, 3);
+  // // Get the top 3 most recent news items sorted by their IDs
+  // const sortedNews = news
+  // .slice() 
+  // .sort((a, b) => b.newsID - a.newsID) 
+  // .filter((_, index) => index < 3);
 
   return (
     <>
@@ -229,10 +233,16 @@ function Home() {
           </div>
         </div>
         <div className={style["rightColumn"]}>
-          <div>
-            <NewsSlideshow newsList={sortedNews}></NewsSlideshow>
+          
+            <div style={{ margin: "2% 2% 2% 2%" }}>
+              <span style={{ fontWeight: 'bold', fontSize: '24px' ,fontFamily: 'Caudex'}}>Latest News</span><br></br>
+            </div>
+            <div style={{ margin: "2% 2% 2% 0%" }}>
+              <NewsGrid/>
+              <div style={{ margin: "0% 2% 2% 2%" ,fontFamily: 'Caudex'}}><Link to = '/news & events/news'>Read more..</Link></div>
+            </div>
           </div>
-        </div>
+        
       </div>
 
       <div className={style["paragraph"]}>

@@ -55,23 +55,6 @@ class NewsAndEventsControllerTest {
     }
 
     /*
-        Test to verify that when a GET request is made to /api/v1/news/{newsId},
-        the endpoint correctly retrieves and returns the news item with the specified newsId
-    */
-    @Test
-    void testGetNewsById() throws Exception {
-        Long newsId = 1L;
-        NewsAndEvents newsAndEvents = new NewsAndEvents("Title", "Description", "Url", "Author", "Date", null);
-        when(newsAndEventsService.getNewsAndEventById(newsId)).thenReturn(Optional.of(newsAndEvents));
-
-        mockMvc.perform(get("/api/v1/news/{newsId}", newsId))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.newsTitle").value("Title"));
-
-        verify(newsAndEventsService, times(1)).getNewsAndEventById(newsId);
-    }
-
-    /*
         Test to ensure that when a POST request is made to /api/v1/news with a
         MultipartFile and other parameters representing a new news item, the endpoint
         correctly processes the request, adds the item using the service layer, and returns

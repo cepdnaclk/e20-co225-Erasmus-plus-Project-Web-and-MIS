@@ -61,8 +61,8 @@ public class TaskService {
         return taskRepository.findTasksByUser(user);
     }
 
-    public void deleteTaskUsers(int taskID,Long userID){
-        taskRepository.deleteUserFromTasks(taskID,userID);
-    }
+//    public void deleteTaskUsers(int taskID,Long userID){
+//        taskRepository.deleteUserFromTasks(taskID,userID);
+//    }
 }
 

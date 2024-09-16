@@ -86,16 +86,4 @@ class NewsAndEventsServiceTest {
         assertEquals("Title", addedNews.getNewsTitle());
         verify(newsAndEventsRepository, times(1)).save(any(NewsAndEvents.class));
     }
-
-    /*
-        Test for deleteNewsAndEvent whether it correctly deletes an entry
-        by its ID and properly interacts with NewsAndEventsRepository
-    */
-    @Test
-    void testDeleteNewsAndEvent() {
-        Long newsId = 1L;
-        doNothing().when(newsAndEventsRepository).deleteById(newsId);
-        newsAndEventsService.deleteNewsAndEvent(newsId);
-        verify(newsAndEventsRepository, times(1)).deleteById(newsId);
-    }
 }

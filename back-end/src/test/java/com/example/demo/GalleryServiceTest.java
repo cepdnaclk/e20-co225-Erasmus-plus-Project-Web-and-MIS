@@ -1,3 +1,5 @@
+// JUnit Testing For GalleryService
+
 package com.example.demo;
 
 import com.example.demo.gallery.Gallery;
@@ -31,6 +33,7 @@ class GalleryServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
+    // Testing that the service correctly retrieves a gallery by its ID and checks the album name
     @Test
     void testGetGalleryById() {
         Gallery gallery = new Gallery("Test Album", "Test Creator", null, "http://test.com");
@@ -40,6 +43,7 @@ class GalleryServiceTest {
         assertEquals("Test Album", galleryService.getGalleryById(1L).get().getAlbumName());
     }
 
+    // Testing that the service correctly adds a new gallery with an image file and saves it to the repository
     @Test
     void testAddGalleryWithImage() throws IOException {
         MultipartFile imageFile = new MockMultipartFile("albumCoverImage", "image.jpg", "image/jpeg", new ByteArrayInputStream("image".getBytes()));
@@ -53,6 +57,7 @@ class GalleryServiceTest {
         assertArrayEquals("image".getBytes(), savedGallery.getAlbumCoverImage());
     }
 
+    // Testing that the service can add a new gallery without an image and save it to the repository
     @Test
     void testAddGalleryWithoutImage() {
         Gallery gallery = new Gallery("Test Album", "Test Creator", null, "http://test.com");
@@ -65,6 +70,7 @@ class GalleryServiceTest {
         assertNull(savedGallery.getAlbumCoverImage());
     }
 
+    // Testing that the service correctly deletes a gallery by its ID if it exists in the repository
     @Test
     void testDeleteGallery() {
         when(galleryRepository.existsById(1L)).thenReturn(true);

@@ -1,3 +1,5 @@
+// JUnit Testing For FileService
+
 package com.example.demo;
 
 import com.example.demo.download.FileEntity;
@@ -33,76 +35,68 @@ public class FileServiceTest {
         fileEntity.setFileId(1L);
     }
 
+    // Testing that the service method correctly fetches all files from the repository
     @Test
     void testGetAllFiles() {
-        // Arrange
         when(fileRepository.findAll()).thenReturn(Arrays.asList(fileEntity));
 
-        // Act
         List<FileEntity> files = fileService.getAllFiles();
 
-        // Assert
         assertNotNull(files);
         assertEquals(1, files.size());
         assertEquals("test.txt", files.get(0).getFileName());
         verify(fileRepository, times(1)).findAll();
     }
 
+    // Testing that the service method retrieves a file by its ID from the repository
     @Test
     void testGetFileById() {
-        // Arrange
         when(fileRepository.findById(1L)).thenReturn(Optional.of(fileEntity));
 
-        // Act
+
         Optional<FileEntity> foundFile = fileService.getFileById(1L);
 
-        // Assert
         assertTrue(foundFile.isPresent());
         assertEquals("test.txt", foundFile.get().getFileName());
         verify(fileRepository, times(1)).findById(1L);
     }
 
+    // Testing that the service method successfully saves a file in the repository
     @Test
     void testSaveFile() {
-        // Arrange
         when(fileRepository.save(fileEntity)).thenReturn(fileEntity);
 
-        // Act
         FileEntity savedFile = fileService.saveFile(fileEntity);
 
-        // Assert
         assertNotNull(savedFile);
         assertEquals("test.txt", savedFile.getFileName());
         verify(fileRepository, times(1)).save(fileEntity);
     }
 
+    // Testing that the service method correctly deletes a file by its ID from the repository
     @Test
     void testDeleteFile() {
-        // Act
         fileService.deleteFile(1L);
 
-        // Assert
         verify(fileRepository, times(1)).deleteById(1L);
     }
 
+    // Test with a save failure and checks that if the service properly handles the exception
     @Test
     void testSaveFileException() {
-        // Arrange
         when(fileRepository.save(any(FileEntity.class))).thenThrow(new RuntimeException("Save failed"));
 
-        // Act & Assert
         RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
             fileService.saveFile(fileEntity);
         });
         assertEquals("Failed to save file", thrown.getMessage());
     }
 
+    // Test with a delete failure and ensures that if the service handles the exception correctly
     @Test
     void testDeleteFileException() {
-        // Arrange
         doThrow(new RuntimeException("Delete failed")).when(fileRepository).deleteById(1L);
 
-        // Act & Assert
         RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
             fileService.deleteFile(1L);
         });

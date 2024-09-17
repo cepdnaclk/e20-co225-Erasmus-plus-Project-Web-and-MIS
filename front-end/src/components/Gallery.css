@@ -1,3 +1,4 @@
+/* Title for the gallery section */
 .GalleryTitle{
     margin-top: 1%;
     margin-left: 5%;
@@ -11,6 +12,7 @@
     margin-right: 5%;
 }
 
+/* Container for adding new gallery items */
 .GalleryAdd {
   display: flex;
   flex-direction: column;
@@ -19,65 +21,72 @@
   width: 90%;
 }
 
-  .AddGalleryButton {
-    margin-top: 2px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #203a90;
-    text-decoration: none;
-    font-family: 'Times New Roman', Times, serif;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    color: #ffffff;
-  }
+/* Style for the "Add Gallery" button */
+.AddGalleryButton {
+  margin-top: 2px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #203a90;
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #ffffff;
+}
+
+/* Form for adding new gallery items */
+.add-gallery-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(22, 21, 21, 0.1);
+  width: 700px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3px;
+}
+
+/* Centering the add gallery form container */
+.add-gallery-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Heading for the gallery add form */
+.add-gallery-form h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #203a90;
+  font-family: 'Times New Roman', Times, serif;
+}
   
-  .add-gallery-form {
-    background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(22, 21, 21, 0.1);
-    width: 700px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-  }
-  
-  .add-gallery-form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .add-gallery-form h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #203a90;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .form-group input {
-    background: transparent;
-    color: black;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
+/* Style for form groups */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Style for form labels */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Style for form inputs */
+.form-group input {
+  background: transparent;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Style for text, URL, and file input types */
   .form-group input[type="text"],
   .form-group input[type="url"],
   .form-group input[type="file"] {
@@ -88,65 +97,97 @@
     border-radius: 4px;
   }
   
-  .form-buttons {
-    margin-top: 20px;
-  }
+/* Container for form buttons */
+.form-buttons {
+  margin-top: 20px;
+}
+
+/* Style for form buttons */
+.form-buttons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #203a90;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+ 
+
+/* Hover effect for form buttons */
+.form-buttons button:hover {
+  opacity: 0.8;
+}
   
-  .form-buttons button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #203a90;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+/* Container for gallery items */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 10px;
+}
   
-  .form-buttons button:hover {
-    opacity: 0.8;
-  }
+/* Style for individual gallery tiles */
+.gallery-tile {
+  position: relative;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(92, 67, 67, 0.1);
+}
   
-  .gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin: 10px;
-  }
+/* Style for images within gallery tiles */
+.gallery-tile img {
+  width: 100%;
+  height: auto;
+}
   
-  .gallery-tile {
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(92, 67, 67, 0.1);
-  }
+/* Heading style within gallery tiles */
+.gallery-tile h2 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
   
-  .gallery-tile img {
+/* Style for links within gallery tiles */
+.gallery-tile a {
+  display: block;
+  color: blue;
+  text-decoration: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.gallery-actions {
+  position: absolute; /* Position it relative to .news-tile */
+  bottom: 10px; /* Position it at the bottom of the tile */
+  right: 10px;  /* Align it to the right */
+}
+
+.actionButton{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #203a90;
+  transition: transform 0.2s ease;
+}
+
+.actionButton:hover {
+  transform: scale(1.1); /* Slight zoom on hover for effect */
+}
+  
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+
+  /* Adjust the gallery form width and padding */
+  .add-gallery-form {
+    padding: 15px;
     width: 100%;
-    height: auto;
   }
   
-  .gallery-tile h2 {
-    font-size: 1.5rem;
-    margin: 10px 0;
+  /* Adjust font size for inputs */
+  .form-group input[type="text"],
+  .form-group input[type="url"],
+  .form-group input[type="file"] {
+    font-size: 0.9rem;
   }
-  
-  .gallery-tile a {
-    display: block;
-    color: blue;
-    text-decoration: none;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  @media (max-width: 768px) {
-    .add-gallery-form {
-      padding: 15px;
-      width: 100%;
-    }
-  
-    .form-group input[type="text"],
-    .form-group input[type="url"],
-    .form-group input[type="file"] {
-      font-size: 0.9rem;
-    }
-  }
+}
   

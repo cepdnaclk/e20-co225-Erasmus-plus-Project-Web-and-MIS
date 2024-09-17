@@ -1,3 +1,4 @@
+/* General Styles for Team Title */
 .TeamTitle {
     margin-top: 1%;
     margin-left: 5%;
@@ -11,6 +12,7 @@
     margin-right: 5%;
 }
 
+/* Styles for Team Tabs */
 .TeamTabs {
     margin-top: 20px;
     margin-bottom: 30px;
@@ -21,6 +23,7 @@
     gap: 10px; /* Adds space between the tabs */
 }
 
+/* Button Styling within the Team Tabs */
 .TeamTabs button {
     background-color: #263d8300;
     padding: 5px; /* Optional: Add padding for a better button size */
@@ -29,10 +32,12 @@
     font-family: 'Caudex';
 }
 
+/* Active Tab Styling */
 .TeamTabs button.active {
     border-bottom: 2px solid #254ad281; /* Underline for the active tab */
 }
 
+/* Hover Effect for Tab Buttons */
 .TeamTabs button:hover {
     opacity: 0.7; /* Optional: Add hover effect */
 }
@@ -43,10 +48,9 @@
 
 .SUoTLogoTab , .KMIoTLLogoTab{
     width: 65px;
-
 }
 
-
+/* Styling for University of Peradeniya (UoP) Team Section */
 .UoPTeam {
     border: 2px solid hsl(51, 89%, 58%);
     margin-bottom: 5%;
@@ -59,7 +63,7 @@
 
 }
 
-
+/* Logo Centering for UoP */
 .UoPLogo {
     display: flex;
     justify-content: center; /* Center items horizontally */
@@ -70,14 +74,14 @@
     margin-bottom: 20px;
 }
 
-
-
+/* Team Section Titles */
 .UoPTeamTitle {
     text-align: center;
     margin-bottom: 1%;
     font-size: 25px;
 }
 
+/* Subtitles for Each Team Member Section */
 .TeamSubTitle {
     text-align: center;
     margin-bottom: 1%;
@@ -85,6 +89,7 @@
     color: #942300;
 }
 
+/* Card Layout for Team Members */
 .TeamCards {
     display: center;
     margin-bottom: 1%;
@@ -92,6 +97,7 @@
     border-radius: 1em;
 }
 
+/* Styling for Individual Team Cards */
 .TeamCard {
     border: 2px solid hsl(51, 89%, 58%);
     padding: 20px;
@@ -107,10 +113,12 @@
     height: 100%;
 }
 
+/* Hover Effect for Team Cards */
 .TeamCards :hover {
   transform: scale(1.05);
 }
 
+/* Link Styling within Team Cards */
 .TeamCard a{
     color: #9d1d06; /* Default link color */
     text-decoration: none;
@@ -123,27 +131,29 @@
     font-size: 16px;
 }
 
+/* List Styling for Team Details */
 .TeamCard ul{
     list-style-type: none;
     font-size: 16px;
     padding: 0;
 }
 
+/* Styling for Profile Pictures in Team Cards */
 .TeamProfilePic{
     width: 150px;
     height: auto;
     border-radius: 50%;
 }
 
+/* Bold Name Styling for Team Members */
 .TeamMemberName{
     font-weight: bold;
     color:hsl(0, 0%, 0%);
     font-size: 18px;
 }
 
-
+/* Specific Team Sections */
 /* University of Colombo*/
-
 .UoCTeam {
     border: 2px solid hsl(0, 0%, 1%);
     margin-bottom: 5%;
@@ -153,7 +163,6 @@
     padding-top: 20px;
     border-radius: 50px;
     background-color: hsl(0, 0%, 97%);
-
 }
 
 .UoCLogo {
@@ -225,7 +234,6 @@
 
 
 /* Piraeus Research Center*/
-
 .PRCTeam {
     border: 2px solid hsl(223, 83%, 19%);
     margin-bottom: 5%;
@@ -308,7 +316,6 @@
 
 
 /* Hanoi University of Industry */
-
 .HUoITeam {
     border: 2px solid hsl(0, 75%, 54%);
     margin-bottom: 5%;
@@ -615,7 +622,7 @@
     padding: 0;
 }
 
-
+/* Media Queries for Responsive Design */
 @media (max-width: 1000px) {
     .TeamTabs {
         margin-bottom: 20px;

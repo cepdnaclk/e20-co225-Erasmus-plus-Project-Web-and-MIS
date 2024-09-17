@@ -16,6 +16,7 @@ import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { loggedInUser } from '../components/Header';
 import { Dialog, DialogContent } from "@mui/material";
 
+/*Deliverables Page */
 function Deliverables() {
 
   /******************** Load information whenever the page loads ********************************* */
@@ -414,4 +415,4 @@ const onViewClick = (deliverable) => {
   );
 }
   
-  export default Deliverables;
+export default Deliverables;

@@ -1,0 +1,70 @@
+/* Container for the news section */
+.news-container {
+  width: 100%;
+  max-width: 1000px; 
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+}
+
+/* List of news items, displayed in a vertical layout */
+.news-list {
+  display: flex;
+  flex-direction: column; /* This ensures a vertical layout */
+}
+
+/* Individual news item */
+.news-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+}
+
+/* Hover effect for images */
+.HoveringImg:hover{
+  transform: scale(1.01);
+  opacity: 0.8;
+}
+
+/* News item image styling */
+.news-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+
+/* Container for news details (title, description, etc.) */
+.news-details {
+  flex: 1;
+}
+
+/* Styling for the news title */
+.news-details h3 {
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: 'Caudex';
+}
+
+/* Styling for paragraph elements within the news details */
+.news-details p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* Link styling within the news details */
+.news-details a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+/* Header for the news container */
+.news-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}

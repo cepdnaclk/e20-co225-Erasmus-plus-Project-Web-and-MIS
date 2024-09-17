@@ -44,11 +44,11 @@ public class TaskService {
         taskRepository.save(task);
     }
 
-//    public void addTaskWithUsers(Task task, Set<AppUser> taskMembers){
-//
-//        task.setAssignedMembers(taskMembers);
-//        taskRepository.save(task);
-//    }
+    public void addTaskWithUsers(Task task, Set<AppUser> taskMembers){
+
+        task.setAssignedMembers(taskMembers);
+        taskRepository.save(task);
+    }
 
 
     public void deleteTask(int task_ID){
@@ -61,8 +61,9 @@ public class TaskService {
         return taskRepository.findTasksByUser(user);
     }
 
-    public void deleteTaskUsers(int taskID,Long userID){
-        taskRepository.deleteUserFromTasks(taskID,userID);
-    }
+//    public void deleteTaskUsers(int taskID,Long userID){
+//        taskRepository.deleteUserFromTasks(taskID,userID);
+//    }
 }
+
 

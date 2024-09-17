@@ -1,11 +1,7 @@
-
+/* Styles for the paragraph element. Adds a border, rounded corners, and padding for a card-like effect. */
 .paragraph{
     border: 2px solid hsl(225, 87%, 21%);
     border-radius: 20px;
-    /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7), 
-                2px -2px 5px rgba(255, 255, 255, 0.7), 
-                -2px 2px 5px rgba(63, 108, 148, 0.1); */
     padding: 20px;
     display: inline-block;
     background-color: hsl(0, 0%, 100%);
@@ -16,6 +12,18 @@
     font-family: 'Caudex';
 }
 
+/* Participant Map and Partners Section */
+.MapAndPartners {
+    padding: 20px;
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    text-align: center;
+    font-family: 'Caudex';
+}
+
+/* Flex container for layout alignment between two columns */
 .container {
     display: flex;
     justify-content: space-between;
@@ -23,29 +31,36 @@
     padding: 10px;
   }
   
+  /* Left column occupies 55% of the container */
   .leftColumn {
     width: 55%;
   }
   
+  /* Right column occupies 45% of the container */
   .rightColumn {
     width: 45%;
   }
   
+
+/* Styles for displaying partner logos in a flexible row layout */
   .partnerLogoImages {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
+  /* Hover effect for images to scale up and change opacity */
 .HoveringImg:hover{
     transform: scale(1.2);
     opacity: 0.8;
 }
 
+/* Base style for the images used */
 .HoveringImg{
     height:130px
 }
 
+/* Flexbox setup for partner logo images */
 .partnerLogoImages{
     display:flex;
     flex-direction:row;
@@ -54,10 +69,12 @@
    align-items: center;
 }
 
+/* Class to hide partners list by default on larger screens */
 .partnersList{
     display: none
 }
 
+/* Flexbox for arranging project summary items */
 .projectSummaryFlex{
     display:flex;
     flex-direction:row;
@@ -65,6 +82,7 @@
     align-items: center;
   }
   
+/* Individual item styles within the project summary section */
 .projectSummaryFlexItem {
 width:29%;
 display: flex;
@@ -74,21 +92,24 @@ padding: 10px 20px;
 color:#000000 ;
 }
 
+/* No margins on paragraphs within the project summary items */
 .projectSummaryFlexItem p {
 margin: 0;
 }
 
+/* Bold class to apply heavier font-weight */
 .projectSummaryFlexItem .bold {
 font-weight: 700;
 }
 
+/* Style for SVG icons in project summary items */
 .projectSummaryFlexItem svg {
 margin-right: 13px;
 font-size: 1.5em;
 color:#004594ca ;
 }
 
-
+/* Project description card with border, padding, and rounded corners */
 .proj_desc {
   padding: 20px;
   display: inline-block;
@@ -103,56 +124,58 @@ color:#004594ca ;
   font-family: 'Caudex';
 }
 
+/* Slight hover effect for project description text */
 .proj_desc p:hover {
   transform: scale(1.01);
 }
 
-/* Initially hidden */
+/* Hidden class for smooth fade-in animations */
 .hidden {
   opacity: 0;
   transform: translateY(50px); /* Start with an offset */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
 }
 
-/* Visible state */
+/* Visible state to make the element appear with animation */
 .visible {
   opacity: 1;
   transform: translateY(0); /* Bring it to the original position */
 }
 
+/* Target group cards container styling */
 .TargetGroupCards {
-  align-items: left;
-  justify-content: left;
-  display: left;
-  width: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
 
+/* Target group card with rounded corners, centered text, and hover effects */
 .TargetGroupCard {
   border-radius: 1em;
   display: inline-block;
   margin-bottom: 5%;
   text-align: center;
-  width: 400px; 
+  width: 300px; 
   height: 100px;
   color:#000000;
-  font-size: 18px;
+  font-size: 16px;
   flex-direction: row;
 }
 
+/* Hover effect for target group card */
 .TargetGroupCard:hover {
   transform: scale(1.05);
-
 }
 
+/* Icon within the target group card */
 .tgicon {
-  width: 30px;
-  height: 30px;
-  display: center;
-  align-items: center;
-  color:#0a6b29 ;
-
+  width: 70px;
+  height: 70px;
+  opacity: 0.9;
 }
 
+/* Section for target groups with green border and light background */
 .targetgroupsecsion {
   border: 2px solid hsl(105, 68%, 24%);
   background-color: hsl(104, 60%, 95%);
@@ -165,13 +188,25 @@ color:#004594ca ;
   text-align: center;
   color: rgb(0, 0, 0);
   font-family: 'Caudex';
+  width: 90%;
+  padding-bottom: 2%;
 }
-@media screen and (max-width: 1300px) {
+
+/* Responsive design for screens below 1280px, reducing right column width */
+@media screen and (max-width: 1280px) {
+  .rightColumn{
+    width: 30%;
+  }
+}
+
+/* Hide the right column on smaller screens below 1100px */
+@media screen and (max-width: 1100px) {
   .rightColumn{
     display: none;
   }
 }
 
+/* Responsive adjustments for screens below 1000px */
 @media screen and (max-width: 1000px) {
 
     .partnersList{
@@ -188,8 +223,13 @@ color:#004594ca ;
       transform: none;
     }
 
+    .TargetGroupCards {
+      flex-direction: column; /* Stack elements in a column */
+    }
+
     .TargetGroupCard {
-      width: 300px; 
+      width: 90%; 
+      height: auto; 
     }
 }
 

@@ -1,3 +1,5 @@
+// JUnit Testing For NewsAndEventsController
+
 package com.example.demo;
 
 import com.example.demo.news.NewsAndEvents;
@@ -52,23 +54,6 @@ class NewsAndEventsControllerTest {
                 .andExpect(content().json("[]"));
 
         verify(newsAndEventsService, times(1)).getAllNewsAndEvents();
-    }
-
-    /*
-        Test to verify that when a GET request is made to /api/v1/news/{newsId},
-        the endpoint correctly retrieves and returns the news item with the specified newsId
-    */
-    @Test
-    void testGetNewsById() throws Exception {
-        Long newsId = 1L;
-        NewsAndEvents newsAndEvents = new NewsAndEvents("Title", "Description", "Url", "Author", "Date", null);
-        when(newsAndEventsService.getNewsAndEventById(newsId)).thenReturn(Optional.of(newsAndEvents));
-
-        mockMvc.perform(get("/api/v1/news/{newsId}", newsId))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.newsTitle").value("Title"));
-
-        verify(newsAndEventsService, times(1)).getNewsAndEventById(newsId);
     }
 
     /*

@@ -7,12 +7,17 @@ import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
 
+// Global user state
 export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
 
 function Header(){
-    // Constants for hamburger menu
+    // State for hamburger menu
     const [menuOpen, setMenuOpen] = useState(false);
-    // Constants for login button
+
+    // State for admin menu
+    const [adminmenuOpen, setAdminMenuOpen] = useState(false);
+
+   // State for login button visibility
     const [isVisible, setIsVisible] = useState(true);
 
     const [user, setUser] = useState(null);
@@ -52,6 +57,7 @@ function Header(){
     // set hamburger menu to close when a link is clicked
     const handleLinkClick = () => {
         setMenuOpen(false);
+        setAdminMenuOpen(false);
         setIsVisible(false);
     }
 
@@ -150,8 +156,8 @@ function closeOnClickOutside(selector, toggleClass) {
                 }>
                 <FontAwesomeIcon icon={faBars} />   
                 </div>
-                <ul className= {menuOpen ? "open" : ""}>
-                <ul className="headerNavBarRight">
+
+                <ul className= {`headerNavBarRight ${menuOpen ? "open" : ""}`}>
 
                     <li><Link to = '/' onClick={handleLinkClick}>Home</Link></li>
                                   
@@ -174,13 +180,20 @@ function closeOnClickOutside(selector, toggleClass) {
                     <li><Link to = '/downloads' onClick={handleLinkClick}>Downloads</Link></li>
                     <li><Link to = '/contact' onClick={handleLinkClick}>Contact</Link></li>
                 </ul>
-                </ul>
             </nav>
 
             {/* Top Navigation Bar for Administration  */}
             <div>
-                <nav class="adminNavBar" >   
-                <ul className="headerNavBarLeft">
+                <nav class="adminNavBar" > 
+
+                {loggedInUserState && (
+                    <div className='adminmenu' style={{ marginLeft: '51px' }} onClick={() => 
+                        setAdminMenuOpen(!adminmenuOpen)
+                        }>
+                        <FontAwesomeIcon icon={faBars} />   
+                    </div>
+                )} 
+                <ul className= {`headerNavBarLeft ${adminmenuOpen ? "open" : ""}`}>
                     {/* Display Admin Nav Bar Left List Items here only if min-width: 968px and the user has logged in*/}
                     {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/dashboard'>DASHBOARD</Link></li>}
                     {loggedInUserState && <li className='adminNavBarLeftListItem'><Link to = '/admin/project management'>PROJECT MANAGEMENT</Link></li>}

@@ -119,7 +119,6 @@
   background-color: #0056b3;
 }
 
-/* New Entry Interface */
 /* Form title */
 .formTitle {
   text-align: center;
@@ -157,12 +156,13 @@
   font-size: 16px;
   color: #333;
 }
+
 .buttonsBlock{
   display:flex;
   justify-content: center;
   align-items: center;
 }
-/* Send Message button */
+/* buttons */
 .buttonsBlock button {
   width: 100px;
   height: 50px;
@@ -177,7 +177,6 @@
   margin:10px;
 }
 
-/* Send Message button when the mouse point to that*/
 .buttonsBlock button:hover{
   background: hsl(211, 40%, 69%);
   color: #2a2929;

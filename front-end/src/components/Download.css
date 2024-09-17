@@ -1,4 +1,4 @@
-
+/* Title section for download/upload form */
 .downloadTitle {
   margin-top: 1%;
     margin-left: 5%;
@@ -12,6 +12,7 @@
     margin-right: 5%;
 }
 
+/* Section for the upload form */
 .upload-section {
   display: flex;
   flex-direction: column;
@@ -20,6 +21,7 @@
   width: 90%;
 }
 
+/* Styling for add/cancel buttons */
 .addcancelbutton {
   background-color: hsl(211, 44%, 66%);
   border: none;
@@ -32,10 +34,13 @@
   transition: background-color 0.3s ease;
 }
 
+/* Hover effect for the add/cancel button */
 .addcancelbutton:hover {
   background-color: hsl(211, 40%, 69%);
 }
 
+
+/* Upload form styling */
 .upload-form {
   display: flex;
   flex-direction: column;
@@ -50,11 +55,14 @@
   margin-right: 5%;
 }
 
+
+/* Form heading styling */
 .upload-form h4 {
   font-size: 24px;
   color: #203a90;
 }
 
+/* Input fields for file, text, and URL in the form */
 .upload-form input[type="file"],
 .upload-form input[type="text"],
 .upload-form input[type="url"]  {
@@ -68,23 +76,21 @@
   box-shadow: inset 0px 1px 2px rgba(136, 185, 240, 0.1);
 }
 
-.upload-form input[type="text"] {
-  font-size: 16px;
-  color: black;
-}
-
+/* Additional styles for text and URL input fields */
+.upload-form input[type="text"], 
 .upload-form input[type="url"] {
   font-size: 16px;
   color: black;
 }
 
+/* Checkbox input field styling */
 .upload-form input[type="checkbox"] {
   width: 16px; 
   height: 16px; 
   margin-right: 8px; 
 }
 
-
+/* Label styling for the upload form */
 .upload-form label {
   display: flex;
   align-items: center;
@@ -93,6 +99,7 @@
   margin-bottom: 15px;
 }
 
+/* Button styling inside the upload form */
 .upload-form button {
   width: 100%;
   max-width: 150px;
@@ -105,18 +112,20 @@
   font-size: 16px;
 }
 
+
+/* Hover effect for buttons */
 .upload-form button:hover {
   background: hsl(211, 46%, 50%);
   transform: scale(1.02);
 }
 
+/* Active effect for buttons */
 .upload-form button:active {
   transform: scale(0.98);
 }
 
  
 /* Download and youtube link watch section*/
-
 .downloadSection {
   display: grid;
   gap: 20px;
@@ -124,6 +133,7 @@
   margin: 0 5% 5%;
 }
 
+/* Each file item in the download section */
 .fileItem {
   display: flex;
   align-items: center;
@@ -136,6 +146,7 @@
   flex-wrap: wrap; /* Allows wrapping of content when necessary */
 }
 
+/* Content section inside file items */
 .fileContent {
   display: flex;
   align-items: center;
@@ -143,6 +154,7 @@
   gap: 10px;
 }
 
+/* Action buttons in file items (e.g., download, delete) */
 .fileActions {
   display: flex;
   align-items: center;
@@ -152,6 +164,7 @@
   padding: 10px;
 }
 
+/* Styling for action buttons and links */
 .fileActions button,
 .fileActions a {
   background: none;
@@ -163,27 +176,32 @@
   font-size: 16px;
 }
 
+/* Hover effect for action buttons and links */
 .fileActions button:hover,
 .fileActions a:hover {
   color: #4e679b;
 }
 
+/* Remove underline from links */
 .fileActions a {
   text-decoration: none;
   color: #1f4681;
   font-size: 16px;
 }
 
+/* Styling for file item images */
 .fileItem img {
   width: auto;
   height: 40px;
   margin-right: 10px;
 }
 
+/* Styling for file item text */
 .fileItem p {
   margin: 0;
 }
 
+/* Styling for section headings */
 .downloadSection h4 {
   font-size: 20px;
   font-family: 'Caudex', serif;
@@ -204,26 +222,32 @@
   display: center;
 }
 
+/* Small screen responsiveness */
 @media (max-width: 760px) {
 
+  /* Adjust download section for small screens */
   .downloadSection {
     flex-direction: column;
     align-items: center;
   }
 
+  /* Hide images on small screens */
   .downloadSection img {
     display: none;
   }
 
+  /* Adjust file item layout for small screens */
   .fileItem {
     flex-direction: row; /* Stack content vertically on small screens */
     align-items: flex-start; /* Align content to the left */
   }
 
+  /* Add spacing between file content and actions */
   .fileContent {
     margin-bottom: 10px; /* Adds spacing between file content and actions */
   }
 
+  /* Adjust action buttons for small screens */
   .fileActions {
     justify-content: flex-start; /* Align buttons to the left */
     width: 15%; /* Allow the buttons to take full width */

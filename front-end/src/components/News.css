@@ -1,4 +1,4 @@
-
+/* Styles for the news title section */
 .NewsTitle{
   margin-top: 1%;
   margin-left: 5%;
@@ -12,6 +12,7 @@
   margin-right: 5%;
 }
 
+/* Styles for the section that holds the news addition form */
 .NewsAdd {
   display: flex;
   flex-direction: column;
@@ -20,8 +21,8 @@
   width: 90%;
 }
 
+/* Styles for the button that adds news */
 .AddNewsButton{
-  margin-top: 2px;
   padding: 10px 20px;
   font-size: 16px;
   background-color: #203a90;
@@ -34,19 +35,21 @@
   color: #ffffff;
 }
 
+/* Styles for the add news form layout */
 .add-news-form {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #cccccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(22, 21, 21, 0.1);
   width: 700px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   margin-top: 5px;
 }
 
+/* Centers the form container vertically */
 .add-news-form-container {
   margin-top: 40px;
   display: flex;
@@ -55,40 +58,48 @@
   height: 100vh;
 }
 
+/* Styles for the form title */
 .add-news-form h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 0;
   color: #203a90;
   font-family:'Times New Roman', Times, serif;
 }
 
+/* Styles for form groups (label + input/textarea) */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
+/* Styles for the label elements */
 .form-group label {
   display: block;
-  margin-bottom: 5px;
   font-size: 1rem;
   font-weight: 600;
   font-family:'Times New Roman', Times, serif;
 }
 
+/* Styles for input elements */
 .form-group input {
   background: transparent;
   color: black;
   font-family:'Times New Roman', Times, serif;
 }
 
+/* Styles for the textarea */
 .form-group textarea {
   background: transparent;
   color: black;
   font-family:'Times New Roman', Times, serif;
 }
+
+/* Inverts the color of the date picker */
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
+/* Common styles for text, url, date inputs, and textarea */
 .form-group input[type="text"],
 .form-group input[type="url"],
 .form-group input[type="date"],
@@ -100,10 +111,12 @@
   border-radius: 4px;
 }
 
+/* Styles for form buttons */
 .form-buttons {
   margin-top: 20px;
 }
 
+/* General styles for form buttons */
 .form-buttons button {
   padding: 10px 20px;
   margin-right: 10px;
@@ -115,14 +128,17 @@
   cursor: pointer;
 }
 
+/* Styles for secondary buttons */
 .form-buttons button[type="button"] {
   background-color: #6c757d;
 }
 
+/* Adds hover effect on buttons */
 .form-buttons button:hover {
   opacity: 0.8;
 }
 
+/* Responsive styles for screens smaller than 768px */
 @media (max-width: 768px) {
   .add-news-form {
     padding: 15px;
@@ -147,6 +163,7 @@
 }
 
 .news-tile {
+  position: relative;
     border: 1px solid #ccc;
     padding: 10px;
     box-shadow: 0 0 10px rgba(92, 67, 67, 0.1);
@@ -214,16 +231,20 @@
     text-decoration: underline;
 }
 
-
-
-.actionButton{
-  margin-right: 5px;
-  padding:0;
-  background-color:#ffffff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  color: #000;
-  align-items: right;
+.news-actions {
+  position: absolute; /* Position it relative to .news-tile */
+  bottom: 10px; /* Position it at the bottom of the tile */
+  right: 10px;  /* Align it to the right */
 }
 
+.actionButton{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #203a90;
+  transition: transform 0.2s ease;
+}
+
+.actionButton:hover {
+  transform: scale(1.1); /* Slight zoom on hover for effect */
+}

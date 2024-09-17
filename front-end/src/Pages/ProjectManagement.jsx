@@ -126,9 +126,6 @@ const onDeleteClick = async (task_ID) => {
   }
 }
 
- 
-
-
 
   //to refresh on admin requirement => get ALL TASKS
   function getAllTaskInfo(){
@@ -174,7 +171,6 @@ const onDeleteClick = async (task_ID) => {
     //   getPersonalTaskInfo();
     //  }
      getAllTaskInfo();     
-
   }
 
 
@@ -286,7 +282,6 @@ const onDeleteClick = async (task_ID) => {
               <button className={style['actionButton']} onClick={() => onDeleteClick(item.task_ID)}><FontAwesomeIcon icon={faTrash} /></button>
           </div>}
               </div>
-              
           ))
         }
         {
@@ -300,4 +295,5 @@ const onDeleteClick = async (task_ID) => {
   // }
  
 }
-  export default ProjectManagement;
+
+export default ProjectManagement;

@@ -1,14 +1,13 @@
 import React from "react";
-import { useNews } from "./NewsContext";
 import Slideshow from "../bodyComponents/SlideShow";
 import NewsGrid from "../bodyComponents/NewsGrid.jsx";
-import style from './Home.module.css';
+import style from '../components/Home.module.css';
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap, faShield, faUsers, faBuilding} from '@fortawesome/free-solid-svg-icons';
 import {Link, Outlet} from 'react-router-dom';
-import cylcleLogo from '../assets/CYCLE-logo.png';
+
 // this has to be imported from backend 
 // 1200px height images are ideal
 const fadeImages = [

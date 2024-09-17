@@ -4,8 +4,8 @@ import contactImg from '../assets/contactImg.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
+/*Contact Page*/ 
 function Contact() {
-  
   return(
     <>
     <div className = "contactTitle"> {/* Page title */}
@@ -55,12 +55,10 @@ function Contact() {
         <a href="mailto:dayaratna@sci.pdn.ac.lk"><FontAwesomeIcon className = "contactIcons" icon={faEnvelope} /></a>
       </div>
     </div>
-
     </div>
 
 
     {/* Contact Us form */}
-
     <div className = "ContactUsTitle">
       <h3>Contact Us</h3>
       <p className = "ContactUsSubTitle">For inquiries or support, contact us and we'll respond promptly</p>

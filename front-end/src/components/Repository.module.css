@@ -1,3 +1,4 @@
+/* Styling for the main repository title */
 .RepositoryTitle{
     margin-top: 2%;
     margin-left: 5%;
@@ -7,6 +8,7 @@
     font-family: 'Caudex';
   }
 
+  /* Styling for the subtitle of the repository */
   .RepositorySubTitle{
     margin-top: 2%;
     margin-left: 5%;
@@ -17,6 +19,7 @@
     color: rgb(10, 48, 128);
   }
 
+  /* Styling for sub-subtitle under the repository section */
   .RepositorySuperSubTitle{
     margin-top: 2%;
     margin-left: 8%;

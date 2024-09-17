@@ -5,6 +5,11 @@ import '../components/Gallery.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // FontAwesome for icons
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
 
+/**
+ * Fetch gallery items from the backend API.
+ * Fetches the list of albums from the gallery API endpoint.
+ * The results are sorted in descending order based on albumID.
+ */
 const fetchGallery = async () => {
   try {
     const response = await axios.get('http://localhost:8080/api/v1/gallery');
@@ -15,11 +20,15 @@ const fetchGallery = async () => {
   }
 };
 
+/**
+ * Gallery component for displaying a list of albums and providing functionality for adding, viewing, editing, and deleting items.
+ */
 const Gallery = () => {
   const [gallery, setGallery] = useState([]); 
   const [showForm, setShowForm] = useState(false); 
   const [file, setFile] = useState(null); 
 
+   // Fetch and load the gallery when the component is first rendered
   useEffect(() => {
     const getGallery = async () => {
       const latestGallery = await fetchGallery(); 
@@ -29,18 +38,25 @@ const Gallery = () => {
     getGallery(); 
   }, []); 
 
+  // Toggles the display of the album addition form
   const toggleForm = () => {
     setShowForm(!showForm); 
   };
 
+  // Handles file input change (for album cover image)
   const handleFileChange = (event) => {
     setFile(event.target.files[0]); 
   };
 
+   /**
+   * Handles form submission to add a new gallery item.
+   * Sends the form data (album name, URL, cover image) to the backend.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault(); 
     const form = event.target;
 
+       // Create a new FormData object to submit the form data
     const formData = new FormData();
     formData.append('albumName', form.albumName.value);
     formData.append('albumURL', form.albumURL.value);
@@ -66,6 +82,10 @@ const Gallery = () => {
     }
   };
 
+   /**
+   * Handles the deletion of a gallery item by albumID.
+   * Sends a DELETE request to remove the item from the backend.
+   */
   const onDeleteClick = async (albumID) => {
     try {
       await axios.delete(`http://localhost:8080/api/v1/gallery/${albumID}`);
@@ -78,6 +98,7 @@ const Gallery = () => {
 
   return (
     <>
+    {/* Breadcrumb navigation for the page */}
       <div className="GalleryTitle">
         <h3>Gallery</h3>
         <nav>
@@ -96,6 +117,8 @@ const Gallery = () => {
           </ol>
         </nav>
         </div>
+
+        {/* Form toggle button for adding a new gallery item */}
         <div className="GalleryAdd">
         {loggedInUser.isLoggedIn && (
           <div>
@@ -104,6 +127,8 @@ const Gallery = () => {
             </button>
           </div>
         )}
+
+        {/* Display the form when showForm is true */}
         {showForm && (
           <div className="add-gallery-form-container">
             <div className="add-gallery-form">
@@ -130,6 +155,7 @@ const Gallery = () => {
         )}
       </div>
       
+      {/* Display the gallery items */}
       <div className="gallery-container">
         {gallery.map((item) => (
           <div key={item.albumID} className="gallery-tile">
@@ -140,10 +166,11 @@ const Gallery = () => {
             <h2>{item.albumName}</h2>
             <a href={item.albumURL} target="_blank" rel="noopener noreferrer">Click here for more images</a>
             
+            {/* Show edit, view, and delete buttons for logged-in users */}
             {loggedInUser.isLoggedIn && (
               <div>
-                <button className="actionButton"><FontAwesomeIcon icon={faPen}/></button>
-                <button className="actionButton"><FontAwesomeIcon icon={faEye}/></button>
+                {/* <button className="actionButton"><FontAwesomeIcon icon={faPen}/></button>
+                <button className="actionButton"><FontAwesomeIcon icon={faEye}/></button> */}
                 <button className="actionButton" onClick={() => onDeleteClick(item.albumID)}><FontAwesomeIcon icon={faTrash} /></button>
               </div>
             )}

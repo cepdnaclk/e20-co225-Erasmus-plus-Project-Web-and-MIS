@@ -1,5 +1,6 @@
 import style from "../components/Dashboard.module.css";
 
+/*Dashboard Page */
 function Dashboard() {
     return(
       <>

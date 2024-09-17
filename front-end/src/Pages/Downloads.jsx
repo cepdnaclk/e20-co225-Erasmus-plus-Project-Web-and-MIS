@@ -7,6 +7,7 @@ import { faDownload ,faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 
 
 const FileUploadDownload = () => {
+  // State management
   const [selectedFile, setSelectedFile] = useState(null);
   const [displayName, setDisplayName] = useState('');
   const [visibleToAll, setVisibleToAll] = useState(false);
@@ -15,10 +16,12 @@ const FileUploadDownload = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [showUploadForm, setShowUploadForm] = useState(false);
 
+// Fetch the uploaded files from the backend when the component mounts
   useEffect(() => {
     fetchUploadedFiles();
   }, []);
 
+  // Fetches uploaded files from the backend API
   const fetchUploadedFiles = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/v1/files');
@@ -28,33 +31,42 @@ const FileUploadDownload = () => {
     }
   };
 
+    // Handler for selecting a file
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
+   // Handler for setting the display name of the file
   const handleDisplayNameChange = (event) => {
     setDisplayName(event.target.value);
   };
 
+  // Handler for changing the visibility setting (public/private)
   const handleVisibilityChange = (event) => {
     setVisibleToAll(event.target.checked);
   };
 
+  // Handler for inputting YouTube link instead of a file
   const handleYoutubeLinkChange = (event) => {
     setYoutubeLink(event.target.value);
   };
 
+  // Handles file upload or YouTube link submission
   const handleUpload = async () => {
+
+    // Ensure either a file or a YouTube link is provided
     if (!selectedFile && !youtubeLink) {
       alert('Please select a file or enter a URL for the file!');
       return;
     }
 
+    // If a file is uploaded, a display name is required
     if (selectedFile && !displayName) {
       alert('Please enter a display name!');
       return;
     }
 
+    // Prepare the form data for file or YouTube link
     const formData = new FormData();
     if (selectedFile) {
       formData.append('file', selectedFile);
@@ -66,6 +78,7 @@ const FileUploadDownload = () => {
       formData.append('visibleToAll', visibleToAll);
     }
 
+    // Upload file or link to the backend
     try {
       const response = await axios.post('http://localhost:8080/api/v1/files/upload', formData, {
         headers: {
@@ -90,6 +103,7 @@ const FileUploadDownload = () => {
     }
   };
 
+  // Handles file download
   const handleDownload = async (fileId, fileName) => {
     try {
       const response = await axios.get(`http://localhost:8080/api/v1/files/${fileId}`, {
@@ -108,6 +122,7 @@ const FileUploadDownload = () => {
     }
   };
 
+  // Handles file deletion
   const handleDelete = async (fileId) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this file?');
     if (!confirmDelete) return;

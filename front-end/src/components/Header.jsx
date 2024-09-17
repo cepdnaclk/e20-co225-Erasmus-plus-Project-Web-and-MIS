@@ -7,16 +7,17 @@ import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
 
+// Global user state
 export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
 
 function Header(){
-    // Constants for hamburger menu
+    // State for hamburger menu
     const [menuOpen, setMenuOpen] = useState(false);
 
-    // Constants for hamburger menu
+    // State for admin menu
     const [adminmenuOpen, setAdminMenuOpen] = useState(false);
 
-    // Constants for login button
+   // State for login button visibility
     const [isVisible, setIsVisible] = useState(true);
 
     const [user, setUser] = useState(null);

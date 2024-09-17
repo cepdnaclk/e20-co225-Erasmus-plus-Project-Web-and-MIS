@@ -1,4 +1,4 @@
-/* Full overview page alignments */
+/* Styles for the full project overview page alignment */
 .projectOverview {
     margin-top: 1%;
     margin-left: 5%;
@@ -12,7 +12,7 @@
     margin-right: 5%;
 }
 
-
+/* Breadcrumb navigation styles */
 .breadcrumb {
     list-style: none;
     display: flex;
@@ -24,31 +24,36 @@
     margin-right: 5px;
   }
   
+  /* Adds ">" symbol between breadcrumb items */
   .breadcrumb-item::after {
     content: ">";
     margin-left: 5px;
   }
-  
+
+  /* Removes the ">" after the last breadcrumb item */
   .breadcrumb-item:last-child::after {
     content: "";
   }
   
+  /* Styles for breadcrumb links */
   .breadcrumb-item a {
     text-decoration: none;
     color: #5086c0; /* Blue color */
   }
   
+  /* Styles for breadcrumb links on hover */
   .breadcrumb-item a:hover {
     text-decoration: none;
     color: #7e96af; /* Blue color */
   }
   
+  /* Styles for active breadcrumb items */
   .breadcrumb-item.active {
     color: #5c6064; /* Gray color */
   }
   
 
-/* CYCLE Overview part alignments */
+/* Styles for the CYCLE overview section */
 .overview-para {
   border: 2px solid rgba(10, 48, 128);
   border-radius: 20px;
@@ -68,25 +73,30 @@
   font-family: 'Caudex';
 }
 
+/* Styles for the text inside the overview description block */
 .overview-descri {
   color: #000000; /* Text color for better contrast */
   text-align: center; /* Center the text inside the block */
 }
+
+/* Adds a slight scale transformation on hover for the overview description */
 .overview-descri :hover {
   transform: scale(1.01);
 }
 
+/* Styles for the overview title box */
 .Overview-title-box {
   text-align: center; /* Center text */
   padding: 1%;;
 }
 
+/* Styles for the headings inside the overview title box */
 .Overview-title-box h3 {
   margin: 0; /* Remove default margin */
   font-size: 20px; /* Increase font size */
 }
 
-/* CYCLE Goals part alignments */
+/* Styles for the CYCLE goals section */
 .Goals {
   border: 2px solid hsl(105, 68%, 24%);
   border-radius: 20px;
@@ -102,21 +112,23 @@
   font-family: 'Caudex';
 }
 
+/* Styles for the goals title */
 .GoalsTitle {
 text-align: center;
 font-size: 20px;
 }
 
-/* CYCLE Goals part list alignments */
+/* Styles for the list items in the goals section */
 .Goals li {
   margin-bottom: 15px;
 }
 
+/* Adds a slight scale transformation on hover for the list items */
 .Goals li:hover {
   transform: scale(1.01);
 }
 
-/* CYCLE overview and goals titles */
+/* Styles for the CYCLE overview and goals section headings */
 .overview-para h3, .Goals h3 {
     color: hsl(105, 68%, 24%);
     font-size: 22px;

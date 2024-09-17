@@ -1,4 +1,4 @@
-
+/* Styles for the news title section */
 .NewsTitle{
   margin-top: 1%;
   margin-left: 5%;
@@ -12,6 +12,7 @@
   margin-right: 5%;
 }
 
+/* Styles for the section that holds the news addition form */
 .NewsAdd {
   display: flex;
   flex-direction: column;
@@ -20,6 +21,7 @@
   width: 90%;
 }
 
+/* Styles for the button that adds news */
 .AddNewsButton{
   margin-top: 2px;
   padding: 10px 20px;
@@ -34,6 +36,7 @@
   color: #ffffff;
 }
 
+/* Styles for the add news form layout */
 .add-news-form {
   background-color: #ffffff;
   padding: 20px;
@@ -47,6 +50,7 @@
   margin-top: 5px;
 }
 
+/* Centers the form container vertically */
 .add-news-form-container {
   margin-top: 40px;
   display: flex;
@@ -55,6 +59,7 @@
   height: 100vh;
 }
 
+/* Styles for the form title */
 .add-news-form h2 {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -62,10 +67,12 @@
   font-family:'Times New Roman', Times, serif;
 }
 
+/* Styles for form groups (label + input/textarea) */
 .form-group {
   margin-bottom: 15px;
 }
 
+/* Styles for the label elements */
 .form-group label {
   display: block;
   margin-bottom: 5px;
@@ -74,21 +81,26 @@
   font-family:'Times New Roman', Times, serif;
 }
 
+/* Styles for input elements */
 .form-group input {
   background: transparent;
   color: black;
   font-family:'Times New Roman', Times, serif;
 }
 
+/* Styles for the textarea */
 .form-group textarea {
   background: transparent;
   color: black;
   font-family:'Times New Roman', Times, serif;
 }
+
+/* Inverts the color of the date picker */
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
+/* Common styles for text, url, date inputs, and textarea */
 .form-group input[type="text"],
 .form-group input[type="url"],
 .form-group input[type="date"],
@@ -100,10 +112,12 @@
   border-radius: 4px;
 }
 
+/* Styles for form buttons */
 .form-buttons {
   margin-top: 20px;
 }
 
+/* General styles for form buttons */
 .form-buttons button {
   padding: 10px 20px;
   margin-right: 10px;
@@ -115,14 +129,17 @@
   cursor: pointer;
 }
 
+/* Styles for secondary buttons */
 .form-buttons button[type="button"] {
   background-color: #6c757d;
 }
 
+/* Adds hover effect on buttons */
 .form-buttons button:hover {
   opacity: 0.8;
 }
 
+/* Responsive styles for screens smaller than 768px */
 @media (max-width: 768px) {
   .add-news-form {
     padding: 15px;
@@ -213,8 +230,6 @@
   .news-content a:hover {
     text-decoration: underline;
 }
-
-
 
 .actionButton{
   margin-right: 5px;

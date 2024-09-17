@@ -1,10 +1,9 @@
-//Not used now
-
+/*Not in use now*/
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import style from './Login.module.css';
+import style from '../components/Login.module.css';
 import cylcleLogo from '../assets/CYCLE-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';

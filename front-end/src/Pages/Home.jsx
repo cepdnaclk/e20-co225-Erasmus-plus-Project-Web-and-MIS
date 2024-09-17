@@ -6,14 +6,9 @@ import style from './Home.module.css';
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faShield, faUsers, faBuilding} from '@fortawesome/free-solid-svg-icons';
 import {Link, Outlet} from 'react-router-dom';
 import cylcleLogo from '../assets/CYCLE-logo.png';
-
-import targerGroupStaff from '../assets/TargetGroupIcons/presentation.png';
-import targerGroupStudents from '../assets/TargetGroupIcons/graduating-student.png';
-import targerGroupCyberSecurity from '../assets/TargetGroupIcons/technology.png';
-import targerGroupCompany from '../assets/TargetGroupIcons/office-building.png';
-
 // this has to be imported from backend 
 // 1200px height images are ideal
 const fadeImages = [
@@ -133,24 +128,24 @@ function Home() {
 
       {/* target groups */}
       <div className={style["targetgroupsecsion"]}>
-        <div style={{ margin: "2% 0% 2% 0%" }}>
+        <div style={{ margin: "2% 2% 2% 2%" }}>
           <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Target Groups</span><br></br>
         </div>
         <div className = {style["TargetGroupCards"]}>
         <div className = {style["TargetGroupCard"]}>
-          <img className={style["tgicon"]} src={targerGroupStudents} alt="targerGroupStudents" />
+          <FontAwesomeIcon className={style["tgicon"]} icon={faGraduationCap} />
           <p>MSC students</p>
         </div>
         <div className = {style["TargetGroupCard"]}>
-          <img className={style["tgicon"]} src={targerGroupCyberSecurity} alt="targerGroupCyberSecurity" />
+          <FontAwesomeIcon className={style["tgicon"]} icon={faShield} />
           <p>Cybersecurity professionals in Asia</p>
         </div>
         <div className = {style["TargetGroupCard"]}>
-          <img className={style["tgicon"]} src={targerGroupStaff} alt="targerGroupStaff" />
+          <FontAwesomeIcon className={style["tgicon"]} icon={faUsers} />
           <p>Academic & Administrative staff</p>
         </div>
         <div className = {style["TargetGroupCard"]}>
-          <img className={style["tgicon"]} src={targerGroupCompany} alt="targerGroupCompany" />
+          <FontAwesomeIcon className={style["tgicon"]} icon={faBuilding} />
           <p>Companies, representatives/ stakeholders in cybersecurity & AI</p>
         </div>
         </div>

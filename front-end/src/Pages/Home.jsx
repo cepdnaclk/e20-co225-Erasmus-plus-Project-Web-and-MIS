@@ -5,8 +5,12 @@ import style from '../components/Home.module.css';
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
-import { faGraduationCap, faShield, faUsers, faBuilding} from '@fortawesome/free-solid-svg-icons';
 import {Link, Outlet} from 'react-router-dom';
+
+import targerGroupStaff from '../assets/TargetGroupIcons/presentation.png';
+import targerGroupStudents from '../assets/TargetGroupIcons/graduating-student.png';
+import targerGroupCyberSecurity from '../assets/TargetGroupIcons/technology.png';
+import targerGroupCompany from '../assets/TargetGroupIcons/office-building.png';
 
 // this has to be imported from backend 
 // 1200px height images are ideal
@@ -94,14 +98,7 @@ const partnerInfo = [
 ]
 
 function Home() {
-  // const news = useNews();
-
-  // // Get the top 3 most recent news items sorted by their IDs
-  // const sortedNews = news
-  // .slice() 
-  // .sort((a, b) => b.newsID - a.newsID) 
-  // .filter((_, index) => index < 3);
-
+  
   return (
     <>
       {/* image slider */}
@@ -127,24 +124,24 @@ function Home() {
 
       {/* target groups */}
       <div className={style["targetgroupsecsion"]}>
-        <div style={{ margin: "2% 2% 2% 2%" }}>
+        <div style={{ margin: "2% 0% 2% 0%" }}>
           <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Target Groups</span><br></br>
         </div>
         <div className = {style["TargetGroupCards"]}>
         <div className = {style["TargetGroupCard"]}>
-          <FontAwesomeIcon className={style["tgicon"]} icon={faGraduationCap} />
+          <img className={style["tgicon"]} src={targerGroupStudents} alt="targerGroupStudents" />
           <p>MSC students</p>
         </div>
         <div className = {style["TargetGroupCard"]}>
-          <FontAwesomeIcon className={style["tgicon"]} icon={faShield} />
+          <img className={style["tgicon"]} src={targerGroupCyberSecurity} alt="targerGroupCyberSecurity" />
           <p>Cybersecurity professionals in Asia</p>
         </div>
         <div className = {style["TargetGroupCard"]}>
-          <FontAwesomeIcon className={style["tgicon"]} icon={faUsers} />
+          <img className={style["tgicon"]} src={targerGroupStaff} alt="targerGroupStaff" />
           <p>Academic & Administrative staff</p>
         </div>
         <div className = {style["TargetGroupCard"]}>
-          <FontAwesomeIcon className={style["tgicon"]} icon={faBuilding} />
+          <img className={style["tgicon"]} src={targerGroupCompany} alt="targerGroupCompany" />
           <p>Companies, representatives/ stakeholders in cybersecurity & AI</p>
         </div>
         </div>
@@ -222,7 +219,7 @@ function Home() {
       {/* Participant Map and News Container */}
       <div className={style["container"]}>
         <div className={style["leftColumn"]}>
-          <div className={style["paragraph"]}>
+          <div className={style["MapAndPartners"]}>
             <div style={{ margin: "2% 2% 2% 2%" }}>
               <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Participants map</span><br></br>
             </div >
@@ -244,7 +241,7 @@ function Home() {
         
       </div>
 
-      <div className={style["paragraph"]}>
+      <div className={style["MapAndPartners"]}>
         {/* partner logos */}
         <div style={{ margin: "0% 2% 4% 2%" }}>
           <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Our Partners</span><br></br>

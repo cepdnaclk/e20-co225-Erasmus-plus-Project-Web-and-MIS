@@ -2,13 +2,20 @@
 .paragraph{
     border: 2px solid hsl(225, 87%, 21%);
     border-radius: 20px;
-    /* box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1), 
-                -2px -2px 5px rgba(255, 255, 255, 0.7), 
-                2px -2px 5px rgba(255, 255, 255, 0.7), 
-                -2px 2px 5px rgba(63, 108, 148, 0.1); */
     padding: 20px;
     display: inline-block;
     background-color: hsl(0, 0%, 100%);
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    text-align: center;
+    font-family: 'Caudex';
+}
+
+/* Participant Map and Partners Section */
+.MapAndPartners {
+    padding: 20px;
+    display: inline-block;
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 2%;
@@ -137,10 +144,10 @@ color:#004594ca ;
 
 /* Target group cards container styling */
 .TargetGroupCards {
-  align-items: left;
-  justify-content: left;
-  display: left;
-  width: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
 
 /* Target group card with rounded corners, centered text, and hover effects */
@@ -149,10 +156,10 @@ color:#004594ca ;
   display: inline-block;
   margin-bottom: 5%;
   text-align: center;
-  width: 400px; 
+  width: 300px; 
   height: 100px;
   color:#000000;
-  font-size: 18px;
+  font-size: 16px;
   flex-direction: row;
 }
 
@@ -163,11 +170,9 @@ color:#004594ca ;
 
 /* Icon within the target group card */
 .tgicon {
-  width: 30px;
-  height: 30px;
-  display: center;
-  align-items: center;
-  color:#0a6b29 ;
+  width: 70px;
+  height: 70px;
+  opacity: 0.9;
 }
 
 /* Section for target groups with green border and light background */
@@ -183,6 +188,8 @@ color:#004594ca ;
   text-align: center;
   color: rgb(0, 0, 0);
   font-family: 'Caudex';
+  width: 90%;
+  padding-bottom: 2%;
 }
 
 /* Responsive design for screens below 1280px, reducing right column width */
@@ -216,8 +223,13 @@ color:#004594ca ;
       transform: none;
     }
 
+    .TargetGroupCards {
+      flex-direction: column; /* Stack elements in a column */
+    }
+
     .TargetGroupCard {
-      width: 300px; 
+      width: 90%; 
+      height: auto; 
     }
 }
 

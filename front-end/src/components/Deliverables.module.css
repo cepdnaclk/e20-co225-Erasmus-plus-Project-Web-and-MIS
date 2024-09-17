@@ -119,22 +119,6 @@
   background-color: #0056b3;
 }
 
-/* Interfaces */
-.Interface-Open{
-  width: 90%;
-  border: 1px solid #ccc;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  margin: 10px;
-  border-radius: 4px;
-}
-
-.Interface-Close{
-  display: none;
-}
-
-/* New Entry Interface */
 /* Form title */
 .formTitle {
   text-align: center;
@@ -163,7 +147,7 @@
 /* Inside the data input boxes */
 .inputbox .field {
   width: 60%;
-  position: absolute;
+  /* position: absolute; */
   right: 12%;
   background: transparent;
   border: 2px solid #c9e1ef;
@@ -171,15 +155,15 @@
   padding: 15px;
   font-size: 16px;
   color: #333;
-  
 }
+
 .buttonsBlock{
   display:flex;
   justify-content: center;
   align-items: center;
 }
-/* Send Message button */
-.Interface-Open button {
+/* buttons */
+.buttonsBlock button {
   width: 100px;
   height: 50px;
   background: hsl(211, 44%, 66%);
@@ -193,8 +177,7 @@
   margin:10px;
 }
 
-/* Send Message button when the mouse point to that*/
-.Interface-Open button:hover{
+.buttonsBlock button:hover{
   background: hsl(211, 40%, 69%);
   color: #2a2929;
 }

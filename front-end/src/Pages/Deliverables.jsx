@@ -14,6 +14,7 @@ import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { loggedInUser } from '../components/Header';
+import { Dialog, DialogContent } from "@mui/material";
 
 /*Deliverables Page */
 function Deliverables() {
@@ -38,7 +39,7 @@ function Deliverables() {
   /******************** Add a new data entry and edit the exsisting entry ********************************* */
   
   // Show the interface: Either for 'Add New' or 'Edit'
-  const [showInterface, setShowInterface] = useState(false);
+  const [showDiologBox, setshowDiologBox] = useState(false);
   const [editRow, setEditRow] = useState(false);  
   const [addRow, setAddRow] = useState(false);
 
@@ -66,7 +67,7 @@ const onInputChange=(e)=>{
 
 //When 'Add New' button is clicked : Only For Add New
   const onAddNewClicked=()=>{
-    setShowInterface(true);
+    setshowDiologBox(true);
     setAddRow(true);
     setEditRow(false);
     setViewRow(false); 
@@ -91,7 +92,7 @@ const onInputChange=(e)=>{
       // Reload the data after successful submission
       loadData();
       // Clear the form fields after successful submission if needed
-      setShowInterface(false);
+      setshowDiologBox(false);
       setAddRow(false);
       alert("Deliverable added successfully!");
     } catch (error) {
@@ -103,7 +104,7 @@ const onInputChange=(e)=>{
   //When 'Edit' icon button is clicked : Only For Edit
   const onEditClick = (deliverable) => {
     setDeliverable(deliverable);
-    setShowInterface(true);
+    setshowDiologBox(true);
     setAddRow(false);
     setEditRow(true);
     setViewRow(false); 
@@ -117,7 +118,7 @@ const onInputChange=(e)=>{
       // Optionally, reload the data after successful submission
       loadData();
       setEditRow(false);
-      setShowInterface(false);
+      setshowDiologBox(false);
       alert("Deliverable updated successfully!");
     } catch (error) {
       console.error("Error editing deliverable:", error);
@@ -127,7 +128,7 @@ const onInputChange=(e)=>{
 
   // When 'Discard' button is clicked: for Edit, and Add New
   const discardButtonClicked = () => {
-    setShowInterface(false);
+    setshowDiologBox(false);
     setAddRow(false);    
     setEditRow(false);
   }
@@ -142,6 +143,7 @@ const onDeleteClick = async (deliverableRelatedNo) => {
   try {
     await axios.delete(`http://localhost:8080/deliverable/delete/${deliverableRelatedNo}`);
     loadData();
+    alert("Deliverable Deleted!");
   } catch (error) {
     console.error("Error deleting deliverable:", error);
   }
@@ -154,8 +156,19 @@ const [viewRow, setViewRow] = useState(false);
 const onViewClick = (deliverable) => {
   setSelectedDeliverable(deliverable);
   setViewRow(true);
-  setShowInterface(false);
+  setEditRow(false);
+  setAddRow(false);
+  setshowDiologBox(true);
 }
+
+  // When 'Close' button is clicked: for view
+  const closeButtonClicked = () => {
+    setshowDiologBox(false);
+    setSelectedDeliverable(null);
+    setAddRow(false);    
+    setEditRow(false);
+    setViewRow(false);
+  }
 
   return(
   <>
@@ -226,166 +239,178 @@ const onViewClick = (deliverable) => {
       {!addRow && loggedInUser.isLoggedIn && <div>
         <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
       </div>}
-      {/* Interface- Add New/Edit */}
-       <div className= {showInterface? style['Interface-Open']:style['Interface-Close']}>  
-               <div className = "dataForm">
-                <form onSubmit={editRow ? (e)=>onUpdateSubmit(e) : (e)=>onAddSubmit(e)}>
-                     <div className = {style["formTitle"]}>
-                      <h3>{editRow ? "Edit Entry" : "Add a New Entry"}</h3> 
-                    </div>
-                    <div className = {style["inputbox"]}>
-                      <label>Work Package No</label>
-                      <input 
-                          type = "text" 
-                          className = {style["field"]} 
-                          placeholder = "Enter Work Package No" 
-                          name = "workPackageNo" 
-                          value={workPackageNo} 
-                          onChange={(e)=>onInputChange(e)}  
-                          required/>
-                     </div>
-                     <div className = {style["inputbox"]}>
-                       <label>Deliverable Related No</label>
-                       <input 
-                          type = "text" 
-                          className = {style["field"]} 
-                          placeholder = "Enter Deliverable Related No" 
-                          name = "deliverableRelatedNo"  
-                          value={deliverableRelatedNo} 
-                          onChange={(e)=>onInputChange(e)} 
-                          required/>
-                     </div>
-                     <div className = {style["inputbox"]}>
-                       <label>Deliverable No</label>
-                       <input 
-                          type = "text" 
-                          className = {style["field"]} 
-                          placeholder = " Enter Deliverable No" 
-                          name = "deliverableNo" 
-                          value={deliverableNo} 
-                          onChange={(e)=>onInputChange(e)} 
-                          required/>
-                     </div>
-                     <div className = {style["inputbox"]}>
-                       <label>Deliverable Name</label>
-                       <input 
-                          type = "text" 
-                          className = {style["field"]} 
-                          placeholder = " Enter Deliverable Name" 
-                          name = "deliverableName" 
-                          value={deliverableName} 
-                          onChange={(e)=>onInputChange(e)} 
-                          required/>
-                     </div>
-                     <div className = {style["inputbox"]}>
-                       <label>Description</label>
-                       <input 
-                          type = "text" 
-                          className = {style["field"]} 
-                          placeholder = " Enter Description" 
-                          name = "description" 
-                          value={description} 
-                          onChange={(e)=>onInputChange(e)} 
-                          required/>
-                     </div>
-                     <div className = {style["inputbox"]}>
-                       <label>Lead Beneficiary</label>
-                       <input 
-                          type = "text" 
-                          className = {style["field"]} 
-                          placeholder = " Enter Lead Beneficiary" 
-                          name = "leadBeneficiary"  value={leadBeneficiary} 
-                          onChange={(e)=>onInputChange(e)} 
-                          required/>
-                     </div>
-                     <div className = {style["inputbox"]}>
-                       <label>Type</label>
-                       <input 
-                          type = "text" 
-                          className = {style["field"]} 
-                          placeholder = " Enter Type" 
-                          name = "type"  
-                          value={type} 
-                          onChange={(e)=>onInputChange(e)} 
-                          required/>
-                     </div>
-                     <div className = {style["inputbox"]}>
-                       <label>Dissemination Level</label>
-                       <input 
-                          type = "text" 
-                          className = {style["field"]} 
-                          placeholder = " Enter Dissemination Level" 
-                          name = "disseminationLevel"  
-                          value={disseminationLevel} 
-                          onChange={(e)=>onInputChange(e)} 
-                          required/>
-                     </div>
-                     <div className = {style["inputbox"]}>
-                       <label>Due Date</label>
-                       <input 
-                          type = "date" 
-                          className = {style["field"]}  
-                          name = "dueDate"  
-                          value={dueDate} 
-                          onChange={(e)=>onInputChange(e)} 
-                          required/>
-                     </div>
-                     <div className = {style["buttonsBlock"]}>
-                        {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
-                        <button type="button" onClick={discardButtonClicked}>Discard</button>
-                     </div>
-                   </form>
-                 </div>    
-       </div>       
-      {/* Interface- View*/}
-        {selectedDeliverable && (
-                    <div className={viewRow ? style['Interface-Open'] : style['Interface-Close']}>
-                        <table className={style["viewDetails"]}>
-                            <tbody>
-                                <tr>
-                                    <th>Work Package No</th>
-                                    <td>{selectedDeliverable.workPackageNo}</td>
-                                </tr>
-                                <tr>
-                                    <th>Deliverable Related No</th>
-                                    <td>{selectedDeliverable.deliverableRelatedNo}</td>
-                                </tr>
-                                <tr>
-                                    <th>Deliverable No</th>
-                                    <td>{selectedDeliverable.deliverableNo}</td>
-                                </tr>
-                                <tr>
-                                    <th>Deliverable Name</th>
-                                    <td>{selectedDeliverable.deliverableName}</td>
-                                </tr>
-                                <tr>
-                                    <th>Description</th>
-                                    <td>{selectedDeliverable.description}</td>
-                                </tr>
-                                <tr>
-                                    <th>Lead Beneficiary</th>
-                                    <td>{selectedDeliverable.leadBeneficiary}</td>
-                                </tr>
-                                <tr>
-                                    <th>Type</th>
-                                    <td>{selectedDeliverable.type}</td>
-                                </tr>
-                                <tr>
-                                    <th>Dissemination Level</th>
-                                    <td>{selectedDeliverable.disseminationLevel}</td>
-                                </tr>
-                                <tr>
-                                    <th>Due Date</th>
-                                    <td>{selectedDeliverable.dueDate}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <button onClick={() => setSelectedDeliverable(null)}>Close</button>
-                    </div>
-                )}
-             
-
     </div>
+    { (addRow || editRow) &&  <Dialog
+          open={showDiologBox}
+          onClose={discardButtonClicked}
+          fullWidth
+          maxWidth="md"
+        >
+      {/* Dialog- Add New/Edit/View */}
+      <DialogContent>
+        <div className = {style["dataForm"]}>          
+          <form onSubmit={editRow ? (e)=>onUpdateSubmit(e) : (e)=>onAddSubmit(e)}>
+              <div className = {style["formTitle"]}>
+                <h3>{editRow ? "Edit Deliverable" : "Add a New Deliverable"}</h3> 
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Work Package No</label>
+                <input 
+                    type = "text" 
+                    className = {style["field"]} 
+                    placeholder = "Enter Work Package No" 
+                    name = "workPackageNo" 
+                    value={workPackageNo} 
+                    onChange={(e)=>onInputChange(e)}  
+                    required/>
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Deliverable Related No</label>
+                <input 
+                    type = "text" 
+                    className = {style["field"]} 
+                    placeholder = "Enter Deliverable Related No" 
+                    name = "deliverableRelatedNo"  
+                    value={deliverableRelatedNo} 
+                    onChange={(e)=>onInputChange(e)} 
+                    required/>
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Deliverable No</label>
+                <input 
+                    type = "text" 
+                    className = {style["field"]} 
+                    placeholder = " Enter Deliverable No" 
+                    name = "deliverableNo" 
+                    value={deliverableNo} 
+                    onChange={(e)=>onInputChange(e)} 
+                    required/>
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Deliverable Name</label>
+                <input 
+                    type = "text" 
+                    className = {style["field"]} 
+                    placeholder = " Enter Deliverable Name" 
+                    name = "deliverableName" 
+                    value={deliverableName} 
+                    onChange={(e)=>onInputChange(e)} 
+                    required/>
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Description</label>
+                <input 
+                    type = "text" 
+                    className = {style["field"]} 
+                    placeholder = " Enter Description" 
+                    name = "description" 
+                    value={description} 
+                    onChange={(e)=>onInputChange(e)} 
+                    required/>
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Lead Beneficiary</label>
+                <input 
+                    type = "text" 
+                    className = {style["field"]} 
+                    placeholder = " Enter Lead Beneficiary" 
+                    name = "leadBeneficiary"  value={leadBeneficiary} 
+                    onChange={(e)=>onInputChange(e)} 
+                    required/>
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Type</label>
+                <input 
+                    type = "text" 
+                    className = {style["field"]} 
+                    placeholder = " Enter Type" 
+                    name = "type"  
+                    value={type} 
+                    onChange={(e)=>onInputChange(e)} 
+                    required/>
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Dissemination Level</label>
+                <input 
+                    type = "text" 
+                    className = {style["field"]} 
+                    placeholder = " Enter Dissemination Level" 
+                    name = "disseminationLevel"  
+                    value={disseminationLevel} 
+                    onChange={(e)=>onInputChange(e)} 
+                    required/>
+              </div>
+              <div className = {style["inputbox"]}>
+                <label>Due Date</label>
+                <input 
+                    type = "date" 
+                    className = {style["field"]}  
+                    name = "dueDate"  
+                    value={dueDate} 
+                    onChange={(e)=>onInputChange(e)} 
+                    required/>
+              </div>
+              <div className = {style["buttonsBlock"]}>
+                  {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
+                  <button type="button" onClick={discardButtonClicked}>Discard</button>
+              </div>
+            </form>
+        </div>       
+        </DialogContent> 
+        </Dialog>}
+                {/* Dialog- View*/}
+        {viewRow && <Dialog
+          open={showDiologBox}
+          onClose={closeButtonClicked}
+          fullWidth
+          maxWidth="md"
+        >
+        <DialogContent>
+              <div>                
+                    <table className={style["viewDetails"]}>
+                        <tbody>
+                            <tr>
+                                <th>Work Package No</th>
+                                <td>{selectedDeliverable.workPackageNo}</td>
+                            </tr>
+                            <tr>
+                                <th>Deliverable Related No</th>
+                                <td>{selectedDeliverable.deliverableRelatedNo}</td>
+                            </tr>
+                            <tr>
+                                <th>Deliverable No</th>
+                                <td>{selectedDeliverable.deliverableNo}</td>
+                            </tr>
+                            <tr>
+                                <th>Deliverable Name</th>
+                                <td>{selectedDeliverable.deliverableName}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{selectedDeliverable.description}</td>
+                            </tr>
+                            <tr>
+                                <th>Lead Beneficiary</th>
+                                <td>{selectedDeliverable.leadBeneficiary}</td>
+                            </tr>
+                            <tr>
+                                <th>Type</th>
+                                <td>{selectedDeliverable.type}</td>
+                            </tr>
+                            <tr>
+                                <th>Dissemination Level</th>
+                                <td>{selectedDeliverable.disseminationLevel}</td>
+                            </tr>
+                            <tr>
+                                <th>Due Date</th>
+                                <td>{selectedDeliverable.dueDate}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div className = {style["buttonsBlock"]}><button onClick={closeButtonClicked}>Close</button></div>
+                </div>
+      </DialogContent> 
+    </Dialog>}
   </>
   );
 }

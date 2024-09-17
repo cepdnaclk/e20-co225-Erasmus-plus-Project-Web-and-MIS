@@ -120,11 +120,12 @@ color:#004594ca ;
   transform: translateY(0); /* Bring it to the original position */
 }
 
+/* Target Group */
 .TargetGroupCards {
-  align-items: left;
-  justify-content: left;
-  display: left;
-  width: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
 
 .TargetGroupCard {
@@ -132,24 +133,22 @@ color:#004594ca ;
   display: inline-block;
   margin-bottom: 5%;
   text-align: center;
-  width: 400px; 
+  width: 300px; 
   height: 100px;
   color:#000000;
-  font-size: 18px;
+  font-size: 16px;
   flex-direction: row;
 }
 
 .TargetGroupCard:hover {
   transform: scale(1.05);
-
 }
 
 .tgicon {
-  width: 30px;
-  height: 30px;
-  display: center;
-  align-items: center;
+  width: 70px;
+  height: 70px;
   color:#0a6b29 ;
+  opacity: 0.9;
 
 }
 
@@ -165,7 +164,10 @@ color:#004594ca ;
   text-align: center;
   color: rgb(0, 0, 0);
   font-family: 'Caudex';
+  width: 90%;
+  padding-bottom: 2%;
 }
+
 @media screen and (max-width: 1280px) {
   .rightColumn{
     width: 30%;
@@ -197,5 +199,15 @@ color:#004594ca ;
     .TargetGroupCard {
       width: 300px; 
     }
+
+    .TargetGroupCards {
+      flex-direction: column; /* Stack elements in a column */
+    }
+  
+    .TargetGroupCard {
+      width: 90%; /* Adjust width to fit smaller screens */
+      height: auto; /* Let height adjust automatically */
+    }
+
 }
 

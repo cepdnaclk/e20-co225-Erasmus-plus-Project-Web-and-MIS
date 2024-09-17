@@ -1,6 +1,6 @@
 //TODO: CSS for checkbox and table
 //Media queries
-//Pop as a window kinda thing , not an interface 
+//Pop as a window kinda thing , not an dialog 
 //Use a seperate id as PK in back end
 //Validate form inputs
 //Scroll into view 
@@ -14,7 +14,7 @@ import axios from 'axios';
 import { loggedInUser } from '../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import { Dialog, DialogContent } from "@mui/material";
 
 function Workplan() {
 
@@ -37,8 +37,8 @@ function Workplan() {
 
   /******************** Add a new data entry and edit the exsisting entry ********************************* */
     
-    // Show the interface: Either for 'Add New' or 'Edit'
-    const [showInterface, setShowInterface] = useState(false);
+    // Show the dialog: Either for 'Add New' or 'Edit'
+    const [showDiologBox, setshowDiologBox] = useState(false);
     const [editRow, setEditRow] = useState(false);  
     const [addRow, setAddRow] = useState(false);
 
@@ -84,7 +84,7 @@ function Workplan() {
     
     //When 'Add New' button is clicked : Only For Add New
     const onAddNewClicked=()=>{
-      setShowInterface(true);
+      setshowDiologBox(true);
       setAddRow(true);
       setEditRow(false);
       setActivity({
@@ -109,7 +109,7 @@ function Workplan() {
       });
     }
 
-    //When 'Add' button is clicked in the interface : Only For Add New
+    //When 'Add' button is clicked in the dialog : Only For Add New
     const onAddSubmit = async (e) => {
       e.preventDefault(); // Prevent default form submission
       try {
@@ -117,7 +117,7 @@ function Workplan() {
         // Reload the data after successful submission
         loadData();       
         // Clear the form fields after successful submission if needed
-        setShowInterface(false);
+        setshowDiologBox(false);
         setAddRow(false);
         alert("Activity added successfully!");
       } catch (error) {
@@ -130,13 +130,13 @@ function Workplan() {
     const onEditClick = (activity) => {
       setOriginalActivityNo(activity.activityNo); // Preserve the original primary key
       setActivity(activity);  //Set the activity for editing 
-      setShowInterface(true);
+      setshowDiologBox(true);
       setAddRow(false);
       setEditRow(true);
       setViewRow(false); 
     }
 
-    //When 'Update' button is clicked in the interface : Only Edit
+    //When 'Update' button is clicked in the dialog : Only Edit
     const onUpdateSubmit = async (e) => {
       e.preventDefault(); // Prevent default form submission
       try {
@@ -144,7 +144,7 @@ function Workplan() {
         // Optionally, reload the data after successful submission
         loadData();
         setEditRow(false);
-        setShowInterface(false);
+        setshowDiologBox(true);
         alert("Activity updated successfully!");
       } catch (error) {
         console.error("Error editing workplan activity:", error);
@@ -154,7 +154,7 @@ function Workplan() {
 
     // When 'Discard' button is clicked: for Edit, and Add New
     const discardButtonClicked = () => {
-      setShowInterface(false);
+      setshowDiologBox(false);
       setAddRow(false);    
       setEditRow(false);
     }
@@ -251,9 +251,15 @@ function Workplan() {
       {!addRow && loggedInUser.isLoggedIn && <div>
         <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
       </div>}
-      {/* Interface- Add New Row/Edit Row */}
-       <div className= {showInterface? style['Interface-Open']:style['Interface-Close']}>  
-               <div className = "dataForm">
+      </div>
+      {/* Dialog- Add New Row/Edit Row */}
+      { (addRow || editRow) &&  <Dialog
+          open={showDiologBox}
+          onClose={discardButtonClicked}
+          fullWidth
+          maxWidth="md"
+        >  <DialogContent>
+               <div className = {style["dataForm"]}>
                 <form onSubmit={editRow ? (e)=>onUpdateSubmit(e) : (e)=>onAddSubmit(e)}>
                      <div className = {style["formTitle"]}>
                       <h3>{editRow ? "Edit Activity" : "Add a New Activity"}</h3> 
@@ -326,9 +332,8 @@ function Workplan() {
                      </div>
                    </form>
                  </div>    
-       </div>
-
-      </div>
+                 </DialogContent>
+                 </Dialog>}
       </>
   );
 }

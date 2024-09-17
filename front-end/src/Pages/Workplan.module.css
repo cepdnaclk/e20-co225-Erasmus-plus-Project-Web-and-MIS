@@ -115,21 +115,6 @@
   background-color: #0056b3;
 }
 
-/* Interfaces */
-.Interface-Open{
-  width: 90%;
-  border: 1px solid #ccc;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  margin: 10px;
-  border-radius: 4px;
-}
-
-.Interface-Close{
-  display: none;
-}
-
 /* New Entry Interface */
 /* Form title */
 .formTitle {
@@ -175,7 +160,7 @@
   align-items: center;
 }
 /* Send Message button */
-.Interface-Open button {
+.buttonsBlock button {
   width: 100px;
   height: 50px;
   background: hsl(211, 44%, 66%);
@@ -190,14 +175,14 @@
 }
 
 /* Send Message button when the mouse point to that*/
-.Interface-Open button:hover{
+.buttonsBlock button:hover{
   background: hsl(211, 40%, 69%);
   color: #2a2929;
 }
 
 /********** Input type -  Checkboxes**********/
 /* Hide the default checkbox */
-.Interface-Open Input[type="checkbox"] {
+.dataForm Input[type="checkbox"] {
   position: relative;
   width: 20px;
   height: 20px;
@@ -210,7 +195,7 @@
 }
 
 /* Add a checkmark using the ::after pseudo-element */
-.Interface-Open Input[type="checkbox"]::after {
+.dataForm Input[type="checkbox"]::after {
   content: "";
   position: absolute;
   width: 6px;
@@ -225,17 +210,17 @@
 }
 
 /* Checked state */
-.Interface-Open Input[type="checkbox"]:checked {
+.dataForm Input[type="checkbox"]:checked {
   background-color: hsl(211, 44%, 66%);
 }
 
 /* Show the checkmark when checked */
-.Interface-Open Input[type="checkbox"]:checked::after {
+.dataForm Input[type="checkbox"]:checked::after {
   opacity: 1;
 }
 
 /* Optional: Add a hover effect */
-.Interface-Open Input[type="checkbox"]:hover {
+.dataForm Input[type="checkbox"]:hover {
   border-color: #0056b3;
 }
 

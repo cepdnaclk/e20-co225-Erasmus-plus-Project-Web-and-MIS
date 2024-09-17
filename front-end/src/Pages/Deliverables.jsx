@@ -250,7 +250,7 @@ const onViewClick = (deliverable) => {
         <div className = {style["dataForm"]}>          
           <form onSubmit={editRow ? (e)=>onUpdateSubmit(e) : (e)=>onAddSubmit(e)}>
               <div className = {style["formTitle"]}>
-                <h3>{editRow ? "Edit Entry" : "Add a New Entry"}</h3> 
+                <h3>{editRow ? "Edit Deliverable" : "Add a New Deliverable"}</h3> 
               </div>
               <div className = {style["inputbox"]}>
                 <label>Work Package No</label>

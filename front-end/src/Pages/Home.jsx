@@ -1,7 +1,7 @@
 import React from "react";
 import Slideshow from "../bodyComponents/SlideShow";
 import NewsGrid from "../bodyComponents/NewsGrid.jsx";
-import style from '../components./Home.module.css';
+import style from '../components/Home.module.css';
 import ParticipantMap from '../bodyComponents/participantMap.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCalendar, faFolder, faMapMarkerAlt, faChartPie, faBullseye, faFolderOpen } from '@fortawesome/free-solid-svg-icons';

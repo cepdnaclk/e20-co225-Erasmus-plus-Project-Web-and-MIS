@@ -173,8 +173,8 @@ const News = () => {
             
             {/* Show edit and delete buttons only if user is logged in */}
             {loggedInUser.isLoggedIn && (
-              <div>
-                <button className="actionButton" onClick={() => onEditClick(item)}><FontAwesomeIcon icon={faPen}/></button>
+              <div className="news-actions">
+                {/* <button className="actionButton" onClick={() => onEditClick(item)}><FontAwesomeIcon icon={faPen}/></button> */}
                 <button className="actionButton" onClick={() => onDeleteClick(item.newsID)}><FontAwesomeIcon icon={faTrash} /></button>
               </div>
             )}

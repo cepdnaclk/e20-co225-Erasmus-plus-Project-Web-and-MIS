@@ -44,10 +44,10 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(22, 21, 21, 0.1);
   width: 700px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 /* Centering the add gallery form container */
@@ -55,7 +55,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 /* Heading for the gallery add form */
@@ -130,6 +129,7 @@
   
 /* Style for individual gallery tiles */
 .gallery-tile {
+  position: relative;
   border: 1px solid #ccc;
   padding: 10px;
   box-shadow: 0 0 10px rgba(92, 67, 67, 0.1);
@@ -154,6 +154,24 @@
   text-decoration: none;
   margin-top: 10px;
   cursor: pointer;
+}
+
+.gallery-actions {
+  position: absolute; /* Position it relative to .news-tile */
+  bottom: 10px; /* Position it at the bottom of the tile */
+  right: 10px;  /* Align it to the right */
+}
+
+.actionButton{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #203a90;
+  transition: transform 0.2s ease;
+}
+
+.actionButton:hover {
+  transform: scale(1.1); /* Slight zoom on hover for effect */
 }
   
 /* Responsive adjustments for smaller screens */

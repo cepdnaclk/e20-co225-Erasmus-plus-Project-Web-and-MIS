@@ -168,7 +168,7 @@ const Gallery = () => {
             
             {/* Show edit, view, and delete buttons for logged-in users */}
             {loggedInUser.isLoggedIn && (
-              <div>
+              <div className="gallery-actions">
                 {/* <button className="actionButton"><FontAwesomeIcon icon={faPen}/></button>
                 <button className="actionButton"><FontAwesomeIcon icon={faEye}/></button> */}
                 <button className="actionButton" onClick={() => onDeleteClick(item.albumID)}><FontAwesomeIcon icon={faTrash} /></button>

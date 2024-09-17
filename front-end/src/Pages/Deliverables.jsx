@@ -9,7 +9,7 @@
 //Auto focus the for input
 
 import { useEffect, useState } from 'react';
-import style from './Deliverables.module.css'
+import style from '../components/Deliverables.module.css'
 import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';

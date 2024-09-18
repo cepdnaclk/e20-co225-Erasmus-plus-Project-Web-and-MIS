@@ -81,7 +81,6 @@ public class AppUser implements UserDetails {
      * This method is used by Spring Security to determine the roles of the user
      */
     @Override
-    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
         return Collections.singletonList(authority);
@@ -98,19 +97,16 @@ public class AppUser implements UserDetails {
     }
 
     @Override
-    @JsonIgnore
     public  boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
-    @JsonIgnore
     public boolean isAccountNonLocked() {
         return !locked;
     }
 
     @Override
-    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }

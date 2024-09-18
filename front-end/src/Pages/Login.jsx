@@ -64,8 +64,6 @@ function Login() {
     const googleLogin = () => {
         // Redirect to the backend for Google login
         window.location.href = 'http://localhost:8080/oauth2/authorization/google';
-        //fetching user data from database
-        
     }
 
     return (
@@ -74,7 +72,6 @@ function Login() {
             <form onSubmit={login}>
                 <div className="form-group">
                     <input
-                        // required autocomplete="e.?mail"
                         type="email"
                         placeholder="Enter Email"
                         // value={email}

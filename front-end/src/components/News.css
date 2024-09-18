@@ -138,6 +138,7 @@
   opacity: 0.8;
 }
 
+
 /* Responsive styles for screens smaller than 768px */
 @media (max-width: 768px) {
   .add-news-form {

@@ -143,7 +143,7 @@ const Gallery = () => {
                   <input type="url" id="albumURL" placeholder="Enter Album URL" name="albumURL" required />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="albumCoverImage">Cover Image (Choose images with size less than 64 kB):</label>
+                  <label htmlFor="albumCoverImage">Cover Image:</label>
                   <input type="file" id="albumCoverImage" name="albumCoverImage" onChange={handleFileChange} required />
                 </div>
                 <div className="form-buttons">

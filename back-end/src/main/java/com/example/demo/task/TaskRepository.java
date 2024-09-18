@@ -20,11 +20,9 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
     @Query("SELECT t FROM Task t where ?1 member of t.assignedUsers")
     List<Task> findTasksByUser(AppUser user);
 
-    @Transactional
-    @Modifying
-//    @Query(nativeQuery = true, value = "UPDATE Task t SET t.assignedUsers = t.assignedUsers - ?1 WHERE t IN (SELECT t FROM Task t WHERE ?1 member of t.assignedUsers)")
-    @Query(nativeQuery = true, value = "DELETE FROM assigned_tasks where task_id=?1 AND user_id=?2")
-    void deleteUserFromTasks(int taskID,Long userID);
+//    @Modifying
+//    @Query("UPDATE Task t SET t.assignedUsers = t.assignedUsers - ?1 WHERE t IN (SELECT t FROM Task t WHERE ?1 member of t.assignedUsers)")
+//    void deleteUserFromTasks(AppUser user);
 
 }
 

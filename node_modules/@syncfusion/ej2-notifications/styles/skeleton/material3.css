@@ -1,0 +1,146 @@
+
+
+
+
+.e-skeleton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+.e-skeleton.e-skeleton-text, .e-skeleton.e-skeleton-square, .e-skeleton.e-skeleton-rectangle {
+  border-radius: 2px;
+}
+
+.e-skeleton.e-skeleton-circle {
+  border-radius: 50%;
+}
+
+.e-skeleton.e-visible-none {
+  display: none;
+}
+
+.e-skeleton.e-shimmer-wave::after {
+  -webkit-animation: e-shimmer-wave 2s infinite;
+          animation: e-shimmer-wave 2s infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: calc(200% + 200px);
+}
+
+.e-skeleton.e-shimmer-fade {
+  -webkit-animation: e-shimmer-fade 2s infinite;
+          animation: e-shimmer-fade 2s infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+.e-skeleton.e-shimmer-pulse {
+  -webkit-animation: e-shimmer-pulse 2s infinite;
+          animation: e-shimmer-pulse 2s infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+.e-rtl .e-shimmer-wave::after,
+.e-rtl.e-shimmer-wave::after {
+  -webkit-animation: e-shimmer-wave-rtl 2s infinite;
+          animation: e-shimmer-wave-rtl 2s infinite;
+}
+
+@-webkit-keyframes e-shimmer-wave {
+  to {
+    -webkit-transform: translateX(calc(50% + 100px));
+            transform: translateX(calc(50% + 100px));
+  }
+}
+
+@keyframes e-shimmer-wave {
+  to {
+    -webkit-transform: translateX(calc(50% + 100px));
+            transform: translateX(calc(50% + 100px));
+  }
+}
+@-webkit-keyframes e-shimmer-wave-rtl {
+  from {
+    -webkit-transform: translateX(calc(50% + 100px));
+            transform: translateX(calc(50% + 100px));
+  }
+}
+@keyframes e-shimmer-wave-rtl {
+  from {
+    -webkit-transform: translateX(calc(50% + 100px));
+            transform: translateX(calc(50% + 100px));
+  }
+}
+@-webkit-keyframes e-shimmer-fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes e-shimmer-fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes e-shimmer-pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.975);
+            transform: scale(0.975);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes e-shimmer-pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.975);
+            transform: scale(0.975);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+.e-skeleton.e-shimmer-wave::after {
+  background-image: linear-gradient(90deg, transparent calc(50% - 100px), rgb(255, 255, 255) 50%, transparent calc(50% + 100px));
+}
+
+.e-skeleton.e-skeleton-text, .e-skeleton.e-skeleton-square, .e-skeleton.e-skeleton-rectangle, .e-skeleton.e-skeleton-circle {
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(var(--color-sf-primary), 0.08)), to(rgba(var(--color-sf-primary), 0.08))), rgba(var(--color-sf-surface));
+  background: linear-gradient(0deg, rgba(var(--color-sf-primary), 0.08), rgba(var(--color-sf-primary), 0.08)), rgba(var(--color-sf-surface));
+}

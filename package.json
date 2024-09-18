@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@syncfusion/ej2-react-gantt": "^26.2.14"
+  }
+}

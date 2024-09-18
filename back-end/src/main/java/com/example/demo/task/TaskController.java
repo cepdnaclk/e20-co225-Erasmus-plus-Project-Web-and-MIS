@@ -42,6 +42,30 @@ public class TaskController {
         return new TaskResponse(s);
     }
 
+    @PostMapping("/addWithUsers")
+    public ResponseEntity<String> addTaskWithUsers(@RequestBody TaskDTO taskDTO){
+        try {
+            Task task = taskDTO.getTask();
+            Set<AppUser> taskMembers = taskDTO.getTaskMembers();
+            taskService.addTaskWithUsers(task,taskMembers);
+            return ResponseEntity.ok("Task added successfully");
+        }catch (Exception e) {
+            return ResponseEntity.status(500).body("Failed to add task");
+        }
+    }
+
+    @PostMapping("/updateWithUsers")
+    public ResponseEntity<String> updateTaskWithUsers(@RequestBody TaskDTO taskDTO){
+        try {
+            Task task = taskDTO.getTask();
+            Set<AppUser> taskMembers = taskDTO.getTaskMembers();
+            taskService.updateTaskWithUsers(task,taskMembers);
+            return ResponseEntity.ok("Task updated successfully");
+        }catch (Exception e) {
+            return ResponseEntity.status(500).body("Failed to update task");
+        }
+    }
+
     @PutMapping("/update")
     public void updateTask(@RequestBody Task updateTask){
         taskService.updateTask(updateTask);
@@ -58,6 +82,10 @@ public class TaskController {
         return new TaskResponse("Assigned user with id "+userID+" to task with id "+taskID);
     }
 
-
+    @DeleteMapping("/{taskID}/users/{userID}")
+    public TaskResponse deleteUserToTask(@PathVariable Integer taskID,@PathVariable Long userID){
+        taskService.deleteTaskUsers(taskID,userID);
+        return new TaskResponse("Deleted user with id "+userID+" to task with id "+taskID);
+    }
 
 }

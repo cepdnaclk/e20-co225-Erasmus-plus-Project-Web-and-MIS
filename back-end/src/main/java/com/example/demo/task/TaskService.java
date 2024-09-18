@@ -5,6 +5,7 @@ import com.example.demo.appuser.AppUser;
 import com.example.demo.appuser.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,12 +45,25 @@ public class TaskService {
         taskRepository.save(task);
     }
 
+    @Transactional
     public void addTaskWithUsers(Task task, Set<AppUser> taskMembers){
 
-        task.setAssignedMembers(taskMembers);
         taskRepository.save(task);
+        for (AppUser taskMember : taskMembers) {
+            task.assignMember(taskMember);
+        }
+            taskRepository.save(task);
+
     }
 
+    @Transactional
+    public void updateTaskWithUsers(Task task, Set<AppUser> taskMembers){
+        task.deleteAssignMembers();
+        for (AppUser taskMember : taskMembers) {
+            task.assignMember(taskMember);
+        }
+            taskRepository.save(task);
+    }
 
     public void deleteTask(int task_ID){
         taskRepository.deleteById(task_ID);
@@ -61,9 +75,9 @@ public class TaskService {
         return taskRepository.findTasksByUser(user);
     }
 
-//    public void deleteTaskUsers(int taskID,Long userID){
-//        taskRepository.deleteUserFromTasks(taskID,userID);
-//    }
+    public void deleteTaskUsers(int taskID,Long userID){
+        taskRepository.deleteUserFromTasks(taskID,userID);
+    }
 }
 
 

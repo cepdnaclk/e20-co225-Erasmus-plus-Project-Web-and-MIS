@@ -2,36 +2,38 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Button from '@mui/material/Button';
-import {appUserRole,userID} from "../Pages/Login";
 import style from "../components/ProjectManagement.module.css";
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import CloseIcon from '@mui/icons-material/Close';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Dialog, DialogActions, DialogContent, Stack,Slider } from "@mui/material";
+import {loggedInUser} from '../components/Header.jsx'
 
-
+// let appUserRole=loggedInUser.userRole;
+// let userID = loggedInUser.userID;
+// console.log("test..",appUserRole)
 const ProjectManagement = () => {
   const [users,setUsers] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [taskListNotEmpty, setTaskListNotEmpty] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   // Show interface: Either for 'Add New' or 'Edit'
   const [showInterface, setShowInterface] = useState(false);
   const [editRow, setEditRow] = useState(false);  
   const [addRow, setAddRow] = useState(false);
+  const [appUserRole, setAppUserRole] = useState(loggedInUser.userRole);
+  const [userID, setUserID] = useState(loggedInUser.userID);
 
     //to load for the first time on page visit
     useEffect(() => {
-      getAllTaskInfo();     
-
-      // if (appUserRole=="ADMIN") {
-      //   // setIsAdmin(true);
-      //   getAllTaskInfo();     
-      // }else if(appUserRole=="USER"){
-      //   // setIsAdmin(false);
-      //   getPersonalTaskInfo();
-      // }
+      if (appUserRole=="ADMIN") {
+        setIsAdmin(true);
+        getAllTaskInfo();     
+      }else if(appUserRole=="USER"){
+        setIsAdmin(true);
+        getPersonalTaskInfo();
+      }
     }, []);
 
   //setting values from form
@@ -41,11 +43,20 @@ const ProjectManagement = () => {
     task_Name:"",
     start_Date:"",
     end_Date:"",
-    progress:""
+    progress:"",
+    assignedUsers:[]
 })
 
-const {task_Name,start_Date,end_Date,progress}=task;
-
+ // check whether the user is a task member
+ const checkIfAssigned = (user) => {
+  if (Array.isArray(task.assignedUsers) ) {
+      let checkedAssignedUser=task.assignedUsers.filter(assignedUser => assignedUser.id==user.id);
+   if (!Array.isArray(checkedAssignedUser) || !checkedAssignedUser.length) {
+     return false
+  }else{
+    return true;
+  }}
+};
  //functions to set up above values
  function changeProgressValue(event) {
     setProgressValue(Number(event.target.value))
@@ -56,25 +67,56 @@ const onInputChange=(e)=>{
   setTask({...task,[e.target.name]:e.target.value})
 };
 
+const onMemberChange=(e)=>{
+  let tempUserId=e.target.value;
+  let user = users.filter(i=>i.id==tempUserId)[0]
+  //If there are assigned users
+  if (Array.isArray(task.assignedUsers) ) {
+  let checkedAssignedUser=task.assignedUsers.filter(assignedUser => assignedUser.id==user.id);
+  console.log("checked  ",user)
+   if (!Array.isArray(checkedAssignedUser) || !checkedAssignedUser.length) {
+    setTask(prevTask => ({
+      ...prevTask,
+      assignedUsers: [...prevTask.assignedUsers, user] // Add userId
+  }));
+
+  }else{
+    setTask(prevTask => ({
+      ...prevTask,
+      assignedUsers: prevTask.assignedUsers.filter(assignedUser => assignedUser.id != tempUserId) // Remove the user with the selected ID
+  }));
+  }}else{
+    setTask(prevTask => ({
+      ...prevTask,
+      assignedUsers: [user] // Add userId
+  }));
+  }
+  console.log("test ",task);
+
+}
+
 //When 'Add New' button is clicked : Only For Add New
 const onAddNewClicked=()=>{
   setShowInterface(true);
   setAddRow(true);
   setEditRow(false);
-  // setViewRow(false); 
+
   setTask({
     task_Name:"",
     start_Date:"",
     end_Date:"",
     progress:"",
+    assignedUsers:[]
   });
 }
 
 //When 'Add' button is clicked in the interface : Only For Add New
 const onAddSubmit = async (e) => {
-  e.preventDefault(); // Prevent default form submission
+e.preventDefault(); // Prevent default form submission
+const { assignedUsers, ...newtaskFormat } = task;
+console.log("aaa ",assignedUsers)
   try {
-    await axios.post("http://localhost:8080/api/v1/tasks", task);
+    await axios.post("http://localhost:8080/api/v1/tasks/addWithUsers", {"task":newtaskFormat,"assignedUsers":assignedUsers});
     alert("task added");
     //  reload the data after successful submission
     RefreshTasks();
@@ -99,11 +141,10 @@ const onEditClick = (task) => {
 //When 'Update' button is clicked in the interface : Only Edit
 const onUpdateSubmit = async (e) => {
   e.preventDefault(); // Prevent default form submission
+  console.log("task",task)
+  // const 
   try {
-    const { ["assignedUsers"]:tmp, ...newFormatTask } = task;
-    setTask(newFormatTask);
-    console.log(rest," submiting")
-    await axios.put(`http://localhost:8080/api/v1/tasks/update`, newFormatTask);
+    await axios.put(`http://localhost:8080/api/v1/tasks/update`, task);
     // Optionally, reload the data after successful submission
     RefreshTasks();
     setEditRow(false);
@@ -115,8 +156,7 @@ const onUpdateSubmit = async (e) => {
 /************************** Delete a specific entry *************************************/
 
 const onDeleteClick = async (task_ID) => {
-  // console.log("Delete button clicked");
-  // console.log(deliverableRelatedNo);
+
   try {
 
     await axios.delete(`http://localhost:8080/api/v1/tasks/${task_ID}`);
@@ -132,13 +172,14 @@ const onDeleteClick = async (task_ID) => {
     const fetchTasks = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/v1/tasks');
+        //for editing purrposes and adding new tasks
         const Users = await axios.get('http://localhost:8080/api/v1/users');
         setTasks(response.data);
         setUsers(Users.data);
         if (response.data.length!=0) {
           setTaskListNotEmpty(true);
         }
-        console.log("data.... ",response.data)
+        // console.log("data.... ",response.data)
       } catch (error) {
         console.error('Error fetching tasks:', error);
       }
@@ -165,12 +206,11 @@ const onDeleteClick = async (task_ID) => {
 
 // refresh tasks on request
   function RefreshTasks() {
-    // if (appUserRole=="ADMIN") {
-    //   getAllTaskInfo();
-    //  }else if (appUserRole=="USER"){
-    //   getPersonalTaskInfo();
-    //  }
-     getAllTaskInfo();     
+    if (appUserRole=="ADMIN") {
+      getAllTaskInfo();
+     }else if (appUserRole=="USER"){
+      getPersonalTaskInfo();
+     }
   }
 
 
@@ -181,7 +221,6 @@ const onDeleteClick = async (task_ID) => {
 
     return(
       <>
-     {/* //TODO:? all tasks and personal tasks to different divs */}
     
      {/* all tasks */}
      <div>
@@ -192,15 +231,14 @@ const onDeleteClick = async (task_ID) => {
           Refresh
      </Button>
      <br></br>
-     { isAdmin &&
+  { isAdmin &&
      <div>
      <Button onClick={onAddNewClicked} startIcon={<AddTaskIcon></AddTaskIcon>}>Add New Task</Button>
 
     {/* // a popup to add a new task */}
     <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
       <DialogContent >
-        {/* <Stack spacing={1} margin={2} alignItems="center"> */}
-          {/* <Form></Form> */}
+       
         <div className = "dataForm"> 
         <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
           <div className = {style["formTitle"]}>
@@ -208,15 +246,15 @@ const onDeleteClick = async (task_ID) => {
           </div>
           <div className = {style["inputbox"]}>  
             <label>Task Name: </label>
-            <input type="text" name="task_Name" value={task_Name}className = {style["field"]} onChange={(e)=>onInputChange(e)}></input>
+            <input type="text" name="task_Name" value={task.task_Name}className = {style["field"]} onChange={(e)=>onInputChange(e)}></input>
           </div>
           <div className = {style["inputbox"]}>  
             <label>Start Date: </label>
-            <input type="date" name="start_Date"value={start_Date}className = {style["field"]} onChange={(e)=>onInputChange(e)} ></input>
+            <input type="date" name="start_Date"value={task.start_Date}className = {style["field"]} onChange={(e)=>onInputChange(e)} ></input>
           </div>
           <div className = {style["inputbox"]}>  
             <label>End Date: </label>
-            <input type="date" name="end_Date"  value={end_Date}className = {style["field"]} onChange={(e)=>onInputChange(e)}></input>
+            <input type="date" name="end_Date"  value={task.end_Date}className = {style["field"]} onChange={(e)=>onInputChange(e)}></input>
           </div>
           <div className = {style["inputbox"]}>  
           <label>Progress</label>
@@ -231,7 +269,7 @@ const onDeleteClick = async (task_ID) => {
                 width="30%"
                 />
             </div>
-            <input type="number" name="progress"value={progressValue} onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
+            <input type="number" name="progress"value={task.progressValue} onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
             </input>  
           {/* </Stack> */}
         </div>
@@ -239,12 +277,13 @@ const onDeleteClick = async (task_ID) => {
             <label>Team Members:</label>
             <div class={style["checkBoxContainer"]}>
             {
-              users.map((user) => (
-                <div>
-                <input type="checkbox" value={user.id} ></input>
-                <label>{user.firstName+" "+user.lastName}</label>
+              users.map((user) => {
+                let isAssignedTaskMember = checkIfAssigned(user);             
+                return(<div style={{display: "flex",gap: "10px", width:"100%",marginTop:"5%",verticalAlign:"middle"}}>
+                <label style={{color:"black",height:"45px", width:"95%"}}>{user.firstName+" "+user.lastName}</label>
+                <input type="checkbox" value={user.id} checked={isAssignedTaskMember} onChange={(e)=>onMemberChange(e)} style={{color:"white",height:"3%"}}></input>
                 </div>
-              ))
+              )})
             }
           </div>
         </div>
@@ -258,6 +297,8 @@ const onDeleteClick = async (task_ID) => {
     </Dialog>
     </div>
      }
+
+      {/* to show the task list */}
      { taskListNotEmpty &&
           tasks.map((item) => (
             <div key={item.task_ID} className={style["taskCards"]}>

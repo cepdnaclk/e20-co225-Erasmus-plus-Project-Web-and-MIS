@@ -1,0 +1,48 @@
+/* stylelint-disable property-no-vendor-prefix */
+@-webkit-keyframes e-input-ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(4);
+            transform: scale(4);
+  }
+}
+@keyframes e-input-ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(4);
+            transform: scale(4);
+  }
+}
+/* stylelint-disable-line no-empty-source */
+/* stylelint-disable-line no-empty-source */
+.e-input-group.e-multi-line-input.e-auto-width {
+  width: auto;
+}
+
+.e-input-group.e-multi-line-input textarea.e-resize-x {
+  resize: horizontal;
+}
+.e-input-group.e-multi-line-input textarea.e-resize-y {
+  resize: vertical;
+}
+.e-input-group.e-multi-line-input textarea.e-resize-xy {
+  resize: both;
+}
+.e-input-group.e-multi-line-input textarea.e-textarea.e-resize-none {
+  resize: none;
+}
+
+.e-float-input .e-clear-icon:hover,
+.e-float-input.e-control-wrapper .e-clear-icon:hover,
+.e-input-group .e-clear-icon:hover,
+.e-input-group.e-control-wrapper .e-clear-icon:hover {
+  background: none;
+  border: none;
+}
+
+.e-float-input:not(.e-disabled) .e-clear-icon:hover,
+.e-float-input.e-control-wrapper:not(.e-disabled) .e-clear-icon:hover,
+.e-input-group:not(.e-disabled) .e-clear-icon:hover,
+.e-input-group.e-control-wrapper:not(.e-disabled) .e-clear-icon:hover {
+  background: none;
+}

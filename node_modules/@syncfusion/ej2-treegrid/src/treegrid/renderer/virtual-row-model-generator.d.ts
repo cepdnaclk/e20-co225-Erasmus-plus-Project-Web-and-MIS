@@ -1,0 +1,16 @@
+import { VirtualRowModelGenerator } from '@syncfusion/ej2-grids';
+import { NotifyArgs, Row, Column, IGrid } from '@syncfusion/ej2-grids';
+/**
+ * RowModelGenerator is used to generate grid data rows.
+ *
+ * @hidden
+ */
+export declare class TreeVirtualRowModelGenerator extends VirtualRowModelGenerator {
+    private visualData;
+    constructor(parent: IGrid);
+    addEventListener(): void;
+    private getDatas;
+    private getDataInfo;
+    generateRows(data: Object[], notifyArgs?: NotifyArgs): Row<Column>[];
+    checkAndResetCache(action: string): boolean;
+}

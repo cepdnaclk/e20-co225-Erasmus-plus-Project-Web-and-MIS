@@ -1,0 +1,27 @@
+import { ComplexBase } from '@syncfusion/ej2-react-base';
+import { ColumnModel } from '@syncfusion/ej2-gantt';
+export interface ColumnDirTypecast {
+    template?: string | Function | any;
+    headerTemplate?: string | Function | any;
+}
+/**
+ * `ColumnDirective` represent a column of the react Gantt.
+ * It must be contained in a Gantt component(`GanttComponent`).
+ * ```tsx
+ * <GanttComponent dataSource={data} allowSelection={true} allowSorting={true}>
+ * <ColumnsDirective>
+ * <ColumnDirective field='ID' width='150'></ColumnDirective>
+ * <ColumnDirective field='taskName' headerText='Task Name' width='200'></ColumnDirective>
+ * </ColumnsDirective>
+ * </GanttComponent>
+ * ```
+ */
+export declare class ColumnDirective extends ComplexBase<ColumnModel | ColumnDirTypecast & {
+    children?: React.ReactNode;
+}, ColumnModel | ColumnDirTypecast> {
+    static moduleName: string;
+}
+export declare class ColumnsDirective extends ComplexBase<{}, {}> {
+    static propertyName: string;
+    static moduleName: string;
+}

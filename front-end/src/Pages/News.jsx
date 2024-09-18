@@ -148,7 +148,7 @@ const News = () => {
                   <input type="date" max={today} id="newsDate" name="newsDate" required />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="newsCoverImage">Cover Image:</label>
+                  <label htmlFor="newsCoverImage">Cover Image (Choose images with size less than 64 kB):</label>
                   <input type="file" id="newsCoverImage" name="newsCoverImage" onChange={handleFileChange} required />
                 </div>
                 <div className="form-buttons">
@@ -169,7 +169,7 @@ const News = () => {
             <p>{item.newsDescription}</p> {/* News description */}
             <b><p>Date: {item.newsDate}</p></b> {/* News date */}
             <b><p>Author: {item.newsAuthor}</p></b> {/* News author */}
-            {/* <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a> Link to full news */}
+            <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a> {/* Link to full news */}
             
             {/* Show edit and delete buttons only if user is logged in */}
             {loggedInUser.isLoggedIn && (

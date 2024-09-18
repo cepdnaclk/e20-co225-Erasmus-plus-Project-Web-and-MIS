@@ -45,6 +45,7 @@ public class TaskService {
         taskRepository.save(task);
     }
 
+    @Transactional
     public void addTaskWithUsers(Task task, Set<AppUser> taskMembers){
 
         taskRepository.save(task);

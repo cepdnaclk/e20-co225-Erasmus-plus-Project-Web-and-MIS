@@ -46,7 +46,6 @@ const ProjectManagement = () => {
     progress:"",
     assignedUsers:[]
 })
-const [assignedUsers,setAssignedUsers]=useState([]);
 
  // check whether the user is a task member
  const checkIfAssigned = (user) => {
@@ -107,19 +106,17 @@ const onAddNewClicked=()=>{
     start_Date:"",
     end_Date:"",
     progress:"",
+    assignedUsers:[]
   });
 }
 
 //When 'Add' button is clicked in the interface : Only For Add New
 const onAddSubmit = async (e) => {
-  e.preventDefault(); // Prevent default form submission
+e.preventDefault(); // Prevent default form submission
+const { assignedUsers, ...newtaskFormat } = task;
+console.log("aaa ",assignedUsers)
   try {
-    await axios.post("http://localhost:8080/api/v1/tasks", task, {
-      headers: {
-          'Content-Type': 'application/json' // Specify the content type
-      },
-      withCredentials: true // If your backend requires credentials
-  });
+    await axios.post("http://localhost:8080/api/v1/tasks/addWithUsers", {"task":newtaskFormat,"assignedUsers":assignedUsers});
     alert("task added");
     //  reload the data after successful submission
     RefreshTasks();
@@ -147,7 +144,7 @@ const onUpdateSubmit = async (e) => {
   console.log("task",task)
   // const 
   try {
-    await axios.post(`http://localhost:8080/api/v1/tasks`, task);
+    await axios.put(`http://localhost:8080/api/v1/tasks/update`, task);
     // Optionally, reload the data after successful submission
     RefreshTasks();
     setEditRow(false);
@@ -234,7 +231,7 @@ const onDeleteClick = async (task_ID) => {
           Refresh
      </Button>
      <br></br>
-     { isAdmin &&
+  { isAdmin &&
      <div>
      <Button onClick={onAddNewClicked} startIcon={<AddTaskIcon></AddTaskIcon>}>Add New Task</Button>
 

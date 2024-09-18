@@ -77,7 +77,7 @@ a:hover{
 
   /* Styles for integer input fields with a smaller width */
   .inputbox .integerField {
-    width: 5%;
+    width: 8%;
     position: absolute;
     right: 40%;
     background: transparent;
@@ -85,7 +85,7 @@ a:hover{
     outline: none;
     padding: 15px;
     font-size: 16px;
-    color: #333;
+    color: #000000;
     
   }
 
@@ -107,9 +107,10 @@ a:hover{
   /* Container for checkboxes with scrollable content */
   .checkBoxContainer { 
     border:2px solid #ccc;
-    width:300px;
+    width:400px;
     height: 100px; 
     overflow-y: scroll;
+    overflow-x: scroll;
     scrollbar-color: white black;
     background: transparent;
     border: 2px solid #c9e1ef;

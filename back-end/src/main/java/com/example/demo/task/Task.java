@@ -114,13 +114,10 @@ public class Task {
         assignedUsers.add(user);
     }
 
-    public void deleteAssignMember(AppUser user) {
-        assignedUsers.remove(user);
+    public void deleteAssignMembers() {
+        assignedUsers.clear();
     }
 
-    public void setAssignedMembers(Set<AppUser> taskMembers){
-        for (AppUser taskMember : taskMembers) {
-            assignMember(taskMember);}
-        }
+
 
 }

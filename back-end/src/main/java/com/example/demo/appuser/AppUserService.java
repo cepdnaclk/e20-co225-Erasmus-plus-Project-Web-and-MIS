@@ -88,6 +88,12 @@ public class AppUserService implements UserDetailsService {
     public AppUser getUser(long userID){
         return appUserRepository.findById(userID).get();
     }
+
+    //checking if a user exists
+    public AppUser getUserAndCheckingByEmail(EmailRequest emailRequest) {
+        Optional<AppUser> appUser = appUserRepository.findByEmail(emailRequest.getEmail());
+        return appUser.orElse(null);
+    }
 }
 
 

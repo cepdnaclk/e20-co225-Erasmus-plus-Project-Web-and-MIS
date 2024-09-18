@@ -1,0 +1,338 @@
+import { IGanttData, ITaskData, ITaskSegment } from './interface';
+import { Gantt } from './gantt';
+/**
+ *  Date processor is used to handle date of task data.
+ */
+export declare class DateProcessor {
+    protected parent: Gantt;
+    private prevProjectStartDate;
+    private fromSegments;
+    private mondayTimeRangeLength;
+    private tuesdayTimeRangeLength;
+    private wednesdayTimeRangeLength;
+    private thursdayTimeRangeLength;
+    private fridayTimeRangeLength;
+    private saturdayTimeRangeLength;
+    private sundayTimeRangeLength;
+    constructor(parent: Gantt);
+    /**
+     * @param {ITaskData} ganttProp .
+     * @returns {boolean} .
+     */
+    private isValidateNonWorkDays;
+    /**
+     * Method to convert given date value as valid start date
+     *
+     * @param {Date} date .
+     * @param {ITaskData} ganttProp .
+     * @param {boolean} validateAsMilestone .
+     * @param {boolean} isLoad .
+     * @returns {Date} .
+     * @private
+     */
+    checkStartDate(date: Date, ganttProp?: ITaskData, validateAsMilestone?: boolean, isLoad?: boolean): Date;
+    /**
+     * To update given date value to valid end date
+     *
+     * @param {Date} date .
+     * @param {ITaskData} ganttProp .
+     * @param {boolean} validateAsMilestone .
+     * @returns {Date} .
+     * @private
+     */
+    checkEndDate(date: Date, ganttProp?: ITaskData, validateAsMilestone?: boolean): Date;
+    /**
+     * To validate the baseline start date
+     *
+     * @param {Date} date .
+     * @param {ITaskData} ganttProp .
+     * @returns {Date} .
+     * @private
+     */
+    checkBaselineStartDate(date: Date, ganttProp?: ITaskData): Date;
+    /**
+     * To validate baseline end date
+     *
+     * @param {Date} date .
+     * @param {ITaskData} ganttProp .
+     * @returns {Date} .
+     * @private
+     */
+    checkBaselineEndDate(date: Date, ganttProp?: ITaskData): Date;
+    /**
+     * To calculate start date value from duration and end date
+     *
+     * @param {IGanttData} ganttData - Defines the gantt data.
+     * @returns {void} .
+     * @private
+     */
+    calculateStartDate(ganttData: IGanttData): void;
+    /**
+     *
+     * @param {IGanttData} ganttData - Defines the gantt data.
+     * @returns {void} .
+     * @private
+     */
+    calculateEndDate(ganttData: IGanttData): void;
+    totalDuration(segments: ITaskSegment[]): number;
+    /**
+     * To calculate duration from start date and end date
+     *
+     * @param {IGanttData} ganttData - Defines the gantt data.
+     * @returns {void} .
+     */
+    calculateDuration(ganttData: IGanttData): void;
+    /**
+     *
+     * @param {Date} sDate Method to get total nonworking time between two date values
+     * @param {Date} eDate .
+     * @param {boolean} isAutoSchedule .
+     * @param {boolean} isCheckTimeZone .
+     * @returns {number} .
+     */
+    private getNonworkingTime;
+    private nonWorkingSeconds;
+    /**
+     *
+     * @param {Date} startDate .
+     * @param {Date} endDate .
+     * @param {string} durationUnit .
+     * @param {boolean} isAutoSchedule .
+     * @param {boolean} isMilestone .
+     * @param {boolean} isCheckTimeZone .
+     * @returns {number} .
+     * @private
+     */
+    getDuration(startDate: Date, endDate: Date, durationUnit: string, isAutoSchedule: boolean, isMilestone: boolean, isCheckTimeZone?: boolean): number;
+    /**
+     *
+     * @param {number} duration .
+     * @param {string} durationUnit .
+     * @param {Date} date .
+     *  @returns {number} .
+     */
+    private getDurationAsSeconds;
+    /**
+     * To get date from start date and duration
+     *
+     * @param {Date} startDate .
+     * @param {number} duration .
+     * @param {string} durationUnit .
+     * @param {ITaskData} ganttProp .
+     * @param {boolean} validateAsMilestone .
+     * @returns {Date} .
+     * @private
+     */
+    getEndDate(startDate: Date, duration: number, durationUnit: string, ganttProp: ITaskData, validateAsMilestone: boolean): Date;
+    /**
+     * Calculate start date based on end date and duration.
+     *
+     * @param {Date} endDate - To calculate start date value from end date and duration.
+     * @param {number} duration - The duration value.
+     * @param {string} durationUnit - The unit of duration.
+     * @param {ITaskData} ganttProp - The Gantt task properties.
+     * @param {boolean} fromValidation - A flag indicating if the calculation is from validation.
+     * @returns {Date} The calculated start date.
+     * @private
+     */
+    getStartDate(endDate: Date, duration: number, durationUnit: string, ganttProp: ITaskData, fromValidation?: boolean): Date;
+    private calculateSecondDuration;
+    /**
+     * @param {ITaskData} ganttProp .
+     * @param {boolean} isLoad .
+     * @returns {Date} .
+     * @private
+     */
+    protected getProjectStartDate(ganttProp: ITaskData, isLoad?: boolean): Date;
+    /**
+     * @param {ITaskData} ganttProp .
+     * @param {boolean} isAuto .
+     * @returns {Date} .
+     * @private
+     */
+    getValidStartDate(ganttProp: ITaskData, isAuto?: boolean): Date;
+    /**
+     *
+     * @param {ITaskData} ganttProp .
+     * @param {boolean} isAuto .
+     * @returns {Date} .
+     * @private
+     */
+    getValidEndDate(ganttProp: ITaskData, isAuto?: boolean): Date;
+    private getWorkingTime;
+    private assignStartTime;
+    private assignEndTime;
+    private calculateWeekWorkTime;
+    /**
+     * @returns {number} .
+     * @private
+     */
+    getSecondsPerDay(): number;
+    /**
+     *
+     * @param {string} value .
+     * @param {boolean} isFromDialog .
+     * @returns {object} .
+     * @private
+     */
+    getDurationValue(value: string | number, isFromDialog?: boolean): Object;
+    /**
+     *
+     * @param {Date} date .
+     * @returns {Date} .
+     */
+    protected getNextWorkingDay(date: Date): Date;
+    /**
+     * get weekend days between two dates without including args dates
+     *
+     * @param {Date} startDate .
+     * @param {Date} endDate .
+     * @returns {number} .
+     */
+    protected getWeekendCount(startDate: Date, endDate: Date): number;
+    /**
+     *
+     * @param {Date} startDate .
+     * @param {Date} endDate .
+     * @param {boolean} isCheckTimeZone .
+     * @returns {number} .
+     */
+    protected getNumberOfSeconds(startDate: Date, endDate: Date, isCheckTimeZone: boolean): number;
+    /**
+     *
+     * @param {Date} startDate .
+     * @param {Date} endDate .
+     * @returns {number} .
+     */
+    protected getHolidaysCount(startDate: Date, endDate: Date): number;
+    /**
+     * @returns {number[]} .
+     * @private
+     */
+    getHolidayDates(): number[];
+    /**
+     * @param {Date} date .
+     * @param {boolean} checkWeekEnd .
+     * @returns {boolean} .
+     * @private
+     */
+    isOnHolidayOrWeekEnd(date: Date, checkWeekEnd: boolean): boolean;
+    /**
+     * To calculate non working times in given date
+     *
+     * @param {Date} startDate .
+     * @param {Date} endDate .
+     * @param {boolean} isAutoSchedule .
+     * @returns {number} .
+     */
+    protected getNonWorkingSecondsOnDate(startDate: Date, endDate: Date, isAutoSchedule: boolean): number;
+    /**
+     *
+     * @param {Date} date .
+     * @returns {Date} .
+     */
+    protected getPreviousWorkingDay(date: Date): Date;
+    /**
+     * To get non-working day indexes.
+     *
+     * @returns {void} .
+     * @private
+     */
+    getNonWorkingDayIndex(): void;
+    /**
+     *
+     * @param {number} seconds .
+     * @param {Date} date .
+     * @returns {void} .
+     * @private
+     */
+    setTime(seconds: number, date: Date): void;
+    /**
+     * @param {Date} startDate .
+     * @param {Date} endDate .
+     * @param {boolean} isCheckTimeZone .
+     * @returns {number} .
+     */
+    protected getTimeDifference(startDate: Date, endDate: Date, isCheckTimeZone?: boolean): number;
+    /**
+     * @param {Date} sDate .
+     * @param {Date} eDate .
+     * @returns {void} .
+     */
+    protected updateDateWithTimeZone(sDate: Date, eDate: Date): void;
+    /**
+     *
+     * @param {Date} date .
+     * @returns {number} .
+     */
+    protected getSecondsInDecimal(date: Date): number;
+    /**
+     * @param {Date} date .
+     * @param {number} localOffset .
+     * @param {string} timezone .
+     * @returns {number} .
+     * @private
+     */
+    offset(date: Date, timezone: string): number;
+    remove(date: Date, timezone: string): Date;
+    reverse(date: Date, fromOffset: number | string, toOffset: number | string): Date;
+    /**
+     * @param {Date} date .
+     * @param {string} timezone .
+     * @returns {Date} .
+     * @private
+     */
+    convert(date: Date, timezone: string): Date;
+    /**
+     * @param {string | Date} date .
+     * @param {boolean} toConvert .
+     * @returns {Date} .
+     * @private
+     */
+    getDateFromFormat(date: string | Date, toConvert?: boolean): Date;
+    /**
+     * @param {Date} date1 .
+     * @param {Date} date2 .
+     * @returns {number} .
+     * @private
+     */
+    compareDates(date1: Date, date2: Date): number;
+    /**
+     *
+     * @param {number} duration .
+     * @param {string} durationUnit .
+     * @returns {string} .
+     * @private
+     */
+    getDurationString(duration: number, durationUnit: string): string;
+    /**
+     * Method to get work with value and unit.
+     *
+     * @param {number} work .
+     * @param {string} workUnit .
+     * @returns {string} .
+     * @private
+     */
+    getWorkString(work: number | string, workUnit: string): string;
+    /**
+     *
+     * @param {object} editArgs .
+     * @returns {void} .
+     * @private
+     */
+    calculateProjectDatesForValidatedTasks(editArgs?: Object): void;
+    /**
+     *
+     * @param {object} editArgs .
+     * @returns {void} .
+     * @private
+     */
+    calculateProjectDates(editArgs?: Object): void;
+    /**
+     *
+     * @param {ITaskSegment} segments .
+     * @returns {number} .
+     * @private
+     */
+    splitTasksDuration(segments: ITaskSegment[]): number;
+}

@@ -1,0 +1,11 @@
+
+
+.e-signature.e-control {
+  border: 1px solid;
+}
+
+.e-signature.e-control {
+  background-color: rgba(var(--color-sf-white));
+  border: 1px solid;
+  border-color: rgba(var(--color-sf-outline-variant));
+}

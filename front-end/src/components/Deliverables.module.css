@@ -49,22 +49,22 @@
   z-index: 3;
 }
 .table thead th {
-  background-color: #f2f2f2;
+  background-color: #ecf6fc;
   color: #333;
   text-align: center;
   padding: 10px;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #b2c8e6;
 }
 
 /*Table cells */
 .table tbody td{
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #b2c8e6;
 }
 
 /* Hover effect for table rows */
 .table tbody tr:hover {
-  background-color: #f1f1f1;
+  background-color: #f3f9fb;
 }
 
 /* Styling for the table footer */
@@ -114,6 +114,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  color: #ffffff;
 }
 .addNewButton:hover { 
   background-color: #0056b3;
@@ -138,6 +139,7 @@
   display: flex;
   align-items: center;
   margin: 15px 20px;
+  justify-content: space-between;
 }
 .inputbox label{
   padding: 15px;
@@ -147,7 +149,6 @@
 /* Inside the data input boxes */
 .inputbox .field {
   width: 60%;
-  /* position: absolute; */
   right: 12%;
   background: transparent;
   border: 2px solid #c9e1ef;

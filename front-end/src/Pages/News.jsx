@@ -134,10 +134,10 @@ const News = () => {
                   <label htmlFor="newsDescription">Description:</label>
                   <textarea id="newsDescription" placeholder="Enter News Description" name="newsDescription" required></textarea>
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                   <label htmlFor="newsUrl">URL:</label>
                   <input type="url" id="newsUrl" placeholder="Enter News URL" name="newsUrl" required />
-                </div>
+                </div> */}
                 <div className="form-group">
                   <label htmlFor="newsAuthor">Author:</label>
                   <input type="text" id="newsAuthor" placeholder="Enter Author's name" name="newsAuthor" required />

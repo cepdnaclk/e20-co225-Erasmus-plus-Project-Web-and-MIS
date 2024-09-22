@@ -1,32 +1,63 @@
-/* Styling for the main repository title */
-.RepositoryTitle{
-    margin-top: 2%;
+/* General repository title styling */
+.RepositoryTitle {
+  margin-top: 1%;
     margin-left: 5%;
     text-align: left;
-    margin-bottom: 1%;
     font-size: 20px;
     font-family: 'Caudex';
-  }
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5%;
+}
 
-  /* Styling for the subtitle of the repository */
-  .RepositorySubTitle{
-    margin-top: 2%;
-    margin-left: 5%;
-    text-align: left;
-    margin-bottom: 1%;
-    font-size: 15px;
-    font-family: 'Caudex';
-    color: rgb(10, 48, 128);
-  }
+/* Flex container for the buttons */
+.RepoTabs {
+  display: flex;
+  justify-content: center;  /* Centers the buttons container */
+  align-items: center;
+  width: 90%;  /* Ensure the container takes the full width */
+  margin-left: 5%;
+  margin-right: 5%;
+}
 
-  /* Styling for sub-subtitle under the repository section */
-  .RepositorySuperSubTitle{
-    margin-top: 2%;
-    margin-left: 8%;
-    text-align: left;
-    margin-bottom: 1%;
-    font-size: 15px;
-    font-family: 'Caudex';
-    color: rgb(10, 48, 128);
-  }
+/* Individual button styling */
+.RepoTabs button {
+  width: 50%;  /* Each button will take 50% of the available width */
+  height: 60px;
+  padding: 0 0 17px 0;
+  background-color: rgba(228, 246, 250, 0.9);
+  margin: 0;  /* No space between the buttons */
+  border: 2px solid #e5e8f6e6;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
 
+/* Active button styling */
+.RepoTabs button:active {
+  border-bottom: 2px solid #254ad281; /* Underline for the active tab */
+}
+
+/* Hover effect */
+.RepoTabs button:hover {
+  background-color: rgb(222, 241, 252);
+}
+
+/* Repository subtitle styling */
+.RepositorySubTitle {
+  text-align: center;
+  margin: 10px 0;
+  color: #203a90;;
+  font-family: 'Caudex';
+}
+
+/* Repository super subtitle styling */
+.RepositorySuperSubTitle {
+  margin-left: 10%;
+  margin-top: 20px;
+  font-weight: bold;
+  font-family: 'Caudex';
+}

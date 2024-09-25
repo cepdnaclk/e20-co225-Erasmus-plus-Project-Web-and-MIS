@@ -178,6 +178,9 @@ function Workplan() {
           <h3>Workplan</h3>
       </div>
     <div className={style["container"]}>
+      {!addRow && loggedInUser.isLoggedIn && <div>
+        <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
+      </div>}
       <div className={style["tableContainer"]}>
           <table className={style["table"]}>
             <thead>
@@ -248,9 +251,6 @@ function Workplan() {
             </tfoot> */}
           </table>
       </div>
-      {!addRow && loggedInUser.isLoggedIn && <div>
-        <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
-      </div>}
       </div>
       {/* Dialog- Add New Row/Edit Row */}
       { (addRow || editRow) &&  <Dialog

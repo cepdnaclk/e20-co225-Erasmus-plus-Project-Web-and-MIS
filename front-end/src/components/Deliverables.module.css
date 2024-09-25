@@ -102,14 +102,14 @@
 
 /* Add New Button */
 .addNewButton{
-  width: 100px;
+  width: 150px;
   height: 50px;
   margin: 20px 0px;
   padding: 10px 20px;
-  font-size: 14px;
   background-color: hsl(226, 64%, 35%);
   text-decoration: none;
-  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-family: 'Caudex';
   border: none;
   border-radius: 5px;
   cursor: pointer;

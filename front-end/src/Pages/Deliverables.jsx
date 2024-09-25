@@ -191,6 +191,9 @@ const onViewClick = (deliverable) => {
         </nav>
     </div>
     <div className={style["container"]}>
+      {!addRow && loggedInUser.isLoggedIn && <div>
+        <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
+      </div>}
       <div className={style["tableContainer"]}>
           <table className={style["table"]}>
             <thead>
@@ -236,9 +239,6 @@ const onViewClick = (deliverable) => {
             </tfoot> */}
           </table>
       </div>
-      {!addRow && loggedInUser.isLoggedIn && <div>
-        <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
-      </div>}
     </div>
     { (addRow || editRow) &&  <Dialog
           open={showDiologBox}

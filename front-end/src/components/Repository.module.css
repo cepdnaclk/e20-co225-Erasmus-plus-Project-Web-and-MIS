@@ -37,7 +37,7 @@
 }
 
 /* Active button styling */
-.RepoTabs button:active {
+.RepoTabs button.active {
   border-bottom: 2px solid #254ad281; /* Underline for the active tab */
 }
 

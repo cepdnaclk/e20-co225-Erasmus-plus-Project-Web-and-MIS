@@ -44,7 +44,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .authorizeHttpRequests(authz -> authz
 
                                 .requestMatchers("/api/v*/registration/**", "/api/v1/news/**", "/api/v1/gallery/**", "/api/v*/files/**",
-                                        "/api/v*/registration/login/**", "/oauth2/**","/api/v1/tasks/**", "/api/v1/users/**", "/deliverable/**", "/workplan/**")
+                                        "/api/v*/registration/login/**", "/oauth2/**","/api/v1/tasks/**", "/api/v1/users/**", "/deliverable/**", "/workplan/**", "/api/project/**")
 
                                 .permitAll()
                                 .anyRequest().authenticated()

@@ -48,7 +48,7 @@ function Team() {
     <>
     {/* Page title */}
     
-    <div className = "TeamTitle">
+    <div className = "pageTitle">
       <h3>Team</h3>
       <nav>
     <ol className="breadcrumb">

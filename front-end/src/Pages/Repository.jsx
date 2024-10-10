@@ -5,7 +5,7 @@ function Repository() {
     return(
       <>
       {/* Title of the Repository section */}
-      <div className={style["RepositoryTitle"]}>
+      <div className="pageTitle">
           <h3>Repository</h3>
       </div>
       

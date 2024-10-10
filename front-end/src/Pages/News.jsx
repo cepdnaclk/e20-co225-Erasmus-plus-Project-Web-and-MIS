@@ -91,7 +91,7 @@ const News = () => {
 
   return (
     <>
-      <div className="NewsTitle">
+      <div className="pageTitle">
         <h3>News</h3>
         <nav>
           <ol className="breadcrumb">
@@ -113,7 +113,7 @@ const News = () => {
         {/* Show Add News button only if the user is logged in */}
         {loggedInUser.isLoggedIn && (
           <div>
-            <button className="AddNewsButton" onClick={toggleForm}>
+            <button className="addNewButton" onClick={toggleForm}>
               {showForm ? 'Close Form' : 'Add News'} {/* Toggle between Add and Close */}
             </button>
           </div>
@@ -174,7 +174,6 @@ const News = () => {
             {/* Show edit and delete buttons only if user is logged in */}
             {loggedInUser.isLoggedIn && (
               <div className="news-actions">
-                {/* <button className="actionButton" onClick={() => onEditClick(item)}><FontAwesomeIcon icon={faPen}/></button> */}
                 <button className="actionButton" onClick={() => onDeleteClick(item.newsID)}><FontAwesomeIcon icon={faTrash} /></button>
               </div>
             )}

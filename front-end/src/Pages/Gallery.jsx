@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { loggedInUser } from '../components/Header'; // Import logged-in user details
-import '../components/Gallery.css'; 
+import style from '../components/Gallery.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // FontAwesome for icons
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
+import { Dialog, DialogContent } from "@mui/material";
 
 /**
  * Fetch gallery items from the backend API.
@@ -38,10 +39,11 @@ const Gallery = () => {
     getGallery(); 
   }, []); 
 
-  // Toggles the display of the album addition form
-  const toggleForm = () => {
-    setShowForm(!showForm); 
-  };
+  const [showDiologBox, setshowDiologBox] = useState(false);
+
+  const onAddNewClicked=()=>{
+    setshowDiologBox(true);
+  }
 
   // Handles file input change (for album cover image)
   const handleFileChange = (event) => {
@@ -76,7 +78,7 @@ const Gallery = () => {
       // Fetch the updated gallery list after adding the item
       const latestGallery = await fetchGallery(); 
       setGallery(latestGallery); 
-      toggleForm(); // Close the form after successful submission
+      setshowDiologBox(false);
     } catch (error) {
       console.error('Error adding gallery item:', error); 
     }
@@ -95,11 +97,15 @@ const Gallery = () => {
       console.error("Error deleting gallery item:", error); 
     }
   }
+  // When 'Close' button is clicked: for Edit, and Add New
+  const closeButtonClicked = () => {
+    setshowDiologBox(false);
+  }
 
   return (
     <>
     {/* Breadcrumb navigation for the page */}
-      <div className="GalleryTitle">
+      <div className="pageTitle">
         <h3>Gallery</h3>
         <nav>
           <ol className="breadcrumb">
@@ -119,46 +125,51 @@ const Gallery = () => {
         </div>
 
         {/* Form toggle button for adding a new gallery item */}
-        <div className="GalleryAdd">
+        <div className={style["GalleryAdd"]}>
         {loggedInUser.isLoggedIn && (
           <div>
-            <button className="AddGalleryButton" onClick={toggleForm}>
-              {showForm ? 'Close Form' : 'Add Album'}
-            </button>
+            <button className="addNewButton" onClick={onAddNewClicked}>Add Album</button>
           </div>
         )}
 
         {/* Display the form when showForm is true */}
-        {showForm && (
-          <div className="add-gallery-form-container">
-            <div className="add-gallery-form">
+        {showDiologBox && 
+            <Dialog
+            open={showDiologBox}
+            onClose={closeButtonClicked}
+            fullWidth
+            maxWidth="md"
+          >
+          <DialogContent>
+            <div className={style["add-gallery-form"]}>
               <h2>Add Gallery Item</h2>
               <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className={style["form-group"]}>
                   <label htmlFor="albumName">Name:</label>
                   <input type="text" placeholder="Enter Album Name" id="albumName" name="albumName" required />
                 </div>
-                <div className="form-group">
+                <div className={style["form-group"]}>
                   <label htmlFor="albumURL">URL:</label>
                   <input type="url" id="albumURL" placeholder="Enter Album URL" name="albumURL" required />
                 </div>
-                <div className="form-group">
+                <div className={style["form-group"]}>
                   <label htmlFor="albumCoverImage">Cover Image (Choose images with size less than 64 kB):</label>
                   <input type="file" id="albumCoverImage" name="albumCoverImage" onChange={handleFileChange} required />
                 </div>
-                <div className="form-buttons">
+                <div className={style["form-buttons"]}>
                   <button type="submit">Add Gallery Item</button>
+                  <button type="button" onClick={closeButtonClicked}>Close</button>
                 </div>
               </form>
-            </div>
-          </div>
-        )}
-      </div>
+            </div>      
+        
+      </DialogContent>
+      </Dialog>}
       
       {/* Display the gallery items */}
-      <div className="gallery-container">
+      <div className={style["gallery-container"]}>
         {gallery.map((item) => (
-          <div key={item.albumID} className="gallery-tile">
+          <div key={item.albumID} className={style["gallery-tile"]}>
             <img 
               src={`data:image/jpeg;base64,${item.albumCoverImage}`} 
               alt={item.albumName} 
@@ -168,15 +179,13 @@ const Gallery = () => {
             
             {/* Show edit, view, and delete buttons for logged-in users */}
             {loggedInUser.isLoggedIn && (
-              <div className="gallery-actions">
-                {/* <button className="actionButton"><FontAwesomeIcon icon={faPen}/></button>
-                <button className="actionButton"><FontAwesomeIcon icon={faEye}/></button> */}
+              <div className={style["gallery-actions"]}>
                 <button className="actionButton" onClick={() => onDeleteClick(item.albumID)}><FontAwesomeIcon icon={faTrash} /></button>
               </div>
             )}
           </div>
         ))}
-      </div>
+      </div></div>
     </>
   );
 };

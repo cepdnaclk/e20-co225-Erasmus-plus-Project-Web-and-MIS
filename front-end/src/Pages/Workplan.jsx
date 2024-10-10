@@ -174,12 +174,27 @@ function Workplan() {
 
   return(
     <>
-      <div className={style["workplanTitle"]}>
+      <div className="pageTitle">
           <h3>Workplan</h3>
+          <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="http://localhost:5173/"> 
+                <span style={{ fontSize: 16}}>Home</span>
+              </a>
+            </li>
+            <li className="breadcrumb-item active">
+              <span style={{ fontSize: 16}}> Project Overview</span>
+            </li>
+            <li className="breadcrumb-item active">
+              <span style={{ fontSize: 16}}> Cycle Workplan</span>
+            </li>
+          </ol>
+        </nav>
       </div>
     <div className={style["container"]}>
       {!addRow && loggedInUser.isLoggedIn && <div>
-        <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
+        <button className="addNewButton" onClick={onAddNewClicked}>Add Activity</button>
       </div>}
       <div className={style["tableContainer"]}>
           <table className={style["table"]}>
@@ -235,9 +250,9 @@ function Workplan() {
                           <td style={{ backgroundColor: workplanActivity.y4_q4 ? '#72a1e685' : 'white' }}></td>
         
                           {loggedInUser.isLoggedIn && <td>
-                            <div className={style['actionButtons']}>
-                              <button className={style['actionButton']} onClick={() => onEditClick(workplanActivity)}><FontAwesomeIcon icon={faPen}/></button>
-                              <button className={style['actionButton']} onClick={() => onDeleteClick(workplanActivity.activityNo)}><FontAwesomeIcon icon={faTrash} /></button>
+                            <div className='actionButtonsBlock'>
+                              <button className='actionButton' onClick={() => onEditClick(workplanActivity)}><FontAwesomeIcon icon={faPen}/></button>
+                              <button className='actionButton' onClick={() => onDeleteClick(workplanActivity.activityNo)}><FontAwesomeIcon icon={faTrash} /></button>
                             </div>         
                           </td>}
                         </tr>

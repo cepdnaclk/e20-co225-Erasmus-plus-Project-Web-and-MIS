@@ -8,7 +8,7 @@ import { faUser, faPhone, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 function Contact() {
   return(
     <>
-    <div className = "contactTitle"> {/* Page title */}
+    <div className = "pageTitle"> 
     <h3>Contact</h3>
     <nav>
     <ol className="breadcrumb">

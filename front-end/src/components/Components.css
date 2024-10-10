@@ -1,9 +1,10 @@
+/* Includes stying for common components */
 /******************* Page Title **************************/
 .pageTitle {
   margin-top: 1%;
   margin-left: 5%;
   text-align: left;
-  font-size: 20px;
+  font-size: 23px;
   font-family: 'Caudex';
   color: #000000;
   display: flex;
@@ -94,3 +95,33 @@
   background-color: #0056b3;
 }
 
+/********************************************************************/
+/* Form Styling for pages: Deliverable, workplan, */
+
+
+
+/* Buttons at the bottom of a form */
+.buttonsBlock{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+/* buttons */
+.buttonsBlock button {
+  width: 100px;
+  height: 50px;
+  background: hsl(211, 44%, 66%);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font: #ffffff;
+  color: #000000;
+  margin-top: 10px;
+  margin:10px;
+}
+
+.buttonsBlock button:hover{
+  background: hsl(211, 40%, 69%);
+  color: #2a2929;
+}

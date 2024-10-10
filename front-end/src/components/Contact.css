@@ -152,7 +152,7 @@
 }
 
 /* Send Message button */
-form button {
+.contactButton {
     width: 200px;
     height: 50px;
     background: hsl(211, 44%, 66%);
@@ -166,7 +166,7 @@ form button {
 }
 
 /* Send Message button when the mouse point to that*/
-form button:hover{
+.contactButton :hover{
     background: hsl(211, 40%, 69%);
     color: #2a2929;
 }

@@ -101,31 +101,6 @@
   color: #333;
   
 }
-.buttonsBlock{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-/* Send Message button */
-.buttonsBlock button {
-  width: 100px;
-  height: 50px;
-  background: hsl(211, 44%, 66%);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  font: #ffffff;
-  color: #000000;
-  margin-top: 10px;
-  margin:10px;
-}
-
-/* Send Message button when the mouse point to that*/
-.buttonsBlock button:hover{
-  background: hsl(211, 40%, 69%);
-  color: #2a2929;
-}
 
 /********** Input type -  Checkboxes**********/
 /* Hide the default checkbox */

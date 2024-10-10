@@ -341,7 +341,7 @@ function Workplan() {
                         </tr>                                   
                       </tbody>
                       </table>
-                     <div className = {style["buttonsBlock"]}>
+                     <div className = "buttonsBlock">
                         {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
                         <button type="button" onClick={discardButtonClicked}>Discard</button>
                      </div>

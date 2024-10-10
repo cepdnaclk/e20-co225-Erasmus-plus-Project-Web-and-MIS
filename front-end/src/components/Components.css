@@ -96,9 +96,46 @@
 }
 
 /********************************************************************/
-/* Form Styling for pages: Deliverable, workplan, */
+/* Form Styling for pages: Gallery, */
+/* Form title */
+.formTitle {
+  text-align: center;
+  color:hsl(226, 64%, 35%);
+  font-size: 20px;
+  margin-top: 0px;
+}
+/* Form */
+.dataForm form {
+  margin-right: 20px;
+  margin-left: 20px;
+  justify-items: center;
+}
 
+/* Data input boxes and their topics */
+.inputbox {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  margin: 15px 20px;
+  justify-content: space-between;
+}
+.inputbox label{
+  padding: 15px;
+  font-size: 16px;
+}
 
+/* Inside the data input boxes */
+.inputbox .field {
+  width: 80%;
+  right: 12%;
+  background: transparent;
+  border: 2px solid #c9e1ef;
+  outline: none;
+  padding: 15px;
+  font-size: 16px;
+  color: #333;
+}
+/********************************************************************/
 
 /* Buttons at the bottom of a form */
 .buttonsBlock{
@@ -108,8 +145,7 @@
 }
 /* buttons */
 .buttonsBlock button {
-  width: 100px;
-  height: 50px;
+  padding: 15px 45px;
   background: hsl(211, 44%, 66%);
   border: none;
   border-radius: 6px;
@@ -125,3 +161,6 @@
   background: hsl(211, 40%, 69%);
   color: #2a2929;
 }
+
+
+

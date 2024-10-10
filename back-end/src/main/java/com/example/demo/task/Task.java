@@ -15,7 +15,7 @@ import java.util.Set;
 public class Task {
 
     @Id
-   //Auto generating values
+    //Auto generating values
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Task_ID;
 
@@ -114,13 +114,10 @@ public class Task {
         assignedUsers.add(user);
     }
 
-    public void deleteAssignMember(AppUser user) {
-        assignedUsers.remove(user);
+    public void deleteAssignMembers() {
+        assignedUsers.clear();
     }
 
-    public void setAssignedMembers(Set<AppUser> taskMembers){
-        for (AppUser taskMember : taskMembers) {
-            assignMember(taskMember);}
-        }
+
 
 }

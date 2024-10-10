@@ -125,7 +125,7 @@ const Gallery = () => {
         </div>
 
         {/* Form toggle button for adding a new gallery item */}
-        <div className={style["GalleryAdd"]}>
+        <div className={style["container"]}>
         {loggedInUser.isLoggedIn && (
           <div>
             <button className="addNewButton" onClick={onAddNewClicked}>Add Album</button>
@@ -141,28 +141,30 @@ const Gallery = () => {
             maxWidth="md"
           >
           <DialogContent>
-            <div className={style["add-gallery-form"]}>
+          <div className = "dataForm"> 
+            <div className="formTitle">
               <h2>Add Gallery Item</h2>
+            </div>
               <form onSubmit={handleSubmit}>
-                <div className={style["form-group"]}>
+                <div className="inputbox">
                   <label htmlFor="albumName">Name:</label>
-                  <input type="text" placeholder="Enter Album Name" id="albumName" name="albumName" required />
+                  <input type="text" placeholder="Enter Album Name" id="albumName" name="albumName" className = "field" required />
                 </div>
-                <div className={style["form-group"]}>
+                <div className="inputbox">
                   <label htmlFor="albumURL">URL:</label>
-                  <input type="url" id="albumURL" placeholder="Enter Album URL" name="albumURL" required />
+                  <input type="url" id="albumURL" placeholder="Enter Album URL" name="albumURL" className = "field" required />
                 </div>
-                <div className={style["form-group"]}>
-                  <label htmlFor="albumCoverImage">Cover Image (Choose images with size less than 64 kB):</label>
-                  <input type="file" id="albumCoverImage" name="albumCoverImage" onChange={handleFileChange} required />
+                <div className="inputbox">
+                  <label htmlFor="albumCoverImage">Cover Image</label>
+                  <input type="file" id="albumCoverImage" name="albumCoverImage" onChange={handleFileChange} className = "field" required />
                 </div>
-                <div className={style["form-buttons"]}>
+                <div className = "buttonsBlock">
                   <button type="submit">Add Gallery Item</button>
                   <button type="button" onClick={closeButtonClicked}>Close</button>
                 </div>
               </form>
             </div>      
-        
+          
       </DialogContent>
       </Dialog>}
       

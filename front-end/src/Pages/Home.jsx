@@ -285,11 +285,11 @@ function Home() {
         </div>
         <div className =  {style["projSummeEditButton"]}>
         {loggedInUser.isLoggedIn && (
-        <button  type="button" onClick={toggleEditMode}>
+        <button  className = "addNewButton" type="button" onClick={toggleEditMode}>
           {isEditMode ? "Cancel" : "Edit"}
         </button> )}
         {isEditMode && (
-          <button type="submit">Save</button>
+          <button className = "addNewButton" type="submit">Save</button>
         )}</div>
 
         </form>

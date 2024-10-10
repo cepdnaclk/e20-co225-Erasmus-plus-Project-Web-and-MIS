@@ -1,0 +1,111 @@
+.DashboardTitle{
+    margin-top: 2%;
+    margin-left: 5%;
+    text-align: left;
+    margin-bottom: 3%;
+    font-size: 20px;
+    font-family: 'Caudex';
+}
+
+.taskCard {
+    border: 2px solid #719cc4;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 5%;
+    text-align: center;
+    background-color: #eff5f892; 
+    transition: transform 0.2s;
+    color: rgb(34, 31, 31);
+}
+
+.taskCard:hover {
+    transform: scale(1.01); 
+}
+
+/* Flex container for the buttons */
+.DashboardTabs {
+    display: flex;
+    justify-content: center;  /* Centers the buttons container */
+    align-items: center;
+    width: 90%;  /* Ensure the container takes the full width */
+    margin-left: 5%;
+    margin-right: 5%;
+}
+  
+/* Individual button styling */
+.DashboardTabs button {
+    width: 50%;  /* Each button will take 50% of the available width */
+    height: 60px;
+    padding: 0 0 17px 0;
+    background-color: rgba(228, 246, 250, 0.9);
+    margin: 0;  /* No space between the buttons */
+    border: 2px solid #e5e8f6e6;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+  
+/* Active button styling */
+.DashboardTabs button.active {
+    border-bottom: 2px solid #254ad281; /* Underline for the active tab */
+}
+  
+/* Hover effect */
+.DashboardTabs button:hover {
+    background-color: rgb(222, 241, 252);
+}
+  
+/* Repository subtitle styling */
+.DashboardSubTitle {
+    text-align: center;
+    margin: 10px 0;
+    color: #203a90;;
+    font-family: 'Caudex';
+}
+
+  
+.eventCard {
+    border: 2px solid #5f87c2; 
+    border-radius: 6px; 
+    padding: 20px; 
+    background-image: 
+        linear-gradient(
+            to bottom, 
+            rgba(255, 255, 255, 0.97) 0%,  
+            rgba(255, 255, 255, 0.6) 20%,   
+            rgba(255, 255, 255, 0.6) 50%,   
+            rgba(255, 255, 255, 0.6) 80%,  
+            rgba(255, 255, 255, 0.97) 100%  
+        ), 
+        linear-gradient(
+            to right, 
+            rgba(255, 255, 255, 0.97) 0%,   
+            rgba(255, 255, 255, 0.6) 20%,   
+            rgba(255, 255, 255, 0.6) 50%,   
+            rgba(255, 255, 255, 0.6) 80%,   
+            rgba(255, 255, 255, 0.97) 100%  
+        ), 
+        url(../assets/events.jpg);
+
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease; 
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 3%;
+    margin-top: 2%;
+    width: auto;
+    text-align: left;
+}
+  
+.eventCard h2 {
+    margin-bottom: 8px; 
+    font-size: 20px; 
+}
+  
+.eventCard p {
+    margin-bottom: 6px; 
+    font-size: 16px; 
+}
+  

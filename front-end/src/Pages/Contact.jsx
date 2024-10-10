@@ -6,6 +6,33 @@ import { faUser, faPhone, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
 /*Contact Page*/ 
 function Contact() {
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "dffdc218-3fd5-4ce9-b477-b1cae0107eb0");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    }).then((res) => res.json());
+
+    if (res.success) {
+      alert("Email sent successfully!");
+    event.target.reset(); // Clear the form fields
+    }else {
+      alert("Failed to send email. Please try again.");
+    }
+  };
+
   return(
     <>
     <div className = "contactTitle"> {/* Page title */}
@@ -66,7 +93,7 @@ function Contact() {
 
     <div className = "contactUsForm">
       <img className="contactImg" src={contactImg} alt="contactImg" /> 
-      <form>
+      <form onSubmit={onSubmit}>
         
         <div className = "inputbox">
         <label>Full Name</label>
@@ -75,7 +102,8 @@ function Contact() {
 
         <div className = "inputbox">
         <label>Email Address</label>
-        <input type = "email" className = "field" placeholder = "Enter your Email address" name = "user_email" required/>
+        <input type = "email" className = "field" placeholder = "Enter your Email address" name = "user_email" required
+            title="Please enter a valid email address"/>
         </div>
 
         <div className = "inputbox">

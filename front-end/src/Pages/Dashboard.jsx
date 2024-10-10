@@ -4,7 +4,7 @@ import style from "../components/Dashboard.module.css";
 function Dashboard() {
     return(
       <>
-      <div className={style["DashboardTitle"]}>
+      <div className="pageTitle">
           <h3>Dashboard</h3>
     </div>
         </>

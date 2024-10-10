@@ -35,7 +35,7 @@ function Contact() {
 
   return(
     <>
-    <div className = "contactTitle"> {/* Page title */}
+    <div className = "pageTitle"> 
     <h3>Contact</h3>
     <nav>
     <ol className="breadcrumb">

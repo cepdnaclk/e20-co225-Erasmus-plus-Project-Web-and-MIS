@@ -15,9 +15,10 @@ function Repository() {
   return (
     <>
       {/* Title of the Repository section */}
-      <div className={style["RepositoryTitle"]}>
-        <h3>Repository</h3>
+      <div className="pageTitle">
+          <h3>Repository</h3>
       </div>
+      
 
       {/* Tabs for different repositories */}
       <div className={style["RepoTabs"]}>

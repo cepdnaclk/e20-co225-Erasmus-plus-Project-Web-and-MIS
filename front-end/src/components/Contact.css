@@ -6,20 +6,6 @@
     flex-direction: column;
 
 }
-
-/* Contact title alignment */
-.contactTitle {
-    margin-top: 1%;
-    margin-left: 5%;
-    text-align: left;
-    font-size: 20px;
-    font-family: 'Caudex';
-    color: #000000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 5%;
-}
  
 /* Contact details of the manager and coordinator alignment */
 .contactDetails {

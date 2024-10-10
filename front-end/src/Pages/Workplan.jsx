@@ -232,22 +232,22 @@ function Workplan() {
                         <tr  key={workplanActivity.activityNo}>
                           <td>{workplanActivity.activityNo}</td>
                           <td>{workplanActivity.activityName}</td>
-                          <td style={{ backgroundColor: workplanActivity.y1_q1 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y1_q2 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y1_q3 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y1_q4 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y2_q1 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y2_q2 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y2_q3 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y2_q4 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y3_q1 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y3_q2 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y3_q3 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y3_q4 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y4_q1 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y4_q2 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y4_q3 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y4_q4 ? '#72a1e685' : 'white' }}></td>
+                          <td style={{ backgroundColor: workplanActivity.y1_q1 ? '#72a1e685' : 'white',border:"solid #72a1e685 2px" }}></td>
+                          <td style={{ backgroundColor: workplanActivity.y1_q2 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y1_q3 ? '#72a1e685' : 'white',border:"solid #72a1e685 2px" }}></td>
+                          <td style={{ backgroundColor: workplanActivity.y1_q4 ? '#72a1e685' : 'white',border:"solid #72a1e685 2px" }}></td>
+                          <td style={{ backgroundColor: workplanActivity.y2_q1 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y2_q2 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y2_q3 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y2_q4 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y3_q1 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y3_q2 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y3_q3 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y3_q4 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y4_q1 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y4_q2 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y4_q3 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y4_q4 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
         
                           {loggedInUser.isLoggedIn && <td>
                             <div className='actionButtonsBlock'>

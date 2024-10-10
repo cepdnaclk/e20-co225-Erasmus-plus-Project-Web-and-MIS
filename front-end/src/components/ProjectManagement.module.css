@@ -64,7 +64,7 @@ a:hover{
 /* Styles for input fields inside the input boxes */
   .inputbox .field {
     width: 40%;
-    position: absolute;
+    /* position: absolute; */
     left: 20%;
     background: transparent;
     border: 2px solid #c9e1ef;
@@ -77,15 +77,15 @@ a:hover{
 
   /* Styles for integer input fields with a smaller width */
   .inputbox .integerField {
-    width: 5%;
-    position: absolute;
+    width: 8%;
+    /* position: absolute; */
     right: 40%;
     background: transparent;
     border: 2px solid #c9e1ef;
     outline: none;
     padding: 15px;
     font-size: 16px;
-    color: #333;
+    color: #000000;
     
   }
 
@@ -107,9 +107,10 @@ a:hover{
   /* Container for checkboxes with scrollable content */
   .checkBoxContainer { 
     border:2px solid #ccc;
-    width:300px;
-    height: 100px; 
+    width:400px;
+    height: 80px; 
     overflow-y: scroll;
+    overflow-x: scroll;
     scrollbar-color: white black;
     background: transparent;
     border: 2px solid #c9e1ef;
@@ -118,4 +119,9 @@ a:hover{
 /* Inverts colors for the calendar picker icon */
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+
+.scroller {
+ 
+  scrollbar-color: #c9e1ef black;
 }

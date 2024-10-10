@@ -3,7 +3,7 @@ import DrErunikaDayaratna from '../assets/erunika-dayaratna.jpg';
 import contactImg from '../assets/contactImg.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faEnvelope} from '@fortawesome/free-solid-svg-icons';
-
+import style from "../components/Contact.module.css";
 /*Contact Page*/ 
 function Contact() {
 
@@ -51,70 +51,70 @@ function Contact() {
   </nav>
     </div>
 
-    <div className = "contactpage">
+    <div className = {style["contactpage"]}>
 
-    <div className = "contactDetails">
+    <div className = {style["contactDetails"]}>
     {/* Image and the contact details of the Project manager */}
-    <div className = "contactManagerCoordinator"> 
-      <img className="Dr-Upul-Jayasinghe-img" src={DrUpulJayasinghe} alt="DrUpulJayasinghe" /> 
-      <div className = "contactMCDetails">
+    <div className = {style["contactManagerCoordinator"]}> 
+      <img className = {style["Dr-Upul-Jayasinghe-img"]} src={DrUpulJayasinghe} alt="DrUpulJayasinghe" /> 
+      <div className = {style["contactMCDetails"]}>
         <h3>Dr. Upul Jayasinghe</h3>
         <h4>Manager</h4>
         <p>Telephone Number: <a href="tel:+94760416590">+94 76 0416 590</a></p>
         <p>Email Address: <a href="mailto:upuljm@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></p>
-        <a href="https://people.ce.pdn.ac.lk/staff/academic/upul/"><FontAwesomeIcon className = "contactIcons" icon={faUser} /></a>
-        <a href="tel:+94760416590"><FontAwesomeIcon className = "contactIcons" icon={faPhone} /></a>
-        <a href="mailto:upuljm@eng.pdn.ac.lk"><FontAwesomeIcon className = "contactIcons" icon={faEnvelope} /></a>
+        <a href="https://people.ce.pdn.ac.lk/staff/academic/upul/"><FontAwesomeIcon className = {style["contactIcons"]} icon={faUser} /></a>
+        <a href="tel:+94760416590"><FontAwesomeIcon className = {style["contactIcons"]} icon={faPhone} /></a>
+        <a href="mailto:upuljm@eng.pdn.ac.lk"><FontAwesomeIcon className = {style["contactIcons"]} icon={faEnvelope} /></a>
       </div>
 
     </div>
 
     {/* Image and the contact details of the Project coordinator */}
-    <div className = "contactManagerCoordinator">
-      <img className="Dr-Erunika-Dayaratna-img" src={DrErunikaDayaratna} alt="DrErunikaDayaratna" />
-      <div className = "contactMCDetails">
+    <div className = {style["contactManagerCoordinator"]}>
+      <img  className = {style["Dr-Erunika-Dayaratna-img"]} src={DrErunikaDayaratna} alt="DrErunikaDayaratna" />
+      <div className = {style["contactMCDetails"]}>
         <h3>Dr. Erunika Dayaratna</h3>
         <h4>Coordinator</h4>
         <p>Telephone Number: <a href="tel:+94766986500">+94 76 698 6500</a></p>
         <p>Email Address: <a href="mailto:dayaratna@sci.pdn.ac.lk">dayaratna@sci.pdn.ac.lk</a></p>
-        <a href="https://sci.pdn.ac.lk/scs/staff/Erunika-Dayaratna"><FontAwesomeIcon className = "contactIcons" icon={faUser} /></a>
-        <a href="tel:+94766986500"><FontAwesomeIcon className = "contactIcons" icon={faPhone} /></a>
-        <a href="mailto:dayaratna@sci.pdn.ac.lk"><FontAwesomeIcon className = "contactIcons" icon={faEnvelope} /></a>
+        <a href="https://sci.pdn.ac.lk/scs/staff/Erunika-Dayaratna"><FontAwesomeIcon className = {style["contactIcons"]} icon={faUser} /></a>
+        <a href="tel:+94766986500"><FontAwesomeIcon className = {style["contactIcons"]} icon={faPhone} /></a>
+        <a href="mailto:dayaratna@sci.pdn.ac.lk"><FontAwesomeIcon className = {style["contactIcons"]} icon={faEnvelope} /></a>
       </div>
     </div>
     </div>
 
 
     {/* Contact Us form */}
-    <div className = "ContactUsTitle">
+    <div className = {style["ContactUsTitle"]}>
       <h3>Contact Us</h3>
-      <p className = "ContactUsSubTitle">For inquiries or support, contact us and we'll respond promptly</p>
+      <p className = {style["ContactUsSubTitle"]}>For inquiries or support, contact us and we'll respond promptly</p>
     </div>
 
-    <div className = "contactUsForm">
-      <img className="contactImg" src={contactImg} alt="contactImg" /> 
+    <div className = {style["contactUsForm"]}>
+      <img className = {style["contactImg"]} src={contactImg} alt="contactImg" /> 
       <form onSubmit={onSubmit}>
         
-        <div className = "inputbox">
+        <div className = {style["inputbox"]}>
         <label>Full Name</label>
-        <input type = "text" className = "field" placeholder = "Enter your Full Name" name = "user_name" required/>
+        <input type = "text" className = {style["field"]} placeholder = "Enter your Full Name" name = "user_name" required/>
         </div>
 
-        <div className = "inputbox">
+        <div className = {style["inputbox"]}>
         <label>Email Address</label>
-        <input type = "email" className = "field" placeholder = "Enter your Email address" name = "user_email" required
+        <input type = "email" className = {style["field"]} placeholder = "Enter your Email address" name = "user_email" required
             title="Please enter a valid email address"/>
         </div>
 
-        <div className = "inputbox">
+        <div className = {style["inputbox"]}>
         <label>Subject</label>
-        <input type = "text" className = "field" placeholder = " Enter the Subject" name = "subject" required/>
+        <input type = "text" className = {style["field"]} placeholder = " Enter the Subject" name = "subject" required/>
         </div>
-        <div className = "inputbox">
+        <div className = {style["inputbox"]}>
         <label>Your Message</label>
-        <textarea name = "message" id = "" className = "field mess" placeholder = "Enter your message" required></textarea>
+        <textarea name = "message" id = "" className = {style["field-mess"]} placeholder = "Enter your message" required></textarea>
         </div>
-        <button type = "submit" className = "contactButton" >Send Message</button>
+        <button type = "submit" className = {style["contactButton"]}>Send Message</button>
       </form>
 
     </div>

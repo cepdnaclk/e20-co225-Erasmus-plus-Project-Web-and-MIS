@@ -111,7 +111,7 @@
 .contactUsForm img{
     width: auto;
     height: 400px;
-    margin-top: 200px;
+    margin-top: 20px;
     margin-right: 20px;
     margin-left: 20px;
 }
@@ -126,7 +126,6 @@
 .inputbox {
     margin-top: 20px;
     width: 400px;
-    margin-right: 20px;
     font-size: 18px;
 }
 
@@ -143,12 +142,18 @@
 }
 
 /* Message input section */
-.inputbox .field.mess {
+.inputbox .field-mess {
+    width: 93%;
     height: 100px;
-    resize: none;
+    background: transparent;
+    border: 2px solid #c9e1ef;
+    outline: none;
+    padding: 15px;
     font-size: 16px;
+    color: #333;
+    margin-top: 8px;
+    resize: none;
     font-family: Sans-serif;
-
 }
 
 /* Send Message button */

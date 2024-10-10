@@ -350,7 +350,7 @@ const onViewClick = (deliverable) => {
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["buttonsBlock"]}>
+              <div className = "buttonsBlock">
                   {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
                   <button type="button" onClick={discardButtonClicked}>Discard</button>
               </div>
@@ -407,7 +407,7 @@ const onViewClick = (deliverable) => {
                             </tr>
                         </tbody>
                     </table>
-                    <div className = {style["buttonsBlock"]}><button onClick={closeButtonClicked}>Close</button></div>
+                    <div className = "buttonsBlock"><button onClick={closeButtonClicked}>Close</button></div>
                 </div>
       </DialogContent> 
     </Dialog>}

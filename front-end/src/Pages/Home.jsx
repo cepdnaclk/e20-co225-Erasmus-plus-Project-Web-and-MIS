@@ -12,6 +12,9 @@ import targerGroupStudents from '../assets/TargetGroupIcons/graduating-student.p
 import targerGroupCyberSecurity from '../assets/TargetGroupIcons/technology.png';
 import targerGroupCompany from '../assets/TargetGroupIcons/office-building.png';
 
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { loggedInUser } from '../components/Header';
 // this has to be imported from backend 
 // 1200px height images are ideal
 const fadeImages = [
@@ -98,7 +101,66 @@ const partnerInfo = [
 ]
 
 function Home() {
-  
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [projectId, setProjectId] = useState(null);
+  const [projectSummaryStatus, setProjectSummaryStatus] = useState("Ongoing");
+  const [projectSummaryEndDate, setProjectSummaryEndDate] = useState("2026-11-30");
+  const [projectExists, setProjectExists] = useState(false);
+
+  useEffect(() => {
+    const fetchLatestProject = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/project/latest");
+        if (response.data) {
+          setProjectId(response.data.id);
+          setProjectSummaryStatus(response.data.status || "Ongoing");
+          setProjectSummaryEndDate(response.data.endDate || "2026-11-30");
+          setProjectExists(true);
+        }
+      } catch (error) {
+        console.error("Error fetching latest project data:", error);
+        setProjectExists(false);
+      }
+    };
+    fetchLatestProject();
+  }, []);
+
+  const toggleEditMode = () => {
+    setIsEditMode((prev) => !prev);
+  };
+
+  const handleStatusChange = (event) => {
+    setProjectSummaryStatus(event.target.value);
+  };
+
+  const handleEndDateChange = (event) => {
+    setProjectSummaryEndDate(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const updatedProject = {
+      status: projectSummaryStatus,
+      endDate: projectSummaryEndDate,
+      // Include other fields as necessary
+    };
+
+    try {
+      await axios.put(`http://localhost:8080/api/project/${projectId}`, updatedProject);
+
+      // Fetch the latest project details after updating
+      const response = await axios.get("http://localhost:8080/api/project/latest");
+      setProjectSummaryStatus(response.data.status || "Ongoing");
+      setProjectSummaryEndDate(response.data.endDate || "2026-11-30");
+
+      window.alert("Project details updated successfully!");
+    } catch (error) {
+      console.error("Error updating project:", error);
+    }
+  };
+
   return (
     <>
       {/* image slider */}
@@ -152,22 +214,37 @@ function Home() {
         <div style={{ margin: "2% 2% 2% 2%" }}>
           <span style={{ fontWeight: 'bold', fontSize: '24px' }}>Project Summary</span><br></br>
         </div>
+        <form onSubmit={handleSubmit}>
         <div className={style["projectSummaryFlex"]}>
           <div className={style["projectSummaryFlexItem"]}>
             <FontAwesomeIcon icon={faBell} />
             <div>
               <p>Project Status</p>
-              <p className={style["bold"]}>Ongoing</p>
+              {/* <p className={style["bold"]}>Ongoing</p> */}
+              {isEditMode ? (
+              <select value={projectSummaryStatus} onChange={handleStatusChange}>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Completed">Completed</option>
+                <option value="On Hold">On Hold</option>
+              </select>
+            ) : (
+              <span className={style["bold"]}>{projectSummaryStatus}</span>
+            )}
             </div>
           </div>
           <div className={style["projectSummaryFlexItem"]}>
             <FontAwesomeIcon icon={faCalendar} />
             <div>
               <span>Start date&nbsp;&nbsp;&nbsp;</span>
-              <span className={style["bold"]}>01-12-2023</span>
+              <span className={style["bold"]}>2023-12-01</span>
               <br></br>
               <span>End date &nbsp;&nbsp;&nbsp;</span>
-              <span className={style["bold"]}>30-11-2026</span>
+              {/* <span className={style["bold"]}>30-11-2026</span> */}
+              {isEditMode ? (
+              <input type="date" value={projectSummaryEndDate} onChange={handleEndDateChange} />
+            ) : (
+              <span className={style["bold"]}>{projectSummaryEndDate}</span>
+            )}
             </div>
           </div>
           <div className={style["projectSummaryFlexItem"]}>
@@ -206,6 +283,16 @@ function Home() {
             </div>
           </div>
         </div>
+        <div className =  {style["projSummeEditButton"]}>
+        {loggedInUser.isLoggedIn && (
+        <button  type="button" onClick={toggleEditMode}>
+          {isEditMode ? "Cancel" : "Edit"}
+        </button> )}
+        {isEditMode && (
+          <button type="submit">Save</button>
+        )}</div>
+
+        </form>
       </div>
 
       {/* google calendar */}

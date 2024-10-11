@@ -6,9 +6,10 @@ import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
+import { appUserRole } from '../Pages/Login';
 
 // Global user state
-export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
+export let loggedInUser = { isLoggedIn: false, name: '', email: '', appUserRole: ''};
 
 function Header(){
     // State for hamburger menu
@@ -25,21 +26,49 @@ function Header(){
     useEffect(() => {
         axios.get('http://localhost:8080/user-info', { withCredentials: true }) 
             .then(response => { 
-                const userData = response.data;
-                setUser(userData);
-                loggedInUser = {
+                const userDataGoogle = response.data;
+
+                // Store Google user data
+                const googleUser = {
                     isLoggedIn: true,
-                    firstName: userData.name,
-                    lastName: '',  // Assuming Google doesn't provide the last name
-                    profilePicture: userData.picture && <img src = {userData.picture} alt = 'User Profile' referrerPolicy="no-referrer"/>
+                    name: userDataGoogle.name,
+                    email: userDataGoogle.email,
+                    profilePicture: userDataGoogle.picture && <img src={userDataGoogle.picture} alt="User Profile" referrerPolicy="no-referrer" />
                 };
-                setLoggedInUser(true);  // Updates the logged-in state immediately
-                window.Location.reload
+
+                // Fetch additional data from the backend using the email
+                axios.get(`http://localhost:8080/api/v1/users?email=${userDataGoogle.email}`)
+                    .then(backendResponse => {
+                        const backendData = backendResponse.data;  
+                        const user = backendData.find(user => user.email === userDataGoogle.email);
+                        const appUserRole = user.appUserRole;
+                            
+    
+                const userData = {
+                    ...googleUser,
+                    appUserRole
+                };
+
+                setUser(userData);
+                loggedInUser = userData;
+                
+                setLoggedInUser(true);   // Update the login state
+
             })
-            .catch(error => {
-                console.error('Error fetching user data:', error);
+            .catch(backendError => {
+                console.error('Error fetching backend data:', backendError);
             });
-    }, []);
+    })
+    .catch(error => {
+        console.error('Error fetching Google user data:', error);
+    });
+}, []);
+
+
+
+
+
+
     
 
     // Get the current location
@@ -92,7 +121,7 @@ function Header(){
         axios.get('http://localhost:8080/logout', { withCredentials: true })
         .then(() => {
             // Clear any frontend user state
-            loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' };
+            loggedInUser = { isLoggedIn: false, name: '', email: ''};
             setLoggedInUser(false);
 
             window.location.reload
@@ -262,21 +291,21 @@ function closeOnClickOutside(selector, toggleClass) {
                     )}
     
                     {/* Display user name */}
-                    <h3>{loggedInUser.firstName} {loggedInUser.lastName}</h3>
+                    <h3>{loggedInUser.name} {loggedInUser.lastName}</h3>
                 </div>
 
                     
                     <hr></hr>
-                    <a herf="#" className="userAccountContent">                                
+                    <Link to = '/profile' onClick={handleLinkClick} className="userAccountContent">                             
                         <FontAwesomeIcon icon={faUser} className="icon" />
                         <p>Profile</p>    
                         <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
-                    </a>
-                    <a herf="#" className="userAccountContent"> 
+                    </Link> 
+                    <Link to = '/myfiles' onClick={handleLinkClick} className="userAccountContent">    
                         <FontAwesomeIcon icon={faFile} className="icon"/>                            
                         <p>My Files</p>    
                         <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
-                    </a>
+                    </Link>
                     <a herf="#" className="userAccountContent"> 
                         <FontAwesomeIcon icon={faCalendarDays} className="icon"/>                            
                         <p>Calender</p>    

@@ -33,7 +33,7 @@
   font-size: 16px;
   cursor: pointer;
   text-align: center;
-  transition: background-color 0.3s ease;
+  /* transition: background-color 0.3s ease; */
 }
 
 /* Active button styling */

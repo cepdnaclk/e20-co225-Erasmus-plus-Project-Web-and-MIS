@@ -43,7 +43,7 @@ function Profile() {
         <h3><u><span style={{ color:'rgba(10, 48, 128)'}}>User Details</span></u></h3>
         <h4><span style={{ color:'hsl(107, 69%, 18%)'}}>Email: <br></br>{loggedInUser.email}</span></h4>
             
-        <h4><span style={{ color:'hsl(107, 69%, 18%)'}}>User Role: <br></br>{loggedInUser.appUserRole}</span></h4>
+        <h4><span style={{ color:'hsl(107, 69%, 18%)'}}>User Role: <br></br>{loggedInUser.userRole}</span></h4>
     </div>
     </div>
     </>

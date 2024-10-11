@@ -144,7 +144,6 @@ function Home() {
     const updatedProject = {
       status: projectSummaryStatus,
       endDate: projectSummaryEndDate,
-      // Include other fields as necessary
     };
 
     try {

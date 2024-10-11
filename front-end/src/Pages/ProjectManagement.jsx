@@ -232,7 +232,71 @@ const onDeleteClick = async (task_ID) => {
   }
 
 
+/**************Chart Configuration***************/
+const options = {
+  height: 600,
+  gantt: {
+    barHeight: 25,
+    trackHeight: 50,
+    criticalPathEnabled: false, 
+    labelStyle: {
+      fontName: 'Caudex',
+      fontSize: 18,
+      color: '#004594'//Not working?
+    },
+    // innerGridTrack: { fill: '#e3f2fd' },  
+    // innerGridDarkTrack: { fill: '#bbdefb' }, 
+    // Adjust the date format for months and years
+    timeFormat: {
+      timeline: {
+        rowLabelFormat: 'MMM YYYY', // Month and Year on row labels
+        unit: 'date', // Grouping by months
+      },
+    },
+    palette: [
+      {
+        color: "#004594",
+        dark: "#a6c9f1", //
+        light: "#a6c9f1"
+      }
+    ],
+    enableInteractivity: false,
+    
+    // shadowEnabled : true,
+    // shadowColor: 'white',
+    // shadowOffset: 2,
+    tooltip: {
+      isHtml: true, // Enable HTML tooltips for more customization
+    },
+  },
+};
 
+/**************Column Names***************/
+const columns = [
+  { type: "string", label: "Task ID" },
+  { type: "string", label: "Task Name" },
+  { type: 'string', label: 'Resource' }, // New column for "Details"
+  { type: "date", label: "Start Date" },
+  { type: "date", label: "End Date" },
+  { type: "number", label: "Duration" },
+  { type: "number", label: "Percent Complete" },
+  { type: "string", label: "Dependencies" },
+  
+];
+
+/************** Rows **************/
+const rows = (tasks) => {
+  return tasks.map(task => [
+    task.task_ID,
+    task.task_Name,
+    task.assignedUsers.map(user => `${user.firstName} ${user.lastName}`).join(', '),
+    new Date(task.start_Date),
+    new Date(task.end_Date),
+    null,  // Assuming duration is null since you're using start and end dates
+    task.progress || 0,  // Handle if progress is undefined
+    task.dependencies || null,  // Handle missing dependencies
+  ]);
+};
 
 
     return(
@@ -345,7 +409,32 @@ const onDeleteClick = async (task_ID) => {
      
     </div>
 
-
+{/* Gann chart  */}
+<Chart
+            chartType="Gantt"
+            data={[columns, ...rows(tasks)]} // Pass the mapped rows from tasks
+            width="100%"
+            height={"600px"}
+            options={options}
+            chartEvents={[
+              {
+                eventName: "select",
+                callback: ({ chartWrapper }) => {
+                  const chart = chartWrapper.getChart();
+                  const selection = chart.getSelection();
+                  if (selection.length > 0) {
+                    const row = selection[0].row;
+                    if (row !== undefined && tasks[row]) {
+                      const selectedTask = tasks[row];
+                      onViewClick(selectedTask);
+                    } else {
+                      console.error("No task found for the selected row");
+                    }
+                  }
+                },
+              },
+            ]}
+          />
 
     
       </>

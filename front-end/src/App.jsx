@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import './components/Header.css'
 import './components/Overview.css'
-import './components/Contact.css'
 import './components/Team.css'
 import './components/News.css'
 import './components/Download.css'

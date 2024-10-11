@@ -25,7 +25,6 @@ function Footer() {
                     <h6>Main Navigation</h6>
                     <ul>
                         <li><Link to = '/'>Home</Link></li>
-                        <li><Link to = '/Login'>Log in</Link></li>
                         <li><Link to = '/project Overview/Overview'>Project Overview</Link></li>
                         <li><Link to = '/contact'>Contact</Link></li>
                     </ul>

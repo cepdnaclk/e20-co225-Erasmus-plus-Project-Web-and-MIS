@@ -35,14 +35,6 @@ spring:
           timeout: 3000
           write timeout: 5000
 
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: "257276141541-av8vs5jp5u7e9f3am8dllo761kg7abo8.apps.googleusercontent.com"
-            client-secret: "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"
-
   servlet:
     multipart:
       max-file-size: 100MB   # Increase size for large files

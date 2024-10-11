@@ -36,7 +36,7 @@ function Profile() {
                         fontFamily: 'Caudex',
                         color: '#172554',
                         padding: '0 0 0 50px'
-                    }} >{loggedInUser.name}</h3>
+                    }} >{loggedInUser.firstName} {loggedInUser.lastName}</h3>
         </div>
 
     <div className="User-details">

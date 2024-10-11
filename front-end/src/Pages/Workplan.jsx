@@ -174,10 +174,28 @@ function Workplan() {
 
   return(
     <>
-      <div className={style["workplanTitle"]}>
+      <div className="pageTitle">
           <h3>Workplan</h3>
+          <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="http://localhost:5173/"> 
+                <span style={{ fontSize: 16}}>Home</span>
+              </a>
+            </li>
+            <li className="breadcrumb-item active">
+              <span style={{ fontSize: 16}}> Project Overview</span>
+            </li>
+            <li className="breadcrumb-item active">
+              <span style={{ fontSize: 16}}> Cycle Workplan</span>
+            </li>
+          </ol>
+        </nav>
       </div>
     <div className={style["container"]}>
+      {!addRow && loggedInUser.isLoggedIn && <div>
+        <button className="addNewButton" onClick={onAddNewClicked}>Add Activity</button>
+      </div>}
       <div className={style["tableContainer"]}>
           <table className={style["table"]}>
             <thead>
@@ -214,27 +232,27 @@ function Workplan() {
                         <tr  key={workplanActivity.activityNo}>
                           <td>{workplanActivity.activityNo}</td>
                           <td>{workplanActivity.activityName}</td>
-                          <td style={{ backgroundColor: workplanActivity.y1_q1 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y1_q2 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y1_q3 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y1_q4 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y2_q1 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y2_q2 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y2_q3 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y2_q4 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y3_q1 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y3_q2 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y3_q3 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y3_q4 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y4_q1 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y4_q2 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y4_q3 ? '#72a1e685' : 'white' }}></td>
-                          <td style={{ backgroundColor: workplanActivity.y4_q4 ? '#72a1e685' : 'white' }}></td>
+                          <td style={{ backgroundColor: workplanActivity.y1_q1 ? '#72a1e685' : 'white',border:"solid #72a1e685 2px" }}></td>
+                          <td style={{ backgroundColor: workplanActivity.y1_q2 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y1_q3 ? '#72a1e685' : 'white',border:"solid #72a1e685 2px" }}></td>
+                          <td style={{ backgroundColor: workplanActivity.y1_q4 ? '#72a1e685' : 'white',border:"solid #72a1e685 2px" }}></td>
+                          <td style={{ backgroundColor: workplanActivity.y2_q1 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y2_q2 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y2_q3 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y2_q4 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y3_q1 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y3_q2 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y3_q3 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y3_q4 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y4_q1 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y4_q2 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y4_q3 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
+                          <td style={{ backgroundColor: workplanActivity.y4_q4 ? '#72a1e685' : 'white' ,border:"solid #72a1e685 2px"}}></td>
         
                           {loggedInUser.isLoggedIn && <td>
-                            <div className={style['actionButtons']}>
-                              <button className={style['actionButton']} onClick={() => onEditClick(workplanActivity)}><FontAwesomeIcon icon={faPen}/></button>
-                              <button className={style['actionButton']} onClick={() => onDeleteClick(workplanActivity.activityNo)}><FontAwesomeIcon icon={faTrash} /></button>
+                            <div className='actionButtonsBlock'>
+                              <button className='actionButton' onClick={() => onEditClick(workplanActivity)}><FontAwesomeIcon icon={faPen}/></button>
+                              <button className='actionButton' onClick={() => onDeleteClick(workplanActivity.activityNo)}><FontAwesomeIcon icon={faTrash} /></button>
                             </div>         
                           </td>}
                         </tr>
@@ -248,9 +266,6 @@ function Workplan() {
             </tfoot> */}
           </table>
       </div>
-      {!addRow && loggedInUser.isLoggedIn && <div>
-        <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
-      </div>}
       </div>
       {/* Dialog- Add New Row/Edit Row */}
       { (addRow || editRow) &&  <Dialog
@@ -326,7 +341,7 @@ function Workplan() {
                         </tr>                                   
                       </tbody>
                       </table>
-                     <div className = {style["buttonsBlock"]}>
+                     <div className = "buttonsBlock">
                         {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
                         <button type="button" onClick={discardButtonClicked}>Discard</button>
                      </div>

@@ -80,6 +80,7 @@
     flex-direction:row;
     flex-wrap: wrap;
     align-items: center;
+    margin-left: 5%;
   }
   
 /* Individual item styles within the project summary section */
@@ -107,6 +108,13 @@ font-weight: 700;
 margin-right: 13px;
 font-size: 1.5em;
 color:#004594ca ;
+}
+
+.projSummeEditButton {
+  display: flex; 
+  gap: 20px; 
+  justify-content: center;
+  align-items: center;
 }
 
 /* Project description card with border, padding, and rounded corners */

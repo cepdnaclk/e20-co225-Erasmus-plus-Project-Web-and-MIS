@@ -1,0 +1,190 @@
+/* Includes stying for common components */
+/******************* Page Title **************************/
+.pageTitle {
+  margin-top: 1%;
+  margin-left: 5%;
+  text-align: left;
+  font-size: 23px;
+  font-family: 'Caudex';
+  color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5%;
+}
+/********************************************************************/
+/* Action buttons for delete, view and edit (Fontawsome icons) */
+.actionButtonsBlock{
+  display:flex;
+  flex-direction: row; 
+  justify-items: center;
+}
+.actionButton{
+  margin-right: 5px;
+  padding:0;
+  background-color:#d6e4f466;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.actionButton svg{
+  padding:8px;
+  border-radius: 0.2em;
+  color:#203a90;
+}
+.actionButton:hover {
+  background-color:#a6c9f1d6;
+}
+/********************************************************************/
+/* Breadcrumb navigation styles */
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item {
+  margin-right: 5px;
+}
+
+/* Adds ">" symbol between breadcrumb items */
+.breadcrumb-item::after {
+  content: ">";
+  margin-left: 5px;
+}
+
+/* Removes the ">" after the last breadcrumb item */
+.breadcrumb-item:last-child::after {
+  content: "";
+}
+
+/* Styles for breadcrumb links */
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #5086c0; /* Blue color */
+}
+
+/* Styles for breadcrumb links on hover */
+.breadcrumb-item a:hover {
+  text-decoration: none;
+  color: #7e96af; /* Blue color */
+}
+
+/* Styles for active breadcrumb items */
+.breadcrumb-item.active {
+  color: #5c6064; /* Gray color */
+}
+/********************************************************************/
+/******************* Add New Button **************************/
+
+.addNewButton{
+  margin: 20px 0px;
+  padding: 15px 45px;
+  background-color: hsl(226, 64%, 35%);
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Caudex';
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #ffffff;
+}
+.addNewButton:hover { 
+  background-color: #0056b3;
+}
+
+/********************************************************************/
+/* Form Styling for pages: Gallery, */
+/* Form title */
+.formTitle {
+  text-align: center;
+  color:hsl(226, 64%, 35%);
+  font-size: 20px;
+  margin-top: 0px;
+}
+/* Form */
+.dataForm form {
+  margin-right: 20px;
+  margin-left: 20px;
+  justify-items: center;
+}
+
+/* Data input boxes and their topics */
+.inputbox {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  margin: 15px 20px;
+  justify-content: space-between;
+}
+.inputbox label{
+  padding: 15px;
+  font-size: 16px;
+}
+
+/* Inside the data input boxes */
+.inputbox .field {
+  width: 80%;
+  right: 12%;
+  background: transparent;
+  border: 2px solid #c9e1ef;
+  outline: none;
+  padding: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* file upload button */
+.inputbox[type="file"]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+
+/* file upload button hover state */
+.inputbox[type="file"]::file-selector-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* file upload button active state */
+.inputbox[type="file"]::file-selector-button:active {
+  background-color: #e5e7eb;
+}
+
+/********************************************************************/
+
+/* Buttons at the bottom of a form */
+.buttonsBlock{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+/* buttons */
+.buttonsBlock button {
+  padding: 15px 45px;
+  background: hsl(211, 44%, 66%);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font: #ffffff;
+  color: #000000;
+  margin-top: 10px;
+  margin:10px;
+}
+
+.buttonsBlock button:hover{
+  background: hsl(211, 40%, 69%);
+  color: #2a2929;
+}
+
+
+

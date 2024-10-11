@@ -5,5 +5,5 @@ package com.example.demo.appuser;
  * Users can have either the USER role or the ADMIN role.
  */
 public enum AppUserRole {
-    USER, ADMIN;
+    USER, ADMIN, COORDINATOR, MANAGER, SUPER_ADMIN;
 }

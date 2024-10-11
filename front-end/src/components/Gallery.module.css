@@ -1,39 +1,10 @@
-/* Title for the gallery section */
-.GalleryTitle{
-    margin-top: 1%;
-    margin-left: 5%;
-    text-align: left;
-    font-size: 20px;
-    font-family: 'Caudex';
-    color: #000000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 5%;
-}
-
 /* Container for adding new gallery items */
-.GalleryAdd {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
   width: 90%;
-}
-
-/* Style for the "Add Gallery" button */
-.AddGalleryButton {
-  margin-top: 2px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #203a90;
-  text-decoration: none;
-  font-family: 'Times New Roman', Times, serif;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  color: #ffffff;
 }
 
 /* Form for adding new gallery items */
@@ -50,19 +21,12 @@
   margin-top: 3px;
 }
 
-/* Centering the add gallery form container */
-.add-gallery-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* Heading for the gallery add form */
 .add-gallery-form h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #203a90;
-  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  color:hsl(226, 64%, 35%);
+  font-size: 20px;
+  margin-top: 0px;
 }
   
 /* Style for form groups */
@@ -160,18 +124,6 @@
   position: absolute; /* Position it relative to .news-tile */
   bottom: 10px; /* Position it at the bottom of the tile */
   right: 10px;  /* Align it to the right */
-}
-
-.actionButton{
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: #203a90;
-  transition: transform 0.2s ease;
-}
-
-.actionButton:hover {
-  transform: scale(1.1); /* Slight zoom on hover for effect */
 }
   
 /* Responsive adjustments for smaller screens */

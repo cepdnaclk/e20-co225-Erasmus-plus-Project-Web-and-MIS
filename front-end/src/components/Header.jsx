@@ -9,7 +9,8 @@ import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalenda
 import { appUserRole } from '../Pages/Login';
 
 // Global user state
-export let loggedInUser = { isLoggedIn: false, name: '', email: '', appUserRole: ''};
+export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' ,email:'',userID:'',userRole:'',isRegisteredUser:false};
+
 
 function Header(){
     // State for hamburger menu
@@ -26,48 +27,49 @@ function Header(){
     useEffect(() => {
         axios.get('http://localhost:8080/user-info', { withCredentials: true }) 
             .then(response => { 
-                const userDataGoogle = response.data;
 
-                // Store Google user data
-                const googleUser = {
-                    isLoggedIn: true,
-                    name: userDataGoogle.name,
-                    email: userDataGoogle.email,
-                    profilePicture: userDataGoogle.picture && <img src={userDataGoogle.picture} alt="User Profile" referrerPolicy="no-referrer" />
-                };
-
-                // Fetch additional data from the backend using the email
-                axios.get(`http://localhost:8080/api/v1/users?email=${userDataGoogle.email}`)
-                    .then(backendResponse => {
-                        const backendData = backendResponse.data;  
-                        const user = backendData.find(user => user.email === userDataGoogle.email);
-                        const appUserRole = user.appUserRole;
-                            
-    
-                const userData = {
-                    ...googleUser,
-                    appUserRole
-                };
-
+                //getting google account info
+                const userData = response.data;
                 setUser(userData);
-                loggedInUser = userData;
-                
-                setLoggedInUser(true);   // Update the login state
-
+                loggedInUser = {
+                    isLoggedIn: true,
+                    firstName: userData.name,
+                    lastName: '',  // Assuming Google doesn't provide the last name
+                    email:userData.email,
+                    profilePicture: userData.picture && <img src = {userData.picture} alt = 'User Profile' referrerPolicy="no-referrer"/>
+                };
             })
-            .catch(backendError => {
-                console.error('Error fetching backend data:', backendError);
-            });
-    })
-    .catch(error => {
-        console.error('Error fetching Google user data:', error);
-    });
-}, []);
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            })
+            .then(()=>{
+                //fetching the database info, to see whether the logging-in-user is a registered-user
+                // for a null email -> no need to check (when the website is loading)
+                   if(loggedInUser.email!=""){
 
-
-
-
-
+                       axios.post(`http://localhost:8080/api/v1/users/getUserByEmail`,{
+                           email:loggedInUser.email})
+                       .then((res) => {  
+                            // console.log(res.data)
+                           //null reply -> not registered
+                          if ( Object.keys(res.data).length == 0 ) {
+                              setLoggedInUser(false);
+                              logOut();
+                              alert("You have to be a registered user to be logged in!");
+                          } else { // if the user is a registered user
+                              loggedInUser.userID=res.data.id
+                              loggedInUser.userRole=res.data.appUserRole
+                              loggedInUser.isRegisteredUser=true
+                              setLoggedInUser(true);  // Updates the logged-in state immediately
+                              window.Location.reload
+                          }})
+                  .catch((err) =>{
+                      alert(err);
+                  })
+                   }
+            //    }
+            })
+    },[]);
 
     
 
@@ -90,10 +92,13 @@ function Header(){
         setIsVisible(false);
     }
 
-    const googleLogin = () => {
+    const googleLogin = async() => {
         // Redirect to the backend for Google login
         setIsVisible(false); 
-        window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+        window.location.href = await 'http://localhost:8080/oauth2/authorization/google';
+        //fetch user data from backend
+
+       
     }
 
     //For logout 
@@ -121,7 +126,8 @@ function Header(){
         axios.get('http://localhost:8080/logout', { withCredentials: true })
         .then(() => {
             // Clear any frontend user state
-            loggedInUser = { isLoggedIn: false, name: '', email: ''};
+            loggedInUser = { isLoggedIn: false, firstName: '', lastName: '',email:'',userID:'' ,userRole:'',isRegisteredUser:false};
+
             setLoggedInUser(false);
 
             window.location.reload

@@ -147,7 +147,7 @@ const FileUploadDownload = () => {
 
   return (
     <div>
-      <div className="downloadTitle">
+      <div className="pageTitle">
         <h3>Downloads</h3>
         <nav>
           <ol className="breadcrumb">
@@ -165,7 +165,7 @@ const FileUploadDownload = () => {
 
       {loggedInUser.isLoggedIn && (
         <div className="upload-section">
-          <button className="addcancelbutton" onClick={() => setShowUploadForm(!showUploadForm)}>
+          <button className="addNewButton" onClick={() => setShowUploadForm(!showUploadForm)}>
             {showUploadForm ? 'Cancel' : 'Add File'}
           </button>
           {showUploadForm && (

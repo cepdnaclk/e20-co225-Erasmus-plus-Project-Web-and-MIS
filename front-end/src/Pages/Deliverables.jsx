@@ -172,7 +172,7 @@ const onViewClick = (deliverable) => {
 
   return(
   <>
-    <div className={style["deliverableTitle"]}>
+    <div className="pageTitle">
           <h3>Deliverables</h3>
           <nav>
           <ol className="breadcrumb">
@@ -191,6 +191,9 @@ const onViewClick = (deliverable) => {
         </nav>
     </div>
     <div className={style["container"]}>
+      {!addRow && loggedInUser.isLoggedIn && <div>
+        <button className="addNewButton" onClick={onAddNewClicked}>Add New</button>
+      </div>}
       <div className={style["tableContainer"]}>
           <table className={style["table"]}>
             <thead>
@@ -204,7 +207,7 @@ const onViewClick = (deliverable) => {
                 <th scope="col">Type</th>
                 <th scope="col">Dissemination Level</th>
                 <th scope="col">Due Date</th>
-                {loggedInUser.isLoggedIn && <th>Action</th>}
+                {loggedInUser.isLoggedIn && <th width="120px">Action</th>}
               </tr>
             </thead>
             <tbody>
@@ -219,10 +222,10 @@ const onViewClick = (deliverable) => {
                           <td>{deliverable.disseminationLevel}</td>
                           <td>{deliverable.dueDate}</td>
                           {loggedInUser.isLoggedIn && <td>
-                            <div className={style['actionButtons']}>
-                              <button className={style['actionButton']} onClick={() => onEditClick(deliverable)}><FontAwesomeIcon icon={faPen}/></button>
-                              <button className={style['actionButton']} onClick={() => onViewClick(deliverable)}><FontAwesomeIcon icon={faEye}/></button>
-                              <button className={style['actionButton']} onClick={() => onDeleteClick(deliverable.deliverableRelatedNo)}><FontAwesomeIcon icon={faTrash} /></button>
+                            <div className='actionButtonsBloack'>
+                              <button className='actionButton' onClick={() => onEditClick(deliverable)}><FontAwesomeIcon icon={faPen}/></button>
+                              <button className='actionButton' onClick={() => onViewClick(deliverable)}><FontAwesomeIcon icon={faEye}/></button>
+                              <button className='actionButton' onClick={() => onDeleteClick(deliverable.deliverableRelatedNo)}><FontAwesomeIcon icon={faTrash} /></button>
                             </div>         
                           </td>}
                         </tr>
@@ -236,9 +239,6 @@ const onViewClick = (deliverable) => {
             </tfoot> */}
           </table>
       </div>
-      {!addRow && loggedInUser.isLoggedIn && <div>
-        <button className={style["addNewButton"]} onClick={onAddNewClicked}>Add New</button>
-      </div>}
     </div>
     { (addRow || editRow) &&  <Dialog
           open={showDiologBox}
@@ -350,7 +350,7 @@ const onViewClick = (deliverable) => {
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["buttonsBlock"]}>
+              <div className = "buttonsBlock">
                   {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
                   <button type="button" onClick={discardButtonClicked}>Discard</button>
               </div>
@@ -407,7 +407,7 @@ const onViewClick = (deliverable) => {
                             </tr>
                         </tbody>
                     </table>
-                    <div className = {style["buttonsBlock"]}><button onClick={closeButtonClicked}>Close</button></div>
+                    <div className = "buttonsBlock"><button onClick={closeButtonClicked}>Close</button></div>
                 </div>
       </DialogContent> 
     </Dialog>}

@@ -15,14 +15,15 @@ function Repository() {
   return (
     <>
       {/* Title of the Repository section */}
-      <div className={style["RepositoryTitle"]}>
-        <h3>Repository</h3>
+      <div className="pageTitle">
+          <h3>Repository</h3>
       </div>
+      
 
       {/* Tabs for different repositories */}
       <div className={style["RepoTabs"]}>
         <button 
-          className={activeTab === 'uop' ? 'active' : ''}
+          className={activeTab === 'uop' ? style.active : ''}
           onClick={() => handleTabChange('uop')}>
             <div className={style["RepositorySubTitle"]}>
               <h3>UOP Working Folder</h3>
@@ -30,7 +31,7 @@ function Repository() {
         </button>
 
         <button 
-          className={activeTab === 'cycle' ? 'active' : ''}
+          className={activeTab === 'cycle' ? style.active : ''}
           onClick={() => handleTabChange('cycle')}>
             <div className={style["RepositorySubTitle"]}>
               <h3>CYCLE Data</h3>

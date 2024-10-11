@@ -2,7 +2,7 @@ function Overview() {
   return(
   <>
   {/* overview Topic */}
-  <div className = "projectOverview">
+  <div className = "pageTitle">
     <h3>Overview</h3>
     <nav>
     <ol className="breadcrumb">

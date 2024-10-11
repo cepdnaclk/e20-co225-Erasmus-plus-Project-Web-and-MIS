@@ -6,20 +6,6 @@
     flex-direction: column;
 
 }
-
-/* Contact title alignment */
-.contactTitle {
-    margin-top: 1%;
-    margin-left: 5%;
-    text-align: left;
-    font-size: 20px;
-    font-family: 'Caudex';
-    color: #000000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 5%;
-}
  
 /* Contact details of the manager and coordinator alignment */
 .contactDetails {
@@ -125,7 +111,7 @@
 .contactUsForm img{
     width: auto;
     height: 400px;
-    margin-top: 200px;
+    margin-top: 205px;
     margin-right: 20px;
     margin-left: 20px;
 }
@@ -140,7 +126,6 @@
 .inputbox {
     margin-top: 20px;
     width: 400px;
-    margin-right: 20px;
     font-size: 18px;
 }
 
@@ -157,16 +142,22 @@
 }
 
 /* Message input section */
-.inputbox .field.mess {
+.inputbox .field-mess {
+    width: 93%;
     height: 100px;
-    resize: none;
+    background: transparent;
+    border: 2px solid #c9e1ef;
+    outline: none;
+    padding: 15px;
     font-size: 16px;
+    color: #333;
+    margin-top: 8px;
+    resize: none;
     font-family: Sans-serif;
-
 }
 
 /* Send Message button */
-form button {
+.contactButton {
     width: 200px;
     height: 50px;
     background: hsl(211, 44%, 66%);
@@ -180,7 +171,7 @@ form button {
 }
 
 /* Send Message button when the mouse point to that*/
-form button:hover{
+.contactButton :hover{
     background: hsl(211, 40%, 69%);
     color: #2a2929;
 }

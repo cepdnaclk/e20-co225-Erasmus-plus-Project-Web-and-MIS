@@ -297,7 +297,7 @@ function closeOnClickOutside(selector, toggleClass) {
                     )}
     
                     {/* Display user name */}
-                    <h3>{loggedInUser.name} {loggedInUser.lastName}</h3>
+                    <h3>{loggedInUser.firstName} {loggedInUser.lastName}</h3>
                 </div>
 
                     

@@ -61,6 +61,7 @@ function Header(){
                               loggedInUser.userRole=res.data.appUserRole
                               loggedInUser.isRegisteredUser=true
                               setLoggedInUser(true);  // Updates the logged-in state immediately
+                              localStorage.setItem("loggedInUser",JSON.stringify(loggedInUser))
                               window.Location.reload
                           }})
                   .catch((err) =>{
@@ -129,7 +130,7 @@ function Header(){
             loggedInUser = { isLoggedIn: false, firstName: '', lastName: '',email:'',userID:'' ,userRole:'',isRegisteredUser:false};
 
             setLoggedInUser(false);
-
+            localStorage.removeItem("loggedInUser",JSON.stringify(loggedInUser))
             window.location.reload
             navigate('/')
             setShowAccount(false);

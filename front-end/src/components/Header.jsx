@@ -6,7 +6,6 @@ import cylcleLogo from '../assets/CYCLE-logo.png';
 import erasmusLogo from '../assets/erasmus-plus-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
-import { appUserRole } from '../Pages/Login';
 
 // Global user state
 export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' ,email:'',userID:'',userRole:'',isRegisteredUser:false};
@@ -312,11 +311,11 @@ function closeOnClickOutside(selector, toggleClass) {
                         <p>My Files</p>    
                         <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
                     </Link>
-                    <a herf="#" className="userAccountContent"> 
+                    <Link to = '/calendar' onClick={handleLinkClick} className="userAccountContent"> 
                         <FontAwesomeIcon icon={faCalendarDays} className="icon"/>                            
-                        <p>Calender</p>    
+                        <p>Calendar</p>    
                         <span><FontAwesomeIcon icon={faAngleRight}/></span>                         
-                    </a>
+                    </Link>
                     <hr></hr>
                     <a herf="#" className="userAccountContent" id="logoutText" onClick={logOut}>                              
                         <p>Log Out</p>                        

@@ -1,4 +1,3 @@
-/* Title styling for the Project Management section */
 .ProjectManagementTitle{
   margin-top: 2%;
   margin-left: 5%;
@@ -7,8 +6,114 @@
   font-size: 20px;
   font-family: 'Caudex';
 }
+/* Table containers */
+.container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid hsl(222, 83%, 98%);
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(63, 108, 148, 0.1),  
+              -2px -2px 5px rgba(255, 255, 255, 0.7), 
+              2px -2px 5px rgba(255, 255, 255, 0.7), 
+              -2px 2px 5px rgba(63, 108, 148, 0.1);
+  margin: 20px;
+  padding: 10px;    
+}
+/* Add New Button */
+.addNewButton{
+  width: 150px;
+  height: 50px;
+  margin: 20px 0px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: hsl(226, 64%, 30%);
+  text-decoration: none;
+  font-family: 'Caudex';
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.addNewButton:hover { 
+  background-color: #0056b3;
+}
 
-/* Class to show a div element (displayed by default) */
+/* Form */
+.dataForm form {
+  margin-right: 20px;
+  margin-left: 20px;
+  justify-items: center;
+}
+/* Data input boxes and their topics */
+.inputbox {
+  display: flex;
+  align-items: center;
+  margin: 15px 20px;
+}
+.inputbox label{
+  padding: 15px;
+  font-size: 16px;
+}
+
+/* Inside the data input boxes */
+.inputbox .field {
+  width: 60%;
+  position: inherit;
+  right: 12%;
+  background: transparent;
+  border: 2px solid #c9e1ef;
+  outline: none;
+  padding: 15px;
+  font-size: 16px;
+  color: #333;
+  
+}
+.buttonsBlock{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Send Message button */
+.dataForm button {
+  width: 100px;
+  height: 50px;
+  background: hsl(211, 44%, 66%);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font: #ffffff;
+  color: #000000;
+  margin: 0px 20px;
+}
+
+/* Send Message button when the mouse point to that*/
+.dataForm button:hover{
+  background: hsl(211, 40%, 69%);
+  color: #2a2929;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ProjectManagementTitle{
+  margin-top: 2%;
+  margin-left: 5%;
+  text-align: left;
+  margin-bottom: 1%;
+  font-size: 20px;
+  font-family: 'Caudex';
+}
 .showDiv{
     display: block;
 }
@@ -119,9 +224,4 @@ a:hover{
 /* Inverts colors for the calendar picker icon */
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
-}
-
-.scroller {
- 
-  scrollbar-color: #c9e1ef black;
 }

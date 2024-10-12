@@ -7,20 +7,55 @@
     font-family: 'Caudex';
 }
 
-.taskCard {
-    border: 2px solid #719cc4;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 5%;
-    text-align: center;
-    background-color: #eff5f892; 
-    transition: transform 0.2s;
-    color: rgb(34, 31, 31);
-}
-
-.taskCard:hover {
-    transform: scale(1.01); 
-}
+.taskContainer {
+    max-width: 100%; 
+    margin: 0 auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 3%;
+  }
+  
+  .sectionHeader {
+    font-size: 20px;
+    font-family: 'Caudex';
+    margin: 20px 0 20px;
+    color: #436d91;
+    border-bottom: 2px solid #4371a38e;
+    padding-bottom: 5px;
+  }
+  
+  .taskTable {
+    display: table; /* Use table display for layout */
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Collapse borders */
+  }
+  
+  .tableHeader {
+    display: table-header-group; /* Header group */
+    background-color: #ecf6fc; /* Light background for header */
+    font-weight: bold; /* Bold text for header */
+  }
+  
+  .tableCell {
+    display: table-cell; /* Cell layout */
+    padding: 10px; /* Padding for cells */
+    border: 1px solid #b2c8e6; /* Border around cells */
+    text-align: center; /* Center align text */
+    width: 25%; /* Control column width */
+  }
+  
+  .taskRow {
+    display: table-row; /* Row layout */
+  }
+  
+  .taskRow:nth-child(even) {
+    background-color: #ffffff; /* Zebra striping for rows */
+  }
+  
+  .taskRow:hover {
+    background-color: #f9fcfd; /* Highlight on hover */
+  }
+  
 
 /* Flex container for the buttons */
 .DashboardTabs {
@@ -109,3 +144,20 @@
     font-size: 16px; 
 }
   
+@media (max-width: 768px) {
+    .tableCell {
+      display: block; /* Stacked layout for smaller screens */
+      width: 100%; /* Full width for cells */
+      box-sizing: border-box; /* Include padding in width */
+    }
+  
+    .taskRow {
+      display: flex; /* Flex layout for rows */
+      flex-direction: column; /* Stack columns */
+      margin-bottom: 10px; /* Space between tasks */
+    }
+  
+    .taskRow:nth-child(even) {
+      background-color: transparent; /* Remove zebra striping on smaller screens */
+    }
+  }

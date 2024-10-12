@@ -3,7 +3,7 @@ import axios from "axios";
 import { loggedInUser } from '../components/Header'; // Import logged-in user details
 import style from '../components/Gallery.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // FontAwesome for icons
-import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
+import { faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
 import { Dialog, DialogContent } from "@mui/material";
 
 /**
@@ -132,7 +132,7 @@ const Gallery = () => {
           </div>
         )}
 
-        {/* Display the form when showForm is true */}
+        {/* Display the form when showDiologBox is true */}
         {showDiologBox && 
             <Dialog
             open={showDiologBox}
@@ -142,16 +142,16 @@ const Gallery = () => {
           >
           <DialogContent>
           <div className = "dataForm"> 
-            <div className="formTitle">
-              <h2>Add Gallery Item</h2>
-            </div>
               <form onSubmit={handleSubmit}>
+                <div className="formTitle">
+                  <h2>Add Gallery Item</h2>
+                </div>
                 <div className="inputbox">
-                  <label htmlFor="albumName">Name:</label>
+                  <label htmlFor="albumName">Name</label>
                   <input type="text" placeholder="Enter Album Name" id="albumName" name="albumName" className = "field" required />
                 </div>
                 <div className="inputbox">
-                  <label htmlFor="albumURL">URL:</label>
+                  <label htmlFor="albumURL">URL</label>
                   <input type="url" id="albumURL" placeholder="Enter Album URL" name="albumURL" className = "field" required />
                 </div>
                 <div className="inputbox">

@@ -108,7 +108,7 @@ function Contact() {
 
         <div className = {style["inputbox"]}>
         <label>Subject</label>
-        <input type = "text" className = {style["field"]} placeholder = " Enter the Subject" name = "subject" required/>
+        <input type = "text" className = {style["field"]} placeholder = "Enter the Subject" name = "subject" required/>
         </div>
         <div className = {style["inputbox"]}>
         <label>Your Message</label>

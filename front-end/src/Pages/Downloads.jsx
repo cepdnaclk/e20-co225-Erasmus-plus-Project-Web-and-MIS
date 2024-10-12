@@ -4,7 +4,8 @@ import fileDownload from '../assets/download.png';
 import { loggedInUser } from '../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload ,faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
-
+import { Dialog, DialogContent } from "@mui/material";
+import style from '../components/Download.module.css';
 
 const FileUploadDownload = () => {
   // State management
@@ -14,7 +15,7 @@ const FileUploadDownload = () => {
   const [youtubeLink, setYoutubeLink] = useState('');
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
-  const [showUploadForm, setShowUploadForm] = useState(false);
+  const [showDiologBox, setshowDiologBox] = useState(false);
 
 // Fetch the uploaded files from the backend when the component mounts
   useEffect(() => {
@@ -31,6 +32,10 @@ const FileUploadDownload = () => {
     }
   };
 
+  const onAddNewClicked=()=>{
+    setshowDiologBox(true);
+  }
+  
     // Handler for selecting a file
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -53,7 +58,8 @@ const FileUploadDownload = () => {
 
   // Handles file upload or YouTube link submission
   const handleUpload = async () => {
-
+    event.preventDefault();
+    console.log("handleUpload function executed");
     // Ensure either a file or a YouTube link is provided
     if (!selectedFile && !youtubeLink) {
       alert('Please select a file or enter a URL for the file!');
@@ -69,10 +75,12 @@ const FileUploadDownload = () => {
     // Prepare the form data for file or YouTube link
     const formData = new FormData();
     if (selectedFile) {
+      console.log("File Selected");
       formData.append('file', selectedFile);
       formData.append('displayName', displayName);
       formData.append('visibleToAll', visibleToAll);
     } else if (youtubeLink) {
+      console.log("Link Entered");
       formData.append('youtubeLink', youtubeLink);
       formData.append('displayName', displayName);
       formData.append('visibleToAll', visibleToAll);
@@ -87,14 +95,16 @@ const FileUploadDownload = () => {
       });
 
       if (response.status === 200) {
+        console.log("HTTP Status 200 OK");
         alert('Content uploaded successfully');
         setSelectedFile(null);
         setYoutubeLink('');
         setDisplayName('');
         setVisibleToAll(false);
-        setShowUploadForm(false);
+        setshowDiologBox(false);
         fetchUploadedFiles();
       } else {
+        console.log("FAILED HTTP Status 200 OK");
         alert('Failed to upload content');
       }
     } catch (error) {
@@ -141,6 +151,10 @@ const FileUploadDownload = () => {
     }
   };
 
+  // When 'Close' button is clicked: for Edit, and Add New
+  const closeButtonClicked = () => {
+    setshowDiologBox(false);
+  }
   // Filter files into two groups: visible to all and visible to logged-in users only
   const visibleToAllFiles = uploadedFiles.filter(file => file.visibleToAll);
   const visibleToLoggedInFiles = uploadedFiles.filter(file => !file.visibleToAll && loggedInUser.isLoggedIn);
@@ -164,51 +178,64 @@ const FileUploadDownload = () => {
       </div>
 
       {loggedInUser.isLoggedIn && (
-        <div className="upload-section">
-          <button className="addNewButton" onClick={() => setShowUploadForm(!showUploadForm)}>
-            {showUploadForm ? 'Cancel' : 'Add File'}
-          </button>
-          {showUploadForm && (
-            <div className="upload-form">
-              <h4>Add a New File</h4>
-              <input type="file" onChange={handleFileChange} />
-              <input
-                type="text"
-                placeholder="Enter a Display Name"
-                value={displayName}
-                onChange={handleDisplayNameChange}
-              />
-              <input
-                type="url"
-                placeholder="Enter the URL"
-                value={youtubeLink}
-                onChange={handleYoutubeLinkChange}
-              />
-              <label>
-                <input
-                  type="checkbox"
-                  checked={visibleToAll}
-                  onChange={handleVisibilityChange}
-                /> Set Visible to Public
-              </label>
-              <button onClick={handleUpload}>Upload Content</button>
-            </div>
-          )}
-        </div>
-      )}
+        <div className={style["upload-section"]}>
+          <button className="addNewButton" onClick={onAddNewClicked}>Add File</button>      
+          
+        {/* Display the form when showDiologBox is true */}
+        {showDiologBox && 
+            <Dialog
+            open={showDiologBox}
+            onClose={closeButtonClicked}
+            fullWidth
+            maxWidth="md"
+          >
+            <DialogContent>
+              <div className = "dataForm"> 
+                <form onSubmit={handleUpload}>
+                    <div className="formTitle">
+                        <h2>Add a New File</h2>
+                    </div>
+                    <div className="inputbox">
+                      <label>Name</label>
+                      <input type="text" placeholder="Enter a Display Name" value={displayName} onChange={handleDisplayNameChange} className = "field"/>
+                    </div>
+                    <div className="inputbox">
+                      <label>File</label>
+                      <input type="file" placeholder="Select a file"  className = "field" onChange={handleFileChange}/>
+                    </div>
+                    <div className="inputbox">
+                      <label htmlFor="albumName">URL</label>
+                      <input type="url" placeholder="Enter the URL" value={youtubeLink} onChange={handleYoutubeLinkChange} className = "field" />
+                    </div>
+                    <div className="inputbox">
+                      <label>Set Visible to Public</label>
+                      <div className={style["chechboxContainer"]}>
+                        <input type="checkbox" checked={visibleToAll} onChange={handleVisibilityChange}/>
+                      </div>
+                    </div>
+                    <div className = "buttonsBlock">
+                        <button type="submit">Upload Content</button>
+                        <button type="button" onClick={closeButtonClicked}>Close</button>
+                    </div>
+                </form>
+              </div>
+              
+            </DialogContent>
+          </Dialog>}
+          </div>)}
+      
+      {errorMessage && <p className={style["error"]}>{errorMessage}</p>}
 
-      {errorMessage && <p className="error">{errorMessage}</p>}
-
-      <div className="downloadSection">
+      <div className={style["downloadSection"]}>
   {/* <h4>Download Files here</h4> */}
   {visibleToAllFiles.length > 0 ? (
     visibleToAllFiles.map(file => (
-      <div key={file.fileId} className="fileItem">
+      <div key={file.fileId} className={style["fileItem"]}>
         {file.youtubeLink ? (
-          <div className="fileContent">
+          <div className={style["fileContent"]}>
             <img src={fileDownload} alt="fileDownload" />
             <p>{file.displayName}</p>
-            <div className="fileActions">
+            <div className={style["fileActions"]}>
               <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faEye}/>
               </a>
@@ -220,10 +247,10 @@ const FileUploadDownload = () => {
             </div>
           </div>
         ) : (
-          <div className="fileContent">
+          <div className={style["fileContent"]}>
             <img src={fileDownload} alt="fileDownload" />
             <span><p>{file.displayName}</p></span>
-            <div className="fileActions">
+            <div className={style["fileActions"]}>
               <button onClick={() => handleDownload(file.fileId, file.fileName)}>
                 <FontAwesomeIcon icon={faDownload} />
               </button>
@@ -246,12 +273,12 @@ const FileUploadDownload = () => {
       <h4>Files Only for the CYCLE Team</h4>
       {visibleToLoggedInFiles.length > 0 ? (
         visibleToLoggedInFiles.map(file => (
-          <div key={file.fileId} className="fileItem">
+          <div key={file.fileId} className={style["fileItem"]}>
             {file.youtubeLink ? (
-              <div className="fileContent">
+              <div className={style["fileContent"]}>
                 <img src={fileDownload} alt="fileDownload" />
                 <p>{file.displayName}</p>
-                <div className="fileActions">
+                <div className={style["fileActions"]}>
                   <a href={file.youtubeLink} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faEye}/>
                   </a>
@@ -261,10 +288,10 @@ const FileUploadDownload = () => {
                 </div>
               </div>
             ) : (
-              <div className="fileContent">
+              <div className={style["fileContent"]}>
                 <img src={fileDownload} alt="fileDownload" />
                 <span><p>{file.displayName}</p></span>
-                <div className="fileActions">
+                <div className={style["fileActions"]}>
                   <button onClick={() => handleDownload(file.fileId, file.fileName)}>
                     <FontAwesomeIcon icon={faDownload} />
                   </button>
@@ -276,12 +303,12 @@ const FileUploadDownload = () => {
             )}
           </div>
         ))
-      ) : (
+          ) : (
         <p>No files visible to logged-in users</p>
       )}
-    </>
-  )}
-</div>
+    </>)}
+ 
+ </div>
 
     </div>
   );

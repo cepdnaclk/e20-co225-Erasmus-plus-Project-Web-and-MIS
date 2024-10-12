@@ -248,103 +248,104 @@ const onViewClick = (deliverable) => {
         >
       {/* Dialog- Add New/Edit/View */}
       <DialogContent>
-        <div className = {style["dataForm"]}>          
+        <div className = "dataForm">          
           <form onSubmit={editRow ? (e)=>onUpdateSubmit(e) : (e)=>onAddSubmit(e)}>
-              <div className = {style["formTitle"]}>
-                <h3>{editRow ? "Edit Deliverable" : "Add a New Deliverable"}</h3> 
+              <div className = "formTitle">
+                <h2>{editRow ? "Edit Deliverable" : "Add a New Deliverable"}</h2> 
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Work Package No</label>
                 <input 
                     type = "text" 
-                    className = {style["field"]} 
+                    className = "field" 
                     placeholder = "Enter Work Package No" 
                     name = "workPackageNo" 
                     value={workPackageNo} 
                     onChange={(e)=>onInputChange(e)}  
                     required/>
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Deliverable Related No</label>
                 <input 
                     type = "text" 
-                    className = {style["field"]} 
+                    className = "field"
                     placeholder = "Enter Deliverable Related No" 
                     name = "deliverableRelatedNo"  
                     value={deliverableRelatedNo} 
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Deliverable No</label>
                 <input 
                     type = "text" 
-                    className = {style["field"]} 
-                    placeholder = " Enter Deliverable No" 
+                    className = "field" 
+                    placeholder = "Enter Deliverable No" 
                     name = "deliverableNo" 
                     value={deliverableNo} 
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Deliverable Name</label>
                 <input 
                     type = "text" 
-                    className = {style["field"]} 
-                    placeholder = " Enter Deliverable Name" 
+                    className = "field" 
+                    placeholder = "Enter Deliverable Name" 
                     name = "deliverableName" 
                     value={deliverableName} 
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Description</label>
-                <input 
+                <textarea 
                     type = "text" 
-                    className = {style["field"]} 
-                    placeholder = " Enter Description" 
+                    className = "field" 
+                    placeholder = "Enter Description" 
                     name = "description" 
                     value={description} 
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Lead Beneficiary</label>
                 <input 
                     type = "text" 
-                    className = {style["field"]} 
-                    placeholder = " Enter Lead Beneficiary" 
+                    className = "field" 
+                    placeholder = "Enter Lead Beneficiary" 
                     name = "leadBeneficiary"  value={leadBeneficiary} 
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Type</label>
                 <input 
                     type = "text" 
-                    className = {style["field"]} 
-                    placeholder = " Enter Type" 
+                    className = "field"
+                    placeholder = "Enter Type" 
                     name = "type"  
                     value={type} 
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Dissemination Level</label>
                 <input 
                     type = "text" 
-                    className = {style["field"]} 
-                    placeholder = " Enter Dissemination Level" 
+                    className = "field" 
+                    placeholder = "Enter Dissemination Level" 
                     name = "disseminationLevel"  
                     value={disseminationLevel} 
                     onChange={(e)=>onInputChange(e)} 
                     required/>
               </div>
-              <div className = {style["inputbox"]}>
+              <div className = "inputbox">
                 <label>Due Date</label>
                 <input 
                     type = "date" 
-                    className = {style["field"]}  
+                    className = "field" 
+                    placeholder = "Select a Date" 
                     name = "dueDate"  
                     value={dueDate} 
                     onChange={(e)=>onInputChange(e)} 

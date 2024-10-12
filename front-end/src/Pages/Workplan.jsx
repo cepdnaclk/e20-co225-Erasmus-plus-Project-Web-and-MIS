@@ -274,27 +274,27 @@ function Workplan() {
           fullWidth
           maxWidth="md"
         >  <DialogContent>
-               <div className = {style["dataForm"]}>
+               <div className ="dataForm">
                 <form onSubmit={editRow ? (e)=>onUpdateSubmit(e) : (e)=>onAddSubmit(e)}>
-                     <div className = {style["formTitle"]}>
-                      <h3>{editRow ? "Edit Activity" : "Add a New Activity"}</h3> 
+                     <div className = "formTitle">
+                      <h2>{editRow ? "Edit Activity" : "Add a New Activity"}</h2> 
                     </div>
-                    <div className = {style["inputbox"]}>
+                    <div className = "inputbox">
                       <label>Activity No</label>
                       <input 
                         type = "text" 
-                        className = {style["field"]} 
+                        className = "field"
                         placeholder = "Enter Activity No" 
                         name = "activityNo"
                         value={activityNo} 
                         onChange={(e)=>onInputChange(e)} 
                         required/>
                      </div>
-                     <div className = {style["inputbox"]}>
+                     <div className ="inputbox">
                        <label>Activity Name</label>
                        <input 
                         type = "text" 
-                        className = {style["field"]} 
+                        className = "field" 
                         placeholder = "Enter Activity Name" 
                         name = "activityName"
                         value={activityName} 
@@ -302,7 +302,7 @@ function Workplan() {
                         required/>
                      </div>
                     
-                     <table className={style["table"]}>
+                     <table className={style["tableInDialogBox"]}>
                       <thead>
                         <tr>
                           <th scope="col" colSpan={4}>Year 1</th>

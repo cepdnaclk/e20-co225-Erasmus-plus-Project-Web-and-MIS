@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { loggedInUser } from '../components/Header'; // Import logged-in user details
-import '../components/News.css'; 
+import style from '../components/News.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // FontAwesome for icons
-import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
+import { faTrash } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
+import { Dialog, DialogContent } from "@mui/material";
 
-//
 
 var today = new Date().toISOString().split('T')[0]
 // Function to fetch news from the API, sorted by newsID in descending order
@@ -21,7 +21,7 @@ const fetchNews = async () => {
 
 const News = () => {
   const [news, setNews] = useState([]); // State to hold the list of news
-  const [showForm, setShowForm] = useState(false); // State to toggle add news form visibility
+  const [showDiologBox, setshowDiologBox] = useState(false); // Dialog Box
   const [file, setFile] = useState(null); // State to hold the selected image file
 
   // useEffect to fetch news when the component mounts
@@ -34,10 +34,9 @@ const News = () => {
     getNews(); // Call the function to fetch news
   }, []); // Empty dependency array means this runs only on the initial render
 
-  // Function to toggle the visibility of the add news form
-  const toggleForm = () => {
-    setShowForm(!showForm); // Toggle the showForm state between true and false
-  };
+  const onAddNewClicked=()=>{
+    setshowDiologBox(true);
+  }
 
   // Function to handle file selection
   const handleFileChange = (event) => {
@@ -65,7 +64,7 @@ const News = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      toggleForm(); // Close the form after successful submission
+      setshowDiologBox(false);
       const latestNews = await fetchNews(); // Fetch the latest news
       setNews(latestNews); // Update the news list with the new entry
     } catch (error) {
@@ -87,6 +86,10 @@ const News = () => {
       console.error("Error deleting news:", error); // Log any errors
     }
   }
+    // When 'Close' button is clicked: for Edit, and Add New
+    const closeButtonClicked = () => {
+      setshowDiologBox(false);
+    }
   
 
   return (
@@ -109,61 +112,67 @@ const News = () => {
           </ol>
         </nav>
       </div>
-      <div className="NewsAdd">
+      <div className={style["NewsAdd"]}>
         {/* Show Add News button only if the user is logged in */}
         {loggedInUser.isLoggedIn && (
           <div>
-            <button className="addNewButton" onClick={toggleForm}>
-              {showForm ? 'Close Form' : 'Add News'} {/* Toggle between Add and Close */}
-            </button>
+            <button className="addNewButton" onClick={onAddNewClicked}>Add News</button>
           </div>
         )}
         
-        {/* Conditional rendering of the add news form */}
-        {showForm && (
-          <div className="add-news-form-container">
-            <div className="add-news-form">
-              <h2>Add News</h2>
+        {/* Display the form when showForm is true */}
+        {showDiologBox && 
+          <Dialog
+            open={showDiologBox}
+            onClose={closeButtonClicked}
+            fullWidth
+            maxWidth="md"
+          >
+          <DialogContent>
+          <div className = "dataForm"> 
               <form onSubmit={handleSubmit}>
-                {/* Form fields to add new news */}
-                <div className="form-group">
-                  <label htmlFor="newsTitle">Title:</label>
-                  <input type="text" placeholder="Enter News Title" id="newsTitle" name="newsTitle" required />
+                <div className="formTitle">
+                  <h2>Add News</h2>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="newsDescription">Description:</label>
-                  <textarea id="newsDescription" placeholder="Enter News Description" name="newsDescription" required></textarea>
+                <div className="inputbox">
+                  <label htmlFor="newsTitle">Title</label>
+                  <input type="text" placeholder="Enter News Title" id="newsTitle" name="newsTitle" className="field" required />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="newsUrl">URL:</label>
-                  <input type="url" id="newsUrl" placeholder="Enter News URL" name="newsUrl" required />
+                <div className="inputbox">
+                  <label htmlFor="newsDescription">Description</label>
+                  <textarea id="newsDescription" placeholder="Enter News Description" name="newsDescription" className="field" required></textarea>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="newsAuthor">Author:</label>
-                  <input type="text" id="newsAuthor" placeholder="Enter Author's name" name="newsAuthor" required />
+                <div className="inputbox">
+                  <label htmlFor="newsUrl">URL</label>
+                  <input type="url" id="newsUrl" placeholder="Enter News URL" name="newsUrl" className="field" required />
                 </div>
-                {}
-                <div className="form-group">
-                  <label htmlFor="newsDate">Date:</label>
-                  <input type="date" max={today} id="newsDate" name="newsDate" required />
+                <div className="inputbox">
+                  <label htmlFor="newsAuthor">Author</label>
+                  <input type="text" id="newsAuthor" placeholder="Enter Author's name" name="newsAuthor" className="field" required />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="newsCoverImage">Cover Image (Choose images with size less than 64 kB):</label>
-                  <input type="file" id="newsCoverImage" name="newsCoverImage" onChange={handleFileChange} required />
+                <div className="inputbox">
+                  <label htmlFor="newsDate">Date</label>
+                  <input type="date" max={today} id="newsDate" name="newsDate" className="field" required />
                 </div>
-                <div className="form-buttons">
-                  <button type="submit">Add News</button> {/* Submit button */}
+                <div className="inputbox">
+                  <label htmlFor="newsCoverImage">Cover Image</label>
+                  <input type="file" id="newsCoverImage" name="newsCoverImage" onChange={handleFileChange} className="field" required />
+                </div>
+                <div className = "buttonsBlock">
+                  <button type="submit">Add News</button>
+                  <button type="button" onClick={closeButtonClicked}>Close</button>
                 </div>
               </form>
-            </div>
           </div>
-        )}
+          </DialogContent>
+          </Dialog>}
       </div>
+
       
       {/* Display news items */}
-      <div className="news-container">
+      <div className={style["news-container"]}>
         {news.map((item) => (
-          <div key={item.newsID} className="news-tile">
+          <div key={item.newsID} className={style["news-tile"]}>
             <img src={`data:image/jpeg;base64,${item.newsCoverImage}`} alt={item.newsTitle} />
             <h2>{item.newsTitle}</h2> {/* News title */}
             <p>{item.newsDescription}</p> {/* News description */}
@@ -173,7 +182,7 @@ const News = () => {
             
             {/* Show edit and delete buttons only if user is logged in */}
             {loggedInUser.isLoggedIn && (
-              <div className="news-actions">
+              <div className={style["news-actions"]}>
                 <button className="actionButton" onClick={() => onDeleteClick(item.newsID)}><FontAwesomeIcon icon={faTrash} /></button>
               </div>
             )}

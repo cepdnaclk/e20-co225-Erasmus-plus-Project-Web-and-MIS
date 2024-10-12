@@ -20,7 +20,7 @@
   overflow-y: auto; 
 }
 
-/* Table */
+/* Table to display data*/
 .table {
   height: 100%;
   width: 100%;
@@ -46,9 +46,10 @@
 .table tbody td{
   padding: 10px;
   border-bottom: 1px solid #b2c8e6;
+  align-items: center;
 }
 
-/* Hover effect for table rows */
+/* Hover effect for table cells */
 .table tbody tr:hover {
   background-color: #f3f7f9;
 }
@@ -63,89 +64,39 @@
   text-align: right;
 }
 
-/* Form title */
-.formTitle {
-  text-align: center;
-  color:hsl(226, 64%, 35%);
-  font-size: 20px;
-  margin-top: 0px;
-}
-/* Form */
-.dataForm form {
-  margin-right: 20px;
-  margin-left: 20px;
-  justify-items: center;
+/* Table inside the dialog box*/
+.tableInDialogBox {
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
 }
 
-/* Data input boxes and their topics */
-.inputbox {
-  display: flex;
-  align-items: center;
-  margin: 15px 20px;
+/*Table headers */
+.tableInDialogBox thead{
+  position: sticky; 
+  top: 0px; 
+  z-index: 3;
 }
-.inputbox label{
-  padding: 15px;
-  font-size: 16px;
-}
-
-/* Inside the data input boxes */
-.inputbox .field {
-  width: 60%;
-  position: absolute;
-  right: 12%;
-  background: transparent;
-  border: 2px solid #c9e1ef;
-  outline: none;
-  padding: 15px;
-  font-size: 16px;
+.tableInDialogBox thead th {
+  background-color: #ecf6fc;
   color: #333;
-  
+  text-align: center;
+  padding: 10px;
+  border-bottom: 2px solid #b2c8e6;
 }
 
-/********** Input type -  Checkboxes**********/
-/* Hide the default checkbox */
-.dataForm Input[type="checkbox"] {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  appearance: none; /* Removes default checkbox style */
-  background-color: white;
-  border: 1.5px solid #c9e1ef;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/*Table cells */
+.tableInDialogBox tbody td{
+  text-align: center;       /* Centers the content horizontally */
+  vertical-align: middle;   /* Centers the content vertically */
+  padding: 10px;
+  border-bottom: 1px solid #b2c8e6;
 }
-
-/* Add a checkmark using the ::after pseudo-element */
-.dataForm Input[type="checkbox"]::after {
-  content: "";
-  position: absolute;
-  width: 6px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  top: 2px;
-  left: 6px;
-  transform: rotate(45deg);
-  opacity: 0;
-  transition: all 0.3s ease;
+/* Hover effect for table cells */
+.tableInDialogBox tbody td:hover {
+  background-color: #f3f7f9;
 }
-
-/* Checked state */
-.dataForm Input[type="checkbox"]:checked {
-  background-color: hsl(211, 44%, 66%);
-}
-
-/* Show the checkmark when checked */
-.dataForm Input[type="checkbox"]:checked::after {
-  opacity: 1;
-}
-
-/* Optional: Add a hover effect */
-.dataForm Input[type="checkbox"]:hover {
-  border-color: #0056b3;
-}
-
 
 /* Optional: Media query for smaller screens */
 @media screen and (max-width: 600px) {

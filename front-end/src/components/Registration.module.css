@@ -26,7 +26,7 @@
 }
 
 /* Label styling */
-label {
+.formGroup label {
     display: block;
     margin-bottom: 5px;
     font-size: 14px;
@@ -34,7 +34,7 @@ label {
 }
 
 /* Input field styling */
-input {
+.formGroup input {
     width: 100%;
     height: 45px;
     padding: 10px;
@@ -47,7 +47,7 @@ input {
 }
 
 /* Autofill background color */
-input:-webkit-autofill {
+.formGroup input:-webkit-autofill {
     background-color: #e3f0f6 !important; 
     color: black !important; /* Set text color */
     -webkit-box-shadow: 0 0 0px 1000px #e3f0f6 inset; 
@@ -55,12 +55,12 @@ input:-webkit-autofill {
 }
 
 /* Adjust font color for autofill */
-input:-webkit-autofill {
+.formGroup input:-webkit-autofill {
     -webkit-text-fill-color: black !important; /* Set text color */
 }
 
 /* Input field focus state */
-input:focus {
+.formGroup input:focus {
     border-color: #007bff;
     outline: none;
     background-color: #fff;

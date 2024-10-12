@@ -11,6 +11,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import style from "../components/Dashboard.module.css";
 
+import {loggedInUser} from '../components/Header.jsx'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faCalendar } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,6 +32,9 @@ function Dashboard() {
     venue: ''
   });
   const [editingEventId, setEditingEventId] = useState(null);
+
+  const userRole = loggedInUser.userRole;
+  const userId = loggedInUser.userID;
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -63,6 +68,10 @@ function Dashboard() {
     const { name, value } = e.target;
     setEventDetails({ ...eventDetails, [name]: value });
   };
+
+  const filteredTasks = userRole === 'ADMIN' 
+    ? tasks // Admin sees all tasks
+    : tasks.filter(task => task.assignedUsers.some(user => user.id === userId));
 
   const handleSubmitEvent = async (e) => {
     e.preventDefault();
@@ -111,6 +120,7 @@ function Dashboard() {
       console.error('Error fetching events:', error);
     }
   };
+  
 
   return (
     <>
@@ -137,34 +147,103 @@ function Dashboard() {
         </button>
       </div>
 
+      {/* Tasks Displaying Tab */}
       {activeTab === 'Tasks' && taskListNotEmpty ? (
-        tasks.map((item) => (
-          <div key={item.task_ID} className={style["taskCard"]}>
-            <h2>{item.task_Name}</h2>
-            <p>Start Date: {item.start_Date}</p>
-            <p>End Date: {item.end_Date}</p>
-            <Box sx={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
-              <CircularProgress variant="determinate" value={item.progress} size={70} />
-              <Box
-                sx={{
-                  position: 'absolute',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '100%',
-                  height: '100%',
-                }}
-              >
-                <Typography variant="caption" component="div" color="text.secondary">
-                  {`${item.progress}%`}
-                </Typography>
-              </Box>
-            </Box>
-          </div>
-        ))
+      <div className={style["taskContainer"]}>
+        {filteredTasks.length === 0 ? (
+          <p>No Tasks to View!</p>
       ) : (
-        activeTab === 'Tasks' && <p>No Tasks to View!</p>
+      <>
+        <h3 className={style["sectionHeader"]}>Overdue Tasks</h3>
+        <div className={style["taskTable"]}>
+          <div className={style["tableHeader"]}>
+            <div className={style["tableCell"]}>Task Name</div>
+            <div className={style["tableCell"]}>Start Date</div>
+            <div className={style["tableCell"]}>End Date</div>
+            <div className={style["tableCell"]}>Progress</div>
+          </div>
+          {filteredTasks.filter(item => new Date(item.end_Date) < new Date() && item.progress < 100).length === 0 ? (
+            <p>No Overdue Tasks!</p>
+          ) : (
+            filteredTasks.filter(item => new Date(item.end_Date) < new Date() && item.progress < 100)
+            // .filter(item => userRole === 'admin' || item.assignedTo === currentUserId)
+            .map((item) => (
+              <div key={item.task_ID} className={style["taskRow"]}>
+                <div className={style["tableCell"]}>{item.task_Name}</div>
+                <div className={style["tableCell"]}>{item.start_Date}</div>
+                <div className={style["tableCell"]}>{item.end_Date}</div>
+                <div className={style["tableCell"]}>
+                  <Box sx={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+                    <CircularProgress variant="determinate" value={item.progress} size={40} />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '100%',
+                        height: '100%',
+                      }}
+                    >
+                      <Typography variant="caption" component="div" color="text.secondary">
+                        {`${item.progress}%`}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        <h3 className={style["sectionHeader"]}>Pending Tasks</h3>
+        <div className={style["taskTable"]}>
+          <div className={style["tableHeader"]}>
+            <div className={style["tableCell"]}>Task Name</div>
+            <div className={style["tableCell"]}>Start Date</div>
+            <div className={style["tableCell"]}>End Date</div>
+            <div className={style["tableCell"]}>Progress</div>
+          </div>
+          {filteredTasks.filter(item => item.progress < 100 && new Date(item.end_Date) >= new Date()).length === 0 ? (
+            <p>No Pending Tasks!</p>
+          ) : (
+            filteredTasks.filter(item => item.progress < 100 && new Date(item.end_Date) >= new Date())
+            // .filter(item => userRole === 'admin' || item.assignedTo === currentUserId)
+            .map((item) => (
+              <div key={item.task_ID} className={style["taskRow"]}>
+                <div className={style["tableCell"]}>{item.task_Name}</div>
+                <div className={style["tableCell"]}>{item.start_Date}</div>
+                <div className={style["tableCell"]}>{item.end_Date}</div>
+                <div className={style["tableCell"]}>
+                  <Box sx={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+                    <CircularProgress variant="determinate" value={item.progress} size={40} />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '100%',
+                        height: '100%',
+                      }}
+                    >
+                      <Typography variant="caption" component="div" color="text.secondary">
+                        {`${item.progress}%`}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+        </>
+        )}
+        </div>
+      ) : (
+      activeTab === 'Tasks' && <p>No Tasks to View!</p>
       )}
+
 
       {/* Upcoming Events Tab */}
       {activeTab === 'events' && (

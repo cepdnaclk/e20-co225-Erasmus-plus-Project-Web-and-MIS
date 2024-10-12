@@ -1,5 +1,4 @@
-/* Includes stying for common components */
-/******************* Page Title **************************/
+/***** Page Title *****/
 .pageTitle {
   margin-top: 1%;
   margin-left: 5%;
@@ -12,8 +11,7 @@
   align-items: center;
   margin-right: 5%;
 }
-/********************************************************************/
-/* Action buttons for delete, view and edit (Fontawsome icons) */
+/***** Action buttons for delete, view and edit (Fontawsome icons) *****/
 .actionButtonsBlock{
   display:flex;
   flex-direction: row; 
@@ -35,8 +33,7 @@
 .actionButton:hover {
   background-color:#a6c9f1d6;
 }
-/********************************************************************/
-/* Breadcrumb navigation styles */
+/***** Breadcrumb navigation styles *****/
 .breadcrumb {
   list-style: none;
   display: flex;
@@ -75,9 +72,8 @@
 .breadcrumb-item.active {
   color: #5c6064; /* Gray color */
 }
-/********************************************************************/
-/******************* Add New Button **************************/
 
+/***** Add New Button *****/
 .addNewButton{
   margin: 20px 0px;
   padding: 15px 45px;
@@ -95,39 +91,41 @@
   background-color: #0056b3;
 }
 
-/********************************************************************/
-/* Form Styling for pages: Gallery, */
-/* Form title */
-.formTitle {
-  text-align: center;
-  color:hsl(226, 64%, 35%);
-  font-size: 20px;
-  margin-top: 0px;
-}
+/**************  Forms in Dialog Boxes *************************/
+
 /* Form */
 .dataForm form {
-  margin-right: 20px;
-  margin-left: 20px;
   justify-items: center;
+  padding:10px;
 }
-
+/* Form title container*/
+.formTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* Form title*/
+.dataForm h2{
+  margin: 0;
+  font-family: 'Caudex';
+  color:hsl(226, 64%, 35%);
+  font-size: 20px;
+}
 /* Data input boxes and their topics */
 .inputbox {
   display: flex;
   align-items: center;
-  width: 800px;
+  width: 95%;
   margin: 15px 20px;
-  justify-content: space-between;
+  justify-content: flex-start; /* Align all elements to the left */
 }
 .inputbox label{
+  width: 150px;
   padding: 15px;
   font-size: 16px;
 }
-
 /* Inside the data input boxes */
 .inputbox .field {
-  width: 80%;
-  right: 12%;
+  width: 70%;
   background: transparent;
   border: 2px solid #c9e1ef;
   outline: none;
@@ -135,28 +133,85 @@
   font-size: 16px;
   color: #333;
 }
+/*** Input type - Textarea ***/
+.inputbox textarea {
+  height: 150px;
+  resize: none;
+  font-family: sans-serif;
+  line-height: 1.5;
+  color: #333;
+  /* font-synthesis: none;
+  text-rendering: optimizeLegibility; */
+}
 
-/* file upload button */
-.inputbox[type="file"]::file-selector-button {
-  border-radius: 4px;
-  padding: 0 16px;
-  height: 40px;
-  cursor: pointer;
+/*** Input type - Checkboxes ***/
+
+/* Hide the default checkbox */
+.dataForm Input[type="checkbox"] {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  appearance: none; /* Removes default checkbox style */
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
-  margin-right: 16px;
-  transition: background-color 200ms;
+  border: 2px solid #c9e1ef;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin:0;
 }
 
-/* file upload button hover state */
-.inputbox[type="file"]::file-selector-button:hover {
-  background-color: #f3f4f6;
+/* Add a checkmark using the ::after pseudo-element */
+.dataForm Input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 10px;
+  border: 2px solid white;
+  border-width: 0 2px 2px 0;
+  top: 2px;
+  left: 6px;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: all 0.08s ease;
 }
 
-/* file upload button active state */
-.inputbox[type="file"]::file-selector-button:active {
-  background-color: #e5e7eb;
+/* Checked state */
+.dataForm Input[type="checkbox"]:checked {
+  background-color: hsl(211, 44%, 66%);
+}
+
+/* Show the checkmark when checked */
+.dataForm Input[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+
+/* Optional: Add a hover effect */
+.dataForm Input[type="checkbox"]:hover {
+  border-color: #0056b3;
+}
+
+/*** Input type - File ***/
+
+/* Styling for file input */
+.dataForm input[type="file"] {
+  cursor: pointer; /* Pointer cursor for file input */
+}
+
+/* File input styling (optional: custom button) */
+.dataForm input[type="file"]::file-selector-button {
+  background-color:  hsla(211, 51%, 76%, 0.629); /* Button background color */
+  color: #000000;
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 15px; /* Button padding */
+  cursor: pointer; /* Pointer cursor for button */
+  transition: background-color 0.3s ease; /* Transition for background color */
+}
+
+/* Hover effect for file input button */
+.dataForm input[type="file"]::file-selector-button:hover {
+  background: hsla(211, 41%, 69%, 0.642);
+  color: #2a2929;
 }
 
 /********************************************************************/

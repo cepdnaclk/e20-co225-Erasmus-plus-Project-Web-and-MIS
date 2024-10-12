@@ -1,0 +1,112 @@
+/* Styles for the section that holds the news addition form */
+.NewsAdd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 90%;
+} 
+
+/* Inverts the color of the date picker */
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Responsive styles for screens smaller than 768px */
+@media (max-width: 768px) {
+  /* .add-news-form {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="url"],
+  .form-group input[type="date"],
+  .form-group textarea {
+    font-size: 0.9rem;
+  } */
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.news-tile {
+  position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(92, 67, 67, 0.1);
+}
+
+.news-tile img {
+    width: 100%;
+    height: auto;
+}
+
+.news-tile p {
+    margin: 5px 0;
+}
+
+.news-tile a {
+    display: block;
+    color: blue;
+    text-decoration: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.slide-container {
+    position: relative;
+  }
+  
+  .news-slide {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+  }
+  
+  .news-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .news-content {
+    position: absolute;
+    bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .news-content h2 {
+    margin: 10px 0;
+    font-size: 24px;
+  }
+  
+  .news-content p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .news-content a {
+    color: #9cdaf9;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .news-content a:hover {
+    text-decoration: underline;
+}
+
+.news-actions {
+  position: absolute; /* Position it relative to .news-tile */
+  bottom: 10px; /* Position it at the bottom of the tile */
+  right: 10px;  /* Align it to the right */
+}

@@ -155,7 +155,7 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  background-color: rgba(228, 246, 250, 0.9);
+  background-color: rgba(228, 246, 250);
   /* padding: 1rem; */
   padding: 20px 2px;
   height: 2rem;
@@ -383,6 +383,8 @@
   color:rgb(255, 255, 255);
 }
 
+
+
 /* Dropdown menu - User Account  */
 .userAccount-Open{
   position : fixed;
@@ -477,7 +479,84 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   padding:20px;
+}
 
+.notifications-container {
+  max-height: 440px; /* Height for the scrollable area */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  scrollbar-width: thin;        /* Make scrollbar thinner */
+  scrollbar-color: #888 #f1f1f1; /* thumb color and track color */
+}
+
+.notifications-dropdown {
+  list-style-type: none;
+  margin: 0;
+} 
+
+.notifications-dropdown li {
+  background-color: #d9e3eb;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: -35px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 80px; /* Fixed height for each notification */
+  transition: background-color 0.3s ease;
+}
+
+.notifications-dropdown li:hover {
+  background-color: #b6c6d6; 
+  transform: scale(1.01);
+}
+
+.notifications-dropdown li p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.notifications-dropdown li span {
+  font-size: 12px;
+  color: gray;
+}
+.notification-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-date {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.notification-message {
+  font-size: 14px;
+  color: #333;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #888;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+.notification-count {
+  background-color: rgb(202, 47, 47);
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  margin-left: 1px;
+  font-size: 10px;
 }
 
 .sideBarMessages-Open{

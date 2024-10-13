@@ -1,6 +1,10 @@
 package com.example.demo.gallery;
 
+import com.example.demo.appuser.AppUser;
+import com.example.demo.appuser.AppUserService;
+import com.example.demo.notification.NotificationService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +19,10 @@ import java.util.stream.Collectors;
 public class GalleryService {
 
     private final GalleryRepository galleryRepository;
+    @Autowired
+    private AppUserService userService;
+    @Autowired
+    private NotificationService notificationService;
 
     /**
      * Fetch all gallery items and map them to GalleryResponse objects.
@@ -62,7 +70,10 @@ public class GalleryService {
                 imageBytes, // Store the image bytes
                 albumURL
         );
-
+        List<AppUser> users = userService.getAllUsers();
+        for (AppUser user : users) {
+            notificationService.createNotification("The new album, " + gallery.getAlbumName() +  " has been uploaded!", user,"typeGallery");
+        }
         System.out.println("Gallery Added: " + albumName); // Optional: log the added gallery
 
         return galleryRepository.save(gallery); // Save the entity to the database

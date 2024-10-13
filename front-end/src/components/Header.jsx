@@ -23,6 +23,13 @@ function Header(){
 
     const [user, setUser] = useState(null);
 
+    const [logout, setLogout] = useState(false);
+    const [showChat, setShowChat] = useState(false);
+    const [showNotifications, setShowNotifications] = useState(false);
+    const [notifications, setNotifications] = useState([]);
+    const [showAccount, setShowAccount] = useState(false);
+    const [loggedInUserState,setLoggedInUser] = useState(loggedInUser.isLoggedIn); // if a user has logged in
+
     useEffect(() => {
         axios.get('http://localhost:8080/user-info', { withCredentials: true }) 
             .then(response => { 
@@ -59,6 +66,7 @@ function Header(){
                               loggedInUser.userID=res.data.id
                               loggedInUser.userRole=res.data.appUserRole
                               loggedInUser.isRegisteredUser=true
+                              localStorage.setItem("loggedInUser",JSON.stringify(loggedInUser))
                               setLoggedInUser(true);  // Updates the logged-in state immediately
                               window.Location.reload
                           }})
@@ -66,11 +74,42 @@ function Header(){
                       alert(err);
                   })
                    }
-            //    }
             })
+    
     },[]);
 
-    
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try{
+                const user =JSON.parse(localStorage.getItem("loggedInUser"))
+                const response = await axios.get(`http://localhost:8080/api/v1/notifications/${user.userID}`);
+                setNotifications(response.data);
+                console.log(response.data)
+                window.Location.reload
+            } catch (error) {
+                console.error('Error fetching notifications: ', error);
+            }
+        };
+
+        fetchNotifications();
+    }, []);
+
+    //If an ADMIN needs to create a notification
+    // Create a new notification
+    const handleCreateNotification = async () => {
+        try {
+            const response = await axios.post('http://localhost:8080/api/v1/notifications', newNotification, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            setNotifications((prevNotifications) => [...prevNotifications, response.data]);
+            setNewNotification('');
+        } catch (error) {
+            console.error('Error creating notification:', error);
+        }
+    };
 
     // Get the current location
     const location = useLocation();
@@ -89,6 +128,7 @@ function Header(){
         setMenuOpen(false);
         setAdminMenuOpen(false);
         setIsVisible(false);
+        
     }
 
     const googleLogin = async() => {
@@ -96,18 +136,7 @@ function Header(){
         setIsVisible(false); 
         window.location.href = await 'http://localhost:8080/oauth2/authorization/google';
         //fetch user data from backend
-
-       
-    }
-
-    //For logout 
-    const [logout, setLogout] = useState(false);
-    const [showChat, setShowChat] = useState(false);
-    const [showNotifications, setShowNotifications] = useState(false);
-    const [showAccount, setShowAccount] = useState(false);
-    const [loggedInUserState,setLoggedInUser] = useState(loggedInUser.isLoggedIn); // if a user has logged in
-    // Update the visibility of the login button based on the current location
-    //TODO: if no logged user only
+    }        
     
     useEffect(() => {
         if (location.pathname === '/login' || loggedInUser.isLoggedIn) {
@@ -177,6 +206,88 @@ function closeOnClickOutside(selector, toggleClass) {
     closeOnClickOutside('.sideBarMessages-Open', 'sideBar-Close');
     closeOnClickOutside('.userAccount-Open', 'userAccount-Close');
 }, []);
+
+/* NOTIFICATIONS */
+/* Rendering Notifications */
+const renderNotifications = () => {
+    if (notifications.length === 0) {
+        return <p>No new notifications.</p>;
+    }
+    
+    // Sort notifications by time (assuming notification.time is a date/time string)
+    const sortedNotifications = [...notifications].sort((a, b) => new Date(b.time) - new Date(a.time))
+    .reverse();
+
+    /* Handle notification click based on notification type
+       Here navigation to a URL and Deletion of notification will occur*/
+    const handleNotificationClick =async (notification) => {
+        try{
+        //Navigating to a URL
+        let url = '/'; // Default URL
+
+        switch (notification.notificationType) {
+            case 'typeTask':
+                url = '/admin/dashboard';
+                break;
+            case 'typeDeliverable':
+                url = '/project overview/deliverables';
+                break;
+            case 'typeFile':
+                url = '/downloads';
+                break;
+            case 'typeGallery':
+                url = '/news & events/gallery';
+                break;
+            case 'typeNews':
+                url = '/news & events/news';
+                break;
+            case 'typeProjectSummary':
+                url = '/';
+                break;
+            case 'typeWorkplan':
+                url = '/project overview/workplan';
+                break;
+            default:
+                url = '/';
+        }
+        navigate(url);
+        setShowNotifications(false);
+
+        // Notification Deletion
+        await axios.delete(`http://localhost:8080/api/v1/notifications/${notification.id}`);
+        setNotifications((prevNotifications) =>
+            prevNotifications.filter((n) => n.id !== notification.id)
+    );
+    } catch (error) {
+        console.error('Error deleting notification:', error)
+    }
+};
+
+    return showNotifications && (
+        <div className="notifications-dropdown">
+            <ul>
+            {sortedNotifications.map(notification => {
+                // Parse the timestamp into a Date object
+                const date = new Date(notification.timestamp);
+                const formattedDate = date.toLocaleDateString(); // Format date as 'MM/DD/YYYY' (or as per your locale)
+                const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Format time as 'HH:MM AM/PM'
+
+                return (
+                    <li key={notification.id} onClick={() => handleNotificationClick(notification)} className="notification-item">
+                        <div className="notification-date">
+                            {formattedDate}
+                        </div>
+                        <p className="notification-message">{notification.message}</p>
+                        <span className="notification-time">
+                            {formattedTime}
+                        </span>
+                    </li>
+                );
+            })}
+            </ul>
+        </div>
+    )
+};
 
     return(
         <header>
@@ -251,7 +362,10 @@ function closeOnClickOutside(selector, toggleClass) {
                             
                             </li>                                            
                             <li onClick={showChatInterface}><FontAwesomeIcon icon={faMessage}/></li>
-                            <li onClick={showNotificationInterface}><FontAwesomeIcon icon={faBell}/></li>
+                            <li onClick={showNotificationInterface}>
+                                <FontAwesomeIcon icon={faBell}/>
+                                {notifications.length > 0 && <span className="notification-count">{notifications.length}</span>}
+                            </li>
                             <li onClick={showAccountInterface}>
                                 {loggedInUser.profilePicture ? (
                                     <img 
@@ -273,6 +387,8 @@ function closeOnClickOutside(selector, toggleClass) {
                     </div>                 
                                 
                 </nav>
+
+                
 
                 {/* User Account Dropdown Menu */}
                 <div class= {showAccount ? "userAccount-Open" : "userAccount-Close"}>
@@ -330,7 +446,10 @@ function closeOnClickOutside(selector, toggleClass) {
                         <h3>Notifications</h3>
                     </div>
                     <hr></hr>                       
-                            
+                    {/* Notifications Dropdown */}
+                    <div className='notifications-container'>
+                        {renderNotifications()} 
+                    </div>
                 </div>
 
                 {/* Side Bar - chatBox */}

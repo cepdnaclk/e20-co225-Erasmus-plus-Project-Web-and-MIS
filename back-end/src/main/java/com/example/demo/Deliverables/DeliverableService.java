@@ -2,6 +2,10 @@
 
 package com.example.demo.Deliverables;
 
+import com.example.demo.appuser.AppUser;
+import com.example.demo.appuser.AppUserRepository;
+import com.example.demo.appuser.AppUserService;
+import com.example.demo.notification.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +17,18 @@ public class DeliverableService {
 
     @Autowired
     private DeliverableRepository deliverableRepo;
+    @Autowired
+    private AppUserService userService;
+    @Autowired
+    private NotificationService notificationService;
 
     //Create a deliverable
     public Deliverable addDeliverable(Deliverable deliverable) {
+
+        List<AppUser> users = userService.getAllUsers();
+        for (AppUser user : users) {
+            notificationService.createNotification("The new deliverable, " + deliverable.getDeliverableName() +  " has been added!", user,"typeDeliverable");
+        }
         return deliverableRepo.save(deliverable);
     }
 

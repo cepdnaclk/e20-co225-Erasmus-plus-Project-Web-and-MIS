@@ -1,6 +1,10 @@
 package com.example.demo.news;
 
+import com.example.demo.appuser.AppUser;
+import com.example.demo.appuser.AppUserService;
+import com.example.demo.notification.NotificationService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +19,11 @@ import java.util.stream.Collectors;
 public class NewsAndEventsService {
 
     private final NewsAndEventsRepository newsAndEventsRepository;
+    @Autowired
+    private AppUserService userService;
+    @Autowired
+    private NotificationService notificationService;
+
 
     /**
      * Fetch all news and events and map them to NewsAndEventsResponse objects.
@@ -66,7 +75,10 @@ public class NewsAndEventsService {
                 newsDate,
                 imageBytes // Store the image bytes
         );
-
+        List<AppUser> users = userService.getAllUsers();
+        for (AppUser user : users) {
+            notificationService.createNotification("Latest News! - " + newsAndEvents.getNewsTitle(), user,"typeNews");
+        }
         System.out.println("News Added: " + newsTitle); // Optional: log the added news
 
         return newsAndEventsRepository.save(newsAndEvents); // Save the entity to the database

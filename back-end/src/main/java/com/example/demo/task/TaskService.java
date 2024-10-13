@@ -3,6 +3,7 @@ package com.example.demo.task;
 import com.example.demo.Deliverables.Deliverable;
 import com.example.demo.appuser.AppUser;
 import com.example.demo.appuser.AppUserRepository;
+import com.example.demo.notification.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,8 @@ public class TaskService {
     private TaskRepository taskRepository;
     @Autowired
     private AppUserRepository userRepository;
+    @Autowired
+    private NotificationService notificationService;
 
 
     public List<Task> getAllTasks(){
@@ -51,8 +54,10 @@ public class TaskService {
         taskRepository.save(task);
         for (AppUser taskMember : taskMembers) {
             task.assignMember(taskMember);
+            notificationService.createNotification("You have been assigned a new task, " + task.getTask_Name(), taskMember,"typeTask");
         }
         taskRepository.save(task);
+
 
     }
 

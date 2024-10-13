@@ -3,6 +3,9 @@
 package com.example.demo.Workplan;
 
 import com.example.demo.Deliverables.DeliverableNotFoundException;
+import com.example.demo.appuser.AppUser;
+import com.example.demo.appuser.AppUserService;
+import com.example.demo.notification.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +17,18 @@ public class WorkplanService {
 
     @Autowired
     private WorkplanRepository workplanRepo;
+    @Autowired
+    private AppUserService userService;
+    @Autowired
+    private NotificationService notificationService;
+
 
     //Create a new activity
     public WorkplanActivity addActivity(WorkplanActivity workplanActivity) {
+        List<AppUser> users = userService.getAllUsers();
+        for (AppUser user : users) {
+            notificationService.createNotification("The new activity, " + workplanActivity.getActivityName() +  " has been added to the Workplan!", user,"typeWorkplan");
+        }
         return workplanRepo.save(workplanActivity);
     }
 

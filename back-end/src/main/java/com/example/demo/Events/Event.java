@@ -13,6 +13,7 @@ public class Event {
     private Long id;
 
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String details;
     private LocalDate date;
     private String time;

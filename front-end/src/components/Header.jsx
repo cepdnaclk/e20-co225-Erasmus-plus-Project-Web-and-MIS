@@ -10,7 +10,6 @@ import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalenda
 // Global user state
 export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' ,email:'',userID:'',userRole:'',isRegisteredUser:false,isAdmin:false};
 
-
 function Header(){
     // State for hamburger menu
     const [menuOpen, setMenuOpen] = useState(false);
@@ -89,8 +88,6 @@ function Header(){
                 console.error('Error fetching notifications: ', error);
             }
         };
-
-
 
     //If an ADMIN needs to create a notification
     // Create a new notification
@@ -417,6 +414,8 @@ const renderNotifications = () => {
                                 width: '50px', 
                                 height: '50px', 
                                 borderRadius: '50%', 
+                                borderColor: '#0f172a',
+                                borderWidth: '1px',
                                 marginRight: '10px' 
                             }} 
                             referrerPolicy="no-referrer" 

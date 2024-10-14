@@ -13,7 +13,6 @@ export const NewsProvider = ({ children }) => {
   // useEffect hook to fetch news data on component mount
   useEffect(() => {
     const fetchNews = async () => {
-      console.log('Fetching news started');
       const start = performance.now();
 
       // Send GET request to fetch news from the backend API
@@ -38,7 +37,6 @@ export const NewsProvider = ({ children }) => {
       }
 
       const end = performance.now();
-      console.log(`Fetching news ended. Time taken: ${end - start} ms`);
     };
 
     fetchNews(); // Fetch news on component mount

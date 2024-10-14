@@ -71,6 +71,12 @@ function Repository() {
       {/* Cycle Tab Content */}
       {activeTab === 'cycle' && (
         <div>
+          <div className={style["RepositorySuperSubTitle"]}>
+            <h4>CYCLE Data</h4>
+          </div>
+          <div className={style["RepositorySuperSubTitle"]}>
+            <h5>This is available only to Administrators (Those who are given access).</h5>
+          </div>
           <iframe 
             src="https://drive.google.com/embeddedfolderview?id=1RzGm4lVDQRY-rmHXJhyUAzy_I2BYx4ve" 
             style={{border: "0", width: "98%", height: "600px", margin: "0% 0% 0% 3%", scrolling: "no"}}>

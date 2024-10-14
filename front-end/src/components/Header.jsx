@@ -23,7 +23,6 @@ function Header(){
     const [user, setUser] = useState(null);
 
     const [logout, setLogout] = useState(false);
-    const [showChat, setShowChat] = useState(false);
     const [showNotifications, setShowNotifications] = useState(false);
     const [notifications, setNotifications] = useState([]);
     const [showAccount, setShowAccount] = useState(false);
@@ -112,12 +111,29 @@ function Header(){
     const navigate = useNavigate();
     //Const for edit mode
     const [isEditMode, setIsEditMode] = useState(false);
-    
+        
     //Change the vie mode and the edit mode when the switch handle is toggled
     //Implement the edit mode of the website
     const handleToggle = (checked) => {
         setIsEditMode(checked);
         };
+    
+        // // Initialize the state with a function that reads from localStorage
+        // const [isEditMode, setIsEditMode] = useState(() => {
+        //     const savedEditModeValue = localStorage.getItem('isEditMode');
+        // return savedEditModeValue !== null ? JSON.parse(savedEditModeValue) : false; // Default to false if no saved value
+        // });
+    
+        // // Change the view mode and the edit mode when the switch handle is toggled
+        // const handleToggle = () => {
+
+        //     setIsEditMode(checked => ({
+        //         isEditMode: !checked.isEditMode}));
+        //     localStorage.setItem('isEditMode', JSON.stringify(isEditMode));
+        //     console.log(JSON.parse(localStorage.getItem('isEditMode')));
+        // };
+        
+
     // set hamburger menu to close when a link is clicked
     const handleLinkClick = () => {
         setMenuOpen(false);
@@ -162,23 +178,51 @@ function Header(){
             console.error('Error during logout:', error);
         });
     }
+    /************************** AI Assist ******************************/
+    const [isChatLoaded, setChatLoaded] = useState(false);
+    const [isChatVisible, setChatVisible] = useState(false);
 
-    // functions for the visibility of chat,notifications and account info
-    function showChatInterface(){
-        setShowChat(previousShowChat=>!previousShowChat);
-        setShowAccount(false);
-        setShowNotifications(false);
+//Function to load the Tawk.to script
+const loadTawkTo = () => {
+    if (!isChatLoaded) {
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/66bc3bda0cca4f8a7a75ac8b/1i57kjjg7';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', 'anonymous');
+        s0.parentNode.insertBefore(s1, s0);
 
+        // Hide the default Tawk.to button once the script has loaded
+        Tawk_API.onLoad = function() {
+            Tawk_API.hideWidget(); // Initially hide the widget
+        };
+
+        setChatLoaded(true); // Mark the chat as loaded
     }
+};
+// Function to toggle the visibility of the chat
+const toggleChat = () => {
+    loadTawkTo();
+    if (isChatLoaded && Tawk_API) {
+        if (isChatVisible) {
+            Tawk_API.hideWidget(); // Hide the chat widget
+        } else {
+            Tawk_API.showWidget(); // Show the chat widget
+            Tawk_API.maximize();   // Optionally, open the chat window
+        }
+        setChatVisible(!isChatVisible); // Toggle the visibility state
+    }
+};
+/********************************************************/
 
+    // functions for the visibility of notifications and account info
     function showAccountInterface(){
-        setShowChat(false);
         setShowAccount(previousShowAccount=>!previousShowAccount)        
         setShowNotifications(false);
     }
 
     function showNotificationInterface(){
-        setShowChat(false);
         setShowAccount(false);
         setShowNotifications(previousShowNotifications=>!previousShowNotifications)       
     }
@@ -285,23 +329,6 @@ const renderNotifications = () => {
     )
 };
 
-//const [isChatLoaded, setChatLoaded] = useState(false);
-
-// Function to load the Tawk.to script
-// const loadTawkTo = () => {
-//     if (!isChatLoaded) {
-//         var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-//         var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-//         s1.async = true;
-//         s1.src = 'https://embed.tawk.to/66bc3bda0cca4f8a7a75ac8b/1i57kjjg7';
-//         s1.charset = 'UTF-8';
-//         s1.setAttribute('crossorigin', 'anonymous');
-//         s0.parentNode.insertBefore(s1, s0);
-
-//         setChatLoaded(true); // Mark the chat as loaded
-//     }
-// };
-
     return(
         <header>
             {/* Navigation bar */}
@@ -374,7 +401,7 @@ const renderNotifications = () => {
                                 />                       
                             
                             </li>                                            
-                            <li onClick={showChatInterface}><FontAwesomeIcon icon={faMessage}/></li>
+                            <li onClick={toggleChat}><FontAwesomeIcon icon={faMessage}/></li>
                             <li onClick={showNotificationInterface}>
                                 <FontAwesomeIcon icon={faBell}/>
                                 {notifications.length > 0 && <span className="notification-count">{notifications.length}</span>}
@@ -464,19 +491,8 @@ const renderNotifications = () => {
                         {renderNotifications()} 
                     </div>
                 </div>
-
-                {/* Side Bar - chatBox */}
-                <div class= {showChat ? "sideBarMessages-Open" : "sideBar-Close"}>
-                            
-                    <div className="siderBarTitle">
-                        <h3>Messages</h3>
-                    </div>
-                    <hr></hr>                        
-                </div>
             </div>
 
-            
-            
             <div className='logo-blockFull'>
                 <div className='logo-block'>
                     {/* Erasmus logo */}

@@ -37,29 +37,29 @@ const ProjectManagement = () => {
   const [userID, setUserID] = useState(loggedInUser.userID);
   
 
- // check whether the user is a task member
- const checkIfAssigned = (user) => {
-  if (Array.isArray(task.assignedUsers) ) {
-      let checkedAssignedUser=task.assignedUsers.filter(assignedUser => assignedUser.id==user.id);
-   if (!Array.isArray(checkedAssignedUser) || !checkedAssignedUser.length) {
-     return false
-  }else{
-    return true;
-  }}
-};
+  // check whether the user is a task member
+  const checkIfAssigned = (user) => {
+    if (Array.isArray(task.assignedUsers) ) {
+        let checkedAssignedUser=task.assignedUsers.filter(assignedUser => assignedUser.id==user.id);
+    if (!Array.isArray(checkedAssignedUser) || !checkedAssignedUser.length) {
+      return false
+    }else{
+      return true;
+    }}
+  };
 
-    //to load for the first time on page visit
-    useEffect(() => {
-        if (loggedInUser.isAdmin) {
-          setIsAdmin(true);
-          getAllTaskInfo();     
-        }else if(!loggedInUser.isAdmin){
-          setIsAdmin(false);
-          getAllTaskInfo();
-        }
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+  //to load for the first time on page visit
+  useEffect(() => {
+      if (loggedInUser.isAdmin) {
+        setIsAdmin(true);
+        getAllTaskInfo();     
+      }else if(!loggedInUser.isAdmin){
+        setIsAdmin(false);
+        getAllTaskInfo();
+      }
+      localStorage.setItem('tasks', JSON.stringify(tasks));
 
-    }, []);
+  }, []);
 
   //setting values from form
   const [progressValue,setProgressValue] = useState(0);
@@ -72,132 +72,128 @@ const ProjectManagement = () => {
     description:"",
     financialReport:"",
     assignedUsers:[]
-})
+  })
 
- //functions to set up above values
- function changeProgressValue(event) {
-    setProgressValue(Number(event.target.value))
-    setTask({...task,["progress"]:event.target.value})
- }
-  
-const onInputChange=(e)=>{
-  setTask({...task,[e.target.name]:e.target.value})
-};
+  //functions to set up above values
+  function changeProgressValue(event) {
+      setProgressValue(Number(event.target.value))
+      setTask({...task,["progress"]:event.target.value})
+  }
+    
+  const onInputChange=(e)=>{
+    setTask({...task,[e.target.name]:e.target.value})
+  };
 
- // Handler for selecting a file
- const handleFileChange = (e) => {
-  setTask({...task,"financialReport":e.target.files[0]})
-};
+  // Handler for selecting a file
+  const handleFileChange = (e) => {
+    setTask({...task,"financialReport":e.target.files[0]})
+  };
 
-// Handles file download
-const handleDownload = async (file) => {
-      const url = window.URL.createObjectURL(new Blob([file]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', "financialReport.txt");
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
-}
-
-const onMemberChange=(e)=>{
-  let tempUserId=e.target.value;
-  let user = users.filter(i=>i.id==tempUserId)[0]
-  //If there are assigned users
-  if (Array.isArray(task.assignedUsers) ) {
-  let checkedAssignedUser=task.assignedUsers.filter(assignedUser => assignedUser.id==user.id);
-   if (!Array.isArray(checkedAssignedUser) || !checkedAssignedUser.length) {
-    setTask(prevTask => ({
-      ...prevTask,
-      assignedUsers: [...prevTask.assignedUsers, user] // Add userId
-  }));
-
-  }else{
-    setTask(prevTask => ({
-      ...prevTask,
-      assignedUsers: prevTask.assignedUsers.filter(assignedUser => assignedUser.id != tempUserId) // Remove the user with the selected ID
-  }));
-  }}else{
-    setTask(prevTask => ({
-      ...prevTask,
-      assignedUsers: [user] // Add userId
-  }));
+  // Handles file download
+  const handleDownload = async (file) => {
+        const url = window.URL.createObjectURL(new Blob([file]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', "financialReport.txt");
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link);
   }
 
-}
+  const onMemberChange=(e)=>{
+    let tempUserId=e.target.value;
+    let user = users.filter(i=>i.id==tempUserId)[0]
+    //If there are assigned users
+    if (Array.isArray(task.assignedUsers) ) 
+      {
+        let checkedAssignedUser=task.assignedUsers.filter(assignedUser => assignedUser.id==user.id);
+        if (!Array.isArray(checkedAssignedUser) || !checkedAssignedUser.length) {
+            setTask(prevTask => ({
+              ...prevTask,
+              assignedUsers: [...prevTask.assignedUsers, user] // Add userId
+            }));
+        }
+        else {
+            setTask(prevTask => ({
+              ...prevTask,
+              assignedUsers: prevTask.assignedUsers.filter(assignedUser => assignedUser.id != tempUserId) // Remove the user with the selected ID
+            }));
+        }
+      }
+    else{
+        setTask(prevTask => ({
+          ...prevTask,
+          assignedUsers: [user] // Add userId
+        }));
+    }
+  }
 
+  //When 'Add New' button is clicked : Only For Add New
+  const onAddNewClicked=()=>{
+    setShowInterface(true);
+    setAddRow(true);
+    setEditRow(false);
 
-//When 'Add New' button is clicked : Only For Add New
-const onAddNewClicked=()=>{
-  setShowInterface(true);
-  setAddRow(true);
-  setEditRow(false);
+    setTask({
+      task_Name:"",
+      start_Date:"",
+      end_Date:"",
+      progress:"",
+      description:"",
+      financialReport:"",
+      assignedUsers:[]
+    });
+    setProgressValue(0)
+  }
 
-  setTask({
-    task_Name:"",
-    start_Date:"",
-    end_Date:"",
-    progress:"",
-    description:"",
-    financialReport:"",
-    assignedUsers:[]
-  });
-  setProgressValue(0)
-}
+  //on view
+  const onViewClick = (task) => {
+    setTask(task);
+    setProgressValue(task.progress);
+    setShowViewInterface(true);
+    setAddRow(false);
+    setEditRow(false);
+  }
 
-//on view
-const onViewClick = (task) => {
-  setTask(task);
-  setProgressValue(task.progress);
-  setShowViewInterface(true);
-  setAddRow(false);
-  setEditRow(false);
-}
+  //on Edit 
+  const onEditClick = (task) => {
+    setTask(task);
+    setProgressValue(task.progress);
+    setShowInterface(true);
+    setAddRow(false);
+    setEditRow(true);
+  }
 
-//on Edit 
-const onEditClick = (task) => {
-  setTask(task);
-  setProgressValue(task.progress);
-  setShowInterface(true);
-  setAddRow(false);
-  setEditRow(true);
-}
 //When 'Add' button is clicked in the interface : Only For Add New
 const onAddSubmit = async (e) => {
-e.preventDefault(); // Prevent default form submission
-const {assignedUsers, ...newtaskFormat } = task;
-const formData = new FormData();
-for (const key in newtaskFormat) {
-  formData.append(key, newtaskFormat[key]);
-}
-formData.append("assignedUsers",JSON.stringify(assignedUsers))
-console.log("assignedUsers",JSON.stringify(assignedUsers))
+    e.preventDefault(); // Prevent default form submission
+    
+    const {assignedUsers, ...newtaskFormat } = task;
+    const formData = new FormData();
+    
+    for (const key in newtaskFormat) {
+        formData.append(key, newtaskFormat[key]);
+    }
 
-try {
-    // console.log("report....",task.financialReport)
-    await axios.post("http://localhost:8080/api/v1/tasks/addWithUsers", formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }});
-    alert("task added");
-    //  reload the data after successful submission
-    setTasks([...tasks,task])
-    // Clear the form fields after successful submission if needed
-    setAddRow(false);
-    setShowInterface(false);
-  } catch (error) {
-    console.error("Error adding deliverable:", error);
-  }
-};
+    formData.append("assignedUsers",JSON.stringify(assignedUsers))
+    console.log("assignedUsers",JSON.stringify(assignedUsers))
 
-//on view
-const onViewClick = (task) => {
-  setTask(task);
-  setProgressValue(task.progress);
-  setShowViewInterface(true);
-  setAddRow(false);
-  setEditRow(false);
-}
+    try {
+        // console.log("report....",task.financialReport)
+        await axios.post("http://localhost:8080/api/v1/tasks/addWithUsers", formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+        }});
+        alert("task added");
+        //  reload the data after successful submission
+        setTasks([...tasks,task])
+        // Clear the form fields after successful submission if needed
+        setAddRow(false);
+        setShowInterface(false);
+      } catch (error) {
+        console.error("Error adding deliverable:", error);
+      }
+  };
 
 //When 'Update' button is clicked in the interface : Only Edit
 const onUpdateSubmit = async (e) => {
@@ -238,44 +234,39 @@ const onDeleteClick = async (task_ID) => {
 }
 
 
-  //to refresh on admin requirement => get ALL TASKS
-  function getAllTaskInfo(){
-    const fetchTasks = async () => {
-      let response
-      try {
-        
-          response = await axios.get('http://localhost:8080/api/v1/tasks');
-        //for editing purrposes and adding new tasks
-        const Users = await axios.get('http://localhost:8080/api/v1/users');
-        setTasks(response.data);       
-        setUsers(Users.data.map(({ admin, ...rest }) => rest));
-        if (response.data.length!=0) {
-          setTaskListNotEmpty(true);
-        }
-      } catch (error) {
-        console.error('Error fetching tasks:', error);
+//to refresh on admin requirement => get ALL TASKS
+function getAllTaskInfo(){
+  const fetchTasks = async () => {
+    let response
+    try {
+      
+        response = await axios.get('http://localhost:8080/api/v1/tasks');
+      //for editing purrposes and adding new tasks
+      const Users = await axios.get('http://localhost:8080/api/v1/users');
+      setTasks(response.data);       
+      setUsers(Users.data.map(({ admin, ...rest }) => rest));
+      if (response.data.length!=0) {
+        setTaskListNotEmpty(true);
       }
-    };
-    fetchTasks();
-  }
-
-  
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
+  fetchTasks();
+}
 
 // refresh tasks on request
-  function RefreshTasks() {    
-    setShowInterface(false);
-    setShowViewInterface(false);
-
-    getAllTaskInfo();
-  }
-
-
-  function closePopUp(){
-    setShowInterface(false);
-  }
-  function closeViewPopuP(){
-    setShowViewInterface(false)
-  }
+function RefreshTasks() {    
+  setShowInterface(false);
+  setShowViewInterface(false);
+  getAllTaskInfo();
+}
+function closePopUp(){
+  setShowInterface(false);
+}
+function closeViewPopuP(){
+  setShowViewInterface(false)
+}
 
 
 /**************Chart Configuration***************/
@@ -330,7 +321,6 @@ const columns = [
   { type: "number", label: "Duration" },
   { type: "number", label: "Percent Complete" },
   { type: "string", label: "Dependencies" },
-  
 ];
 
 /************** Rows **************/
@@ -354,95 +344,92 @@ const rows = (tasks) => {
           <h3>Project Management</h3>
     </div>
     <div>
-    
-    <Button onClick={RefreshTasks} variant="outlined" startIcon={<RefreshIcon />}>
-         Refresh
-    </Button>
-    <br></br>
-    { isAdmin &&
-    <div>
-    <Button onClick={onAddNewClicked} startIcon={<AddTaskIcon></AddTaskIcon>}>Add New Task</Button>
-<br></br>
+        <Button onClick={RefreshTasks} variant="outlined" startIcon={<RefreshIcon />}>
+            Refresh
+        </Button>
+        <br></br>
+        {isAdmin &&<div>
+        <Button onClick={onAddNewClicked} startIcon={<AddTaskIcon></AddTaskIcon>}>Add New Task</Button>
+        <br></br>
 
-   {/* // a popup to add a new task or edit */}
-   <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
-     <DialogContent >
-       <div className = "dataForm"> 
-       <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
-         <div className = "formTitle">
-             <h2>{editRow ? "Edit Entry" : "Add a New Entry"}</h2> 
-         </div>
-         <div className = "inputbox">  
-           <label>Task Name: </label>
-           <input type="text" name="task_Name" value={task.task_Name} required="required" className ="field" onChange={(e)=>onInputChange(e)}></input>
-         </div>
-         <div className = "inputbox">  
-           <label>Start Date: </label>
-           <input type="date" name="start_Date"value={task.start_Date} required="required" className ="field" onChange={(e)=>onInputChange(e)} ></input>
-         </div>
-         <div className = "inputbox">  
-           <label>End Date: </label>
-           <input type="date" name="end_Date" min={task.start_Date} required="required" value={task.end_Date} className ="field" onChange={(e)=>onInputChange(e)}></input>
-         </div>
-         <div className = "inputbox">  
-         <label>Progress</label>
-           <div style={{width:"30%"}}>
-           <Slider 
-             onChange={changeProgressValue}
-               aria-label="Progress"
-               value={typeof progressValue === 'number' ? progressValue : 0}
-               min={0}
-               max={100}
-               width="30%"
-               />
-           </div>
-           <input type="number" name="progress"value={task.progress} required="required" onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
-           </input>  
-       </div>
-       <div className = "inputbox">  
-           <label>Task Details: </label>
-           <input type="text" name="description" value={task.description} className = {style["inputboxDetails"]} onChange={(e)=>onInputChange(e)}></input>
-       </div>
-       <div className = "inputbox">  
-           <label>Team Members:</label>
-           <div class={style["checkBoxContainer"]}>
-             { users.map((user) => {
-               let isAssignedTaskMember = checkIfAssigned(user);             
-               return(<div style={{display: "flex",gap: "10px", width:"100%",marginTop:"5%",verticalAlign:"middle"}}>
-               <label style={{color:"black",height:"45px", width:"95%"}}>{user.firstName+" "+user.lastName}</label>
-               <input type="checkbox" value={user.id} checked={isAssignedTaskMember} onChange={(e)=>onMemberChange(e)} style={{color:"white",height:"3%"}}></input>
-               </div>
-             )})
-           }
-         </div>
-       </div>
-       { <div key={task.task_ID} className={style["fileItem"]}>
-              <div className={style["fileContent"]}>
-               <img src={fileDownload} alt="fileDownload" />
-               <span><p>Financial Report</p></span>
-               <div className={style["fileActions"]}>
-               <button onClick={() => handleFileChange(task.financialReport)}>
-                  <FontAwesomeIcon icon={faUpload} />
-                </button>
-                {task.financialReport && 
-                  <button onClick={() => handleDownload(task.financialReport)}>
-                  <FontAwesomeIcon icon={faDownload} />
-                  </button>
-                }
+          {/* // a popup to add a new task or edit */}
+          <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
+            <DialogContent >
+              <div className = "dataForm"> 
+              <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
+                <div className = "formTitle">
+                    <h2>{editRow ? "Edit Entry" : "Add a New Entry"}</h2> 
+                </div>
+                <div className = "inputbox">  
+                  <label>Task Name: </label>
+                  <input type="text" name="task_Name" value={task.task_Name} required="required" className ="field" onChange={(e)=>onInputChange(e)}></input>
+                </div>
+                <div className = "inputbox">  
+                  <label>Start Date: </label>
+                  <input type="date" name="start_Date"value={task.start_Date} required="required" className ="field" onChange={(e)=>onInputChange(e)} ></input>
+                </div>
+                <div className = "inputbox">  
+                  <label>End Date: </label>
+                  <input type="date" name="end_Date" min={task.start_Date} required="required" value={task.end_Date} className ="field" onChange={(e)=>onInputChange(e)}></input>
+                </div>
+                <div className = "inputbox">  
+                <label>Progress</label>
+                  <div style={{width:"30%"}}>
+                  <Slider 
+                    onChange={changeProgressValue}
+                      aria-label="Progress"
+                      value={typeof progressValue === 'number' ? progressValue : 0}
+                      min={0}
+                      max={100}
+                      width="30%"
+                      />
+                  </div>
+                  <input type="number" name="progress"value={task.progress} required="required" onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
+                  </input>  
+              </div>
+              <div className = "inputbox">  
+                  <label>Task Details: </label>
+                  <input type="text" name="description" value={task.description} onChange={(e)=>onInputChange(e)}></input>
+              </div>
+              <div className = "inputbox">  
+                  <label>Team Members:</label>
+                  <div class={style["checkBoxContainer"]}>
+                    { users.map((user) => {
+                      let isAssignedTaskMember = checkIfAssigned(user);             
+                      return(<div style={{display: "flex",gap: "10px", width:"100%",marginTop:"5%",verticalAlign:"middle"}}>
+                      <label style={{color:"black",height:"45px", width:"95%"}}>{user.firstName+" "+user.lastName}</label>
+                      <input type="checkbox" value={user.id} checked={isAssignedTaskMember} onChange={(e)=>onMemberChange(e)} ></input>
+                      </div>
+                    )})
+                  }
                 </div>
               </div>
+              { <div key={task.task_ID} className={style["fileItem"]}>
+                      <div className={style["fileContent"]}>
+                      <img src={fileDownload} alt="fileDownload" />
+                      <span><p>Financial Report</p></span>
+                      <div className={style["fileActions"]}>
+                      <button onClick={() => handleFileChange(task.financialReport)}>
+                          <FontAwesomeIcon icon={faUpload} />
+                        </button>
+                        {task.financialReport && 
+                          <button onClick={() => handleDownload(task.financialReport)}>
+                          <FontAwesomeIcon icon={faDownload} />
+                          </button>
+                        }
+                        </div>
+                      </div>
+                    </div>
+                }
+              {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
+              </form>
             </div>
-        }
-       {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
-       </form>
-     </div>
-     </DialogContent>
-     <DialogActions>
-        <Button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>}>Close</Button>
-     </DialogActions>
-   </Dialog>
-   </div>
-    }
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>}>Close</Button>
+            </DialogActions>
+          </Dialog>
+        </div>}
 
     {/* a popup to show task */}
      <Dialog open={showViewInterface} onClose={closeViewPopuP} fullWidth maxWidth="sm">
@@ -524,13 +511,9 @@ const rows = (tasks) => {
                 },
               },
             ]}
-          />  
-          />
-          }
-      </>
-    );
-  // }
- 
-}
+          
+          />}
+      </div>
+</>);}
 
 export default ProjectManagement;

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Dialog, DialogActions, DialogContent, Stack,Slider } from "@mui/material";
 import {loggedInUser} from '../components/Header.jsx'
+import { ClipLoader } from "react-spinners";
 
 const ProjectManagement = () => {
   const [users,setUsers] = useState([]);
@@ -21,6 +22,8 @@ const ProjectManagement = () => {
   const [addRow, setAddRow] = useState(false);
   const [appUserRole, setAppUserRole] = useState(loggedInUser.userRole);
   const [userID, setUserID] = useState(loggedInUser.userID);
+
+  const [isLoading, setIsLoading] = useState(false);
 
     //to load for the first time on page visit
     useEffect(() => {
@@ -110,6 +113,7 @@ const onAddNewClicked=()=>{
 //When 'Add' button is clicked in the interface : Only For Add New
 const onAddSubmit = async (e) => {
 e.preventDefault(); // Prevent default form submission
+setIsLoading(true);
 const { assignedUsers, ...newtaskFormat } = task;
 console.log("aaa ",assignedUsers)
   try {
@@ -122,6 +126,8 @@ console.log("aaa ",assignedUsers)
     setShowInterface(false);
   } catch (error) {
     console.error("Error adding deliverable:", error);
+  }finally {
+    setIsLoading(false); // Hide loading indicator
   }
 };
 
@@ -225,7 +231,7 @@ const onDeleteClick = async (task_ID) => {
     {/* // a popup to add a new task */}
     <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
       <DialogContent >
-       
+      
         <div className = "dataForm"> 
         <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
           <div className = {style["formTitle"]}>
@@ -273,6 +279,7 @@ const onDeleteClick = async (task_ID) => {
           </div>
         </div>
         {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
+        {isLoading && <ClipLoader size={20} color={"#123abc"}/>}
         </form>
       </div>
       </DialogContent>

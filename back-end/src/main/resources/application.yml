@@ -34,8 +34,6 @@ spring:
           connection timeout: 5000
           timeout: 3000
           write timeout: 5000
-
-
   servlet:
     multipart:
       max-file-size: 100MB   # Increase size for large files

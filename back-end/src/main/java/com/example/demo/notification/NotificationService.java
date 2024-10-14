@@ -45,7 +45,7 @@ public class NotificationService {
     private void sendNotificationEmail(String toEmail, String message) {
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(toEmail);
-        email.setSubject("New Notification");
+        email.setSubject("New Notification from Erasmus+ CYCLE UOP");
         email.setText(message);
 
         mailSender.send(email);  // Send the email

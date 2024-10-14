@@ -11,6 +11,7 @@ import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalenda
 export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' ,email:'',userID:'',userRole:'',isRegisteredUser:false,isAdmin:false};
 
 
+
 function Header(){
     // State for hamburger menu
     const [menuOpen, setMenuOpen] = useState(false);
@@ -85,8 +86,7 @@ function Header(){
                 const user =JSON.parse(localStorage.getItem("loggedInUser"))
                 const response = await axios.get(`http://localhost:8080/api/v1/notifications/${user.userID}`);
                 setNotifications(response.data);
-                console.log(response.data)
-                window.Location.reload
+                
             } catch (error) {
                 console.error('Error fetching notifications: ', error);
             }
@@ -406,6 +406,8 @@ const renderNotifications = () => {
                                 width: '50px', 
                                 height: '50px', 
                                 borderRadius: '50%', 
+                                borderColor: '#0f172a',
+                                borderWidth: '1px',
                                 marginRight: '10px' 
                             }} 
                             referrerPolicy="no-referrer" 

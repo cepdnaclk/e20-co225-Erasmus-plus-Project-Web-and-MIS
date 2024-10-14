@@ -71,14 +71,12 @@ const Gallery = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      
-      // Log the response to debug if the item is being added correctly
-      console.log('Gallery item added:', response.data);
 
       // Fetch the updated gallery list after adding the item
       const latestGallery = await fetchGallery(); 
       setGallery(latestGallery); 
       setshowDiologBox(false);
+      alert('Album Successfully Added!');
     } catch (error) {
       console.error('Error adding gallery item:', error); 
     }

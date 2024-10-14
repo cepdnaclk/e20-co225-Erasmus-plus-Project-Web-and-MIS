@@ -450,6 +450,7 @@
   width: 25px;
   background-color: #535bf237;
   border-radius: 50%;
+  border-color: #0f172a;
   padding:10px;
   margin: 5px;
   transition: transform 0.8s;

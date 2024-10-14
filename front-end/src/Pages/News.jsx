@@ -67,6 +67,7 @@ const News = () => {
       setshowDiologBox(false);
       const latestNews = await fetchNews(); // Fetch the latest news
       setNews(latestNews); // Update the news list with the new entry
+      alert('News Successfully Added!');
     } catch (error) {
       console.error('Error adding news:', error); // Log any errors
     }
@@ -112,6 +113,7 @@ const News = () => {
           </ol>
         </nav>
       </div>
+
       <div className={style["NewsAdd"]}>
         {/* Show Add News button only if the user is logged in */}
         {loggedInUser.isLoggedIn && (
@@ -166,7 +168,7 @@ const News = () => {
           </div>
           </DialogContent>
           </Dialog>}
-      </div>
+      
 
       
       {/* Display news items */}
@@ -176,10 +178,11 @@ const News = () => {
             <img src={`data:image/jpeg;base64,${item.newsCoverImage}`} alt={item.newsTitle} />
             <h2>{item.newsTitle}</h2> {/* News title */}
             <p>{item.newsDescription}</p> {/* News description */}
-            <b><p>Date: {item.newsDate}</p></b> {/* News date */}
-            <b><p>Author: {item.newsAuthor}</p></b> {/* News author */}
-            <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a> {/* Link to full news */}
-            
+            <div className={style["date-and-author"]}>
+              <b><p>Date: {item.newsDate}</p></b> {/* News date */}
+              <b><p>Author: {item.newsAuthor}</p></b> {/* News author */}
+              <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a> {/* Link to full news */}
+            </div>
             {/* Show edit and delete buttons only if user is logged in */}
             {loggedInUser.isLoggedIn && (
               <div className={style["news-actions"]}>
@@ -188,6 +191,7 @@ const News = () => {
             )}
           </div>
         ))}
+      </div>
       </div>
     </>
   );

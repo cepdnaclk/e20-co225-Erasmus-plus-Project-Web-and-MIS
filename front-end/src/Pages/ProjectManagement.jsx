@@ -16,6 +16,7 @@ import { Dialog, DialogActions, DialogContent, Stack,Slider } from "@mui/materia
 const ProjectManagement = () => {
 
   const loggedInUser =JSON.parse(localStorage.getItem("loggedInUser"))
+
   if (loggedInUser==null || Object.keys(loggedInUser).length == 0 ) {
     return (
       <>
@@ -49,7 +50,6 @@ const ProjectManagement = () => {
 
     //to load for the first time on page visit
     useEffect(() => {
-
         if (loggedInUser.isAdmin) {
           setIsAdmin(true);
           getAllTaskInfo();     
@@ -73,7 +73,6 @@ const ProjectManagement = () => {
     financialReport:"",
     assignedUsers:[]
 })
-
 
  //functions to set up above values
  function changeProgressValue(event) {
@@ -191,6 +190,14 @@ try {
   }
 };
 
+//on view
+const onViewClick = (task) => {
+  setTask(task);
+  setProgressValue(task.progress);
+  setShowViewInterface(true);
+  setAddRow(false);
+  setEditRow(false);
+}
 
 //When 'Update' button is clicked in the interface : Only Edit
 const onUpdateSubmit = async (e) => {
@@ -208,6 +215,7 @@ const onUpdateSubmit = async (e) => {
       headers: {
         'Content-Type': 'multipart/form-data'
       }});;
+
     // Optionally, change the tasks list after successful submission
     setTasks([...tasks,task])
     setEditRow(false);
@@ -254,13 +262,11 @@ const onDeleteClick = async (task_ID) => {
   
 
 // refresh tasks on request
-  function RefreshTasks() {
-    
+  function RefreshTasks() {    
     setShowInterface(false);
     setShowViewInterface(false);
 
     getAllTaskInfo();
-
   }
 
 
@@ -284,8 +290,9 @@ const options = {
       fontSize: 18,
       color: '#004594'//Not working?
     },
-    explorer: {axis: 'horizontal', keepInBounds: false},
 
+    explorer: {axis: 'horizontal', keepInBounds: false},
+    
     // innerGridTrack: { fill: '#e3f2fd' },  
     // innerGridDarkTrack: { fill: '#bbdefb' }, 
     // Adjust the date format for months and years
@@ -343,17 +350,16 @@ const rows = (tasks) => {
 
     return(
     <>
-    <div className={style["ProjectManagementTitle"]}>
+    <div className="pageTitle">
           <h3>Project Management</h3>
     </div>
-
     <div>
     
     <Button onClick={RefreshTasks} variant="outlined" startIcon={<RefreshIcon />}>
          Refresh
     </Button>
     <br></br>
- { isAdmin &&
+    { isAdmin &&
     <div>
     <Button onClick={onAddNewClicked} startIcon={<AddTaskIcon></AddTaskIcon>}>Add New Task</Button>
 <br></br>
@@ -361,25 +367,24 @@ const rows = (tasks) => {
    {/* // a popup to add a new task or edit */}
    <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
      <DialogContent >
-      
        <div className = "dataForm"> 
        <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
-         <div className = {style["formTitle"]}>
-             <h3>{editRow ? "Edit Entry" : "Add a New Entry"}</h3> 
+         <div className = "formTitle">
+             <h2>{editRow ? "Edit Entry" : "Add a New Entry"}</h2> 
          </div>
-         <div className = {style["inputbox"]}>  
+         <div className = "inputbox">  
            <label>Task Name: </label>
-           <input type="text" name="task_Name" value={task.task_Name} required="required" className = {style["field"]} onChange={(e)=>onInputChange(e)}></input>
+           <input type="text" name="task_Name" value={task.task_Name} required="required" className ="field" onChange={(e)=>onInputChange(e)}></input>
          </div>
-         <div className = {style["inputbox"]}>  
+         <div className = "inputbox">  
            <label>Start Date: </label>
-           <input type="date" name="start_Date"value={task.start_Date} required="required" className = {style["field"]} onChange={(e)=>onInputChange(e)} ></input>
+           <input type="date" name="start_Date"value={task.start_Date} required="required" className ="field" onChange={(e)=>onInputChange(e)} ></input>
          </div>
-         <div className = {style["inputbox"]}>  
+         <div className = "inputbox">  
            <label>End Date: </label>
-           <input type="date" name="end_Date" min={task.start_Date} value={task.end_Date} required="required" className = {style["field"]} onChange={(e)=>onInputChange(e)}></input>
+           <input type="date" name="end_Date" min={task.start_Date} required="required" value={task.end_Date} className ="field" onChange={(e)=>onInputChange(e)}></input>
          </div>
-         <div className = {style["inputbox"]}>  
+         <div className = "inputbox">  
          <label>Progress</label>
            <div style={{width:"30%"}}>
            <Slider 
@@ -394,16 +399,14 @@ const rows = (tasks) => {
            <input type="number" name="progress"value={task.progress} required="required" onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
            </input>  
        </div>
-       <div className = {style["inputbox"]}>  
+       <div className = "inputbox">  
            <label>Task Details: </label>
-           <input type="text" name="description" value={task.description}  className = {style["inputboxDetails"]} onChange={(e)=>onInputChange(e)}></input>
+           <input type="text" name="description" value={task.description} className = {style["inputboxDetails"]} onChange={(e)=>onInputChange(e)}></input>
        </div>
-
-       <div className = {style["inputbox"]}>  
+       <div className = "inputbox">  
            <label>Team Members:</label>
            <div class={style["checkBoxContainer"]}>
-           {
-             users.map((user) => {
+             { users.map((user) => {
                let isAssignedTaskMember = checkIfAssigned(user);             
                return(<div style={{display: "flex",gap: "10px", width:"100%",marginTop:"5%",verticalAlign:"middle"}}>
                <label style={{color:"black",height:"45px", width:"95%"}}>{user.firstName+" "+user.lastName}</label>
@@ -413,7 +416,6 @@ const rows = (tasks) => {
            }
          </div>
        </div>
-       
        { <div key={task.task_ID} className={style["fileItem"]}>
               <div className={style["fileContent"]}>
                <img src={fileDownload} alt="fileDownload" />
@@ -431,7 +433,6 @@ const rows = (tasks) => {
               </div>
             </div>
         }
-
        {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
        </form>
      </div>
@@ -444,14 +445,15 @@ const rows = (tasks) => {
     }
 
     {/* a popup to show task */}
-     <Dialog open={showViewInterface} onClose={closeViewPopuP} fullWidth maxWidth="md">
+     <Dialog open={showViewInterface} onClose={closeViewPopuP} fullWidth maxWidth="sm">
      
-       <div key={task.task_ID} className={style["taskCards"]}>
+       <div key={task.task_ID} className={style["viewTask"]}>
              <h2>{task.task_Name}</h2>
              <b><p>Start Date: {task.start_Date}</p></b>
              <b><p>End Date: {task.end_Date}</p></b>
              <b><p>Progress: {task.progress}</p></b>
              <b><p>Description: {task.description}</p></b>
+               
              {/* task members */}
              <div style={{textAlign:"center"}}>
              <ol style={{listStylePosition: "inside"}}>
@@ -460,7 +462,8 @@ const rows = (tasks) => {
              ))}
              </ol>
              </div>
-             {/* financial report */}
+
+              {/* financial report */}
              { 
              task.financialReport && (
              <div key={task.task_ID} className={style["fileItem"]}>
@@ -482,8 +485,9 @@ const rows = (tasks) => {
             )}
          {isAdmin &&
            <div>
-             <button className={style['actionButton']} onClick={() => onEditClick(task)}><FontAwesomeIcon icon={faPen}/></button>
-             <button className={style['actionButton']} onClick={() => onDeleteClick(task.task_ID)}><FontAwesomeIcon icon={faTrash} /></button>
+             <button className='actionButton' onClick={() => onEditClick(task)}><FontAwesomeIcon icon={faPen}/></button>
+             <button className='actionButton' onClick={() => onDeleteClick(task.task_ID)}><FontAwesomeIcon icon={faTrash} /></button>
+
          </div>}
              </div>
              <DialogActions>
@@ -494,6 +498,7 @@ const rows = (tasks) => {
     </div>
 
 {/* Gann chart  */}
+<div className={style["container"]}>
 {taskListNotEmpty &&
 <Chart
             chartType="Gantt"
@@ -519,9 +524,9 @@ const rows = (tasks) => {
                 },
               },
             ]}
+          />  
           />
           }
-    
       </>
     );
   // }

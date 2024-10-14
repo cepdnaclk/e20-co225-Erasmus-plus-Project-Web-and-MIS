@@ -1,4 +1,5 @@
-/* Root styling for general font and text rendering */:root {
+/* Root styling for general font and text rendering */
+:root {
     font-weight: 400;
     color-scheme: light dark;
     text-decoration: none;
@@ -81,17 +82,17 @@
 
 /* Logo block styling */
 .logo-block{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 20% 60% 20% ;
+  grid-template-rows: max-content;
   align-items: center;
-  /* box-sizing: border-box; */
-  transition: transform 2s ease, opacity 0.5s ease;
+}
+.logo-block-grid-item{
+  justify-self:center;
+  align-self: center;
 }
 
 .logo-blockFull {
-  justify-content: center;
-  align-items: center;
-  /* background-image: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.99)),  url(../assets/2.jpg);  */
   background-image: 
         linear-gradient(
             to bottom, 
@@ -110,8 +111,6 @@
             rgba(255, 255, 255, 0.97) 100%  /* Right edge */
         ), 
         url(../assets/headerImage.jpg);
-    background-size: cover;
-    background-position: center;
     position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -119,12 +118,6 @@
   padding-bottom: 20px;
   padding-top: 30px;
   margin-bottom: 1%;
-}
-
-/* Heading inside the logo block */
-.Heading {
-  margin-top: -80px; /* Adjust the value as needed */
-  margin-bottom: 10px;
 }
 
 /* Erasmus+ logo hover effect */
@@ -135,19 +128,18 @@
 
 /* Erasmus+ logo styling */
 .Erasmus-plus-Logo{
-  margin-top: 20px;
+  /* margin-top: 20px; */
   width: 150px;
-  margin-left: 70px;
-  margin-right: 40px;
+  /* margin-left: 70px;
+  margin-right: 40px; */
   height: auto;
 }
 
 /* Cycle logo styling */
 .Cycle-Logo{
-  width: 260px;
+  width: 220px;
   height: auto;
-  margin-right: 30px;
-  margin-top: 20px
+  margin-right: 30px
 }
 
 /* Header navigation bar styling */
@@ -155,7 +147,7 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  background-color: rgba(228, 246, 250);
+  background-color: rgba(228, 246, 250, 0.9);
   /* padding: 1rem; */
   padding: 20px 2px;
   height: 2rem;
@@ -383,8 +375,6 @@
   color:rgb(255, 255, 255);
 }
 
-
-
 /* Dropdown menu - User Account  */
 .userAccount-Open{
   position : fixed;
@@ -470,7 +460,7 @@
   position : fixed;
   top: 6%;
   right: 3%;
-  width: 300px;
+  width: 250px;
   height:100vh;
   max-height: 500px;
   z-index: 2000; 
@@ -596,18 +586,18 @@
     .headerNavBarLeft {
     top: -1.3rem;
   }
-    .logo-block {
+    /* .logo-block {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
+    } */
   
     .Erasmus-plus-Logo {
         width: 130px; /* smaller width for medium screens */
     }
   
     .Cycle-Logo {
-        width: 230px; /* smaller width for medium screens */
+        width: 200px; /* smaller width for medium screens */
     }
     
     h2 {
@@ -675,11 +665,11 @@
     font-weight: 600;
   }
 
-  .logo-block {
+  /* .logo-block {
       flex-direction: column;
       align-items: center;
       margin-top: 0%;
-  }
+  } */
 
   .Erasmus-plus-Logo {
       display: none;

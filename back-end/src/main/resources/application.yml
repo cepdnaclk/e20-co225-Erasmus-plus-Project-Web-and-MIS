@@ -19,10 +19,10 @@ spring:
     show-sql: true
 
   mail:
-    host: localhost
-    port: 1025
-    username: hello
-    password: hello
+    host: smtp.gmail.com
+    port: 587
+    username: cycleuop@gmail.com
+    password: rtwo vani qyiy kbgj
     properties:
       mail:
         smtp:
@@ -34,6 +34,7 @@ spring:
           connection timeout: 5000
           timeout: 3000
           write timeout: 5000
+
 
   servlet:
     multipart:

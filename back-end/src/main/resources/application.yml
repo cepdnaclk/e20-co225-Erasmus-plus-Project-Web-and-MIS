@@ -34,20 +34,6 @@ spring:
           connection timeout: 5000
           timeout: 3000
           write timeout: 5000
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id:  257276141541-av8vs5jp5u7e9f3am8dllo761kg7abo8.apps.googleusercontent.com
-            client-secret: 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
-            scope: openid, profile, email, https://www.googleapis.com/auth/calendar
-        provider:
-          google:
-            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
-            token-uri: https://oauth2.googleapis.com/token
-            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
-            user-name-attribute: sub
 
   servlet:
     multipart:

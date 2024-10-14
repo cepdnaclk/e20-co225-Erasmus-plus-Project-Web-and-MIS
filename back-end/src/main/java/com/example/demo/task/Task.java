@@ -25,6 +25,8 @@ public class Task {
     private LocalDate Start_Date;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-DD")
     private LocalDate End_Date;
+
+    @Column(columnDefinition = "TEXT")
     private String Description;
     private float Progress;
     @Lob

@@ -24,7 +24,7 @@ public class TaskService {
 
 
     public List<Task> getAllTasks(){
-        return taskRepository.findAll();
+        return taskRepository.findAllOrderByTaskIDesc();
     }
 
     public Task getTask(int task_ID){

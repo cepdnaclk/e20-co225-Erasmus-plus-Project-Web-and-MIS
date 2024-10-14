@@ -4,12 +4,7 @@ import com.example.demo.task.Task;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,8 +17,10 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+
 @Entity
-public class AppUser implements UserDetails {
+@Table(name = "appUser")
+public class AppUser {
 
     /**
      * The sequence generator for the primary key of the AppUser entity.
@@ -46,14 +43,9 @@ public class AppUser implements UserDetails {
     @Getter
     private String lastName;
     private String email;
-    @JsonIgnore
-    private String password;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
-    @JsonIgnore
-    private Boolean locked = false;
-    @JsonIgnore
-    private Boolean enabled = false;
+    private Boolean isAdmin = false;
 
     @ManyToMany(mappedBy = "assignedUsers",fetch = FetchType.LAZY)
 //    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id")
@@ -66,59 +58,28 @@ public class AppUser implements UserDetails {
     public AppUser( String firstName,
                     String lastName,
                     String email,
-                    String password,
                     AppUserRole appUserRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
         this.appUserRole = appUserRole;
     }
 
-
-    /**
-     * Returns the authorities granted to the user.
-     * This method is used by Spring Security to determine the roles of the user
-     */
-    @Override
-    @JsonIgnore
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
-        return Collections.singletonList(authority);
+    public Long getId() {
+        return id;
     }
 
-    @Override
-    public  String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
+    public String getEmail() {
         return email;
     }
 
-    @Override
-    @JsonIgnore
-    public  boolean isAccountNonExpired() {
-        return true;
-    }
+    public String getFirstName(){return firstName;}
 
-    @Override
-    @JsonIgnore
-    public boolean isAccountNonLocked() {
-        return !locked;
-    }
+    public String getLastName(){return lastName;}
 
-    @Override
-    @JsonIgnore
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+    public boolean isAdmin() {return isAdmin;}
 
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
+
 
     public Set<Task> getAssignedTasks() {
         return assignedTasks;
@@ -128,7 +89,4 @@ public class AppUser implements UserDetails {
         assignedTasks.add(task);
     }
 
-    public Long getId() {
-        return id;
-    }
 }

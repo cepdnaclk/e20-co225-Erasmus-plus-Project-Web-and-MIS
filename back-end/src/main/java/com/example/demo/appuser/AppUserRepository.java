@@ -21,11 +21,11 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
      * Enables an AppUser by setting their enabled status to true.
      * This method uses a custom JPQL query to update the enabled status of the user.
      */
-    @Transactional
-    @Modifying
-    @Query("UPDATE AppUser a " +
-            "SET a.enabled = TRUE WHERE a.email = ?1")
-    int enableAppUser(String email);
+//    @Transactional
+//    @Modifying
+//    @Query("UPDATE AppUser a " +
+//            "SET a.enabled = TRUE WHERE a.email = ?1")
+//    int enableAppUser(String email);
 
 
 }

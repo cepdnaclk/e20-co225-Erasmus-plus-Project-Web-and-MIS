@@ -28,7 +28,6 @@ public class TaskService {
     }
 
     public Task getTask(int task_ID){
-
         return taskRepository.findById(task_ID).orElse(null);
     }
 
@@ -52,8 +51,8 @@ public class TaskService {
     public void addTaskWithUsers(Task task, Set<AppUser> taskMembers){
 
         taskRepository.save(task);
+        task.assignMembers(taskMembers);
         for (AppUser taskMember : taskMembers) {
-            task.assignMember(taskMember);
             notificationService.createNotification("You have been assigned a new task, " + task.getTask_Name(), taskMember,"typeTask");
         }
         taskRepository.save(task);
@@ -80,9 +79,6 @@ public class TaskService {
         return taskRepository.findTasksByUser(user);
     }
 
-    public void deleteTaskUsers(int taskID,Long userID){
-        taskRepository.deleteUserFromTasks(taskID,userID);
-    }
 }
 
 

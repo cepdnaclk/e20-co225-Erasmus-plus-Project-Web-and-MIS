@@ -27,8 +27,8 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class WebSecurityConfig implements WebMvcConfigurer {
 
-    private final AppUserService appUserService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+//    private final AppUserService appUserService;
+//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
      * Configures security filter chain for HTTP requests.
@@ -75,13 +75,13 @@ public class WebSecurityConfig implements WebMvcConfigurer {
      *
      * @return DaoAuthenticationProvider bean instance.
      */
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(bCryptPasswordEncoder);
-        provider.setUserDetailsService(appUserService);
-        return provider;
-    }
+//    @Bean
+//    public DaoAuthenticationProvider daoAuthenticationProvider() {
+//        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//        provider.setPasswordEncoder(bCryptPasswordEncoder);
+//        provider.setUserDetailsService(appUserService);
+//        return provider;
+//    }
 
     /**
      * Provides CorsFilter bean to allow CORS requests from specified origins.

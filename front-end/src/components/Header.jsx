@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faBell, faAngleRight, faUser, faUserCircle, faFile,faCalendarDays,faBars } from '@fortawesome/free-solid-svg-icons';
 
 // Global user state
-export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' ,email:'',userID:'',userRole:'',isRegisteredUser:false};
+export let loggedInUser = { isLoggedIn: false, firstName: '', lastName: '' ,email:'',userID:'',userRole:'',isRegisteredUser:false,isAdmin:false};
 
 
 function Header(){
@@ -66,6 +66,7 @@ function Header(){
                               loggedInUser.userID=res.data.id
                               loggedInUser.userRole=res.data.appUserRole
                               loggedInUser.isRegisteredUser=true
+                              loggedInUser.isAdmin = res.data.isAdmin
                               localStorage.setItem("loggedInUser",JSON.stringify(loggedInUser))
                               setLoggedInUser(true);  // Updates the logged-in state immediately
                               window.Location.reload
@@ -146,6 +147,8 @@ function Header(){
         } 
         else {
             setIsVisible(true);
+            localStorage.removeItem("loggedInUser",JSON.stringify(loggedInUser))
+
         }
     })
 
@@ -153,7 +156,7 @@ function Header(){
         axios.get('http://localhost:8080/logout', { withCredentials: true })
         .then(() => {
             // Clear any frontend user state
-            loggedInUser = { isLoggedIn: false, firstName: '', lastName: '',email:'',userID:'' ,userRole:'',isRegisteredUser:false};
+            loggedInUser = { isLoggedIn: false, firstName: '', lastName: '',email:'',userID:'' ,userRole:'',isRegisteredUser:false,isAdmin:false};
 
             setLoggedInUser(false);
 

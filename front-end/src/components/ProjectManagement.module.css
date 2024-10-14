@@ -94,16 +94,60 @@
   color: #2a2929;
 }
 
+/* Each file item in the download section */
+.fileItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: hsl(225, 22%, 96%);
+  border: 2px solid hsl(219, 56%, 39%);
+  border-radius: 10px;
+  position: relative; /* Enables the absolute positioning of the fileActions */
+  flex-wrap: wrap; /* Allows wrapping of content when necessary */
+}
 
+/* Content section inside file items */
+.fileContent {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+}
 
+/* Action buttons in file items (e.g., download, delete) */
+.fileActions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative; /* Remove absolute positioning for responsiveness */
+  margin-left: auto; /* Keeps the buttons aligned to the right */
+  padding: 10px;
+}
 
+/* Styling for action buttons and links */
+.fileActions button,
+.fileActions a {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1f4681;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
 
+/* Hover effect for action buttons and links */
+.fileActions button:hover,
+.fileActions a:hover {
+  color: #4e679b;
+}
 
-
-
-
-
-
+.fileItem img {
+  width: auto;
+  height: 40px;
+  margin-right: 10px;
+}
 
 
 .ProjectManagementTitle{
@@ -159,6 +203,21 @@ a:hover{
     margin: 15px 20px;
   }
 
+  .inputboxDetails{
+    width:400px;
+    height: 80px;
+    overflow-x: scroll;
+    scrollbar-color: black #aacfe5;
+    background: transparent;
+    border: 2px solid #c9e1ef;
+  }
+
+  .inputboxFiles{
+    width: 35%;
+    background: transparent;
+    border: 2px solid #c9e1ef;
+  }
+
   /* Styles for labels inside the input boxes */
   .inputbox label{
     padding: 15px;
@@ -182,7 +241,7 @@ a:hover{
 
   /* Styles for integer input fields with a smaller width */
   .inputbox .integerField {
-    width: 8%;
+    width: 13%;
     /* position: absolute; */
     right: 40%;
     background: transparent;
@@ -216,7 +275,7 @@ a:hover{
     height: 80px; 
     overflow-y: scroll;
     overflow-x: scroll;
-    scrollbar-color: white black;
+    scrollbar-color:#aacfe5 rgb(255, 255, 255) ;
     background: transparent;
     border: 2px solid #c9e1ef;
 }
@@ -224,4 +283,9 @@ a:hover{
 /* Inverts colors for the calendar picker icon */
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+
+.scroller {
+ 
+  scrollbar-color: #c9e1ef black;
 }

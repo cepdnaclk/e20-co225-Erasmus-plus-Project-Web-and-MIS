@@ -26,7 +26,9 @@ public class NotificationService {
     public Notification createNotification(String message, AppUser user, String notificationType) {
         Notification notification = new Notification(message, user, notificationType);
         notification = notificationRepository.save(notification);
-        sendNotificationEmail(user.getEmail(), message); // Send email after saving notification
+        if ("typeTask".equals(notificationType)) {
+            sendNotificationEmail(user.getEmail(), message);
+        }
         return notification;
     }
 

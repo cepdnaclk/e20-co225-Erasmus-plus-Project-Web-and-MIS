@@ -192,6 +192,7 @@ const onViewClick = (deliverable) => {
     </div>
     <div className={style["container"]}>
       {!addRow && loggedInUser.isLoggedIn && <div>
+        {/* JSON.parse(localStorage.getItem('isEditMode')).isEditMode &&  */}
         <button className="addNewButton" onClick={onAddNewClicked}>Add New</button>
       </div>}
       <div className={style["tableContainer"]}>

@@ -17,14 +17,6 @@ const ProjectManagement = () => {
 
   const loggedInUser =JSON.parse(localStorage.getItem("loggedInUser"))
 
-  if (loggedInUser==null || Object.keys(loggedInUser).length == 0 ) {
-    return (
-      <>
-      You are not authorized to view this page
-      </>
-    )
-  }
-
   const [users,setUsers] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [taskListNotEmpty, setTaskListNotEmpty] = useState(false);
@@ -34,7 +26,6 @@ const ProjectManagement = () => {
   const [showViewInterface, setShowViewInterface] = useState(false);
   const [editRow, setEditRow] = useState(false);  
   const [addRow, setAddRow] = useState(false);
-  const [userID, setUserID] = useState(loggedInUser.userID);
   
 
   // check whether the user is a task member
@@ -48,16 +39,17 @@ const ProjectManagement = () => {
     }}
   };
 
-  //to load for the first time on page visit
-  useEffect(() => {
-      if (loggedInUser.isAdmin) {
-        setIsAdmin(true);
-        getAllTaskInfo();     
-      }else if(!loggedInUser.isAdmin){
-        setIsAdmin(false);
-        getAllTaskInfo();
-      }
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+    //to load for the first time on page visit
+    useEffect(() => {
+
+        if (loggedInUser.isAdmin) {
+          setIsAdmin(true);
+          getAllTaskInfo();     
+        }else if(!loggedInUser.isAdmin){
+          setIsAdmin(false);
+          getAllTaskInfo();
+        }
+        localStorage.setItem('tasks', JSON.stringify(tasks));
 
   }, []);
 
@@ -177,22 +169,22 @@ const onAddSubmit = async (e) => {
 
     formData.append("assignedUsers",JSON.stringify(assignedUsers))
 
-    try {
-        // console.log("report....",task.financialReport)
-        await axios.post("http://localhost:8080/api/v1/tasks/addWithUsers", formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-        }});
-        alert("task added");
-        //  reload the data after successful submission
-        setTasks([...tasks,task])
-        // Clear the form fields after successful submission if needed
-        setAddRow(false);
-        setShowInterface(false);
-      } catch (error) {
-        console.error("Error adding deliverable:", error);
-      }
-  };
+try {
+    // console.log("report....",task.financialReport)
+    await axios.post("http://localhost:8080/api/v1/tasks/addWithUsers", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
+    alert("task added");
+    //  reload the data after successful submission
+    setTasks([...tasks,task])
+    // Clear the form fields after successful submission if needed
+    setAddRow(false);
+    setShowInterface(false);
+  } catch (error) {
+    console.error("Error adding deliverable:", error);
+  }
+};
 
 //When 'Update' button is clicked in the interface : Only Edit
 const onUpdateSubmit = async (e) => {
@@ -203,7 +195,7 @@ const onUpdateSubmit = async (e) => {
     formData.append(key, newtaskFormat[key]);
   }
   formData.append("assignedUsers",JSON.stringify(assignedUsers.map(({ admin, ...assignedUsersDetails }) => assignedUsersDetails)))
-  
+  console.log("task",task)
   try {
     console.log("task.... ",formData)
     await axios.put(`http://localhost:8080/api/v1/tasks/updateWithUsers`, formData, {
@@ -214,14 +206,17 @@ const onUpdateSubmit = async (e) => {
     // Optionally, change the tasks list after successful submission
     setTasks([...tasks,task])
     setEditRow(false);
-    setShowInterface(false);
-  } catch (error) {
+    setShowInterface()
+    } catch (error) {
     console.error("Error editing tasks:", error);
   }
 };
 
 //delete a task and its assigned members
 const onDeleteClick = async (task_ID) => {
+
+  const confirmDelete = window.confirm('Are you sure you want to delete this task?');
+    if (!confirmDelete) return;
 
   try {
 
@@ -255,17 +250,21 @@ function getAllTaskInfo(){
 }
 
 // refresh tasks on request
-function RefreshTasks() {    
-  setShowInterface(false);
-  setShowViewInterface(false);
-  getAllTaskInfo();
-}
-function closePopUp(){
-  setShowInterface(false);
-}
-function closeViewPopuP(){
-  setShowViewInterface(false)
-}
+  function RefreshTasks() {
+    
+    setShowInterface(false);
+    setShowViewInterface(false);
+    getAllTaskInfo();
+
+  }
+
+
+  function closePopUp(){
+    setShowInterface(false);
+  }
+  function closeViewPopuP(){
+    setShowViewInterface(false)
+  }
 
 
 /**************Chart Configuration***************/
@@ -336,10 +335,12 @@ const rows = (tasks) => {
   ]);
 };
 
-
+if(loggedInUser){
     return(
+      
     <>
-    <div className="pageTitle">
+    
+    <div className={style["ProjectManagementTitle"]}>
           <h3>Project Management</h3>
     </div>
     <div>
@@ -351,84 +352,91 @@ const rows = (tasks) => {
         <Button onClick={onAddNewClicked} startIcon={<AddTaskIcon></AddTaskIcon>}>Add New Task</Button>
         <br></br>
 
-          {/* // a popup to add a new task or edit */}
-          <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
-            <DialogContent >
-              <div className = "dataForm"> 
-              <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
-                <div className = "formTitle">
-                    <h2>{editRow ? "Edit Entry" : "Add a New Entry"}</h2> 
-                </div>
-                <div className = "inputbox">  
-                  <label>Task Name: </label>
-                  <input type="text" name="task_Name" value={task.task_Name} required="required" className ="field" onChange={(e)=>onInputChange(e)}></input>
-                </div>
-                <div className = "inputbox">  
-                  <label>Start Date: </label>
-                  <input type="date" name="start_Date"value={task.start_Date} required="required" className ="field" onChange={(e)=>onInputChange(e)} ></input>
-                </div>
-                <div className = "inputbox">  
-                  <label>End Date: </label>
-                  <input type="date" name="end_Date" min={task.start_Date} required="required" value={task.end_Date} className ="field" onChange={(e)=>onInputChange(e)}></input>
-                </div>
-                <div className = "inputbox">  
-                <label>Progress</label>
-                  <div style={{width:"30%"}}>
-                  <Slider 
-                    onChange={changeProgressValue}
-                      aria-label="Progress"
-                      value={typeof progressValue === 'number' ? progressValue : 0}
-                      min={0}
-                      max={100}
-                      width="30%"
-                      />
-                  </div>
-                  <input type="number" name="progress"value={task.progress} required="required" onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
-                  </input>  
-              </div>
-              <div className = "inputbox">  
-                  <label>Task Details: </label>
-                  <input type="text" name="description" value={task.description} onChange={(e)=>onInputChange(e)}></input>
-              </div>
-              <div className = "inputbox">  
-                  <label>Team Members:</label>
-                  <div class={style["checkBoxContainer"]}>
-                    { users.map((user) => {
-                      let isAssignedTaskMember = checkIfAssigned(user);             
-                      return(<div style={{display: "flex",gap: "10px", width:"100%",marginTop:"5%",verticalAlign:"middle"}}>
-                      <label style={{color:"black",height:"45px", width:"95%"}}>{user.firstName+" "+user.lastName}</label>
-                      <input type="checkbox" value={user.id} checked={isAssignedTaskMember} onChange={(e)=>onMemberChange(e)} ></input>
-                      </div>
-                    )})
-                  }
-                </div>
-              </div>
-              { <div key={task.task_ID} className={style["fileItem"]}>
-                      <div className={style["fileContent"]}>
-                      <img src={fileDownload} alt="fileDownload" />
-                      <span><p>Financial Report</p></span>
-                      <div className={style["fileActions"]}>
-                      <button onClick={() => handleFileChange(task.financialReport)}>
-                          <FontAwesomeIcon icon={faUpload} />
-                        </button>
-                        {task.financialReport && 
-                          <button onClick={() => handleDownload(task.financialReport)}>
-                          <FontAwesomeIcon icon={faDownload} />
-                          </button>
-                        }
-                        </div>
-                      </div>
-                    </div>
+   {/* // a popup to add a new task or edit */}
+   <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
+     <DialogContent >
+      
+       <div className = "dataForm"> 
+       <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
+         <div className = "formTitle">
+             <h3>{editRow ? "Edit Entry" : "Add a New Entry"}</h3> 
+         </div>
+         <div className = "inputbox">  
+           <label>Task Name: </label>
+           <input type="text" name="task_Name" value={task.task_Name} required="required" className ="field" onChange={(e)=>onInputChange(e)}></input>
+         </div>
+         <div className = "inputbox">  
+           <label>Start Date: </label>
+           <input type="date" name="start_Date"value={task.start_Date} required="required" className ="field" onChange={(e)=>onInputChange(e)} ></input>
+         </div>
+         <div className = "inputbox">  
+           <label>End Date: </label>
+           <input type="date" name="end_Date" min={task.start_Date} value={task.end_Date} required="required" className ="field" onChange={(e)=>onInputChange(e)}></input>
+         </div>
+         <div className = "inputbox">  
+         <label>Progress</label>
+           <div style={{width:"30%"}}>
+           <Slider 
+             onChange={changeProgressValue}
+               aria-label="Progress"
+               value={typeof progressValue === 'number' ? progressValue : 0}
+               min={0}
+               max={100}
+               width="30%"
+               />
+           </div>
+           <input type="number" name="progress"value={task.progress} required="required" onChange={changeProgressValue} defaultValue={0} className = {style["integerField"]}>
+           </input>  
+       </div>
+       <div className = "inputbox">  
+           <label>Task Details: </label>
+           <input type="text" name="description" value={task.description}  className = {style["inputboxDetails"]} onChange={(e)=>onInputChange(e)}></input>
+       </div>
+
+       <div className = "inputbox">  
+           <label>Team Members:</label>
+           <div class={style["checkBoxContainer"]}>
+           {
+             users.map((user) => {
+               let isAssignedTaskMember = checkIfAssigned(user);             
+               return(<div style={{display: "flex",gap: "10px", width:"100%",marginTop:"5%",verticalAlign:"middle"}}>
+               <label style={{color:"black",height:"45px", width:"95%"}}>{user.firstName+" "+user.lastName}</label>
+               <input type="checkbox" value={user.id} checked={isAssignedTaskMember} onChange={(e)=>onMemberChange(e)}></input>
+               </div>
+             )})
+           }
+         </div>
+       </div>
+       
+       { <div key={task.task_ID} className={style["fileItem"]}>
+              <div className={style["fileContent"]}>
+               <img src={fileDownload} alt="fileDownload" />
+               <span><p>Financial Report</p></span>
+               <div className={style["fileActions"]}>
+              {task.financialReport && 
+                  <button onClick={() => handleDownload(task.financialReport)}>
+                  <FontAwesomeIcon icon={faDownload}  />
+                  <span>Download</span>
+                  </button>
                 }
-              {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
-              </form>
+                <span>|</span>
+              <span className={style["fileActions"]}>Upload File</span>
+              <input type="file" placeholder="Select a file" className = "field"  onChange={handleFileChange}></input>
+                </div>
+              </div>
             </div>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>}>Close</Button>
-            </DialogActions>
-          </Dialog>
-        </div>}
+        }
+
+       {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
+       </form>
+     </div>
+     </DialogContent>
+     <DialogActions>
+        <Button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>}>Close</Button>
+     </DialogActions>
+   </Dialog>
+   </div>
+    }
 
     {/* a popup to show task */}
      <Dialog open={showViewInterface} onClose={closeViewPopuP} fullWidth maxWidth="sm">
@@ -460,11 +468,6 @@ const rows = (tasks) => {
                   <button onClick={() => handleDownload(task.financialReport)}>
                   <FontAwesomeIcon icon={faDownload} />
                   </button>
-              {loggedInUser.isAdmin &&(
-                <button onClick={() => handleDelete(file.fileId)}>
-                  <FontAwesomeIcon icon={faTrash} />
-                </button>
-              )}
                 </div>
               </div>
             </div>
@@ -510,9 +513,12 @@ const rows = (tasks) => {
                 },
               },
             ]}
-          
-          />}
-      </div>
-</>);}
+          />
+          }
+    </div>
+      </>
+    )}
+ 
+  }
 
 export default ProjectManagement;

@@ -70,6 +70,7 @@ function Header(){
                               loggedInUser.isAdmin = res.data.isAdmin
                               localStorage.setItem("loggedInUser",JSON.stringify(loggedInUser))
                               setLoggedInUser(true);  // Updates the logged-in state immediately
+                              fetchNotifications();
                               window.Location.reload
                           }})
                   .catch((err) =>{
@@ -80,20 +81,22 @@ function Header(){
     
     },[]);
 
-    useEffect(() => {
         const fetchNotifications = async () => {
             try{
                 const user =JSON.parse(localStorage.getItem("loggedInUser"))
                 const response = await axios.get(`http://localhost:8080/api/v1/notifications/${user.userID}`);
                 setNotifications(response.data);
-                console.log(response.data)
-                window.Location.reload
             } catch (error) {
                 console.error('Error fetching notifications: ', error);
             }
         };
+<<<<<<< HEAD
         fetchNotifications();
     }, []);
+=======
+
+
+>>>>>>> 4dde2805c5c20921605db2b5d78b36f7abbc831d
 
     //If an ADMIN needs to create a notification
     // Create a new notification

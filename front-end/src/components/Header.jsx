@@ -129,7 +129,6 @@ function Header(){
         setMenuOpen(false);
         setAdminMenuOpen(false);
         setIsVisible(false);
-        
     }
 
     const googleLogin = async() => {
@@ -292,6 +291,23 @@ const renderNotifications = () => {
     )
 };
 
+//const [isChatLoaded, setChatLoaded] = useState(false);
+
+// Function to load the Tawk.to script
+// const loadTawkTo = () => {
+//     if (!isChatLoaded) {
+//         var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+//         var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+//         s1.async = true;
+//         s1.src = 'https://embed.tawk.to/66bc3bda0cca4f8a7a75ac8b/1i57kjjg7';
+//         s1.charset = 'UTF-8';
+//         s1.setAttribute('crossorigin', 'anonymous');
+//         s0.parentNode.insertBefore(s1, s0);
+
+//         setChatLoaded(true); // Mark the chat as loaded
+//     }
+// };
+
     return(
         <header>
             {/* Navigation bar */}
@@ -391,8 +407,6 @@ const renderNotifications = () => {
                                 
                 </nav>
 
-                
-
                 {/* User Account Dropdown Menu */}
                 <div class= {showAccount ? "userAccount-Open" : "userAccount-Close"}>
                             
@@ -470,22 +484,23 @@ const renderNotifications = () => {
             
             
             <div className='logo-blockFull'>
-            <div className='logo-block'>
-            {/* Erasmus logo */}
-            <a href = "https://erasmus-plus.ec.europa.eu/"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>
-
-
-            {/* Cycle logo */}
-            <img src={cylcleLogo} alt="Cycle Logo" className="Cycle-Logo"></img>
-            </div>
-            
-            <div className='Heading'>
-            {/* Main heading */}
-            <h1><span style={{ color:'rgb(50, 78, 148)'}}>ERASMUS+</span> <span style={{ color:'rgba(44, 110, 11, 0.634)'}}>CYCLE</span></h1>
-        
-            {/* Sub heading */}
-            <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cyber security</span></h2>
-            </div>
+                <div className='logo-block'>
+                    {/* Erasmus logo */}
+                    <div className='logo-block-grid-item'>
+                        <a href = "https://erasmus-plus.ec.europa.eu/" target="_blank"><img src={erasmusLogo} alt="Erasmus+ Logo" className="Erasmus-plus-Logo"></img></a>
+                    </div>
+                    <div className='logo-block-grid-item'>
+                        {/* Main heading */}
+                        <h1><span style={{ color:'rgb(50, 78, 148)'}}>ERASMUS+</span> <span style={{ color:'rgba(44, 110, 11, 0.634)'}}>CYCLE</span></h1>
+                    
+                        {/* Sub heading */}
+                        <h2><span style={{ color:'rgb(50, 78, 148)'}}>CYberseCurityLEarning: Master's degree in Cyber security</span></h2>
+                    </div>
+                    <div className='logo-block-grid-item'>
+                        {/* Cycle logo */}
+                        <img src={cylcleLogo} alt="Cycle Logo" className="Cycle-Logo"></img>
+                    </div>
+                </div>
             </div>
             
         </header>

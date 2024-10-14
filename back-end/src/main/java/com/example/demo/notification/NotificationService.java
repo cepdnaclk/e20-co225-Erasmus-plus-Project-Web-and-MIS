@@ -47,7 +47,6 @@ public class NotificationService {
         email.setTo(toEmail);
         email.setSubject("New Notification from Erasmus+ CYCLE UOP");
         email.setText(message);
-
         mailSender.send(email);  // Send the email
     }
 }

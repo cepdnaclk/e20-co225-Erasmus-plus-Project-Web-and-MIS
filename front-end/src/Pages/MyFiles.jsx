@@ -140,7 +140,7 @@ const FileUploadDownload = () => {
 
   return (
     <div>
-      <div className={style["myFilesTitle"]}>
+      <div className="pageTitle">
         <h3>My Files</h3>
       </div>
 

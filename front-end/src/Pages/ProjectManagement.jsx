@@ -176,7 +176,6 @@ const onAddSubmit = async (e) => {
     }
 
     formData.append("assignedUsers",JSON.stringify(assignedUsers))
-    console.log("assignedUsers",JSON.stringify(assignedUsers))
 
     try {
         // console.log("report....",task.financialReport)

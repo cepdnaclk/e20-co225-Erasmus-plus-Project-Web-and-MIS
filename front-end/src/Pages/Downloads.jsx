@@ -27,7 +27,6 @@ const FileUploadDownload = () => {
     try {
       const response = await axios.get('http://localhost:8080/api/v1/files');
       setUploadedFiles(response.data);
-      console.log(response.data)
     } catch (error) {
       console.error('Error fetching files:', error);
     }

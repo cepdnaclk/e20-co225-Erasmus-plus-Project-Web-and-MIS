@@ -86,12 +86,12 @@ function Header(){
                 const user =JSON.parse(localStorage.getItem("loggedInUser"))
                 const response = await axios.get(`http://localhost:8080/api/v1/notifications/${user.userID}`);
                 setNotifications(response.data);
-                
+                console.log(response.data)
+                window.Location.reload
             } catch (error) {
                 console.error('Error fetching notifications: ', error);
             }
         };
-
         fetchNotifications();
     }, []);
 

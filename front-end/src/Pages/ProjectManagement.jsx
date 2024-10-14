@@ -49,8 +49,6 @@ const ProjectManagement = () => {
           setIsAdmin(false);
           getAllTaskInfo();
         }
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-
   }, []);
 
   //setting values from form
@@ -182,7 +180,7 @@ try {
     setAddRow(false);
     setShowInterface(false);
   } catch (error) {
-    console.error("Error adding deliverable:", error);
+    console.error("Error adding tasks:", error);
   }
 };
 
@@ -343,13 +341,15 @@ if(loggedInUser){
     <div className={style["ProjectManagementTitle"]}>
           <h3>Project Management</h3>
     </div>
+    <div className={style["container"]}>
     <div>
-        <Button onClick={RefreshTasks} variant="outlined" startIcon={<RefreshIcon />}>
+        {/* <Button onClick={RefreshTasks} variant="outlined" startIcon={<RefreshIcon />}>
             Refresh
-        </Button>
+        </Button> */}
         <br></br>
         {isAdmin &&<div>
-        <Button onClick={onAddNewClicked} startIcon={<AddTaskIcon></AddTaskIcon>}>Add New Task</Button>
+        {/* <Button onClick={onAddNewClicked} startIcon={<AddTaskIcon></AddTaskIcon>} className="addNewButton">Add New Task</Button> */}
+        <button onClick={onAddNewClicked} className="addNewButton">Add New Task</button>
         <br></br>
 
    {/* // a popup to add a new task or edit */}
@@ -363,7 +363,7 @@ if(loggedInUser){
          </div>
          <div className = "inputbox">  
            <label>Task Name: </label>
-           <input type="text" name="task_Name" value={task.task_Name} required="required" className ="field" onChange={(e)=>onInputChange(e)}></input>
+           <input type="text" placeholder="Enter Task name" name="task_Name" value={task.task_Name} required="required" className ="field" onChange={(e)=>onInputChange(e)}></input>
          </div>
          <div className = "inputbox">  
            <label>Start Date: </label>
@@ -375,7 +375,7 @@ if(loggedInUser){
          </div>
          <div className = "inputbox">  
          <label>Progress</label>
-           <div style={{width:"30%"}}>
+           <div style={{width:"62%"}}>
            <Slider 
              onChange={changeProgressValue}
                aria-label="Progress"
@@ -390,21 +390,24 @@ if(loggedInUser){
        </div>
        <div className = "inputbox">  
            <label>Task Details: </label>
-           <input type="text" name="description" value={task.description}  className = {style["inputboxDetails"]} onChange={(e)=>onInputChange(e)}></input>
+
+           <textarea type="text" placeholder="Enter Description" name="description" value={task.description} className ="field" onChange={(e)=>onInputChange(e)}></textarea>
        </div>
 
        <div className = "inputbox">  
            <label>Team Members:</label>
            <div class={style["checkBoxContainer"]}>
+           <div className ="dataForm">
            {
              users.map((user) => {
                let isAssignedTaskMember = checkIfAssigned(user);             
                return(<div style={{display: "flex",gap: "10px", width:"100%",marginTop:"5%",verticalAlign:"middle"}}>
-               <label style={{color:"black",height:"45px", width:"95%"}}>{user.firstName+" "+user.lastName}</label>
                <input type="checkbox" value={user.id} checked={isAssignedTaskMember} onChange={(e)=>onMemberChange(e)}></input>
+               <label style={{color:"black",height:"20px", width:"60%", marginTop:"-3.5%"}}>{user.firstName+" "+user.lastName}</label>
                </div>
              )})
            }
+           </div>
          </div>
        </div>
        
@@ -427,13 +430,10 @@ if(loggedInUser){
             </div>
         }
 
-       {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
+       {addRow? <div className="buttonsBlock"><button type = "submit">Add</button><button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>} >Close</button></div> : <button type = "submit">Update</button> }
        </form>
      </div>
      </DialogContent>
-     <DialogActions>
-        <Button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>}>Close</Button>
-     </DialogActions>
    </Dialog>
    </div>
     }
@@ -487,7 +487,7 @@ if(loggedInUser){
     </div>
 
 {/* Gann chart  */}
-<div className={style["container"]}>
+
 {taskListNotEmpty &&
 <Chart
             chartType="Gantt"

@@ -9,8 +9,10 @@
               -2px -2px 5px rgba(255, 255, 255, 0.7), 
               2px -2px 5px rgba(255, 255, 255, 0.7), 
               -2px 2px 5px rgba(63, 108, 148, 0.1);
-  margin: 20px;
-  padding: 10px;    
+  padding: 10px;   
+  margin: 20px auto;
+  width: 90%; 
+  height: fit-content;
 }
 
 .buttonsBlock{
@@ -174,7 +176,7 @@ a:hover{
   /* position: absolute; */
   right: 40%;
   background: transparent;
-  border: 2px solid #c9e1ef;
+  border: 2px solid #c9deef;
   outline: none;
   padding: 15px;
   font-size: 16px;
@@ -183,14 +185,18 @@ a:hover{
 }
   /* Container for checkboxes with scrollable content */
   .checkBoxContainer { 
-    border:2px solid #ccc;
-    width:400px;
+    border: 2px solid #c9e1ef;
+    width: 70%;
     height: 80px; 
     overflow-y: scroll;
     overflow-x: scroll;
     scrollbar-color:#aacfe5 rgb(255, 255, 255) ;
     background: transparent;
     border: 2px solid #c9e1ef;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
 }
 
 /* Inverts colors for the calendar picker icon */

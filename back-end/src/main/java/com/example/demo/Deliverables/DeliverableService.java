@@ -38,10 +38,10 @@ public class DeliverableService {
     }
 
     //Get deliverable by id
-    public Deliverable getDeliverableById( String id) {
+    public Deliverable getDeliverableById(String id) {
         return deliverableRepo.findById(id)
                 .orElseThrow(()->new DeliverableNotFoundException(id));
-    }
+    };
 
     //Update a deliverable with a known id
     public Deliverable updateDeliverable( String id,  Deliverable deliverable) {
@@ -49,6 +49,7 @@ public class DeliverableService {
         if (existingDeliverable.isPresent()) {
             Deliverable updatedDeliverable = existingDeliverable.get();
 
+            updatedDeliverable.setDeliverableRelatedNo(deliverable.getDeliverableRelatedNo());
             updatedDeliverable.setWorkPackageNo(deliverable.getWorkPackageNo());
             updatedDeliverable.setDeliverableNo(deliverable.getDeliverableNo());
             updatedDeliverable.setDeliverableName(deliverable.getDeliverableName());

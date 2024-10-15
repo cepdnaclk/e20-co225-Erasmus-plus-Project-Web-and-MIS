@@ -1,19 +1,9 @@
-//TODO: CSS for checkbox and table
-//Media queries
-//Pop as a window kinda thing , not an dialog 
-//Use a seperate id as PK in back end
-//Validate form inputs
-//Scroll into view 
-//Auto focus the for input
-//Sort the table
-//TODO: Set the last modified date and User
-
 import { useEffect , useState} from 'react';
 import style from '../components/Workplan.module.css'
 import axios from 'axios';
 import { loggedInUser } from '../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Dialog, DialogContent } from "@mui/material";
 
 function Workplan() {
@@ -21,6 +11,7 @@ function Workplan() {
   /******************** Load information whenever the page loads ********************************* */
 
   const[workplanActivities, setWorkplanActivities]=useState([])
+  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect (()=>{
     loadData();
@@ -34,16 +25,24 @@ function Workplan() {
         console.error("Error loading workplan activities:", error);
       }
   }
-
+  // Function to sort activities based on Activity No
+  const sortActivities = () => {
+    const sortedActivities = [...workplanActivities].sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.activityNo.localeCompare(b.activityNo);
+      } else {
+        return b.activityNo.localeCompare(a.activityNo);
+      }
+    });
+    setWorkplanActivities(sortedActivities);
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc'); // Toggle sort order
+  };
   /******************** Add a new data entry and edit the exsisting entry ********************************* */
     
     // Show the dialog: Either for 'Add New' or 'Edit'
     const [showDiologBox, setshowDiologBox] = useState(false);
     const [editRow, setEditRow] = useState(false);  
     const [addRow, setAddRow] = useState(false);
-
-    //State Variable - to save the original PK before updating the entry
-    const [originalActivityNo, setOriginalActivityNo] = useState(null);
 
     //Initialize the object
     const [activity, setActivity] = useState({
@@ -73,7 +72,6 @@ function Workplan() {
     //Function saves the information taken from the form 
     //Event 'e' is passed to the function 
     const onInputChange = (e) => {
-      console.log(e.target.value)
       //Deconstruct from event target
       const { name, value, type, checked } = e.target;
       setActivity({
@@ -128,7 +126,6 @@ function Workplan() {
 
     //When 'Edit' icon button is clicked : Only For Edit
     const onEditClick = (activity) => {
-      setOriginalActivityNo(activity.activityNo); // Preserve the original primary key
       setActivity(activity);  //Set the activity for editing 
       setshowDiologBox(true);
       setAddRow(false);
@@ -140,7 +137,7 @@ function Workplan() {
     const onUpdateSubmit = async (e) => {
       e.preventDefault(); // Prevent default form submission
       try {
-        await axios.put(`http://localhost:8080/workplan/update/${originalActivityNo}`, activity);
+        await axios.put(`http://localhost:8080/workplan/update/${activity.activityId}`, activity);
         // Optionally, reload the data after successful submission
         loadData();
         setEditRow(false);
@@ -161,11 +158,11 @@ function Workplan() {
 
   /************************** Delete a specific entry *************************************/
 
-  const onDeleteClick = async (activityNo) => {
+  const onDeleteClick = async (activityId) => {
     console.log("Delete button clicked");
-    console.log(activityNo);
+    console.log(activityId);
     try {
-      await axios.delete(`http://localhost:8080/workplan/delete/${activityNo}`);
+      await axios.delete(`http://localhost:8080/workplan/delete/${activityId}`);
       loadData();
     } catch (error) {
       console.error("Error deleting workplan activity:", error);
@@ -200,7 +197,7 @@ function Workplan() {
           <table className={style["table"]}>
             <thead>
               <tr>
-                <th scope="col" rowspan={2}>Activity No</th>
+                <th scope="col" rowspan={2} onClick={sortActivities} style={{ cursor: 'pointer' }}>Activity No {sortOrder === 'asc' ? '▲' : '▼'}</th>
                 <th scope="col"rowspan={2}>Activity Name</th>
                 <th scope="col" colSpan={4}>Year 1</th>
                 <th scope="col" colSpan={4}>Year 2</th>
@@ -229,7 +226,7 @@ function Workplan() {
             </thead>
             <tbody>
                     {workplanActivities.map((workplanActivity,index)=>(
-                        <tr  key={workplanActivity.activityNo}>
+                        <tr  key={workplanActivity.activityId}>
                           <td>{workplanActivity.activityNo}</td>
                           <td>{workplanActivity.activityName}</td>
                           <td style={{ backgroundColor: workplanActivity.y1_q1 ? '#72a1e685' : 'white',border:"solid #72a1e685 2px" }}></td>
@@ -252,7 +249,7 @@ function Workplan() {
                           {loggedInUser.isLoggedIn && <td>
                             <div className='actionButtonsBlock'>
                               <button className='actionButton' onClick={() => onEditClick(workplanActivity)}><FontAwesomeIcon icon={faPen}/></button>
-                              <button className='actionButton' onClick={() => onDeleteClick(workplanActivity.activityNo)}><FontAwesomeIcon icon={faTrash} /></button>
+                              <button className='actionButton' onClick={() => onDeleteClick(workplanActivity.activityId)}><FontAwesomeIcon icon={faTrash} /></button>
                             </div>         
                           </td>}
                         </tr>

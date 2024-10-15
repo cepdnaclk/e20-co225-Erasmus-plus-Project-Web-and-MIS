@@ -38,10 +38,18 @@ function Team() {
 
   // State to manage the active tab
   const [activeTab, setActiveTab] = useState('uop');
+  const [activeSubTab, setActiveSubTab] = useState('managersAndCoordinators');
 
   // Function to handle tab changes
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+    if (tab === 'uop') {
+      setActiveSubTab('managersAndCoordinators'); 
+    }
+  };
+
+  const handleSubTabChange = (subTab) => {
+    setActiveSubTab(subTab);
   };
 
   return(
@@ -102,6 +110,30 @@ function Team() {
                 <img className="KMIoTLLogoTab" src={KMIoTLLogo} alt="KMIoTLLogo"/>
             </button>
       </div>
+      {activeTab === 'uop' && (
+            <div className="sub-tabs">
+                <button 
+                    className={activeSubTab === 'managersAndCoordinators' ? 'active' : ''} 
+                    onClick={() => handleSubTabChange('managersAndCoordinators')}>
+                    <h4>Managers and Coordinators </h4>
+                </button>
+                <button 
+                    className={activeSubTab === 'pgis' ? 'active' : ''} 
+                    onClick={() => handleSubTabChange('pgis')}>
+                    <h4>PGIS - Postgraduate Institute of Science</h4>
+                </button>
+                <button 
+                    className={activeSubTab === 'DepartmentofComputerEngineering' ? 'active' : ''} 
+                    onClick={() => handleSubTabChange('DepartmentofComputerEngineering')}>
+                    <h4>Department of Computer Engineering</h4>
+                </button>
+                <button 
+                    className={activeSubTab === 'DepartmentofStatistics_ComputerScience' ? 'active' : ''} 
+                    onClick={() => handleSubTabChange('DepartmentofStatistics_ComputerScience')}>
+                    <h4>Department of Statistics & Computer Science</h4>
+                </button>
+            </div>
+        )}
 
     {/* UoP Team Members */}
 
@@ -112,10 +144,10 @@ function Team() {
     <div className = "UoPLogoBlock">
     <a href = "https://www.pdn.ac.lk/"><img className="UoPLogo" src={UoPLogo} alt="UoPLogo"/> </a>
     </div>
-
+    {activeTab === 'uop' && activeSubTab === 'managersAndCoordinators' && (
     <div className = "TeamCards">
     <div className = "TeamSubTitle">
-      <h4>Manager/Coordinators</h4>
+      <h4>Managers/Coordinators</h4>
     </div>
     <div className = "TeamCard">
     <img className="TeamProfilePic" src={DrUpulJayasinghe} alt="DrUpulJayasinghe"/>
@@ -136,7 +168,9 @@ function Team() {
       </ul>
     </div>
     </div>
+    )}
 
+  {activeTab === 'uop' && activeSubTab === 'pgis' && (
    <div className = "TeamCards"> 
     <div className = "TeamSubTitle">
       <h4>PGIS - Postgraduate Institute of Science</h4>
@@ -153,7 +187,9 @@ function Team() {
       </ul>
     </div>
     </div>
+  )}
 
+  {activeTab === 'uop' && activeSubTab === 'DepartmentofComputerEngineering' && (
     <div className = "TeamCards">
     <div className = "TeamSubTitle">
       <h4>Department of Computer Engineering</h4>
@@ -220,7 +256,9 @@ function Team() {
       </ul>
     </div>
     </div>
+    )}
 
+  {activeTab === 'uop' && activeSubTab === 'DepartmentofStatistics_ComputerScience' && (
     <div className = "TeamCards">
     <div className = "TeamSubTitle">
       <h4>Department of Statistics & Computer Science</h4>
@@ -297,6 +335,7 @@ function Team() {
       </ul>
     </div>
     </div>
+    )}
     </div>
     )}
 

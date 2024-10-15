@@ -1,5 +1,8 @@
 package com.example.demo.Events;
 
+import com.example.demo.appuser.AppUser;
+import com.example.demo.appuser.AppUserService;
+import com.example.demo.notification.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +14,10 @@ public class EventService {
 
     @Autowired
     private EventRepository eventRepository;
+    @Autowired
+    private AppUserService userService;
+    @Autowired
+    private NotificationService notificationService;
 
     public List<Event> getAllEvents() {
         return eventRepository.findAll();
@@ -21,6 +28,10 @@ public class EventService {
     }
 
     public Event createEvent(Event event) {
+        List<AppUser> users = userService.getAllUsers();
+        for (AppUser user : users) {
+            notificationService.createNotification("The new event, " + event.getTitle() + " has beed added!", user, "typeEvent");
+        }
         return eventRepository.save(event);
     }
 

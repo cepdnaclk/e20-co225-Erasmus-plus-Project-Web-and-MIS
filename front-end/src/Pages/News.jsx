@@ -181,7 +181,7 @@ const News = () => {
             <div className={style["date-and-author"]}>
               <b><p>Date: {item.newsDate}</p></b> {/* News date */}
               <b><p>Author: {item.newsAuthor}</p></b> {/* News author */}
-              <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a> {/* Link to full news */}
+              <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">More...</a> {/* Link to full news */}
             </div>
             {/* Show edit and delete buttons only if user is logged in */}
             {loggedInUser.isLoggedIn && (

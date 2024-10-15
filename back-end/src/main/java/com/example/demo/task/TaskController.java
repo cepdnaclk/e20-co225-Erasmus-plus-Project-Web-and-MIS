@@ -106,6 +106,7 @@ return ResponseEntity.status(500).body("Failed to add task "+ e);
             }
             task.assignMembers(taskMembers);
             taskService.updateTask(task);
+            taskService.updateTaskWithUsers(task, taskMembers);
             return ResponseEntity.ok("Task updated successfully");
         }catch (Exception e) {
             return ResponseEntity.status(500).body("Failed to update task "+e );

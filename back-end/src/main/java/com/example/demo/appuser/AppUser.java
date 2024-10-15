@@ -39,6 +39,8 @@ public class AppUser {
 
     private Long id;
     @Getter
+    private String title;
+    @Getter
     private String firstName;
     @Getter
     private String lastName;
@@ -55,10 +57,12 @@ public class AppUser {
     private Set<Task> assignedTasks = new HashSet<>();
 
 
-    public AppUser( String firstName,
+    public AppUser( String title,
+                    String firstName,
                     String lastName,
                     String email,
                     AppUserRole appUserRole) {
+        this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

@@ -437,7 +437,7 @@ if(loggedInUser){
                let isAssignedTaskMember = checkIfAssigned(user);             
                return(<div style={{display: "flex",gap: "10px", width:"100%",marginTop:"5%",verticalAlign:"middle"}}>
                <input type="checkbox" value={user.id} checked={isAssignedTaskMember} onChange={(e)=>onMemberChange(e)}></input>
-               <label style={{color:"black",height:"20px", width:"60%", marginTop:"-3.5%"}}>{user.firstName+" "+user.lastName}</label>
+               <label style={{color:"black",height:"20px", width:"60%", marginTop:"-3.5%"}}>{user.title + user.firstName+" "+user.lastName}</label>
                </div>
              )})
            }

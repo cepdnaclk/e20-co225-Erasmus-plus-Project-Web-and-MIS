@@ -12,6 +12,7 @@ import {faDownload, faUpload, faPen, faEye, faTrash } from '@fortawesome/free-so
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { Dialog, DialogActions, DialogContent, Stack,Slider } from "@mui/material";
 // import {loggedInUser} from '../components/Header.jsx'
+import { ClipLoader } from "react-spinners";
 
 const ProjectManagement = () => {
 
@@ -26,6 +27,8 @@ const ProjectManagement = () => {
   const [showViewInterface, setShowViewInterface] = useState(false);
   const [editRow, setEditRow] = useState(false);  
   const [addRow, setAddRow] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
   
 
   // check whether the user is a task member
@@ -157,7 +160,7 @@ const ProjectManagement = () => {
 //When 'Add' button is clicked in the interface : Only For Add New
 const onAddSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
-    
+    setIsLoading(true); // Show loading indicator
     const {assignedUsers, ...newtaskFormat } = task;
     const formData = new FormData();
     
@@ -181,6 +184,8 @@ try {
     setShowInterface(false);
   } catch (error) {
     console.error("Error adding tasks:", error);
+  } finally {
+    setIsLoading(false); // Hide loading indicator
   }
 };
 
@@ -355,7 +360,36 @@ if(loggedInUser){
    {/* // a popup to add a new task or edit */}
    <Dialog open={showInterface} onClose={closePopUp} fullWidth maxWidth="md" >
      <DialogContent >
-      
+
+      {/*Loading Icon*/}
+     {isLoading && (
+      <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(255, 255, 255, 0.7)", 
+        zIndex: 1
+      }}
+      >
+      <div
+      style={{
+        padding: "20px",  
+        backgroundColor: "#fff", 
+        borderRadius: "8px",  
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" 
+      }}
+      >
+      <ClipLoader size={20} color={"#123abc"} />
+      </div>
+    </div>
+    )}
+
        <div className = "dataForm"> 
        <form onSubmit={editRow ? onUpdateSubmit : onAddSubmit}>  
          <div className = "formTitle">

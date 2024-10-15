@@ -19,8 +19,10 @@ import java.time.LocalDate;
 
 public class Deliverable {
     @Id
-    private String deliverableRelatedNo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int deliverableId;
 
+    private String deliverableRelatedNo;
     private String workPackageNo;
     private String deliverableNo;
     private String deliverableName;

@@ -1,9 +1,7 @@
 //Workplan Activity Model - Create/Update a table 'Worklplan' in MySQL 'cycle' DB
 package com.example.demo.Workplan;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +15,9 @@ import lombok.Setter;
 @Table(name="workplan")
 public class WorkplanActivity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int activityId;
+
     private String activityNo;
     private String activityName;
     private boolean y1_q1=false;

@@ -36,7 +36,6 @@ public class TaskService {
         taskRepository.save(newTask);
     }
     public void updateTask(Task updateTask){
-
         taskRepository.save(updateTask);
     }
 
@@ -65,6 +64,7 @@ public class TaskService {
         task.deleteAssignMembers();
         for (AppUser taskMember : taskMembers) {
             task.assignMember(taskMember);
+            notificationService.createNotification("The task, " + task.getTask_Name() + " has been updated.", taskMember,"typeTask");
         }
         taskRepository.save(task);
     }

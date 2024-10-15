@@ -15,18 +15,19 @@ const FileUploadDownload = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [showUploadForm, setShowUploadForm] = useState(false);
+  const user =JSON.parse(localStorage.getItem("loggedInUser"))
 
 // Fetch the uploaded files from the backend when the component mounts
   useEffect(() => {
-    if (loggedInUser && loggedInUser.isLoggedIn) {
-      fetchUploadedFiles(loggedInUser.email); 
+    if (loggedInUser && user.isLoggedIn) {
+      fetchUploadedFiles(user.email); 
     }
   }, []);
 
   // Fetches uploaded files from the backend API
   const fetchUploadedFiles = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/v1/myFiles?email=${loggedInUser.email}`);
+      const response = await axios.get(`http://localhost:8080/api/v1/myFiles?email=${user.email}`);
       setUploadedFiles(response.data);
     } catch (error) {
       console.error('Error fetching files:', error);
@@ -74,7 +75,7 @@ const FileUploadDownload = () => {
       formData.append('displayName', displayName);
     }
 
-    formData.append('email', loggedInUser.email);
+    formData.append('email', user.email);
 
     // Upload file or link to the backend
     try {
@@ -90,7 +91,7 @@ const FileUploadDownload = () => {
         setYoutubeLink('');
         setDisplayName('');
         setShowUploadForm(false);
-        fetchUploadedFiles(loggedInUser.email);
+        fetchUploadedFiles(user.email);
       } else {
         alert('Failed to upload content');
       }
@@ -128,7 +129,7 @@ const FileUploadDownload = () => {
       const response = await axios.delete(`http://localhost:8080/api/v1/myFiles/${myFileId}`);
       if (response.status === 200) {
         alert('File deleted successfully');
-        fetchUploadedFiles(loggedInUser.email);
+        fetchUploadedFiles(user.email);
       } else {
         alert('Failed to delete file');
       }

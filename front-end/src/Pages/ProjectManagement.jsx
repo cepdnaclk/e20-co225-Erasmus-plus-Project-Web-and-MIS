@@ -464,7 +464,7 @@ if(loggedInUser){
             </div>
         }
 
-       {addRow? <div className="buttonsBlock"><button type = "submit">Add</button><button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>} >Close</button></div> : <button type = "submit">Update</button> }
+       {addRow? <div className="buttonsBlock"><button type = "submit">Add</button><button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>} >Close</button></div> : <div className="buttonsBlock"><button type = "submit">Update</button><button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>} >Close</button></div> }
        </form>
      </div>
      </DialogContent>

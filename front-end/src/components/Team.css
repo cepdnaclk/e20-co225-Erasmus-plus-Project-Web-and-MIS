@@ -6,13 +6,13 @@
     margin-right: 5%;
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Adds space between the tabs */
+    gap: 10px; 
 }
 
 /* Button Styling within the Team Tabs */
 .TeamTabs button {
     background-color: #263d8300;
-    padding: 5px; /* Optional: Add padding for a better button size */
+    padding: 5px; 
     border: none;
     cursor: pointer;
     font-family: 'Caudex';
@@ -25,7 +25,7 @@
 
 /* Hover Effect for Tab Buttons */
 .TeamTabs button:hover {
-    opacity: 0.7; /* Optional: Add hover effect */
+    opacity: 0.7; 
 }
 
 .UoPLogoTab , .UoCLogoTab , .PRCLogoTab , .HUoILogoTab , .NTNULogoTab {
@@ -34,6 +34,37 @@
 
 .SUoTLogoTab , .KMIoTLLogoTab{
     width: 65px;
+}
+
+.sub-tabs {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.sub-tabs h4{
+    margin: 0%;
+    font-size: 14px;
+}
+
+.sub-tabs button {
+    background-color: #263d8300;
+    padding: 5px; 
+    border: none;
+    cursor: pointer;
+    font-family: 'Caudex';
+}
+
+.sub-tabs button.active {
+    border-bottom: 2px solid #254ad281; /* Underline for the active tab */
+}
+
+.sub-tabs button:hover {
+    opacity: 0.7; 
 }
 
 /* Styling for University of Peradeniya (UoP) Team Section */
@@ -610,21 +641,21 @@
 
 /* Media Queries for Responsive Design */
 @media (max-width: 1000px) {
-    .TeamTabs {
+    .TeamTabs , .sub-tabs{
         margin-bottom: 20px;
         margin-left: 5%;
         margin-right: 5%;
         display: flex;
-        flex-direction: column; /* Makes the tabs stack vertically */
-        align-items: center;    /* Centers the tabs horizontally */
-        gap: 10px; /* Adds space between the tabs */
+        flex-direction: column; 
+        align-items: center;    
+        gap: 10px; 
     }
 
     .TeamTabs button {
         background-color: #263d8300;
         border: none;
         cursor: pointer;
-        padding: 10px; /* Optional: Add padding for a better button size */
+        padding: 10px; 
     }
 
 }

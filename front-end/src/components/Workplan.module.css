@@ -98,8 +98,15 @@
   background-color: #f3f7f9;
 }
 
-/* Optional: Media query for smaller screens */
-@media screen and (max-width: 600px) {
+@media (max-width: 1100px) {
+  .tableContainer,
+  .container {
+    overflow-x: auto;
+    font-size:0.9em;
+  }
+}
+@media (max-width: 800px) {
+  .tableInDialogBox thead,
   .table thead {
     display: none;
   }
@@ -108,18 +115,44 @@
     display: block;
     margin-bottom: 10px;
   }
-
-  .table tbody td, 
-  .table tbody th {
+  .table tbody td:nth-child(1),
+  .table tbody td:nth-child(2),
+  .table tbody td:nth-child(19){
     display: block;
     text-align: right;
+    align-items: right;
     border-bottom: 1px solid #ddd;
   }
-/* TODO : UPDATE jsx accordingly */
+
   .table tbody td::before, 
   .table tbody th::before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
+  }
+
+  .tableInDialogBox tbody td {
+    display: inline-block;
+    width: auto; 
+    padding: 5px; 
+    font-size: 12px; 
+    border-bottom: none; 
+    text-align: left; 
+  }
+
+  .tableContainer,
+  .container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .container {
+    padding: 5px;
+    margin: 10px;
+  }
+
+  .tableInDialogBox tbody td:hover,
+  .table tbody tr:hover {
+    background-color: transparent; 
   }
 }

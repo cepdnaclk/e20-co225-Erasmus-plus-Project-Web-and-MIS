@@ -3,7 +3,7 @@
   margin-top: 1%;
   margin-left: 5%;
   text-align: left;
-  font-size: 23px;
+  font-size: 1.5em;
   font-family: 'Caudex';
   color: #000000;
   display: flex;
@@ -59,18 +59,18 @@
 /* Styles for breadcrumb links */
 .breadcrumb-item a {
   text-decoration: none;
-  color: #5086c0; /* Blue color */
+  color: #5086c0;
 }
 
 /* Styles for breadcrumb links on hover */
 .breadcrumb-item a:hover {
   text-decoration: none;
-  color: #7e96af; /* Blue color */
+  color: #7e96af; 
 }
 
 /* Styles for active breadcrumb items */
 .breadcrumb-item.active {
-  color: #5c6064; /* Gray color */
+  color: #5c6064; 
 }
 
 /***** Add New Button *****/
@@ -116,7 +116,7 @@
   align-items: center;
   width: 95%;
   margin: 15px 20px;
-  justify-content: flex-start; /* Align all elements to the left */
+  justify-content: flex-start;
 }
 .inputbox label{
   width: 150px;
@@ -140,8 +140,6 @@
   font-family: sans-serif;
   line-height: 1.5;
   color: #333;
-  /* font-synthesis: none;
-  text-rendering: optimizeLegibility; */
 }
 
 /*** Input type - Checkboxes ***/
@@ -199,13 +197,13 @@
 
 /* File input styling (optional: custom button) */
 .dataForm input[type="file"]::file-selector-button {
-  background-color:  hsla(211, 51%, 76%, 0.629); /* Button background color */
+  background-color:  hsla(211, 51%, 76%, 0.629); 
   color: #000000;
-  border: none; /* No border */
-  border-radius: 4px; /* Rounded corners */
-  padding: 10px 15px; /* Button padding */
-  cursor: pointer; /* Pointer cursor for button */
-  transition: background-color 0.3s ease; /* Transition for background color */
+  border: none; 
+  border-radius: 4px; 
+  padding: 10px 15px;
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
 }
 
 /* Hover effect for file input button */
@@ -241,5 +239,58 @@
   color: #2a2929;
 }
 
+@media (max-width: 600px) {
+  .addNewButton {
+    margin: 15px 0;
+    padding: 10px 30px;
+    font-size: 14px;
+  }
+  .inputbox {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .inputbox label {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .inputbox .field {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .inputbox textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .dataForm input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  .buttonsBlock button {
+    padding: 10px 30px;
+    font-size: 14px;
+    margin: 5px;
+  }
+
+  .dataForm h2 {
+    font-size: 18px;
+  }
+
+  .pageTitle{
+    font-size: 1.1em;
+  }
+  .breadcrumb{
+    display:none;
+  }
+}
 
 

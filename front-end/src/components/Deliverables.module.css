@@ -66,7 +66,11 @@
 /* View Interface */
 .viewDetails{
   display: inline-block;
-  margin: 20px 20px 40px 20px;
+  margin: 20px 20px 20px 20px;
+  width: 100%;
+}
+.viewDetails tbody{
+  display: block;
 }
 
 .viewDetails tbody td{
@@ -80,8 +84,14 @@
     padding:8px;
     text-align: left;
 }
-/* Optional: Media query for smaller screens */
-@media screen and (max-width: 600px) {
+@media (max-width: 1100px) {
+  .tableContainer,
+  .container {
+    overflow-x: auto;
+    font-size:0.9em;
+  }
+}
+@media screen and (max-width: 1100px) {
   .table thead {
     display: none;
   }
@@ -97,7 +107,6 @@
     text-align: right;
     border-bottom: 1px solid #ddd;
   }
-/* TODO : UPDATE jsx accordingly */
   .table tbody td::before, 
   .table tbody th::before {
     content: attr(data-label);
@@ -105,4 +114,30 @@
     font-weight: bold;
   }
 }
+@media screen and (max-width:600px) {
+  
+  .viewDetails tbody tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px; 
+  }
+
+  .viewDetails tbody th {
+    width: 90%; 
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f0f0f0; 
+  }
+
+  .viewDetails tbody td {
+    width: 90%;
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+
+
+
+
   

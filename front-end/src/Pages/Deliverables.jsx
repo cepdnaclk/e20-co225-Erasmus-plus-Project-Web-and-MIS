@@ -1,13 +1,3 @@
-//TODO: Set the last modified date and User
-//TODO: Automatically scroll to the specific points (interfcae, table etc)
-//TODO: Sort the table - PK
-//TODO: add error message when an invalid date is entered into the form 
-//TODO: Validate form inputs
-//TODO: Edit media queries for form and table 
-//TODO: Adjust CSS for date input
-//Scroll into view 
-//Auto focus the for input
-
 import { useEffect, useState } from 'react';
 import style from '../components/Deliverables.module.css'
 import axios from "axios"
@@ -22,7 +12,8 @@ function Deliverables() {
   /******************** Load information whenever the page loads ********************************* */
 
   const [deliverables, setDeliverables] =useState([]);    
- 
+  const [sortOrder, setSortOrder] = useState('asc');
+
   useEffect(()=>{
     loadData();
   },[])
@@ -36,6 +27,18 @@ function Deliverables() {
     }
   }
   
+    // Function to sort activities based on Activity No
+    const sortDeliverables = () => {
+      const sortedDeliverables = [...deliverables].sort((a, b) => {
+        if (sortOrder === 'asc') {
+          return a.deliverableRelatedNo.localeCompare(b.deliverableRelatedNo);
+        } else {
+          return b.deliverableRelatedNo.localeCompare(a.deliverableRelatedNo);
+        }
+      });
+      setDeliverables(sortedDeliverables);
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc'); // Toggle sort order
+    };
   /******************** Add a new data entry and edit the exsisting entry ********************************* */
   
   // Show the interface: Either for 'Add New' or 'Edit'
@@ -114,7 +117,7 @@ const onInputChange=(e)=>{
   const onUpdateSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
     try {
-      await axios.put(`http://localhost:8080/deliverable/update/${deliverable.deliverableRelatedNo}`, deliverable);
+      await axios.put(`http://localhost:8080/deliverable/update/${deliverable.deliverableId}`, deliverable);
       // Optionally, reload the data after successful submission
       loadData();
       setEditRow(false);
@@ -137,11 +140,11 @@ const onInputChange=(e)=>{
 
 /************************** Delete a specific entry *************************************/
 
-const onDeleteClick = async (deliverableRelatedNo) => {
+const onDeleteClick = async (deliverableId) => {
   console.log("Delete button clicked");
-  console.log(deliverableRelatedNo);
+  console.log(deliverableId);
   try {
-    await axios.delete(`http://localhost:8080/deliverable/delete/${deliverableRelatedNo}`);
+    await axios.delete(`http://localhost:8080/deliverable/delete/${deliverableId}`);
     loadData();
     alert("Deliverable Deleted!");
   } catch (error) {
@@ -200,7 +203,7 @@ const onViewClick = (deliverable) => {
             <thead>
               <tr>
                 <th scope="col">Work Package No</th>
-                <th scope="col">Deliverable Related No</th>
+                <th scope="col" onClick={sortDeliverables} style={{ cursor:'pointer'}} width="60px">Deliverable Related No {sortOrder === 'asc' ? '▲' : '▼'}</th>
                 <th scope="col">Deliverable No</th>
                 <th scope="col">Deliverable Name</th>
                 {/* <th scope="col">Description</th> */}
@@ -213,7 +216,7 @@ const onViewClick = (deliverable) => {
             </thead>
             <tbody>
                     {deliverables.map((deliverable,index)=>(
-                        <tr  key={deliverable.deliverableRelatedNo}>
+                        <tr  key={deliverable.deliverableId}>
                           <td>{deliverable.workPackageNo}</td>
                           <td>{deliverable.deliverableRelatedNo}</td>
                           <td>{deliverable.deliverableNo}</td>
@@ -226,7 +229,7 @@ const onViewClick = (deliverable) => {
                             <div className='actionButtonsBloack'>
                               <button className='actionButton' onClick={() => onEditClick(deliverable)}><FontAwesomeIcon icon={faPen}/></button>
                               <button className='actionButton' onClick={() => onViewClick(deliverable)}><FontAwesomeIcon icon={faEye}/></button>
-                              <button className='actionButton' onClick={() => onDeleteClick(deliverable.deliverableRelatedNo)}><FontAwesomeIcon icon={faTrash} /></button>
+                              <button className='actionButton' onClick={() => onDeleteClick(deliverable.deliverableId)}><FontAwesomeIcon icon={faTrash} /></button>
                             </div>         
                           </td>}
                         </tr>

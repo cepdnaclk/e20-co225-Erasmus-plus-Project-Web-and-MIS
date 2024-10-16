@@ -87,12 +87,16 @@ const Gallery = () => {
    * Sends a DELETE request to remove the item from the backend.
    */
   const onDeleteClick = async (albumID) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this album?');
+    if (!confirmDelete) return;
     try {
       await axios.delete(`http://localhost:8080/api/v1/gallery/${albumID}`);
       const latestGallery = await fetchGallery();
       setGallery(latestGallery);
+      alert('Album deleted successfully');
     } catch (error) {
       console.error("Error deleting gallery item:", error); 
+      alert("Failed to delete album!");
     }
   }
   // When 'Close' button is clicked: for Edit, and Add New

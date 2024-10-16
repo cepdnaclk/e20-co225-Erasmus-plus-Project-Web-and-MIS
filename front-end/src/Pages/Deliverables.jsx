@@ -116,6 +116,8 @@ const onInputChange=(e)=>{
   //When 'Update' button is clicked in the interface : Only Edit
   const onUpdateSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
+    const confirmUpdate = window.confirm('Are you sure you want to update this deliverable?');
+    if (!confirmUpdate) return; 
     try {
       await axios.put(`http://localhost:8080/deliverable/update/${deliverable.deliverableId}`, deliverable);
       // Optionally, reload the data after successful submission
@@ -143,13 +145,21 @@ const onInputChange=(e)=>{
 const onDeleteClick = async (deliverableId) => {
   console.log("Delete button clicked");
   console.log(deliverableId);
-  try {
-    await axios.delete(`http://localhost:8080/deliverable/delete/${deliverableId}`);
-    loadData();
-    alert("Deliverable Deleted!");
-  } catch (error) {
-    console.error("Error deleting deliverable:", error);
-  }
+  const confirmDelete = window.confirm('Are you sure you want to delete this deliverable?');
+    if (!confirmDelete) return;  
+    try {
+      await axios.delete(`http://localhost:8080/deliverable/delete/${deliverableId}`);
+      loadData();
+      if (response.status === 200) {
+        alert('Deliverable deleted successfully');
+        loadData();
+      } else {
+        alert('Failed to delete deliverable');
+      }
+    } catch (error) {
+      console.error("Error deleting deliverable:", error);
+      alert("Failed to delete deliverable!");
+    }
 }
 
 /************************** View a specific entry *************************************/

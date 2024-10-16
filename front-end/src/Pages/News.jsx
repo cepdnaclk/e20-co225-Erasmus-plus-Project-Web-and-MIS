@@ -77,14 +77,17 @@ const News = () => {
   const onDeleteClick = async (newsID) => {
     console.log("Delete button clicked");
     console.log(newsID); // Log the newsID for debugging
+    const confirmDelete = window.confirm('Are you sure you want to delete this news?');
+    if (!confirmDelete) return;
     try {
       await axios.delete(`http://localhost:8080/api/v1/news/${newsID}`); // Send DELETE request
-      
       // Fetch the updated list of news and update the state
       const latestNews = await fetchNews();
       setNews(latestNews);
+      alert('News deleted successfully');
     } catch (error) {
       console.error("Error deleting news:", error); // Log any errors
+      alert("Failed to delete news!");
     }
   }
     // When 'Close' button is clicked: for Edit, and Add New

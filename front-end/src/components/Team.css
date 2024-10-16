@@ -44,11 +44,13 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    
 }
 
 .sub-tabs h4{
     margin: 0%;
     font-size: 14px;
+    color: #000000;
 }
 
 .sub-tabs button {

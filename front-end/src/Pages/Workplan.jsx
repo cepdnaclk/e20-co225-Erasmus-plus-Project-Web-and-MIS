@@ -135,7 +135,9 @@ function Workplan() {
 
     //When 'Update' button is clicked in the dialog : Only Edit
     const onUpdateSubmit = async (e) => {
-      e.preventDefault(); // Prevent default form submission
+      e.preventDefault(); 
+      const confirmUpdate = window.confirm('Are you sure you want to update this activity?');
+      if (!confirmUpdate) return; 
       try {
         await axios.put(`http://localhost:8080/workplan/update/${activity.activityId}`, activity);
         // Optionally, reload the data after successful submission
@@ -161,9 +163,17 @@ function Workplan() {
   const onDeleteClick = async (activityId) => {
     console.log("Delete button clicked");
     console.log(activityId);
+    const confirmDelete = window.confirm('Are you sure you want to delete this activity?');
+    if (!confirmDelete) return; 
     try {
       await axios.delete(`http://localhost:8080/workplan/delete/${activityId}`);
       loadData();
+      if (response.status === 200) {
+        alert('Activity deleted successfully');
+        loadData();
+      } else {
+        alert('Failed to delete Activity');
+      }
     } catch (error) {
       console.error("Error deleting workplan activity:", error);
     }

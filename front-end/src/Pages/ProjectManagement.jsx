@@ -176,7 +176,7 @@ try {
       headers: {
         'Content-Type': 'multipart/form-data'
       }});
-    alert("task added");
+    alert("Task added successfully!");
     //  reload the data after successful submission
     setTasks([...tasks,task])
     // Clear the form fields after successful submission if needed
@@ -192,26 +192,30 @@ try {
 //When 'Update' button is clicked in the interface : Only Edit
 const onUpdateSubmit = async (e) => {
   e.preventDefault(); // Prevent default form submission
+  setIsLoading(true); // Show loading indicator
+  const confirmUpdate = window.confirm('Are you sure you want to update this task?');
+  if (!confirmUpdate) return; 
+
   const {assignedUsers, ...newtaskFormat } = task;
   const formData = new FormData();
   for (const key in newtaskFormat) {
     formData.append(key, newtaskFormat[key]);
   }
   formData.append("assignedUsers",JSON.stringify(assignedUsers.map(({ admin, ...assignedUsersDetails }) => assignedUsersDetails)))
-  console.log("task",task)
   try {
-    console.log("task.... ",formData)
     await axios.put(`http://localhost:8080/api/v1/tasks/updateWithUsers`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }});;
-
-    // Optionally, change the tasks list after successful submission
-    setTasks([...tasks,task])
-    setEditRow(false);
-    setShowInterface()
+      // Optionally, change the tasks list after successful submission
+      setTasks([...tasks,task])
+      setEditRow(false);
+      setShowInterface(false)
+      alert("Task updated successfully!");
     } catch (error) {
     console.error("Error editing tasks:", error);
+  } finally {
+    setIsLoading(false); // Hide loading indicator
   }
 };
 
@@ -463,8 +467,10 @@ if(loggedInUser){
               </div>
             </div>
         }
-
-       {addRow? <div className="buttonsBlock"><button type = "submit">Add</button><button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>} >Close</button></div> : <div className="buttonsBlock"><button type = "submit">Update</button><button onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>} >Close</button></div> }
+        <div className = "buttonsBlock">
+            {addRow? <button type = "submit">Add</button> : <button type = "submit">Update</button> }
+            <button type="button" onClick={closePopUp} endIcon={<CloseIcon></CloseIcon>}>Discard</button>
+        </div>
        </form>
      </div>
      </DialogContent>

@@ -26,7 +26,7 @@ public class Deliverable {
     private String workPackageNo;
     private String deliverableNo;
     private String deliverableName;
-    @Column(length = 5000)
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String leadBeneficiary;
     private String type;
